@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nft-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nft-frontend
+  template:
+    metadata:
+      labels:
+        app: nft-frontend
+    spec:
+      containers:
+        - name: react
+          image: deepalisss/nftfrontend
+          ports:
+            - containerPort: 8081
+          env:
+            - name: PORT
+              value: "8081"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nft-frontend
+
+spec:
+  # This defines which pods are going to be represented by this Service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to (eg browser)
+  selector:
+    app: nft-frontend
+
+  ports:
+    - name: http
+      port: 8081
+      targetPort: 8081
+
+  type: LoadBalancer
+  
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name:frontend-react
+# spec:
+#   type: LoadBalancer
+#   ports:
+#     - port: 8081
+#       targetPort: 8081
+#   selector:

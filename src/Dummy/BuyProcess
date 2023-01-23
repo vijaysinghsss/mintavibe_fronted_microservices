@@ -1,0 +1,300 @@
+async function initBuyProcess() {
+  var curErc20Balance = $("#erc20_balance").text();
+  var ethBalance = await window.ethBalance();
+  var totalAmt = $("#buy-total-amt-dp").attr("buyAmt");
+  var isEthPayment = $("#is_eth_payment").attr("is_eth_payment");
+  if (isEthPayment === "false") {
+    if (isGreaterThanOrEqualTo(curErc20Balance, totalAmt)) {
+      $(".convertEth").addClass("hide");
+      initApproveBuyProcess(
+        $("#buyContractAddress").val(),
+        $("#buyContractDecimals").val()
+      );
+    } else if (isGreaterThanOrEqualTo(ethBalance, totalAmt)) {
+      convertEthToWeth(totalAmt, "Buy");
+    } else {
+      $("#buyForm :input").prop("disabled", false);
+      // $("#placeBuy").modal("hide");
+      $.magnificPopup.close();
+      return toastr.error("Not enough balance");
+    }
+  } else {
+    if (isGreaterThanOrEqualTo(ethBalance, totalAmt)) {
+      initEthBuyProcess();
+    } else {
+      $("#buyForm :input").prop("disabled", false);
+      $.magnificPopup.close();
+      return toastr.error("Not enough balance");
+    }
+  }
+}
+
+function isGreaterThanOrEqualTo(one, two) {
+  var numOne = BigNumber(one);
+  return numOne.isGreaterThanOrEqualTo(BigNumber(two));
+}
+
+async function approveERC20(
+  contractAddress,
+  contractType,
+  amount,
+  decimals = 18,
+  sendBackTo = "Bid"
+) {
+  try {
+    console.log(
+      "Enter approveERC20:" + contractAddress,
+      contractType,
+      gon.collection_data["contract_shared"]
+    );
+    amount = roundNumber(mulBy(amount, 10 ** decimals), 0);
+    await checkDepricatedStatus();
+    const approveERC2 = await fetchContract(
+      contractAddress,
+      contractType,
+      gon.collection_data["contract_shared"]
+    );
+    //var contract = await new window.web3.eth.Contract(abi, contractAddress);
+    var approveAddress = gon.depricated_status
+      ? deprecatedTransferProxyContractAddress
+      : transferProxyContractAddress;
+    var account = getCurrentAccount();
+    const balance = await approveERC2.allowance(account, approveAddress);
+    amount = BigInt(parseInt(balance) + parseInt(amount)).toString();
+    var receipt = await approveERC2.approve(approveAddress, amount, {
+      from: account,
+    });
+    receipt = await receipt.wait();
+    if (sendBackTo == "Buy") {
+      return window.buyApproveSuccess(receipt.transactionHash, contractAddress);
+    } else {
+      return window.bidApproveSuccess(receipt.transactionHash, contractAddress);
+    }
+  } catch (err) {
+    console.error(err);
+    if (sendBackTo == "Buy") {
+      return window.buyApproveFailed(err["message"]);
+    } else {
+      return window.bidApproveFailed(err["message"]);
+    }
+  }
+}
+
+const initEthBuyProcess = function initEthBuyProcess() {
+  $(".convertEth").addClass("hide");
+  $(".approveBuy").addClass("hide");
+  $.magnificPopup.close();
+  $.magnificPopup.open({
+    closeOnBgClick: false,
+    enableEscapeKey: false,
+    items: {
+      src: "#placeBuy",
+    },
+    type: "inline",
+    callbacks: {
+      close: function () {
+        $("#buyForm :input").prop("disabled", false);
+      },
+    },
+  });
+  $("#placeBuy").modal("show");
+  $(".purchaseStart").hide();
+  $(".purchaseDone").hide();
+  $(".purchaseRetry").hide();
+  $(".allProgress").removeClass("hide");
+  initPurchaseProcess("", true);
+};
+
+function initPurchaseBuyProcess(contractAddress, isEthPayment = false) {
+  if (!isEthPayment) {
+    hideAll();
+    $(".convertDone").removeClass("hide");
+    $(".approvebuyDone").removeClass("hide");
+    $(".purchaseProgress").removeClass("hide");
+    $(".purchaseAndMintProgress").removeClass("hide");
+  }
+  console.log("initPurchaseProcess");
+  console.log(contractAddress);
+  var paymentDetails = fetchCollectionDetails(null, contractAddress);
+  if (isEthPayment) {
+    paymentDetails["pay_token_address"] =
+      "0x0000000000000000000000000000000000000000";
+    paymentDetails["pay_token_decimal"] = 18;
+  }
+  console.log(
+    paymentDetails["owner_address"],
+    toNum(paymentDetails["asset_type"]),
+    paymentDetails["asset_address"],
+    paymentDetails["token_id"],
+    toNum(paymentDetails["unit_price"]),
+    toNum($("#buy_qty").val()),
+    toNum($("#buy-total-amt-dp").attr("buyAmt")),
+    paymentDetails["pay_token_address"],
+    toNum(paymentDetails["pay_token_decimal"]),
+    paymentDetails["seller_sign"],
+    paymentDetails["collection_id"]
+  );
+  if ($("#is_collection_lazy_minted").val() == "true") {
+    MintAndBuyAsset(
+      paymentDetails["owner_address"],
+      toNum(paymentDetails["asset_type"]),
+      paymentDetails["asset_address"],
+      paymentDetails["token_id"],
+      toNum(paymentDetails["unit_price"]),
+      toNum($("#buy_qty").val()),
+      toNum($("#buy-total-amt-dp").attr("buyAmt")),
+      paymentDetails["pay_token_address"],
+      toNum(paymentDetails["pay_token_decimal"]),
+      paymentDetails["seller_sign"],
+      paymentDetails["collection_id"],
+      paymentDetails["token_uri"],
+      paymentDetails["royalty"],
+      paymentDetails["shared"],
+      paymentDetails["total"],
+      isEthPayment
+    );
+  } else {
+    buyAsset(
+      paymentDetails["owner_address"],
+      toNum(paymentDetails["asset_type"]),
+      paymentDetails["asset_address"],
+      paymentDetails["token_id"],
+      toNum(paymentDetails["unit_price"]),
+      toNum($("#buy_qty").val()),
+      toNum($("#buy-total-amt-dp").attr("buyAmt")),
+      paymentDetails["pay_token_address"],
+      paymentDetails["pay_token_decimal"],
+      paymentDetails["seller_sign"],
+      paymentDetails["collection_id"],
+      isEthPayment
+    );
+  }
+}
+
+async function buyAsset(
+  assetOwner,
+  buyingAssetType,
+  buyingAssetAddress,
+  tokenId,
+  unitPrice,
+  buyingAssetQty,
+  paymentAmt,
+  paymentAssetAddress,
+  decimals,
+  sellerSign,
+  collectionId,
+  isEthPayment = false
+) {
+  try {
+    isEthPayment = isEthPayment === true;
+    var isErc20Payment = isEthPayment === false;
+    if (isEthPayment) {
+      paymentAssetAddress = "0x0000000000000000000000000000000000000000";
+      paymentAmt = roundNumber(mulBy(paymentAmt, 10 ** 18), 0);
+      unitPrice = roundNumber(mulBy(unitPrice, 10 ** 18), 0);
+    } else {
+      paymentAmt = roundNumber(mulBy(paymentAmt, 10 ** decimals), 0);
+      unitPrice = roundNumber(mulBy(unitPrice, 10 ** decimals), 0);
+    }
+    var contract = await fetchContract(tradeContractAddress, "trade");
+    var nonce_value = await getContractSignNonce(collectionId, sellerSign);
+    var account = getCurrentAccount();
+    var supply = 0;
+    var tokenURI = "abcde";
+    var royaltyFee = 0;
+    var orderStruct = [
+      assetOwner,
+      account,
+      paymentAssetAddress,
+      buyingAssetAddress,
+      buyingAssetType,
+      unitPrice,
+      paymentAmt,
+      tokenId,
+      supply,
+      tokenURI,
+      royaltyFee,
+      buyingAssetQty,
+      gon.depricated_status,
+      isErc20Payment,
+    ];
+    var gasPrices = await gasPrice();
+    if (!isEthPayment) {
+      var receipt = await contract.buyAsset(
+        orderStruct,
+        gon.collection_data["imported"],
+        splitSign(sellerSign, nonce_value),
+        { from: account, gasLimit: 516883, gasPrice: String(gasPrices) }
+      );
+    } else {
+      var receipt = await contract.buyAssetWithEth(
+        orderStruct,
+        gon.collection_data["imported"],
+        splitSign(sellerSign, nonce_value),
+        {
+          from: account,
+          gasLimit: 516883,
+          gasPrice: String(gasPrices),
+          value: paymentAmt,
+        }
+      );
+    }
+    receipt = await receipt.wait();
+    await updateCollectionBuy(
+      collectionId,
+      buyingAssetQty,
+      receipt.transactionHash
+    );
+    return window.buyPurchaseSuccess(collectionId);
+  } catch (err) {
+    console.log(err);
+    if (!isEthPayment) {
+      return window.buyPurchaseFailed(err["message"]);
+    } else {
+      return window.buyWithEthPurchaseFailed(err["message"]);
+    }
+  }
+}
+
+function toNum(num) {
+  return BigNumber(num).toNumber();
+}
+
+$(document).on("click", ".buy-now", function () {
+  loadTokenBalance(
+    $("#buyContractAddress").val(),
+    $("#buyContractDecimals").val()
+  );
+});
+
+async function loadTokenBalance(contractAddress, decimals, symbol) {
+  var assetBalance = await tokenBalance(contractAddress, decimals);
+  $(".ercCurBalance").text(assetBalance);
+  $("#erc20_balance").text(assetBalance);
+  $("#biding-asset-balance").text(mergeAmountSymbol(assetBalance, symbol));
+}
+
+async function tokenBalance(contractAddress, decimals) {
+  var abi = [
+    {
+      constant: true,
+      inputs: [{ name: "_owner", type: "address" }],
+      name: "balanceOf",
+      outputs: [{ name: "balance", type: "uint256" }],
+      payable: false,
+      stateMutability: "view",
+      type: "function",
+    },
+  ];
+  var contract;
+  if (window.wallet == "walletConnect") {
+    contract = new ethers.Contract(contractAddress, abi, window.provider);
+  } else if (window.wallet == "metamask") {
+    contract = new ethers.Contract(contractAddress, abi, provider);
+  }
+  var account = await getaccounts();
+  var balance = await contract.balanceOf(account);
+  var bal = parseInt(balance);
+  balance = roundNumber(divBy(bal, 10 ** decimals), 4);
+  return balance;
+}

@@ -1,0 +1,227 @@
+
+
+
+.darkTheme{background: #202225;}
+.darkTheme .navbar-default{filter: none;}
+
+.darkTheme .topPading{filter: invert(1) hue-rotate(180deg); background:#DDD;}
+
+/* ============== FILTER PROPERTY ============== */
+
+.darkTheme .filter{filter: invert(1) hue-rotate(180deg);}
+.darkTheme .filterNone{filter: none;}
+
+.lightTheme .filterNone{filter: none;}
+
+
+.darkTheme img,
+.darkTheme video{filter: invert(1) hue-rotate(180deg);}
+
+.darkTheme img.imgFilter{filter: none;}
+
+.darkTheme .navbar-default img{filter: initial;}
+
+.darkTheme footer img{filter: none;}
+
+.lightTheme .wallet-div ul li img{filter: invert(0.1) hue-rotate(1deg);}
+
+/* ============== Home Page Listing ============== */
+
+.darkTheme .nft-box {
+    box-shadow: 0px 10px 20px #00000029;
+    filter: invert(1) hue-rotate(180deg);
+    background: #36383F 0% 0% no-repeat padding-box;
+}
+
+.darkTheme .nft-box .boder-bottom{background: #555;}
+
+.darkTheme .nft-box .price-div,
+.darkTheme .nft-box .price-sub-space,
+.darkTheme .nft-box .nft-box-img-box{filter: invert(1) hue-rotate(180deg);}
+
+
+
+
+/* ============== About Us PAGE ============== */
+.darkTheme .about-us-section,
+.darkTheme .leader-section{background:none;}
+.darkTheme .innre-bannre div[style],
+.darkTheme .innre-bannre .blog-bg{filter: invert(1) hue-rotate(180deg);}
+
+
+/* ============== Contact Us PAGE ============== */
+
+.darkTheme .contact-form-box{filter: invert(1) hue-rotate(180deg); background:#36383F; box-shadow:0px 0px 12px #0000001F; border:1px solid #000; color:#FFF;}
+.darkTheme .contact-form-box select,
+.darkTheme .contact-form-box textarea,
+.darkTheme .contact-form-box input[type="text"],
+.darkTheme .contact-form-box input[type="email"],
+.darkTheme .contact-form-box input[type="number"]{background:#8f9093; border:1px solid #000; color: #FFF;}
+
+.darkTheme .contact-email-box{filter: invert(1) hue-rotate(180deg);}
+.darkTheme .contact-email-box img{filter: none;}
+
+
+
+
+
+/* ============== BLOG PAGE ============== */
+
+.darkTheme .blog-box{filter: invert(1) hue-rotate(180deg); background: #36383F;}
+.darkTheme .blog-box img{filter: none;}
+.darkTheme .blog-box .blog-box-cont p,
+.darkTheme .blog-box .blog-box-cont h3{color:#FFF;}
+
+
+.darkTheme .content-div {
+    filter: invert(1) hue-rotate(180deg);
+    background: #36383F;
+    color: #FFF;
+}
+
+
+/* ============== Connect Your Wallet ============== */
+
+
+
+
+.darkTheme .offcanvas{filter: invert(0.9) hue-rotate(180deg);}
+.darkTheme .modal-dialog{filter: invert(0.9) hue-rotate(180deg);}
+.darkTheme .modal-dialog .modal-content{border:0px;}
+.darkTheme .modal-dialog .chec-iocn img{filter:none;}
+.darkTheme .modal-dialog .pop-img-box img{filter:none; opacity:0.6;}
+
+.darkTheme .offerPoup{filter:none;}
+.darkTheme .offerPoup .pop_content{background: #272B2F; color: #FFF;}
+
+.darkTheme .offerPoup .grey-bg{background: #4F515C; color:#FFF;}
+
+.darkTheme .offerPoup .grey-bg li{color:#FFF;}
+.darkTheme .offerPoup .grey-bg li .chec-iocn img{filter: invert(1) hue-rotate(180deg);}
+.darkTheme .offerPoup .grey-bg label{color:#FFF;}
+.darkTheme .offerPoup .grey-bg input{background:#36383F; border:1px solid #6a6666; color:#FFF;}
+.darkTheme .offerPoup .grey-bg .input-group-text{background: #272B2F; color:#FFF; border-color:#6a6666;}
+
+.darkTheme .offerPoup .forgot-div,
+.darkTheme .offerPoup .check-box-div span{color:#FFF;}
+
+.darkTheme .login-screen input[type="text"],
+.darkTheme .login-screen input[type="password"],
+.darkTheme .login-screen input[type="date"],
+.darkTheme .login-screen input[type="datetime"],
+.darkTheme .login-screen input[type="email"],
+.darkTheme .login-screen input[type="number"], 
+.darkTheme .login-screen input[type="search"], 
+.darkTheme .login-screen input[type="tel"], 
+.darkTheme .login-screen input[type="time"], 
+.darkTheme .login-screen input[type="url"], 
+.darkTheme .login-screen textarea,
+.darkTheme .login-screen select{background: #36383F; border: 1px solid #6a6666;}
+
+.darkTheme .w_btn span img{filter:none;}
+
+
+/* ============== CREAT ITEMS ============== */
+
+.darkTheme .formbold-form-wrapper{filter: invert(1) hue-rotate(180deg);}
+.darkTheme .formbold-form-wrapper video{filter:none;}
+.darkTheme .formbold-file-input label{border: 2px dashed #474950; background-color: #272B2F;}
+
+.darkTheme .formbold-file-input label img{filter:none;}
+.darkTheme .formbold-file-input label .close-preview-button{filter: invert(1) hue-rotate(180deg);}
+
+.darkTheme .CreateForm{filter: invert(1) hue-rotate(180deg); color:#FFF;}
+.darkTheme .CreateForm button{filter: invert(1) hue-rotate(180deg); color:#FFF;}
+.darkTheme .CreateForm label{color:#FFF;}
+
+
+.darkTheme .CreateForm textarea{border:1px solid #6a6666; background: #36383F; color:#FFF;}
+
+.darkTheme .CreateForm .categorydetails__control,
+.darkTheme .CreateForm .creatorCategory__control{border-color:#6a6666;}
+
+.darkTheme .categorydetails__control,
+.darkTheme .creatorCategory__control,
+.darkTheme .form-section input[type="text"],
+.darkTheme input[type="password"],
+.darkTheme input[type="date"],
+.darkTheme input[type="datetime"],
+.darkTheme input[type="email"],
+.darkTheme input[type="number"],
+.darkTheme input[type="search"],
+.darkTheme input[type="tel"],
+.darkTheme input[type="time"],
+.darkTheme input[type="url"],
+.darkTheme textarea,
+.darkTheme select{background:#36383F; color: #FFF; border: 1px solid #6a6666;}
+
+.darkTheme .creatorCategory__control .css-1rhbuit-multiValue,
+.darkTheme .categorydetails__control .css-1rhbuit-multiValue{background:#000; color:#FFF;}
+
+.darkTheme .creatorCategory__control .css-1rhbuit-multiValue > div,
+.darkTheme .categorydetails__control .css-1rhbuit-multiValue > div{color:#FFF;}
+
+.darkTheme .creatorCategory__menu,
+.darkTheme .categorydetails__menu{filter: invert(1) hue-rotate(180deg); color:#000;}
+
+.darkTheme .propertyAccod .accordion-header button{background:#36383F; color:#FFF; border: 1px solid #6a6666; box-shadow:none; filter: none;}
+.darkTheme .propertyAccod .accordion-header button:after{filter: invert(1) hue-rotate(180deg);}
+.darkTheme .propertyAccod .accordion-item{background: #36383f;}
+.darkTheme .propertyAccod .accordion-collapse{background:#36383F;}
+.darkTheme .propertyAccod .accordion-body .card{filter: invert(1) hue-rotate(180deg);}
+
+.darkTheme .CreateForm .max{color:#FFF;}
+
+.darkTheme .CreateForm .tab-wrap label{background:#36383F; border: 1px solid transparent; box-shadow:none;}
+
+.darkTheme .CreateForm .tab-wrap label:hover,
+.darkTheme .CreateForm .tab-wrap .tab:checked + label{border: 1px solid #DDD; background:#36383F;}
+
+.darkTheme .CreateForm .tab-wrap label p{color:#FFF;}
+.darkTheme .CreateForm figure img{filter: invert(1) hue-rotate(180deg);}
+.darkTheme .CreateForm .form-section-b{border-color:#c7ccd9;}
+
+
+
+/* ============== CREAT ITEMS DETAIL PAGE ============== */
+
+.darkTheme .modal-more-options img{filter: none;}
+.darkTheme .tab-button img{filter: none;}
+
+
+
+
+
+/* ============== Edit Profile Left Panel ============== */
+
+.darkTheme .left-side{filter: invert(1) hue-rotate(180deg); background: #272B2F;}
+.darkTheme .left-side .accordion{filter: invert(1) hue-rotate(180deg);}
+.darkTheme .left-side .accordion img{filter: none;}
+.darkTheme .left-side .accordion .pagenav{border-bottom:1px solid #7d7d7d;}
+.darkTheme .topPading .customTab{filter: invert(1) hue-rotate(180deg);}
+.darkTheme .profileTab.customTab li button{background:#4F515C; border:1px solid #4F515C; color:#CACBCE;}
+.darkTheme .profileTab.customTab li button.active,
+.darkTheme .topPading .customTab li button:hover{background:#000; color:#CACBCE;}
+
+
+/* ============== Edit Profile Setting Page ============== */
+
+.darkTheme .profile-text span img{filter: none;}
+
+
+
+
+/* ============== All NFT Collect ============== */
+
+.darkTheme .search-section-new{filter: invert(1) hue-rotate(180deg); background: #272B2F;}
+.darkTheme .search-section-new select{border-color: #36383F;}
+.darkTheme .search-section-new .input-group input,
+.darkTheme .search-section-new .input-group .input-group-append button{background: #36383F; border-color: #36383F; color:#FFF;}
+
+
+
+
+
+/* ============== Follow Poup ============== */
+
+/* .darkTheme .fllowPoup .close-button img{} */
