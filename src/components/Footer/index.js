@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
+
+    
     <footer>
       <div className="container">
         <div className="row">
           <p className="footer-text">
-            <b>We’re on a mission to make NFTs accessible to ALL</b>
+            <b>Stay in touch</b>
           </p>
         </div>
 

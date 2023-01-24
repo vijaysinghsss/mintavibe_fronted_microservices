@@ -1,12 +1,12 @@
 
 
+/* 
+
 
 .darkTheme{background: #202225;}
 .darkTheme .navbar-default{filter: none;}
 
 .darkTheme .topPading{filter: invert(1) hue-rotate(180deg); background:#DDD;}
-
-/* ============== FILTER PROPERTY ============== */
 
 .darkTheme .filter{filter: invert(1) hue-rotate(180deg);}
 .darkTheme .filterNone{filter: none;}
@@ -25,13 +25,7 @@
 
 .lightTheme .wallet-div ul li img{filter: invert(0.1) hue-rotate(1deg);}
 
-/* ============== Home Page Listing ============== */
-
-.darkTheme .nft-box {
-    box-shadow: 0px 10px 20px #00000029;
-    filter: invert(1) hue-rotate(180deg);
-    background: #36383F 0% 0% no-repeat padding-box;
-}
+.darkTheme .nft-box{box-shadow: 0px 10px 20px #00000029; filter: invert(1) hue-rotate(180deg); background: #36383F 0% 0% no-repeat padding-box;}
 
 .darkTheme .nft-box .boder-bottom{background: #555;}
 
@@ -40,16 +34,11 @@
 .darkTheme .nft-box .nft-box-img-box{filter: invert(1) hue-rotate(180deg);}
 
 
-
-
-/* ============== About Us PAGE ============== */
 .darkTheme .about-us-section,
 .darkTheme .leader-section{background:none;}
 .darkTheme .innre-bannre div[style],
 .darkTheme .innre-bannre .blog-bg{filter: invert(1) hue-rotate(180deg);}
 
-
-/* ============== Contact Us PAGE ============== */
 
 .darkTheme .contact-form-box{filter: invert(1) hue-rotate(180deg); background:#36383F; box-shadow:0px 0px 12px #0000001F; border:1px solid #000; color:#FFF;}
 .darkTheme .contact-form-box select,
@@ -61,28 +50,13 @@
 .darkTheme .contact-email-box{filter: invert(1) hue-rotate(180deg);}
 .darkTheme .contact-email-box img{filter: none;}
 
-
-
-
-
-/* ============== BLOG PAGE ============== */
-
 .darkTheme .blog-box{filter: invert(1) hue-rotate(180deg); background: #36383F;}
 .darkTheme .blog-box img{filter: none;}
 .darkTheme .blog-box .blog-box-cont p,
 .darkTheme .blog-box .blog-box-cont h3{color:#FFF;}
 
 
-.darkTheme .content-div {
-    filter: invert(1) hue-rotate(180deg);
-    background: #36383F;
-    color: #FFF;
-}
-
-
-/* ============== Connect Your Wallet ============== */
-
-
+.darkTheme .content-div {filter: invert(1) hue-rotate(180deg); background: #36383F; color: #FFF;}
 
 
 .darkTheme .offcanvas{filter: invert(0.9) hue-rotate(180deg);}
@@ -120,8 +94,6 @@
 
 .darkTheme .w_btn span img{filter:none;}
 
-
-/* ============== CREAT ITEMS ============== */
 
 .darkTheme .formbold-form-wrapper{filter: invert(1) hue-rotate(180deg);}
 .darkTheme .formbold-form-wrapper video{filter:none;}
@@ -181,18 +153,8 @@
 .darkTheme .CreateForm figure img{filter: invert(1) hue-rotate(180deg);}
 .darkTheme .CreateForm .form-section-b{border-color:#c7ccd9;}
 
-
-
-/* ============== CREAT ITEMS DETAIL PAGE ============== */
-
 .darkTheme .modal-more-options img{filter: none;}
 .darkTheme .tab-button img{filter: none;}
-
-
-
-
-
-/* ============== Edit Profile Left Panel ============== */
 
 .darkTheme .left-side{filter: invert(1) hue-rotate(180deg); background: #272B2F;}
 .darkTheme .left-side .accordion{filter: invert(1) hue-rotate(180deg);}
@@ -203,15 +165,7 @@
 .darkTheme .profileTab.customTab li button.active,
 .darkTheme .topPading .customTab li button:hover{background:#000; color:#CACBCE;}
 
-
-/* ============== Edit Profile Setting Page ============== */
-
 .darkTheme .profile-text span img{filter: none;}
-
-
-
-
-/* ============== All NFT Collect ============== */
 
 .darkTheme .search-section-new{filter: invert(1) hue-rotate(180deg); background: #272B2F;}
 .darkTheme .search-section-new select{border-color: #36383F;}
@@ -219,9 +173,6 @@
 .darkTheme .search-section-new .input-group .input-group-append button{background: #36383F; border-color: #36383F; color:#FFF;}
 
 
+*/
 
 
-
-/* ============== Follow Poup ============== */
-
-/* .darkTheme .fllowPoup .close-button img{} */
