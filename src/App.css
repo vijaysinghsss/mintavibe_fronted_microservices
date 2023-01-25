@@ -3,24 +3,18 @@
 ul li{list-style:none;}
 
 body {
-  font-family: "Poppins", sans-serif !important;
-  font-size: 18px;
-  background-color: #f4f5f9;
+  font-family:"Poppins", sans-serif !important;
+  font-size:18px;
+  background-color:#f4f5f9;
 }
 
-.topPading {
-  padding-top: 70px;
-}
+.topPading {padding-top:110px;}
 
 @media (min-width: 1200px) {
-  .topPading {
-    min-height: calc(100vh - 274px);
-  }
+  .topPading{min-height: calc(100vh - 274px);}
 }
 
-.nft_home {
-  scroll-behavior: smooth;
-}
+.nft_home{scroll-behavior:smooth;}
 
 .nft_landing_body {
   background: #fbfbfb 0% 0% no-repeat padding-box;
@@ -59,23 +53,13 @@ body {
 }
 
 @-webkit-keyframes gradient {
-  0% {
-    background-position: 0%;
-  }
-
-  100% {
-    background-position: 100%;
-  }
+  0% {background-position: 0%;}
+  100% {background-position: 100%;}
 }
 
 @keyframes gradient {
-  0% {
-    background-position: 0%;
-  }
-
-  100% {
-    background-position: 100%;
-  }
+  0% {background-position: 0%;}
+  100% {background-position: 100%;}
 }
 
 @media (min-width: 1200px) {
@@ -86,12 +70,37 @@ body {
 
 
 
+/* ======================== AK PAGE ======================== */
+
+.clbrtBanner{padding:100px 0; color:#FFF; background: url(../public/images/rows-red-seats-theater.png) no-repeat center center #000; background-size: cover;}
+.clbrtBanner h1{color:#fff; font-size:38px; font-weight:bold;}
+
+.clbrtBanner .slick-dots li button:before{content:""; height:15px; width:15px; background:#000; opacity:0.8;  border:1px solid #FFF; border-radius:100%;}
+.clbrtBanner .slick-dots li.slick-active button:before{background:#FFF;}
+
+.bnrSlider{background:#ffffff 0% 0% no-repeat padding-box; box-shadow:0px 10px 20px #00000010; border-radius:12px; padding:0px; opacity:1;}
+.bnrSlider img{width:100%; border-top-left-radius:10px; border-top-right-radius:10px;}
+.bnrSlider a{text-decoration:none; text-align:center; font-size:20px; color:#000;}
+.bnrSlider h2{padding:15px 0px; margin:0px; font-weight:bold;}
+
+
+
+.abtEdition{padding:50px; background: transparent linear-gradient(63deg, #D3D3D3 0%, #FFFFFF 100%) 0% 0% no-repeat padding-box;}
+.abtEdition .abtCelebt h3{color:#81613A;}
+.abtEdition .abtCelebt h4{font-weight:600;}
+.abtEdition .abtCelebt p{font-weight:400; color:#000; opacity:1;}
+
+
+/* ======================== HOME PAGE ======================== */
+
+.topLogo{display:inline-block; padding:10px 0;}
+
 .topSearch{position: relative;}
 .topSearch input{background:transparent; border:2px solid #000; color: #FFF; height:38px; padding-left:35px;}
 .topSearch .searchBtn{position: absolute; top: 0px; left: 0px; height:38px; width:30px; padding:0px; background:none; border:0px; text-align:right;}
 
 
-.topScroll{background:#FFF; width:100%; margin-top:10px; padding:5px 0; position:relative;}
+.topScroll{background:#FFF; width:100%; padding:5px 0; position:relative;}
 .topScroll ul{display:flex; align-items:center; margin:0px; padding:0px;}
 .topScroll li{font-size:15px; color:#81613A; margin:0 15px;}
 .topScroll .rightArrow{position:absolute; top:1px; right:0; background:#FFF; padding:2px;}
@@ -167,6 +176,7 @@ body {
 .subsScribe .subScribeBox{display:inline-flex; justify-content:center; width:700px;}
 .subsScribe .subScribeBox input{border:1px solid #E0E0E0; border-right:0; background:#FFF; height:55px; border-radius:5px 0 0 5px; margin:0px;}
 .subsScribe .subScribeBox .subBtn{white-space:nowrap; color:#FFF; border-radius:0 5px 5px 0; padding:0 20px; margin:0px; background:transparent linear-gradient(105deg, #F2B600 0%, #81613A 100%) 0% 0% no-repeat padding-box;}
+
 
 
 
@@ -3466,7 +3476,7 @@ a .clear-button {
   padding: 0 20px 20px;
 }
 
-.question.active+.answercont {}
+/* .question.active+.answercont {} */
 
 @media screen and (max-width: 790px) {
   .wrapper {
