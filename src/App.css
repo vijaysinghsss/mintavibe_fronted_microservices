@@ -3476,7 +3476,7 @@ a .clear-button {
   padding: 0 20px 20px;
 }
 
-.question.active+.answercont {}
+/* .question.active+.answercont {} */
 
 @media screen and (max-width: 790px) {
   .wrapper {
