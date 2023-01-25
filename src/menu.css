@@ -62,11 +62,12 @@ header {
 
 .hedIcons{display:flex; align-items:center; margin:0px; padding:0px;}
 .hedIcons a{display:block;}
+.hedIcons li{margin:0 5px;}
 .hedIcons li img{width:38px; height:38px; object-fit:cover; border-radius:100%;}
 .hedIcons .customLink .dropdown-menu img{width:auto; height:auto; border-radius:inherit;}
 .hedIcons .customLink .dropdown-menu a{display:flex;}
 .hedIcons .customLink .user-icon-box{margin-right:10px;}
-.lightTheme .hedIcons .customLink .filterNone{filter:invert(1) hue-rotate(180deg);}
+/* .lightTheme .hedIcons .customLink .filterNone{filter:invert(1) hue-rotate(180deg);} */
 
 
 
@@ -175,8 +176,9 @@ input.search-input-nav {
   z-index: 999;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px;
   opacity: 1;
-  background: 0% 0% no-repeat padding-box padding-box rgb(255, 255, 255);
-  filter: invert(1) hue-rotate(180deg);
+  /* background: 0% 0% no-repeat padding-box padding-box rgb(255, 255, 255); */
+  background: transparent linear-gradient(87deg, #81613A 0%, #F2B600 100%) 0% 0% no-repeat padding-box;
+  /* filter: invert(1) hue-rotate(180deg); */
 }
 
 #dropdown ul {
