@@ -33,6 +33,7 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import SubscriptionPopup from "./components/PopUp/SubscriptionPopup";
 import "./App.css";
 import "./darkTheme.css"
+import AkPage from "./pages/AkPage";
 const socket = io.connect(process.env.REACT_APP_BACKENDURL);
 
 function App() {
@@ -162,6 +163,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          {/* <Route index element={<AkPage />} /> */}
           <Route path="/about" element={<AboutUs />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/faq" element={<Faq />} />
