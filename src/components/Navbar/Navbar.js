@@ -120,17 +120,13 @@ function Navbar() {
 
   return (
     <div>
-      <div className="navbar navbar-default w-100 pb-0">
+      <div className="navbar-default w-100">
         {showPopup && <OpenModal />}
         <div className="container relative">
           <div className="row align-items-center">
             <div className="col-lg-3">
-              <NavLink index to="/" className="">
-                <img
-                  className="img-fluid"
-                  src="/images/Crosstown beta Logo-1.svg"
-                  alt=""
-                />
+              <NavLink index to="/" className="topLogo">
+              <img className="img-fluid" src="../images/logo.png" alt="" />
               </NavLink>
             </div>
             <div className="col-lg-9">
@@ -162,7 +158,12 @@ function Navbar() {
                         >
                           Blog
                         </NavDropdown.Item>
-                        <NavDropdown.Item
+                        
+                        <NavDropdown.Item href="#">Discord</NavDropdown.Item>
+                        <NavDropdown.Item href="#">Contact Us</NavDropdown.Item>
+
+
+                        {/* <NavDropdown.Item
                           onClick={(e) => {
                             e.preventDefault();
                             navigate(`/about`);
@@ -170,7 +171,8 @@ function Navbar() {
                           href="/about"
                         >
                           About Us
-                        </NavDropdown.Item>
+                        </NavDropdown.Item> 
+                        
                         <NavDropdown.Item
                           onClick={(e) => {
                             e.preventDefault();
@@ -179,7 +181,7 @@ function Navbar() {
                           href="/faq"
                         >
                           FAQ
-                        </NavDropdown.Item>
+                        </NavDropdown.Item> 
 
                         <NavDropdown.Item
                           onClick={(e) => {
@@ -189,7 +191,7 @@ function Navbar() {
                           href="/terms-service"
                         >
                           Terms of Service
-                        </NavDropdown.Item>
+                        </NavDropdown.Item> */}
                       </NavDropdown>
                     </li>
                     {/* <li>

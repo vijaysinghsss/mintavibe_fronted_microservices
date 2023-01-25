@@ -15,6 +15,7 @@ import { Modal } from "react-bootstrap";
 import CreatePopUp from "../components/CreateScreen/CreatePopUp";
 import Wallet from "../components/Navbar/Wallet";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import Subscribe from "./Subscribe";
 
 const Home = () => {
   const {
@@ -62,7 +63,7 @@ const Home = () => {
     }
     setShowCreatePopup(true);
   };
-  console.log(Category, "Category");
+ 
   return (
     <>
       {showPopup && <OpenModal />}
@@ -72,9 +73,9 @@ const Home = () => {
       </section>
 
       <section className="nftSection">
-        <div class="container">
-          <div class="row justify-content-between">
-            <div class="col-lg-3 col-md-4">
+        <div className="container">
+          <div className="row justify-content-between">
+            <div className="col-lg-3 col-md-4">
               <h3>
                 Exclusive Celebrity's <br className="d-none d-lg-block" />
                 NFTs
@@ -85,7 +86,7 @@ const Home = () => {
               </p>
             </div>
 
-            <div class="col-lg-3 col-md-4">
+            <div className="col-lg-3 col-md-4">
               <h3>
                 Own a moment in your <br className="d-none d-lg-block" />
                 favourite celebrities
@@ -96,7 +97,7 @@ const Home = () => {
               </p>
             </div>
 
-            <div class="col-lg-3 col-md-4">
+            <div className="col-lg-3 col-md-4">
               <h3>
                 Chance to <br className="d-none d-lg-block" />
                 meet
@@ -110,61 +111,40 @@ const Home = () => {
         </div>
       </section>
 
-      <section class="celebrityNFT">
+      <section className="celebrityNFT">
         <div className="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="exclCelebrity">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="exclCelebrity">
                 <h2>Exclusive Celebrity's NFTs</h2>
                 <h3>Limited Edition. Unlimited potential</h3>
               </div>
             </div>
           </div>
 
-          <div class="row mt-4">
-            <div class="col-md-12">
-              <div class="flex-container">
+          <div className="row mt-4">
+            <div className="col-md-12">
+              <div className="flex-container">
                 {Category?.length > 0 &&
                   Category?.map((ele) => (
-                    <div class="tabsection active button1" key={ele._id}>
+                    <div className="tabsection active button1" key={ele._id}>
                       <img src="../images/moviesLogo.png" alt="" />
-                      <span class="right">{ele.Categoryname}</span>
+                      <span className="right">{ele.Categoryname}</span>
                     </div>
-                  ))}
-
-                {/* <div class="tabsection active button1">
-                      <img src="../images/moviesLogo.png" alt="" />
-                      <span class="right">Movies</span>
-                    </div>
-                    <div class="tabsection button2">
-                        <img src="../images/musicIcon.png" alt="" />
-                        <span class="right">Music</span>
-                    </div>
-                    <div class="tabsection button3">
-                      <img src="../images/sportsLogo.png" alt="" />
-                      <span class="right">Sports</span>
-                    </div>
-                    <div class="tabsection button4">
-                      <img src="../images/influencerLogo.png" alt="" />
-                      <span class="right">Influncer</span>
-                    </div>
-                    <div class="tabsection button5">
-                      <img src="../images/labelsLogo.png" alt="" />
-                      <span class="right">Fashion</span>
-                    </div>*/}
+                  ))}               
               </div>
             </div>
           </div>
 
-          <div class="row justify-content-center mt-5">
-            <div class="col-md-10">
-              <div class="celebrityDtl">
-                <div class="row align-items-center">
-                  <div class="col-md-5">
-                    <img src="../images/bollywood-p0.png" class="img-fluid" />
+          <div className="row justify-content-center mt-5">
+            <div className="col-md-10">
+              <div className="celebrityDtl">
+                <div className="row align-items-center">
+                  <div className="col-md-5">
+                    <img src="../images/bollywood-p0.png" className="img-fluid" />
                   </div>
-                  <div class="col-md-7">
-                    <div class="figCaption">
+                  <div className="col-md-7">
+                    <div className="figCaption">
                       <h3>Mr. Kher in his</h3>
                       <h3>Be Brave like Bittu Collection</h3>
                       <p>
@@ -172,7 +152,7 @@ const Home = () => {
                         Chance to intract directly and be truely a part of his
                         world.
                       </p>
-                      <div class="knowMore">
+                      <div className="knowMore">
                         <a href="#">Know More</a>
                         <img src="../images/sigNature.png" />
                       </div>
@@ -420,98 +400,9 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="subsScribe">
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-12">
-              <h3>Stay Informed</h3>
-              <p>Receive Mintavibe news and updates directly to your inbox.</p>
-              <div className="subScribeBox">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Write your email ID here."
-                />
-                <button className="btn subBtn">Subscribe Now!</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <Subscribe/>
 
-      <section className="hero-section d-none">
-        <Container>
-          <Row>
-            <Col md={7}>
-              <h1>
-                We’re on a mission to make <br className="br" /> NFTs accessible
-                to ALL.
-              </h1>
-              <p style={{ marginTop: "-9px" }}>
-                Join us as we discover and celebrate NFTs of all styles, <br />
-                from all kinds, to all people.
-                <br className="br" />
-                <p
-                  className="banner-bold-text"
-                  style={{
-                    marginTop: "26px",
-                    color: "#fff",
-                    fontWeight: "bolder",
-                  }}
-                >
-                  <b>
-                    {" "}
-                    <Link to={"/nftforall"}>#NFTforALL </Link>{" "}
-                  </b>
-                </p>
-              </p>
-              <div className="btn-hero-b">
-                <a href="!#" onClick={handleShowCreatePopup}>
-                  Create
-                </a>
-              </div>
-              <div className="btn-hero-w">
-                <Link to="/nftlist">Collect</Link>
-              </div>
-            </Col>
-            <Col md={5}>
-              <SliderParent
-                className={`bannrer-sider`}
-                dots={true}
-                infinite={true}
-                speed={100}
-                autoplay={true}
-                arrows={false}
-                slidesToShow={1}
-                slidesToScroll={1}
-                dotsClass="slick-dots li button:before"
-                sliderbannerClass="container"
-                bannerClass="row"
-                headingClass="col-md-7"
-                rowClass="col-md-5"
-                headerClass="search"
-                profile-walletClass="col-auto"
-                slickClass="slick-slider"
-                arrowClass=".slick-prev:before"
-                heartClass="fa, .fas"
-                searchClass="search-section.input-group"
-              >
-                {HomeSlider.map(({ image, text, id }, index) => (
-                  <div key={index} onClick={() => setText(id)}>
-                    <a href={`#${id}`}>
-                      <img
-                        src={image ? image : "/images/Art1.jpg"}
-                        alt="crosstower"
-                      />
-                      <h2>{text}</h2>
-                    </a>
-                  </div>
-                ))}
-              </SliderParent>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+      
 
       <section className="d-none">
         <SliderSection
