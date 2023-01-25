@@ -162,8 +162,8 @@ function App() {
       <ToastContainer position="top-right" />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          {/* <Route index element={<AkPage />} /> */}
+          {/* <Route index element={<Home />} /> */}
+          <Route index element={<AkPage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/faq" element={<Faq />} />
