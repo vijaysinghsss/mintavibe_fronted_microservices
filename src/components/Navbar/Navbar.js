@@ -133,7 +133,11 @@ function Navbar() {
               <div className="row align-items-center">
                 <div className="col-md-7">
                   <ul className="nav navbar-nav justify-content-end d-flex flex-row">
-                    {/* <li><a href="!#" onClick={handleShowCreatePopup}>Create</a></li> */}
+                    {/* <li>
+                      <a href="!#" onClick={handleShowCreatePopup}>
+                        Create
+                      </a>
+                    </li> */}
                     <li>
                       <NavLink to="/nftlist">Collect</NavLink>
                     </li>

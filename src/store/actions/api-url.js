@@ -45,7 +45,8 @@ const apiURl = {
   filterData: "/allNftList",
   artist: "/artist",
   userprofilefilter: "/userprofilefilter",
-  activity: "/activity"
+  activity: "/activity",
+  subscribe:"/subscribe"
 
 };
 
