@@ -6,12 +6,14 @@ on:
   pull_request:
     branches: [ main ]
 
+    
 jobs:
+ 
   build:
     runs-on: ubuntu-latest
 
     steps:
-     - name: SSH build test
+     - name: SSH Build Test
        uses: appleboy/ssh-action@master
        with:
           host: ${{ secrets.HOST }}
@@ -20,28 +22,6 @@ jobs:
           port:  ${{ secrets.PORT }}
           script: |
                cd /home/ubuntu/Mintavibe-Frontend-build-test
-               git pull origin main
-               npm install
-               npm run build
-
-        env: 
-          CI: true   
-
-
-  depoly:
-    needs: [build]
-    runs-on: ubuntu-latest
-
-    steps:
-     - name: SSH deploy
-       uses: appleboy/ssh-action@master
-       with:
-          host: ${{ secrets.HOST }}
-          username:  ${{ secrets.USER }}
-          key:  ${{ secrets.KEY }}
-          port:  ${{ secrets.PORT }}
-          script: |
-               cd /var/www/html/Mintavibe-Frontend
                git pull origin main
                npm install
                npm run build
