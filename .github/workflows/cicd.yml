@@ -9,7 +9,7 @@ on:
     
 jobs:
  
-  depoly:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
