@@ -244,7 +244,7 @@ function Navbar() {
                                           ? process.env.REACT_APP_BACKENDURL +
                                             "/" +
                                             image
-                                          : "/images/user-icon.svg"
+                                          : "/images/user-icon.png"
                                       }
                                       alt=""
                                       title={address}
@@ -288,7 +288,7 @@ function Navbar() {
                                 </NavDropdown>
                               </li>
                             }
-                            <li>
+                            {/* <li>
                               <Link onClick={handleShow}>
                                 <img src="/images/nav-wallet.svg" alt="" />
                               </Link>
@@ -309,7 +309,7 @@ function Navbar() {
                             </li>
                             <li>
                               <img src="/images/notice-icon.svg" alt="" />
-                            </li>
+                            </li> */}
                           </>
                         )}
                       </ul>
