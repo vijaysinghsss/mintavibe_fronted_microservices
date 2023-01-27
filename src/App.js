@@ -42,7 +42,6 @@ function App() {
   const { loginUserData = null } = useSelector((state) => state.authUser);
   const { SubscriptionUser } = useSelector((state) => state);
 
-  // const { _id = null } = useSelector((state) => state.User.data);
   const { Theme } = useSelector((state) => state);
   const [isMounted, setIsMounted] = useState(false);
   const dispatch = useDispatch();
