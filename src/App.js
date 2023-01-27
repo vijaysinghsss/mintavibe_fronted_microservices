@@ -36,6 +36,7 @@ import "./darkTheme.css"
 import AkPage from "./pages/AkPage";
 const socket = io.connect(process.env.REACT_APP_BACKENDURL);
 
+
 function App() {
   const { address, provider, activeProvider } = useWeb3();
   const { loginUserData = null } = useSelector((state) => state.authUser);
