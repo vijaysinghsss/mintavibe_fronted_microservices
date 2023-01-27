@@ -76,7 +76,6 @@ function Subscribe() {
                   onChange={handleChange}
                   onBlur={handleValidate}
                 />
-
                 <button className="btn subBtn" onClick={handleSubscribe}>
                   Subscribe Now!
                 </button>
