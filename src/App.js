@@ -150,14 +150,14 @@ function App() {
  
   return (
     <BrowserRouter>
-      {isMounted &&
+      {/* {isMounted &&
         !Object.values(loginUserData).length &&
         !Object.values(SubscriptionUser?.data).length && (
           <SubscriptionPopup
             isMounted={isMounted}
             setIsMounted={setIsMounted}
           />
-        )}
+        )} */}
       <LoaderComponent />
       <ToastContainer position="top-right" />
       <Routes>
