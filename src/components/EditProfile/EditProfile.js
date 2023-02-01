@@ -348,7 +348,7 @@ function EditProfile() {
                 }
               />
               <label htmlFor="Listings">Listings</label>
-              <input
+              {/* <input
                 type="radio"
                 name="profile"
                 id="Created"
@@ -358,7 +358,7 @@ function EditProfile() {
                   setFilter({ ...filter, profile: e.target.value })
                 }
               />
-              <label htmlFor="Created">Created</label>
+              <label htmlFor="Created">Created</label> */}
               <input
                 type="radio"
                 name="profile"
@@ -392,8 +392,8 @@ function EditProfile() {
                 }
               />
               <label htmlFor="Favorites">Favorites</label>
-              <input type="radio" name="profile" id="Import NFTs" />
-              <label htmlFor="Import NFTs">Import NFTs</label>
+              {/* <input type="radio" name="profile" id="Import NFTs" />
+              <label htmlFor="Import NFTs">Import NFTs</label> */}
               <input
                 type="radio"
                 name="profile"

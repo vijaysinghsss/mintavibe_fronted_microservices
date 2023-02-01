@@ -51,7 +51,7 @@ const Home = () => {
       handleShowLogin();
       return;
     }
-    console.log(type, address, e);
+   
     if (type === "XUMM") {
       navigate(`/create/One`);
       return;
