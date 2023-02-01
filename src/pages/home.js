@@ -140,10 +140,9 @@ const Home = () => {
             <div className="col-md-10">
               <div className="celebrityDtl">
                 <div className="row align-items-center">
+                  
                   <div className="col-md-5">
-                    <img src="../images/bollywood-p0.png" className="img-fluid" />
-                  </div>
-                  <div className="col-md-7">
+                    <figure><img src="../images/bollywood-p0.png" className="img-fluid" /></figure>
                     <div className="figCaption">
                       <h3>Mr. Kher in his</h3>
                       <h3>Be Brave like Bittu Collection</h3>
@@ -152,12 +151,30 @@ const Home = () => {
                         Chance to intract directly and be truely a part of his
                         world.
                       </p>
-                      <div className="knowMore">
+                      {/* <div className="knowMore">
                         <a href="#">Know More</a>
                         <img src="../images/sigNature.png" />
-                      </div>
+                      </div> */}
                     </div>
                   </div>
+
+                  <div className="col-md-5">
+                    <figure><img src="../images/bollywood-p0.png" className="img-fluid" /></figure>
+                    <div className="figCaption">
+                      <h3>Mr. Kher in his</h3>
+                      <h3>Be Brave like Bittu Collection</h3>
+                      <p>
+                        Insight into his world, his projects, side initiatives.
+                        Chance to intract directly and be truely a part of his
+                        world.
+                      </p>
+                      {/* <div className="knowMore">
+                        <a href="#">Know More</a>
+                        <img src="../images/sigNature.png" />
+                      </div> */}
+                    </div>
+                  </div>
+                  
                 </div>
               </div>
             </div>

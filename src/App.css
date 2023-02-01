@@ -130,8 +130,9 @@ body {
 .flex-container > .tabsection:nth-child(1):before{display:none;}
 
 .celebrityDtl{color:#FFF;}
-.celebrityDtl h3{font-size:22px; font-weight:500;}
-.celebrityDtl p{font-size:18px; margin-top:20px;}
+.celebrityDtl .figCaption{text-align:center; margin-top:30px;}
+.celebrityDtl h3{font-size:20px; font-weight:500;}
+.celebrityDtl p{font-size:17px;}
 .celebrityDtl .knowMore{display:flex; justify-content:space-between; align-items:center; margin-top:50px;}
 .celebrityDtl .knowMore a{text-decoration:underline; font-size:20px; font-weight:500;}
 
