@@ -18,7 +18,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 
 
 
-function AkPage() {
+function Celebrity() {
 
 
 const { CuratedNft, TrendingNft, bipoc, femalecreator, lgbtq } = useSelector(
@@ -502,22 +502,8 @@ const handleShowCreatePopup = (e) => {
           </div>
         </div>
       </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
   )
 }
 
-export default AkPage
+export default Celebrity

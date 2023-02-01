@@ -51,7 +51,7 @@ const Home = () => {
       handleShowLogin();
       return;
     }
-   
+
     if (type === "XUMM") {
       navigate(`/create/One`);
       return;
@@ -63,7 +63,7 @@ const Home = () => {
     }
     setShowCreatePopup(true);
   };
- 
+
   return (
     <>
       {showPopup && <OpenModal />}
@@ -131,7 +131,7 @@ const Home = () => {
                       <img src="../images/moviesLogo.png" alt="" />
                       <span className="right">{ele.Categoryname}</span>
                     </div>
-                  ))}               
+                  ))}
               </div>
             </div>
           </div>
@@ -140,9 +140,14 @@ const Home = () => {
             <div className="col-md-10">
               <div className="celebrityDtl">
                 <div className="row align-items-center">
-                  <div className="col-md-5">
-                    <img src="../images/bollywood-p0.png" className="img-fluid" />
-                  </div>
+                  <Link to={"/celebrity"}>
+                    <div className="col-md-5">
+                      <img
+                        src="../images/bollywood-p0.png"
+                        className="img-fluid"
+                      />
+                    </div>
+                  </Link>
                   <div className="col-md-7">
                     <div className="figCaption">
                       <h3>Mr. Kher in his</h3>
@@ -400,9 +405,7 @@ const Home = () => {
         </div>
       </section>
 
-    <Subscribe/>
-
-      
+      <Subscribe />
 
       <section className="d-none">
         <SliderSection
