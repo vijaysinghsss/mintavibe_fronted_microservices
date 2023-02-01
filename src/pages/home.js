@@ -69,6 +69,11 @@ const Home = () => {
       {showPopup && <OpenModal />}
 
       <section className="videoBox">
+
+{/* <video width="100%" height="600" controls>
+  <source src="MV-Homepage.m4v" type="video/mp4" />
+</video> */}
+
         <img className="img-fluid" src="../images/video-23.jpg" />
       </section>
 
@@ -127,7 +132,7 @@ const Home = () => {
               <div className="flex-container">
                 {Category?.length > 0 &&
                   Category?.map((ele) => (
-                    <div className="tabsection active button1" key={ele._id}>
+                    <div className="tabsection button1" key={ele._id}>
                       <img src="../images/moviesLogo.png" alt="" />
                       <span className="right">{ele.Categoryname}</span>
                     </div>
@@ -139,30 +144,57 @@ const Home = () => {
           <div className="row justify-content-center mt-5">
             <div className="col-md-10">
               <div className="celebrityDtl">
-                <div className="row align-items-center">
-                  <Link to={"/celebrity"}>
+                <div className="row align-items-center justify-content-around">
                     <div className="col-md-5">
-                      <img
-                        src="../images/bollywood-p0.png"
-                        className="img-fluid"
-                      />
-                    </div>
-                  </Link>
-                  <div className="col-md-7">
-                    <div className="figCaption">
-                      <h3>Mr. Kher in his</h3>
-                      <h3>Be Brave like Bittu Collection</h3>
-                      <p>
-                        Insight into his world, his projects, side initiatives.
-                        Chance to intract directly and be truely a part of his
-                        world.
-                      </p>
-                      <div className="knowMore">
-                        <a href="#">Know More</a>
-                        <img src="../images/sigNature.png" />
+                      <div className="countDown">
+                        <ul>
+                          <li>12<p>Days</p></li>
+                          <li>02<p>HRS</p></li>
+                          <li>29<p>Min</p></li>
+                          <li>24<p>Sec</p></li>
+                        </ul>
+                      </div>
+                      <figure>
+                        <Link to={"/celebrity"}>
+                          <img src="../images/anupam-kher-nft.png" className="img-fluid" />
+                        </Link>
+                      </figure>
+                      <div className="figCaption">
+                        <h3>Mr. Kher in his</h3>
+                        <h3>Be Brave like Bittu Collection</h3>
+                        <p>
+                          Insight into his world, his projects, side initiatives.
+                          Chance to intract directly and be truely a part of his
+                          world.
+                        </p>
+                        {/* <div className="knowMore">
+                          <a href="#">Know More</a>
+                          <img src="../images/sigNature.png" />
+                        </div> */}
                       </div>
                     </div>
-                  </div>
+
+                    <div className="col-md-5">
+                      <div className="countDown">
+                        <ul>
+                          <li>12<p>Days</p></li>
+                          <li>02<p>HRS</p></li>
+                          <li>29<p>Min</p></li>
+                          <li>24<p>Sec</p></li>
+                        </ul>
+                      </div>
+                      <figure>
+                        <Link to={"/celebrity"}>
+                          <img src="../images/arjun-ram-pal-nft.png" className="img-fluid" />
+                        </Link>
+                      </figure>
+                      <div className="figCaption">
+                        <h3>Mr. Rampal</h3>
+                        <h3>Stay Fit with Arjun Rampal</h3>
+                        <p>Insight into his world, his projects, side initiatives. Chance to interact directly and be truly a part of his world.</p>
+                      </div>
+                    </div>
+                  
                 </div>
               </div>
             </div>
@@ -232,7 +264,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="upcomingCelebrity">
+      {/* <section className="upcomingCelebrity">
         <div className="container">
           <div className="countDown">
             <ul>
@@ -358,7 +390,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="createYourWalet">
         <div className="container">
