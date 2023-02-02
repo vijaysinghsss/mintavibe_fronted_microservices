@@ -143,7 +143,7 @@ body {
 .celebrityDtl p{font-size:16px; margin:0px;}
 .celebrityDtl figure{margin:0; padding:0 25px;}
 .celebrityDtl .knowMore{display:flex; justify-content:space-between; align-items:center; margin-top:50px;}
-.celebrityDtl .knowMore a{text-decoration:underline; font-size:20px; font-weight:500; outline:0px;}
+.celebrityDtl .knowMore a{text-decoration:underline; font-size:20px; font-weight:500;}
 
 
 .celebrityPost{background:#FFF; padding:50px 0 30px;}
@@ -2046,6 +2046,7 @@ a .tab-button {
 a {
   text-decoration: none;
   color: inherit;
+  outline:none;
 }
 
 .grey-bg ul {
@@ -2254,7 +2255,8 @@ a {
 
 .profile-button {
   /* background: #000000 0% 0% no-repeat padding-box; */
-  background: transparent linear-gradient(69deg, #81613A 0%, #F2B600 100%) 0% 0% no-repeat padding-box;
+  /* background: transparent linear-gradient(69deg, #81613A 0%, #F2B600 100%) 0% 0% no-repeat padding-box; */
+  background: transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;
   border: 0px;
   float: right;
   border-radius: 10px;
@@ -5259,8 +5261,8 @@ input[type="number"]::-webkit-outer-spin-button {
   font-weight: 500;
   transition: ease 0.2s;
   border-radius: 10px;
-  border: 1px solid #98999D;
-  color: #707070;
+  border: 1px solid #7F35E6;
+  color: #7F35E6;
 }
 
 .tabs-ver .tab {
@@ -5278,9 +5280,10 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .tabs-ver input[type="radio"]:checked+label {
   /* background: #000; */
-  background: transparent linear-gradient(72deg, #81613A 0%, #F2B600 100%) 0% 0% no-repeat padding-box;
+  /* background: transparent linear-gradient(72deg, #81613A 0%, #F2B600 100%) 0% 0% no-repeat padding-box; */
+  background: transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;
   color:#FFF;
-  border-color: #F2B600;
+  border-color: #7F35E6;
 }
 
 .tabs-ver input[type="radio"]:checked+label+.tab {
