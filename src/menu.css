@@ -149,7 +149,12 @@ input.search-input-nav {
   font-family: "Poppins", sans-serif !important;
   color: #FFF;
   font-weight:500;
+  outline:0px;
 }
+
+.navbar-nav .customLink .dropdown-menu a{color:#000;}
+.navbar-nav .show > .nav-link,
+.customLink .nav-link:hover{color:#FFF;}
 
 /* user menu settings */
 #dropdown {
@@ -262,7 +267,7 @@ input.search-input-nav {
   opacity: 1;
 }
 
-.customLink .dropdown-menu .user-notice-box + .user-notice-box{border-top: 1px solid #e2e2e2;}
+.customLink .dropdown-menu .user-notice-box + .user-notice-box{border-top: 1px solid #000;}
 .customLink .dropdown-menu .user-notice-box.active,
 .customLink .dropdown-menu .user-notice-box:active{background:#e6e9ec; color: #000;}
 

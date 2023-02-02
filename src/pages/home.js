@@ -70,7 +70,7 @@ const Home = () => {
 
       <section className="videoBox">
 
-<video width="100%" height="500">
+<video controls autoPlay>
   <source src="../images/MV-Homepage.mp4" type="video/mp4" />
   <source src="../images/MV-Homepage.ogg" type="video/ogg" />
 </video> 
