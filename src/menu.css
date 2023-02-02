@@ -67,6 +67,8 @@ header {
 .hedIcons .customLink .dropdown-menu img{width:auto; height:auto; border-radius:inherit;}
 .hedIcons .customLink .dropdown-menu a{display:flex;}
 .hedIcons .customLink .user-icon-box{margin-right:10px;}
+.hedIcons .loginBtn{border-radius:30px; width:100px; text-align:center; font-weight:600; color:#5A2AE0; font-size:18px;}
+
 /* .lightTheme .hedIcons .customLink .filterNone{filter:invert(1) hue-rotate(180deg);} */
 
 
