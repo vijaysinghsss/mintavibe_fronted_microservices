@@ -70,11 +70,12 @@ const Home = () => {
 
       <section className="videoBox">
 
-{/* <video width="100%" height="600" controls>
-  <source src="MV-Homepage.m4v" type="video/mp4" />
-</video> */}
+<video width="100%" height="500">
+  <source src="../images/MV-Homepage.mp4" type="video/mp4" />
+  <source src="../images/MV-Homepage.ogg" type="video/ogg" />
+</video> 
 
-        <img className="img-fluid" src="../images/video-23.jpg" />
+        {/* <img className="img-fluid" src="../images/video-23.jpg" /> */}
       </section>
 
       <section className="nftSection">
