@@ -107,7 +107,10 @@ body {
 .topScroll .rightArrow{position:absolute; top:0; right:0; background:#FFF; padding:0 2px; color:#5A2AE0; font-size:20px;}
 
 
-.videoBox img{width:100%; height:700px; object-fit:cover;}
+/* .videoBox img{width:100%; height:700px; object-fit:cover;} */
+
+.videoBox{background:#02031b;}
+.videoBox video{width:100%; height:700px;}
 
 
 .nftSection{color:#FFF; padding:20px 0; background:url(../public/images/videoBottom.png) no-repeat center 100%; background-size: cover;}
@@ -140,7 +143,7 @@ body {
 .celebrityDtl p{font-size:16px; margin:0px;}
 .celebrityDtl figure{margin:0; padding:0 25px;}
 .celebrityDtl .knowMore{display:flex; justify-content:space-between; align-items:center; margin-top:50px;}
-.celebrityDtl .knowMore a{text-decoration:underline; font-size:20px; font-weight:500;}
+.celebrityDtl .knowMore a{text-decoration:underline; font-size:20px; font-weight:500; outline:0px;}
 
 
 .celebrityPost{background:#FFF; padding:50px 0 30px;}
