@@ -24,7 +24,7 @@ const Home = () => {
     bipoc,
     femalecreator,
     lgbtq,
-    Category = [],
+    CreatorCategory = [],
   } = useSelector((state) => state.Slider);
   const [text, setText] = useState("");
   const dispatch = useDispatch();
@@ -38,7 +38,6 @@ const Home = () => {
   const { image = null, _id = false, type = false } = User?.data;
   const [showCreatePopup, setShowCreatePopup] = useState(false);
   const handleCloseCreatePopup = () => setShowCreatePopup(false);
-
   const handleShow = () => setShow(!show);
   const handleShowLogin = () => {
     dispatch(SetpopupReducerData({ modalType: "LOGIN", showModal: true }));
@@ -130,11 +129,11 @@ const Home = () => {
           <div className="row mt-4">
             <div className="col-md-12">
               <div className="flex-container">
-                {Category?.length > 0 &&
-                  Category?.map((ele) => (
+                {CreatorCategory?.length > 0 &&
+                  CreatorCategory?.map((ele) => (
                     <div className="tabsection button1" key={ele._id}>
                       <img src="../images/moviesLogo.png" alt="" />
-                      <span className="right">{ele.Categoryname}</span>
+                      <span className="right">{ele.Creatorname}</span>
                     </div>
                   ))}
               </div>
