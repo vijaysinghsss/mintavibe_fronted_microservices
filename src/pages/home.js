@@ -69,7 +69,7 @@ const Home = () => {
 
       <section className="videoBox">
 
-<video controls autoPlay>
+<video autoPlay controls controlsList="nodownload">
   <source src="../images/MV-Homepage.mp4" type="video/mp4" />
   <source src="../images/MV-Homepage.ogg" type="video/ogg" />
 </video> 
@@ -118,8 +118,8 @@ const Home = () => {
 
       <section className="celebrityNFT">
         <div className="container">
-          <div className="row">
-            <div className="col-md-12">
+          <div className="row justify-content-center">
+            <div className="col-md-11">
               <div className="exclCelebrity">
                 <h2>Exclusive Celebrity's NFTs</h2>
                 <h3>Limited Edition. Unlimited potential</h3>
@@ -206,7 +206,7 @@ const Home = () => {
         <div className="container">
           <div className="row">
             <div className="col-xl-12">
-              <h3>Celebrity NFTs</h3>
+              <h3>Celebrities NFTs</h3>
               <SliderParent
                 className={`top`}
                 autoplay={true}

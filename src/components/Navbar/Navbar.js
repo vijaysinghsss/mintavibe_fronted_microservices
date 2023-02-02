@@ -221,7 +221,7 @@ function Navbar() {
                         {!loginUserData?.token && (
                           <li>
                             <button
-                              className="btn btn-light"
+                              className="btn btn-light loginBtn"
                               onClick={handleShowLogin}
                               style={{ border: "none" }}
                             >
