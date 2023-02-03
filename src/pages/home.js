@@ -148,8 +148,7 @@ const Home = () => {
                 <div className="row align-items-center justify-content-around">
                     <div className="col-md-5">
                       <div className="countDown">
-                        <CountdownTimerHome targetDate={new Date("04/03/2023")}  />
-                       
+                        <CountdownTimerHome targetDate={new Date("04/03/2023")}  />                       
                       </div>
                       <figure>
                         <Link to={"/celebrity"}>
@@ -174,7 +173,6 @@ const Home = () => {
                     <div className="col-md-5">
                       <div className="countDown">
                       <CountdownTimerHome targetDate={new Date("04/04/2023")}  />
-
                       </div>
                       <figure>
                         <Link to={"/celebrity"}>
