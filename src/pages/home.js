@@ -16,6 +16,7 @@ import CreatePopUp from "../components/CreateScreen/CreatePopUp";
 import Wallet from "../components/Navbar/Wallet";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Subscribe from "./Subscribe";
+import CountdownTimerHome from "./CountdownTimerHome";
 
 const Home = () => {
   const {
@@ -147,12 +148,7 @@ const Home = () => {
                 <div className="row align-items-center justify-content-around">
                     <div className="col-md-5">
                       <div className="countDown">
-                        <ul>
-                          <li>12<p>Days</p></li>
-                          <li>02<p>HRS</p></li>
-                          <li>29<p>Min</p></li>
-                          <li>24<p>Sec</p></li>
-                        </ul>
+                        <CountdownTimerHome targetDate={new Date("04/03/2023")}  />                       
                       </div>
                       <figure>
                         <Link to={"/celebrity"}>
@@ -176,12 +172,7 @@ const Home = () => {
 
                     <div className="col-md-5">
                       <div className="countDown">
-                        <ul>
-                          <li>12<p>Days</p></li>
-                          <li>02<p>HRS</p></li>
-                          <li>29<p>Min</p></li>
-                          <li>24<p>Sec</p></li>
-                        </ul>
+                      <CountdownTimerHome targetDate={new Date("04/04/2023")}  />
                       </div>
                       <figure>
                         <Link to={"/celebrity"}>
