@@ -124,13 +124,15 @@ body {
 }
 
 .exclCelebrity{text-align:center; color:#FFF;}
-.exclCelebrity h2{font-size:30px; position: relative; margin-bottom:15px;}
-.exclCelebrity h2:after{content: ""; position:absolute; top:20px; right:0px; height:3px; width:350px; background: linear-gradient(90deg, rgba(67,67,67,1) 0%, rgba(255,255,255,1) 40%, rgba(75,75,75,0.4) 100%);}
-.exclCelebrity h2:before{content: ""; position:absolute; top:20px; left:0px; height:3px; width:350px; background: linear-gradient(90deg, rgba(67,67,67,1) 0%, rgba(255,255,255,1) 40%, rgba(75,75,75,0.4) 100%);}
+.exclCelebrity h2{font-size:30px; position: relative; margin-bottom:15px; font-weight:400;}
+.exclCelebrity h2:after{content: ""; position:absolute; top:20px; right:0px; height:3px; width:300px; background: linear-gradient(90deg, rgba(67,67,67,1) 0%, rgba(255,255,255,1) 40%, rgba(75,75,75,0.4) 100%);}
+.exclCelebrity h2:before{content: ""; position:absolute; top:20px; left:0px; height:3px; width:300px; background: linear-gradient(90deg, rgba(67,67,67,1) 0%, rgba(255,255,255,1) 40%, rgba(75,75,75,0.4) 100%);}
 .exclCelebrity h3{color:#FFF; font-size:46px; font-weight:600;}
 
 .flex-container{display: flex; flex-direction: row; justify-content: center;}
-.flex-container > .tabsection{background:rgba(255,255,2550,0.1); margin:5px; text-align:center; padding:18px 20px 12px; border-radius:10px; color:#fff; width:100%; max-width:200px; display:flex; align-items:center; font-size:20px; position:relative;}
+.flex-container > .tabsection{background:rgba(255,255,2550,0.1); margin:5px; text-align:center; padding:18px 20px 12px; border-radius:10px; color:#fff; width:100%; max-width:200px; display:flex; align-items:center; font-size:22px; position:relative; font-weight:600;}
+/* .flex-container > .tabsection:first-child{color:#5A2AE0; background:#FFF;} */
+.flex-container > .tabsection:first-child span.right{opacity:1;}
 .flex-container > .tabsection.active{background: transparent linear-gradient(68deg, #81613A 0%, #F2B600 100%) 0% 0% no-repeat padding-box; box-shadow: 0px 3px 6px #00000029; opacity: 1;}
 .flex-container > .tabsection span.right{padding-left: 21px; opacity: .5;}
 .flex-container > .tabsection:before{content:"COMING SOON"; background:#FFF 0% 0% no-repeat padding-box; color:#000; top:0px; position:absolute; padding:3px 5px; border-radius:0px 0px 4px 4px; line-height:9px; font-size:10px; margin-left:38px; font-weight: 600;}
@@ -154,7 +156,7 @@ body {
 .upcomingCelebrity{background:url(../public/images/bgTexture.png) repeat center center #020c24; color:#FFF; padding:50px 0;}
 .upcomingCelebrity h2{font-size:40px; color:#FFF; font-weight:500; text-align:center;}
 .countDown ul{display:flex; justify-content:center; padding:0;}
-.countDown li{margin:0 15px; font-size:25px; text-align:center; line-height:25px;}
+.countDown li{margin:0 15px; font-size:36px; text-align:center; line-height:25px; font-weight:300;}
 .countDown p{margin:0px; font-size:16px; text-transform:uppercase; font-weight:300;}
 
 .abtCelebt h3{font-size:30px; color:#F2B600; font-weight:500; margin:10px 0 15px;}
@@ -173,7 +175,9 @@ body {
 .createYourWalet p{font-size:18px; list-style:18px;}
 
 .walletSteps{font-size:18px; margin-top:5px; padding:0px;}
-.walletSteps li{margin:15px 0; font-size:18px; color:#000; font-weight:600; opacity:0.9;}
+.walletSteps li{margin:15px 0; font-size:18px; color:#000; font-weight:600; opacity:0.9; position:relative;}
+.walletSteps li:after{content:""; position:absolute; height:18px; width:2px; background:#d9d9d9; left:12px; top:29px;}
+.walletSteps li:last-child:after{display:none;}
 .walletSteps li span{border-radius:50%; width:27px; height:27px; padding:5px; color:#fff; text-align:center; font-size:12px; display:inline-block; margin-right:10px; vertical-align:middle;
   box-shadow:0px 2px 4px #0000001F;
   /* background:transparent linear-gradient(129deg, #F2B600 0%, #81613A 100%) 0% 0% no-repeat padding-box; */
@@ -3721,7 +3725,8 @@ a .clear-button {
 
 /* footer */
 footer {
-  background-color: #000;
+  /* background-color: #000; */
+  background: #020C24 0% 0% no-repeat padding-box;
   padding: 40px 15px;
   color: #fff;
   font-size: 16px;

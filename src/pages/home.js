@@ -70,7 +70,7 @@ const Home = () => {
 
       <section className="videoBox">
 
-<video controls autoPlay>
+<video autoPlay controls controlsList="nodownload">
   <source src="../images/MV-Homepage.mp4" type="video/mp4" />
   <source src="../images/MV-Homepage.ogg" type="video/ogg" />
 </video> 
@@ -119,8 +119,8 @@ const Home = () => {
 
       <section className="celebrityNFT">
         <div className="container">
-          <div className="row">
-            <div className="col-md-12">
+          <div className="row justify-content-center">
+            <div className="col-md-11">
               <div className="exclCelebrity">
                 <h2>Exclusive Celebrity's NFTs</h2>
                 <h3>Limited Edition. Unlimited potential</h3>
@@ -197,7 +197,7 @@ const Home = () => {
         <div className="container">
           <div className="row">
             <div className="col-xl-12">
-              <h3>Celebrity NFTs</h3>
+              <h3>Celebrities NFTs</h3>
               <SliderParent
                 className={`top`}
                 autoplay={true}
@@ -389,14 +389,9 @@ const Home = () => {
             <div className="col-md-12">
               <div className="text-center">
                 <h3>How to create your wallet</h3>
-                <p>
-                  A crypto wallet is a device designed to store and transfer
-                  your cryptocurrency through what's called self-custody. That
-                  means instead of going through a third party, like a bank or
-                  financial institution, you're able to store your crypto on the
-                  blockchain and access it using a private key more on that
-                  later.
-                </p>
+                <p>A crypto wallet is a device designed to store and transfer your cryptocurrency through what's called self-custody.
+                  That means instead of going through a third party, like a bank or financial institution,
+                  you're able to store your crypto on the blockchain and access it using a private key (more on that later).</p>
               </div>
             </div>
           </div>
