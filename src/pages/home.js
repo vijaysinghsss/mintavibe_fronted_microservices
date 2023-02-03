@@ -399,14 +399,9 @@ const Home = () => {
             <div className="col-md-12">
               <div className="text-center">
                 <h3>How to create your wallet</h3>
-                <p>
-                  A crypto wallet is a device designed to store and transfer
-                  your cryptocurrency through what's called self-custody. That
-                  means instead of going through a third party, like a bank or
-                  financial institution, you're able to store your crypto on the
-                  blockchain and access it using a private key more on that
-                  later.
-                </p>
+                <p>A crypto wallet is a device designed to store and transfer your cryptocurrency through what's called self-custody.
+                  That means instead of going through a third party, like a bank or financial institution,
+                  you're able to store your crypto on the blockchain and access it using a private key (more on that later).</p>
               </div>
             </div>
           </div>
