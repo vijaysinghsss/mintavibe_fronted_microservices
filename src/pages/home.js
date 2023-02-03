@@ -69,9 +69,9 @@ const Home = () => {
 
       <section className="videoBox">
 
-<video autoPlay controls controlsList="nodownload">
-  <source src="../images/MV-Homepage.mp4" type="video/mp4" />
-  <source src="../images/MV-Homepage.ogg" type="video/ogg" />
+<video autoPlay controls loop controlsList="nodownload">
+  <source src="../images/Mintavibe-Landing-Page.mp4" type="video/mp4" />
+  <source src="../images/Mintavibe-Landing-Page.ogg" type="video/ogg" />
 </video> 
 
         {/* <img className="img-fluid" src="../images/video-23.jpg" /> */}
