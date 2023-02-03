@@ -191,7 +191,7 @@ function Login() {
                 <img src="/images/cross-button.svg" />
               </a>
             </div>
-            <h2>Login</h2>
+            <h2>Log in</h2>
 
             <div className="login-section">
               <form action="" method="post">
@@ -281,11 +281,11 @@ function Login() {
                   type="submit"
                   onClick={handleSubmit}
                 >
-                  Login
+                  Log in
                 </button>
                 <div className="form-div">
                   <p>
-                    Not a member yet?{" "}
+                  Don't have an account?{" "}
                     <Link
                       href="#"
                       style={{ paddingLeft: "22px" }}
