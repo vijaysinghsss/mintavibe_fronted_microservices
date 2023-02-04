@@ -151,7 +151,7 @@ const Home = () => {
                         <CountdownTimerHome targetDate={new Date("04/03/2023")}  />                       
                       </div>
                       <figure>
-                        <Link to={"/celebrity"}>
+                        <Link to={"/celebrity/Anupam_Kher"}>
                           <img src="../images/anupam-kher-nft.png" className="img-fluid" />
                         </Link>
                       </figure>
@@ -175,7 +175,7 @@ const Home = () => {
                       <CountdownTimerHome targetDate={new Date("04/04/2023")}  />
                       </div>
                       <figure>
-                        <Link to={"/celebrity"}>
+                        <Link to={"/celebrity/Arjun_Rampal"}>
                           <img src="../images/arjun-ram-pal-nft.png" className="img-fluid" />
                         </Link>
                       </figure>

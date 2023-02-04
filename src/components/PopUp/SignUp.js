@@ -142,7 +142,7 @@ function SignUp() {
                 <img src="/images/cross-button.svg" />
               </a>
             </div>
-            <h2 className="signup-heading">Sign Up</h2>
+            <h2>Sign Up</h2>
             {/* <p className="sign-up-text">
               <span>Please fill in this form to create an account!</span>
             </p> */}
@@ -397,9 +397,7 @@ function SignUp() {
               <div className="form-div">
                 <p>
                   Are you already a member?
-                  <Link style={{ paddingLeft: "22px" }} onClick={handleLogin}>
-                    Log in
-                  </Link>
+                  <Link style={{ paddingLeft: "22px" }} onClick={handleLogin}>Log in</Link>
                 </p>
               </div>
             </form>

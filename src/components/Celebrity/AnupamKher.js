@@ -3,21 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import SliderParent from "../components/Slider";
-import { HomeSlider } from "../constant/homeSilder";
-import Card from "../components/NftCard/card";
-import SliderSection from "../components/SectionCard/slider-section";
+import SliderParent from "../Slider";
+import { HomeSlider } from "../../constant/homeSilder";
+import Card from "../NftCard/card";
+import SliderSection from "../SectionCard/slider-section";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { SetpopupReducerData } from "../store/reducer";
+import { SetpopupReducerData } from "../../store/reducer";
 import { useWeb3 } from "@3rdweb/hooks";
-import OpenModal from "../components/Navbar/OpenModal";
+import OpenModal from "../Navbar/OpenModal";
 import { Modal } from "react-bootstrap";
-import CreatePopUp from "../components/CreateScreen/CreatePopUp";
-import Wallet from "../components/Navbar/Wallet";
+import CreatePopUp from "../CreateScreen/CreatePopUp";
+import Wallet from "../Navbar/Wallet";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import Subscribe from "./Subscribe";
+import Subscribe from "../../pages/Subscribe";
 
-function Celebrity() {
+function AnupamKher() {
   const { CuratedNft, TrendingNft, bipoc, femalecreator, lgbtq } = useSelector(
     (state) => state.Slider
   );
@@ -500,4 +500,4 @@ function Celebrity() {
   );
 }
 
-export default Celebrity;
+export default AnupamKher;
