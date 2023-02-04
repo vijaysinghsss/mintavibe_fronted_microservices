@@ -33,6 +33,8 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import SubscriptionPopup from "./components/PopUp/SubscriptionPopup";
 import "./App.css";
 import "./darkTheme.css"
+import BlogPage from "./pages/BlogPage";
+import BlogDetails from "./pages/BlogDetails";
 import Celebrity from "./components/Celebrity/Celebrity";
 
 const socket = io.connect(process.env.REACT_APP_BACKENDURL);
@@ -166,7 +168,10 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/celebrity/:celeName"  element={<Celebrity />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/blogs" element={<Blogs />} />
+          {/* <Route path="/blogs" element={<Blogs />} /> */}
+          <Route path="/blogs" element={<BlogPage />} />
+          <Route path="/blog/:id" element={<BlogDetails />} />
+
           <Route path="/faq" element={<Faq />} />
           <Route path="/artist" element={<Artist />} />
           <Route path="/nftlist" element={<Nftlist />} />
