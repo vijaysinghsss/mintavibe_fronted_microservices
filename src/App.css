@@ -74,6 +74,7 @@ body {
 
 .clbrtBanner{padding:100px 0; color:#FFF; background: url(../public/images/rows-red-seats-theater.png) no-repeat center center #000; background-size: cover;}
 .clbrtBanner h1{color:#fff; font-size:38px; font-weight:bold;}
+.clbrtBanner button{color:#FFF; border:0px; border-radius:5px; padding:10px 35px; background: transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;}
 
 .clbrtBanner .slick-dots li button:before{content:""; height:15px; width:15px; background:#000; opacity:0.8;  border:1px solid #FFF; border-radius:100%;}
 .clbrtBanner .slick-dots li.slick-active button:before{background:#FFF;}
@@ -86,7 +87,7 @@ body {
 
 
 .abtEdition{padding:50px; background: transparent linear-gradient(63deg, #D3D3D3 0%, #FFFFFF 100%) 0% 0% no-repeat padding-box;}
-.abtEdition .abtCelebt h3{color:#81613A;}
+.abtEdition .abtCelebt h3{color:#5A2AE0;}
 .abtEdition .abtCelebt h4{font-weight:600;}
 .abtEdition .abtCelebt p{font-weight:400; color:#000; opacity:1;}
 
@@ -195,16 +196,16 @@ body {
 
 
 .comanNftSec{padding:80px 0; background:#FFF;}
-.comanNftSec h2{font-size:24px; font-weight:700; text-align:center; margin-bottom:25px; color:#81613A;}
-.comanNftSec .viewMore{font-size:20px; padding:10px 30px; color:#FFF; display:inline-block; border-radius:8px; box-shadow:0px 2px 4px #0000001F; background:transparent linear-gradient(105deg, #F2B600 0%, #81613A 100%) 0% 0% no-repeat padding-box;}
+.comanNftSec h2{font-size:24px; font-weight:700; text-align:center; margin-bottom:25px; color:#5A2AE0;}
+.comanNftSec .viewMore{font-size:20px; padding:10px 30px; color:#FFF; display:inline-block; border-radius:8px; box-shadow:0px 2px 4px #0000001F; background: transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;}
 
-.comanNftSec.coffeeLigh{background-color:#81613a;}
+.comanNftSec.coffeeLigh{background: url(http://localhost:3000/static/media/nftBackground.f55ad425947134f202ed.png) no-repeat #5A2AE0;}
 .comanNftSec.coffeeLigh h2{color:#FFF;}
 
 .comanNftSec.lightGry{background:#F4F5F9;}
 
 .comanNftSec.darkesBlue{background:#020C24;}
-.comanNftSec.darkesBlue h2{color:#F2B600;}
+.comanNftSec.darkesBlue h2{color:#FFF;}
 
 
 
@@ -3908,10 +3909,7 @@ footer {
 /* Login steps End */
 
 /* Signup screen */
-.signup-heading {
-  margin-bottom: 0px !important;
-  margin-top: 20px !important;
-}
+
 
 .sign-up-text {
   text-align: center;
