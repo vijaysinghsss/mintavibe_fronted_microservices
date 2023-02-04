@@ -160,8 +160,7 @@ function Navbar() {
                         </NavDropdown.Item>
                         
                         <NavDropdown.Item href="#">Discord</NavDropdown.Item>
-                        <NavDropdown.Item href="#">Contact Us</NavDropdown.Item>
-
+                        <NavDropdown.Item href={"/contactus"}>Contact Us</NavDropdown.Item>
 
                         {/* <NavDropdown.Item
                           onClick={(e) => {

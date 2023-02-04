@@ -34,6 +34,8 @@ import SubscriptionPopup from "./components/PopUp/SubscriptionPopup";
 import "./App.css";
 import "./darkTheme.css"
 import Celebrity from "./pages/Celebrity";
+import BlogPage from "./pages/BlogPage";
+import BlogDetails from "./pages/BlogDetails";
 
 const socket = io.connect(process.env.REACT_APP_BACKENDURL);
 
@@ -166,7 +168,10 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/celebrity"  element={<Celebrity />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/blogs" element={<Blogs />} />
+          {/* <Route path="/blogs" element={<Blogs />} /> */}
+          <Route path="/blogs" element={<BlogPage />} />
+          <Route path="/blog/:id" element={<BlogDetails />} />
+
           <Route path="/faq" element={<Faq />} />
           <Route path="/artist" element={<Artist />} />
           <Route path="/nftlist" element={<Nftlist />} />

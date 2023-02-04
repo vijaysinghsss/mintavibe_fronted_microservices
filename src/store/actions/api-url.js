@@ -46,7 +46,8 @@ const apiURl = {
   artist: "/artist",
   userprofilefilter: "/userprofilefilter",
   activity: "/activity",
-  subscribe:"/subscribe"
+  subscribe:"/subscribe",
+  blogs:"/blog"
 
 };
 
