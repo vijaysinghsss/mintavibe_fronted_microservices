@@ -19,7 +19,8 @@ import {
   Activity,
   Follower,
   Following,
-  SubscriptionUser
+  SubscriptionUser,
+  BurnNft
 } from "./reducer";
 
 const reducer = {
@@ -35,7 +36,8 @@ const reducer = {
   Activity,
   Follower,
   Following,
-  SubscriptionUser
+  SubscriptionUser,
+  BurnNft
 };
 
 const rootReducer = combineReducers(reducer);

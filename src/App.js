@@ -36,6 +36,7 @@ import "./darkTheme.css"
 import Celebrity from "./pages/Celebrity";
 import BlogPage from "./pages/BlogPage";
 import BlogDetails from "./pages/BlogDetails";
+import Celebrity from "./components/Celebrity/Celebrity";
 
 const socket = io.connect(process.env.REACT_APP_BACKENDURL);
 
@@ -166,7 +167,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/celebrity"  element={<Celebrity />} />
+          <Route path="/celebrity/:celeName"  element={<Celebrity />} />
           <Route path="/about" element={<AboutUs />} />
           {/* <Route path="/blogs" element={<Blogs />} /> */}
           <Route path="/blogs" element={<BlogPage />} />

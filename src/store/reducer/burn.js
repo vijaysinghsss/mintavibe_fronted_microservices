@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const sliceBuy = createSlice({
-    name: 'Buy',
+export const sliceBurn = createSlice({
+    name: 'burn',
     initialState: {
         data: {
+            Burnfunc: () => { },
             modal: false,
-            checkout: false,
-            buyModal: false,
-            stripe:false
         }
     },
     reducers: {
@@ -18,12 +16,11 @@ export const sliceBuy = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-const { fetched } = sliceBuy.actions
+const { fetched } = sliceBurn.actions
 
-export const SetBuyData = (data) => async (dispatch) => {
+export default sliceBurn.reducer
+
+export const SetBurnData = (data) => async (dispatch) => {
     if (!data) throw Error('missing Data parameter');
-    console.log('Buy reduce', data);
     dispatch(fetched({ data }));
 }
-
-export default sliceBuy.reducer

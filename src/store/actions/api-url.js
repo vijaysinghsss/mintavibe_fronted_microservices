@@ -47,7 +47,10 @@ const apiURl = {
   userprofilefilter: "/userprofilefilter",
   activity: "/activity",
   subscribe:"/subscribe",
-  blogs:"/blog"
+  blogs:"/blog",
+  allowners: "/allowners",
+  ErrorData: "/errordata",
+  helpmail: '/helpmail'
 
 };
 

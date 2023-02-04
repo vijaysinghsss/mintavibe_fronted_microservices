@@ -134,7 +134,7 @@ function SignUp() {
   };
   return (
     <div>
-      <Modal size="md offerPoup loginWidth" show={showModal} hide={handleClosePopup}>
+      <Modal size="lg offerPoup" show={showModal} hide={handleClosePopup}>
         <div className="pop_content login-screen">
           <div>
             <div className="close-button" onClick={handleClosePopup}>
@@ -142,7 +142,7 @@ function SignUp() {
                 <img src="/images/cross-button.svg" />
               </a>
             </div>
-            <h2 className="signup-heading">Sign Up</h2>
+            <h2>Sign Up</h2>
             {/* <p className="sign-up-text">
               <span>Please fill in this form to create an account!</span>
             </p> */}
@@ -150,7 +150,7 @@ function SignUp() {
           <div className="login-section">
             <form>
               <div className="row">
-                <div className="form-div col-sm-12 ">
+                <div className="form-div col-sm-6">
                   <label for="name">
                     Full Name <span className="text-danger"> *</span>
                   </label>
@@ -171,7 +171,7 @@ function SignUp() {
                     ""
                   )}
                 </div>
-                {/* <div className="form-div col-sm-6 ">
+                <div className="form-div col-sm-6">
                   <label for="name">
                     Last Name <span className="text-danger"> *</span>
                   </label>
@@ -191,9 +191,9 @@ function SignUp() {
                   ) : (
                     ""
                   )}
-                </div> */}
+                </div>
 
-                <div className="form-div col-sm-12 ">
+                <div className="form-div col-sm-6">
                   <label for="name">
                     Email <span className="text-danger"> *</span>
                   </label>
@@ -215,7 +215,7 @@ function SignUp() {
                   )}
                 </div>
 
-                <div className="form-div col-sm-12 ">
+                <div className="form-div col-sm-6">
                   <label for="name">Contact#</label>
                   <input
                     className="input[type=number]::-webkit-outer-spin-button"
@@ -235,7 +235,7 @@ function SignUp() {
                     ""
                   )}
                 </div>
-                <div className="form-div col-sm-12 ">
+                <div className="form-div col-sm-6">
                   <label for="name">
                     Passw̵ord <span className="text-danger"> *</span>
                   </label>
@@ -324,7 +324,7 @@ function SignUp() {
                     ""
                   )}
                 </div>
-                {/* <div className="form-div col-sm-12 ">
+                <div className="form-div col-sm-6 ">
                   <label for="name">
                     Confirm Password <span className="text-danger"> *</span>
                   </label>
@@ -353,7 +353,7 @@ function SignUp() {
                   ) : (
                     ""
                   )}
-                </div> */}
+                </div>
               </div>
               {apiErrors.message && (
                 <span
@@ -397,9 +397,7 @@ function SignUp() {
               <div className="form-div">
                 <p>
                   Are you already a member?
-                  <Link style={{ paddingLeft: "22px" }} onClick={handleLogin}>
-                    Log in
-                  </Link>
+                  <Link style={{ paddingLeft: "22px" }} onClick={handleLogin}>Log in</Link>
                 </p>
               </div>
             </form>

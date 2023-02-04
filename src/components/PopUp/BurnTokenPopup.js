@@ -1,21 +1,42 @@
 import { Button } from "bootstrap";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { SetBurnData } from "../../store/reducer";
 function BurnTokenPopup() {
-  const [showBurnPopUp, setShowBurnPopUp] = useState(true);
+  const { modal, Burnfunc = () => { }
+  } = useSelector((state) => state.BurnNft.data);
 
-  const handleCloseBurnPopUp = () => setShowBurnPopUp(false);
-  const handleShowBurnPopUp = () => setShowBurnPopUp(true);
+  const [showBurnPopUp, setShowBurnPopUp] = useState(false);
+  const dispatch = useDispatch();
+  const handleCloseBurnPopUp = (e) => {
+    e.preventDefault();
+    dispatch(SetBurnData({
+      modal: false,
+      Burnfunc: () => { },
+    }));
+  };
+
+  useEffect(() => {
+    setShowBurnPopUp(modal)
+  }, [modal])
+
+  const burnNFTCALL = (e) => {
+    e.preventDefault();
+    Burnfunc();
+  }
   return (
     <div>
       <Modal show={showBurnPopUp} hide={handleCloseBurnPopUp}>
         <Modal.Body>
           <div className="pop_content">
             <div className="close-button">
-              <a href="#">
+              <a href="!#">
                 <img
                   onClick={handleCloseBurnPopUp}
                   src="/images/cross-button.svg"
+                  alt=""
                 />
               </a>
             </div>
@@ -31,10 +52,10 @@ function BurnTokenPopup() {
               className="d-flex justify-content-between"
               style={{ textAlign: "center" }}
             >
-              <a className="cancel-button" style={{ cursor: "pointer" }} onClick={handleCloseBurnPopUp}>
+              <a href="!#" className="cancel-button" style={{ cursor: "pointer" }} onClick={handleCloseBurnPopUp}>
                 Cancel
               </a>
-              <a className="creat-button text-white">Confirm</a>
+              <a href="!#" className="creat-button text-white" onClick={burnNFTCALL}>Confirm</a>
             </div>
           </div>
         </Modal.Body>

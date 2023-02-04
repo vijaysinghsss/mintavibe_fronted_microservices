@@ -1,16 +1,50 @@
-import React from 'react'
-import moment from 'moment';
-import { CopyText } from '../../store/actions/extra-function';
-function Details({ Owner_id, CreatedAt, NetworkName, nftTable, imageHash, transaction_hash, collection_type, no_of_copies, available_copies, wallet_type, cretor_wallet_address = '', owner_wallet_address = false, token, totalOwner }) {
+import React from "react";
+import moment from "moment";
+import { CopyText } from "../../store/actions/extra-function";
+function Details({
+  setShowOwner,
+  Owner_id,
+  CreatedAt,
+  NetworkName,
+  nftTable,
+  imageHash,
+  transaction_hash,
+  collection_type,
+  no_of_copies,
+  available_copies,
+  wallet_type,
+  cretor_wallet_address = "",
+  owner_wallet_address = false,
+  token,
+  totalOwner,
+}) {
   return (
     <div className="top-profile">
-      {NetworkName[0] == 'XUMM' ? <div className="details-box">
-        <span>Owner</span>
-        <p title={owner_wallet_address || ''}> {(owner_wallet_address || '').slice(0, 4) + '...' + (owner_wallet_address || '').slice(-4)}</p>
-      </div> : <div className="details-box">
-        <span>Owner</span>
-        {collection_type ? <p title={owner_wallet_address}> {((owner_wallet_address).slice(0, 4) + '...' + (owner_wallet_address).slice(-4))}</p> : <p> {(totalOwner || 0) + 'x'}</p>}
-      </div>}
+      {NetworkName[0] == "XUMM" ? (
+        <div className="details-box">
+          <span>Owner</span>
+          <p title={owner_wallet_address || ""}>
+            {" "}
+            {(owner_wallet_address || "").slice(0, 4) +
+              "..." +
+              (owner_wallet_address || "").slice(-4)}
+          </p>
+        </div>
+      ) : (
+        <div className="details-box" >
+          <span>Owner</span>
+          {collection_type ? (
+            <p title={owner_wallet_address} >
+              {" "}
+              {owner_wallet_address.slice(0, 4) +
+                "..." +
+                owner_wallet_address.slice(-4)}
+            </p>
+          ) : (
+            <p onClick={() => setShowOwner(true)}> {(totalOwner ?`${totalOwner} Owners`:`${(totalOwner||1)} Owner`)}</p>
+          )}
+        </div>
+      )}
 
       <div className="details-box">
         <span>Minted On</span>
