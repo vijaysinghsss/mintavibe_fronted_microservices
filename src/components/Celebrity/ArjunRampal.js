@@ -72,7 +72,7 @@ function ArjunRampal() {
                 dots={true}
                 infinite={true}
                 speed={100}
-                autoplay={false}
+                autoplay={true}
                 arrows={false}
                 slidesToShow={1}
                 slidesToScroll={1}
