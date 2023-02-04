@@ -66,6 +66,7 @@ header {
 .hedIcons li img{width:38px; height:38px; object-fit:cover; border-radius:100%;}
 .hedIcons .customLink .dropdown-menu img{width:auto; height:auto; border-radius:inherit;}
 .hedIcons .customLink .dropdown-menu a{display:flex;}
+.hedIcons .customLink .dropdown-menu a p{color:#5a2ae0; font-weight:500;}
 .hedIcons .customLink .user-icon-box{margin-right:10px;}
 .hedIcons .loginBtn{border-radius:30px; width:100px; text-align:center; font-weight:600; color:#5A2AE0; font-size:18px;}
 
@@ -269,13 +270,13 @@ input.search-input-nav {
   opacity: 1;
 }
 
-.customLink .dropdown-menu .user-notice-box + .user-notice-box{border-top: 1px solid #000;}
+.customLink .dropdown-menu .user-notice-box + .user-notice-box{border-top: 1px solid #5a2ae0;}
 .customLink .dropdown-menu .user-notice-box.active,
 .customLink .dropdown-menu .user-notice-box:active{background:#e6e9ec; color: #000;}
 
 .user-notice-box {
   display: flex;
-  padding: 8px 15px;
+  padding: 4px 15px;
   align-items: center;
 }
 
