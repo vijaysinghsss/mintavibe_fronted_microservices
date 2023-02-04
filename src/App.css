@@ -3864,7 +3864,8 @@ footer {
 
 .eye-icon {
   margin-left: -50px;
-  top: 55px;
+  top: 53px;
+  right: 25px;
   cursor: pointer;
   position: absolute;
   font-size: 15px;
