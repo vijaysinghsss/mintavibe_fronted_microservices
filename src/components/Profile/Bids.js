@@ -45,7 +45,7 @@ function Bids({ data, FetchData, Owner, AcceptOffer }) {
                 {data.filter((item) => item.Is_active).sort().map((item) => {
                   return (
                     <tr key={item._id}>
-                      <td className="small">{parseFloat(item.Amount).toFixed(4)} <span style={{ fontSize: '9px' }}><small>Approx</small></span></td>
+                      <td className="small">{parseFloat(item.Amount).toFixed(5)} <span style={{ fontSize: '9px' }}><small>Approx</small></span></td>
                       <td className="small">{item.Quantity}</td>
                       <td className="small" title={item.buyer_address}>{(item.buyer_address?.slice(0, 4) + '...' + item.buyer_address?.slice(-4)) || ''}</td>
                       <td className="small">{moment(item.UpdatedAt).fromNow()}</td>

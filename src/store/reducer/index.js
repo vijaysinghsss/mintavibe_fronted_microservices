@@ -12,6 +12,7 @@ export { default as Activity } from "./activity";
 export { default as Follower } from "./follower";
 export { default as Following } from "./following";
 export { default as SubscriptionUser } from "./SubscriptionUserData";
+export { default as BurnNft } from "./burn";
 
 export * from "./home-page";
 export * from "./user";
@@ -26,4 +27,5 @@ export * from "./activity";
 export * from "./follower";
 export * from "./following";
 export * from "./SubscriptionUserData";
+export * from "./burn";
 

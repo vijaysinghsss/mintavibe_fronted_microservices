@@ -15,7 +15,7 @@ import {
 import { FiatbuyAsset, gup } from "../../store/actions/extra-function";
 import { SetBuyData, SetloaderData } from "../../store/reducer";
 
-const Checkout = ({ showCheckout, setShowCheckout,qty, setqty }) => {
+const Checkout = ({ showCheckout, setShowCheckout, qty, setqty }) => {
   const { checkout } = useSelector((state) => state.Buy.data);
 
   const { address, activeProvider, chainId, balance, provider } = useWeb3();
@@ -42,7 +42,7 @@ const Checkout = ({ showCheckout, setShowCheckout,qty, setqty }) => {
         API({
           url: apiURl.paymentGate,
           method: "POST",
-          body: { id, qty:qty|| 1, currency: currency },
+          body: { id, qty: qty || 1, currency: currency },
         }).then((data) => {
           setdataNft(data.Data);
         });
@@ -142,7 +142,7 @@ const Checkout = ({ showCheckout, setShowCheckout,qty, setqty }) => {
 
   const handleCloseFollow = (e) => {
     e.preventDefault();
-    dispatch(SetBuyData({ modal: false, checkout: false, buyModal: false }));
+    dispatch(SetBuyData({ modal: false, checkout: false, buyModal: false, stripe: false }));
   };
 
   const handleClose = (e) => {
@@ -155,9 +155,8 @@ const Checkout = ({ showCheckout, setShowCheckout,qty, setqty }) => {
       body: {
         id,
         User_id: _id,
-        // url: process.env.REACT_APP_URL || "http://localhost:3000",
-        url: "http://localhost:3000",
-        qty: qty|| 1,
+        url: window.location.origin,
+        qty: qty || 1,
         currency: currency,
       },
     }).then((data) => {
@@ -225,36 +224,38 @@ const Checkout = ({ showCheckout, setShowCheckout,qty, setqty }) => {
                 />
               </div>
               <h2>NFT Details</h2>
-              <hr/>
+              <hr />
               <div className="row ">
-                <div className="col-6 ">
-                <div className="form-div">
-                  <input
-                    type={`text`}
-                    className="form-control form-control-sm"
-                    value={qty}
-                    onChange={(e) => {
-                      e.preventDefault();
-                      const re = /^[0-9]*$/;
-                      if (
-                        (e.target.value === "" || re.test(e.target.value)) &&
-                        parseInt(e.target.value || 0) <=
+                <div className="col-sm-12 ">
+                  <div className="form-div">
+                    <label className="">Number of copy</label>
+                    <input
+                      type={`text`}
+                      className="form-control form-control-sm my-2"
+                      value={qty}
+                      onChange={(e) => {
+                        e.preventDefault();
+                        const re = /^[0-9]*$/;
+                        if (
+                          (e.target.value === "" || re.test(e.target.value)) &&
+                          parseInt(e.target.value || 0) <=
                           parseInt(dataNft?.NFtName?.available_copies || 0)
-                      ) {
-                        setqty(
-                          e.target.value == ""
-                            ? e.target.value
-                            : parseInt(e.target.value)
-                        );
-                      }
-                    }}
-                    placeholder="qty"
-                    disabled={dataNft?.NFtName?.collection_type}
-                  />
+                        ) {
+                          setqty(
+                            e.target.value == ""
+                              ? e.target.value
+                              : parseInt(e.target.value)
+                          );
+                        }
+                      }}
+                      placeholder="qty"
+                      disabled={dataNft?.NFtName?.collection_type}
+                    />
                   </div>
                 </div>
-                <div className="col-6 ">
-                  
+                <div className="col-sm-12  ">
+                  <hr className="mt-2" />
+
                   <div className="form-check form-check-inline">
                     <input
                       className="form-check-input"
@@ -291,7 +292,7 @@ const Checkout = ({ showCheckout, setShowCheckout,qty, setqty }) => {
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <table className="table">
                 <tbody>
                   <tr>

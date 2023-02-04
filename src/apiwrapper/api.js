@@ -6,7 +6,6 @@ const api = async ({ body, headers = {}, method, signal, url, formData = false }
     if (!formData) {
         headers['content-type'] = 'application/json';
     }
-    console.log(body, "body", BASECONFIG.BASE_URL + url)
 
     try {
         const response = await fetch(BASECONFIG.BASE_URL + url, {

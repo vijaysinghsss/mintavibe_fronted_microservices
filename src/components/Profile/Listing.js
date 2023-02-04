@@ -22,13 +22,16 @@ const Listing = ({ data = [], owner, FetchData }) => {
             return item;
 
         });
+        const count = Listing.reduce((value, item) => {
+            return value + (item.Status ? parseInt(item.AvailableQuantity) : 0);
+        }, 0);
 
         await dispatch(submitTranscation(id, {
             Listing,
-            available_copies: Listing.reduce((value, item) => {
-                return value + (item.Status ? parseInt(item.AvailableQuantity) : 0);
-            }, 0)
+            available_copies: count,
+            put_on_sale: count < 1 ? false : true
         }));
+
         await FetchData();
     }
 

@@ -40,6 +40,7 @@ const BuyNft = ({
               }
             }}
             disabled={Data.collection_type}
+            placeholder="Qty"
           />
         </div>
         <div className="bid-details">

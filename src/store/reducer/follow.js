@@ -8,7 +8,8 @@ export const sliceFollow = createSlice({
             approve: 0,
             mint: 0,
             modal: false,
-            func: () => { }
+            func: () => { },
+            help: false
         }
     },
     reducers: {

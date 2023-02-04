@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { API } from "../../apiwrapper";
 import { apiURl } from "../../store/actions";
 import { NotificationMsg } from "../../store/actions/api-url";
-import { SetBuyData, SetFollowrData, SetloaderData } from "../../store/reducer";
+import { SetBurnData, SetBuyData, SetFollowrData, SetloaderData } from "../../store/reducer";
 import XummBuy from "../PopUp/xumm-buy";
 import ReactReadMoreReadLess from "react-read-more-read-less";
 import Bids from "./Bids";
@@ -42,9 +42,13 @@ import {
   percentageOf,
   plusNum,
   roundNumber,
+  stringify,
   toNum,
 } from "../../store/actions/common-functions";
 import CountdownTimer from "../../pages/CountdownTimer";
+import OwnerList from "../PopUp/OwnerList";
+import ImageZoom from "../PopUp/ImageZoom";
+import BurnTokenPopup from "../PopUp/BurnTokenPopup";
 
 function NftDetails() {
   const { id } = useParams();
@@ -54,12 +58,13 @@ function NftDetails() {
   const [endIn, setEndIn] = useState(1);
   const [loaderOffer, setloaderOffer] = useState(false);
   const dispatch = useDispatch();
-const navigate=useNavigate()
+  const navigate = useNavigate();
   const { address, activeProvider, chainId, balance, provider } = useWeb3();
+  const { stripe } = useSelector((state) => state.Buy.data);
 
   const { _id = "", type, signer } = useSelector((state) => state?.User?.data);
 
-  const { loginUserData } = useSelector((state) => state.authUser);
+  const { loginUserData = {} } = useSelector((state) => state.authUser);
   const { id: User_id = false } = loginUserData;
 
   const { walletAddress = false, userToken = false } = useSelector(
@@ -68,6 +73,7 @@ const navigate=useNavigate()
 
   const [NetworkName, setNetworkName] = useState(false);
 
+  const [showOwner, setShowOwner] = useState(false);
   const [show, setShow] = useState(false);
   const [showCheckout, setShowCheckout] = useState(false);
   const [qty, setqty] = useState(1);
@@ -108,9 +114,10 @@ const navigate=useNavigate()
       setCollectionDetails(data.data);
     });
   };
+
   useEffect(() => {
     FetchData();
-  }, [id,type]);
+  }, [id, type]);
 
   useEffect(() => {
     const NetworkName = Object.entries(allChainsIDS).find(
@@ -132,6 +139,7 @@ const navigate=useNavigate()
 
   const buyHnadleChange = (e) => {
     e.preventDefault();
+
 
     if (!User_id) {
       toast(NotificationMsg.NotConnect, { type: "error", toastId: "--85214" });
@@ -196,24 +204,21 @@ const navigate=useNavigate()
     switch (type) {
       case "FB":
         window.open(
-          `https://www.facebook.com/sharer/sharer.php?u=${
-            window.location.href
+          `https://www.facebook.com/sharer/sharer.php?u=${window.location.href
           }&caption=${CollectionDetails?.Nftname || ""}`,
           "_blank"
         );
         return;
       case "TW":
         window.open(
-          `https://twitter.com/share?url=${window.location.href}&text=${
-            CollectionDetails?.Nftname || ""
+          `https://twitter.com/share?url=${window.location.href}&text=${CollectionDetails?.Nftname || ""
           }`,
           "_blank"
         );
         return;
       case "TEL":
         window.open(
-          `https://telegram.me/share/url?url=${window.location.href}&text=${
-            CollectionDetails?.Nftname || ""
+          `https://telegram.me/share/url?url=${window.location.href}&text=${CollectionDetails?.Nftname || ''
           }`,
           "_blank"
         );
@@ -263,39 +268,80 @@ const navigate=useNavigate()
       }
     }
 
-    try {
-      let result = false;
-      if (NetworkName[0] == "XUMM") {
-      } else {
-        result = await burnNFT(
-          CollectionDetails.collection_type,
-          CollectionDetails.collection_type
-            ? process.env.REACT_APP_CONTRACT_ADDRESS_ERC721
-            : process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155,
-          CollectionDetails.token,
-          BurnValue,
-          CollectionDetails._id,
-          true
-        );
-      }
 
-      if (result) {
-        await dispatch(
-          submitTranscation(id, {
-            Status:
-              parseInt(CollectionDetails.no_of_copies) - parseInt(BurnValue) < 1
-                ? false
-                : CollectionDetails.Status,
-            no_of_copies:
-              parseInt(CollectionDetails.no_of_copies) - parseInt(BurnValue),
+    setburnPopUP(false);
+
+    dispatch(SetBurnData({
+      modal: true, Burnfunc: async () => {
+        dispatch(SetBurnData({
+          modal: false, Burnfunc: () => { }
+        }));
+        dispatch(
+          SetFollowrData({
+            upload: 0,
+            mint: false,
+            fixed: false,
+            approve: false,
+            ModalType: "BURN",
+            modal: true,
           })
         );
-        // toast(NotificationMsg.putOnSaleBackMsg, { type: "success" });
+        try {
+          let result = false;
+          if (NetworkName[0] == "XUMM") {
+          } else {
+            result = await burnNFT(
+              CollectionDetails.collection_type,
+              CollectionDetails.collection_type
+                ? process.env.REACT_APP_CONTRACT_ADDRESS_ERC721
+                : process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155,
+              CollectionDetails.token,
+              BurnValue,
+              CollectionDetails._id,
+              true
+            );
+          }
+
+          if (result) {
+            dispatch(
+              submitTranscation(id, {
+                Status:
+                  (parseInt(CollectionDetails.no_of_copies) - parseInt(BurnValue) < 1
+                    ? false
+                    : CollectionDetails.Status),
+                no_of_copies:
+                  (parseInt(CollectionDetails.no_of_copies) - parseInt(BurnValue)),
+              })
+            );
+            dispatch(
+              SetFollowrData({
+                upload: 1,
+                mint: false,
+                fixed: false,
+                approve: false,
+                ModalType: "BURN",
+                modal: true,
+              })
+            );
+            // toast(NotificationMsg.putOnSaleBackMsg, { type: "success" });
+          }
+        } catch (error) {
+          dispatch(
+            SetFollowrData({
+              upload: 2,
+              mint: false,
+              fixed: false,
+              approve: false,
+              ModalType: "BURN",
+              modal: true,
+            })
+          );
+          toast(error, { type: "error" });
+        }
+        await FetchData();
       }
-    } catch (error) {
-      toast(error, { type: "error" });
-    }
-    await FetchData();
+    }));
+
   };
 
   async function burnNFT(
@@ -499,11 +545,31 @@ const navigate=useNavigate()
       toast(NotificationMsg.Balance.replace("%s", ""), { type: "info" });
       return;
     }
+    dispatch(
+      SetFollowrData({
+        upload: 0,
+        mint: 2,
+        fixed: 2,
+        approve: false,
+        ModalType: "OFFER",
+        modal: true,
+      })
+    );
+    handleOfferClose();
 
     let result = false;
-    setloaderOffer(true);
     try {
       if (NetworkName[0] == "XUMM") {
+        dispatch(
+          SetFollowrData({
+            upload: 0,
+            mint: 2,
+            fixed: 2,
+            approve: false,
+            ModalType: "OFFER",
+            modal: true,
+          })
+        );
         const data = {
           wallet_id: walletAddress,
           Price: parseFloat(offerValue || 0),
@@ -517,7 +583,16 @@ const navigate=useNavigate()
           method: "POST",
           body: data,
         });
-
+        dispatch(
+          SetFollowrData({
+            upload: 1,
+            mint: 0,
+            fixed: 2,
+            approve: false,
+            ModalType: "OFFER",
+            modal: true,
+          })
+        );
         result = await placeBid({
           user_id: User_id,
           sign: result.buy_offer_index,
@@ -531,10 +606,43 @@ const navigate=useNavigate()
           payment_token_address: "",
           payment_token_decimals: "",
         });
+
+        dispatch(
+          SetFollowrData({
+            upload: 1,
+            mint: 1,
+            fixed: 0,
+            approve: false,
+            ModalType: "OFFER",
+            modal: true,
+          })
+        );
+        dispatch(
+          SetFollowrData({
+            upload: 1,
+            mint: 1,
+            fixed: 1,
+            approve: false,
+            ModalType: "OFFER",
+            modal: true,
+          })
+        );
+        dispatch(
+          SetFollowrData({
+            upload: 1,
+            mint: 1,
+            fixed: 1,
+            approve: false,
+            ModalType: "OFFER",
+            modal: false,
+          })
+        );
+
       } else {
         result = await dispatch(
           converToWeth(
             OfferTotalammount,
+            offerValue,
             address,
             provider,
             await provider.getSigner(),
@@ -550,11 +658,7 @@ const navigate=useNavigate()
       }
 
       console.log(result);
-
-      // toast(NotificationMsg.offerCreate, { type: 'success' });
       FetchData();
-      handleOfferClose();
-      setloaderOffer(false);
     } catch (error) {
       setloaderOffer(false);
       console.log("error", error);
@@ -563,6 +667,7 @@ const navigate=useNavigate()
   //
 
   const AcceptOffer = async (data) => {
+
     const {
       User_Id: UserDetails = false,
       Amount,
@@ -573,8 +678,7 @@ const navigate=useNavigate()
       buyer_address,
     } = data;
 
-    // console.log("data", data);
-    // return;
+
     try {
       if (NetworkName[0] == "XUMM") {
         const data = {
@@ -601,11 +705,16 @@ const navigate=useNavigate()
         );
         await FetchData();
       } else {
+        if (address === buyer_address) {
+          toast(NotificationMsg.wallet.replace('connect', 'Change'), { type: 'error' })
+          return;
+        }
         let decimals = 18;
         let unitPrice = 1;
         let account = address;
 
         let paymentAmt = roundNumber(mulBy(Amount_with_fee, 10 ** decimals), 0);
+
         const contract = await fetchContract(
           process.env.REACT_APP_TRADECONTRACTADDRESS,
           "trade",
@@ -613,6 +722,15 @@ const navigate=useNavigate()
           provider.getSigner(),
           true
         );
+
+        let contract1155 = await fetchContract(
+          process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155,
+          "nft1155",
+          provider,
+          provider.getSigner(),
+          true
+        );
+
         let nonce_value = await API({
           url: `${apiURl.ContractNonce}/${Collection_Id}`,
           method: "GET",
@@ -641,6 +759,8 @@ const navigate=useNavigate()
           false,
         ];
 
+        // return;
+
         let receipt = await contract.executeBid(
           orderStruct,
           splitSign(Sign, nonce_value.allnonce.Contract_sign_nonce),
@@ -648,11 +768,71 @@ const navigate=useNavigate()
         );
 
         receipt = await receipt.wait();
+
+        let recentListing = [...(CollectionDetails?.Listing || [])];
+        let i = 0;
+        let quantity = Quantity;
+        let loop = recentListing.length;
+
+        await API({
+          url: `${apiURl.NftMulti}`,
+          method: "POST",
+          body: {
+            no_of_copies: parseInt(await contract1155.balanceOf(buyer_address, CollectionDetails.token)),
+            owner_id: UserDetails._id,
+            owner_address: buyer_address,
+            transaction_hash: receipt?.transactionHash || "",
+            buy_offer_index: 0,
+          },
+          headers: { "content-type": "application/json;charset-UTF-8" },
+        }).then((data) => data);
+
+        let count = recentListing.reduce(
+          (value, item) =>
+            value + (item.Status ? parseInt(item.AvailableQuantity) : 0),
+          0
+        );
+
         let nftObject = {
-          no_of_copies: CollectionDetails.no_of_copies,
           transaction_hash: receipt.transactionHash,
           buy_offer_index: 0,
+          Listing: recentListing,
+          available_copies: count,
         };
+
+        if (!count) {
+          nftObject["put_on_sale"] = false;
+          nftObject["instant_sale_enabled"] = false;
+        }
+
+        if (CollectionDetails.collection_type) {
+          nftObject["owner_id"] = _id;
+          nftObject["owner_wallet_address"] = account;
+          nftObject["Listing"] = recentListing.map((data) => ({
+            ...data,
+            Status: false,
+          }));
+          nftObject["available_copies"] = 0;
+        } else {
+
+          await API({
+            url: `${apiURl.newCollwction}/${Collection_Id}`,
+            method: "POST",
+            body: {
+              no_of_copies: parseInt(await contract1155.balanceOf(buyer_address, CollectionDetails.token)),
+              owner_id: UserDetails._id,
+              owner_address: buyer_address,
+              own_copies: parseInt(await contract1155.balanceOf(buyer_address, CollectionDetails.token)),
+              transaction_hash: receipt?.transactionHash || "",
+              buy_offer_index: 0,
+            },
+            headers: { "content-type": "application/json;charset-UTF-8" },
+          }).then((data) => data);
+
+          nftObject["own_copies"] = parseInt(await contract1155.balanceOf(account, CollectionDetails.token));
+
+        }
+
 
         if (CollectionDetails.collection_type) {
           nftObject["owner_wallet_address"] = buyer_address;
@@ -661,17 +841,12 @@ const navigate=useNavigate()
           nftObject["instant_sale_enabled"] = false;
         }
 
-        let recentListing = [...(CollectionDetails?.Listing || [])];
-        let i = 0;
-        let quantity = Quantity;
-        let loop = recentListing.length;
-
         while (loop) {
           if (i >= loop) {
             break;
           }
 
-          let existingQty = parseInt(recentListing[i].Quantity);
+          let existingQty = parseInt(recentListing[i].AvailableQuantity);
 
           if (quantity > existingQty) {
             quantity = existingQty - quantity;
@@ -700,23 +875,25 @@ const navigate=useNavigate()
         }
 
         nftObject["Listing"] = recentListing;
-        console.log("nftObject", nftObject);
         await dispatch(submitTranscation(Collection_Id, nftObject));
-
+        await API({ url: `${apiURl.Bid}/${data._id}`, method: 'PUT', body: { Is_active: false } });
         setTimeout(() => {
-          navigator(`/collections/${Collection_Id}`);
+          navigate(`/collections/${Collection_Id}`);
         }, 200);
-        navigator("/");
+        navigate("/");
       }
     } catch (err) {
-      const error = { ...err };
-      console.warn(error.reason);
+      console.log(err);
+      await API({
+        url: apiURl.ErrorData,
+        method: "POST",
+        body: { errordata: ({ ...data, message: err.message, stack: err.stack, type: NetworkName[0], currentAddress: address || walletAddress, userTokken: userToken }) },
+      });
     }
   };
-  const Highest_Bid = CollectionDetails?.Bids?.reduce(
-    (acc, ass) => (+acc?.Amount > +ass?.Amount ? +acc?.Amount : +ass?.Amount),
-    0
-  );
+
+
+
   const [apiCall, setapiCall] = useState(null);
 
   const token = gup("token");
@@ -724,85 +901,210 @@ const navigate=useNavigate()
   const Type = gup("type");
 
   useEffect(() => {
-    dispatch(SetBuyData({ modal: false, checkout: false, buyModal: false }));
-    clearInterval(apiCall);
-    setapiCall(
-      setTimeout(() => {
-        if (token || session || Type) {
-          dispatch(SetloaderData(true));
-          try {
-            API({
-              url: apiURl.verifyPayment,
-              method: "POST",
-              body: { token, session, type: Type },
-            }).then((data) => {
-              const totalAmt = multipliedBy(
-                CollectionDetails?.sign_instant_sale_price,
-                data?.result?.Quantity || 1
-              );
-              const serviceFee = percentageOf(2.5, totalAmt);
-              const total = plusNum(totalAmt, serviceFee);
-            
-              if (type == "METAMASK") {
-               
-                dispatch(
-                  FiatbuyAsset(
-                    CollectionDetails?.cretor_wallet_address,
-                    CollectionDetails?.collection_type ? 1 : 0,
-                    CollectionDetails?.collection_type
-                      ? process.env.REACT_APP_CONTRACT_ADDRESS_ERC721
-                      : process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155,
+    dispatch(
+      SetBuyData({
+        modal: false,
+        checkout: false,
+        buyModal: false,
+        stripe: false,
+      }));
+    dispatch(SetFollowrData({
+      upload: false,
+      mint: false,
+      fixed: false,
+      approve: false,
+      ModalType: "stripe",
+      modal: false,
+      func: () => { }
+    }));
+
+    if (token && session && Type && atob(Type) !== 'error') {
+      dispatch(SetFollowrData({
+        upload: false,
+        mint: 0,
+        fixed: 2,
+        approve: false,
+        ModalType: "stripe",
+        modal: true,
+        func: () => { }
+      }));
+      clearInterval(apiCall);
+      setapiCall(
+        setTimeout(() => {
+          if (token || session || Type) {
+            // dispatch(SetloaderData(true));
+            try {
+              API({
+                url: apiURl.verifyPayment,
+                method: "POST",
+                body: { token, session, type: Type },
+              }).then((data) => {
+                if (!data.success) {
+                  dispatch(SetFollowrData({
+                    upload: false,
+                    mint: 5,
+                    fixed: 3,
+                    approve: false,
+                    ModalType: "stripe",
+                    modal: true,
+                    func: () => {
+
+                      dispatch(SetFollowrData({
+                        upload: false,
+                        mint: false,
+                        fixed: false,
+                        approve: false,
+                        ModalType: "stripe",
+                        modal: false,
+                        func: () => { }
+                      }));
+
+                      dispatch(
+                        SetBuyData({
+                          modal: false,
+                          checkout: true,
+                          buyModal: false,
+                          stripe: false,
+                        })
+                      );
+
+                    }
+
+                  }))
+
+                }
+
+
+                dispatch(SetFollowrData({
+                  upload: false,
+                  mint: 1,
+                  fixed: 0,
+                  approve: false,
+                  ModalType: "stripe",
+                  modal: true,
+                  func: () => { }
+                }));
+
+                // return;
+                const totalAmt = multipliedBy(
+                  CollectionDetails?.sign_instant_sale_price,
+                  data?.result?.Quantity || 1
+                );
+                const serviceFee = percentageOf(2.5, totalAmt);
+                const total = plusNum(totalAmt, serviceFee);
+
+                if (type == "METAMASK") {
+                  dispatch(
+                    FiatbuyAsset(
+                      CollectionDetails?.cretor_wallet_address,
+                      CollectionDetails?.collection_type ? 1 : 0,
+                      CollectionDetails?.collection_type
+                        ? process.env.REACT_APP_CONTRACT_ADDRESS_ERC721
+                        : process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155,
                       CollectionDetails?.token,
                       CollectionDetails?.sign_instant_sale_price,
-                    data?.result?.Quantity || 1,
-                    parseFloat(parseFloat(total)),
-                    process.env.REACT_APP_WETHADDRESS,
-                    18,
-                    CollectionDetails?._id,
-                    address,
-                    CollectionDetails?.Royality,
-                    provider,
-                    signer,
-                    "abcde",
-                    _id,
-                    CollectionDetails?.is_eth_payment,
-                    CollectionDetails
-                  )
-                );
-              } else {
-                API({
-                  url: apiURl.BuyBroker,
-                  method: "POST",
-                  body: { id, xumm_user_token: userToken },
-                }).then((data) => {
-                  API({
-                    url: apiURl.Buy,
-                    method: "POST",
-                    body: {
-                      wallet_id: walletAddress,
-                      price: 1,
-                      UserId: _id,
-                      id,
-                      xumm_user_token: userToken,
-                    },
-                  }).then((data) => {
-                    // toast(NotificationMsg.buyoffer, { type: 'success' });
-                    if (data.is_offer_accepted) {
-                      dispatch(SetloaderData(false));
-                    }
-                  });
-                });
-              }
-            });
-          } catch (error) {
-            console.log(error);
-            dispatch(SetloaderData(false));
+                      data?.result?.Quantity || 1,
+                      parseFloat(parseFloat(total)),
+                      process.env.REACT_APP_WETHADDRESS,
+                      18,
+                      CollectionDetails?._id,
+                      address,
+                      CollectionDetails?.Royality,
+                      provider,
+                      signer,
+                      "abcde",
+                      _id,
+                      CollectionDetails?.is_eth_payment,
+                      CollectionDetails,
+                      navigate
+                    )
+                  );
+
+                } else {
+                  try {
+                    API({
+                      url: apiURl.BuyBroker,
+                      method: "POST",
+                      body: { id, xumm_user_token: userToken },
+                    }).then((data) => {
+                      API({
+                        url: apiURl.Buy,
+                        method: "POST",
+                        body: {
+                          wallet_id: walletAddress,
+                          price: 1,
+                          UserId: _id,
+                          id,
+                          xumm_user_token: userToken,
+                        },
+                      }).then((data) => {
+                        if (data.is_offer_accepted) {
+                          dispatch(SetFollowrData({
+                            upload: false,
+                            mint: 1,
+                            fixed: 2,
+                            approve: false,
+                            ModalType: "stripe",
+                            modal: false,
+                            func: () => { },
+                          }));
+                          setTimeout(() => {
+                            navigate(`/collections/${CollectionDetails?._id}`);
+                          }, 200);
+                          dispatch(SetFollowrData({
+                            upload: false,
+                            mint: false,
+                            fixed: false,
+                            approve: false,
+                            ModalType: "stripe",
+                            modal: false,
+                            func: () => { },
+                          }));
+
+                          navigate(`/`);
+                        }
+                      });
+                    });
+                  } catch (error) {
+                    let errorObject = {
+                      message: error.message,
+                      stack: error.stack,
+                      type: 'XUMM',
+                      typeFunc: 'Buy-Function',
+                      params: {
+                        id,
+                        xumm_user_token: userToken
+                      }
+                    };
+                    API({
+                      url: apiURl.ErrorData,
+                      method: "POST",
+                      body: { errordata: JSON.stringify(errorObject) },
+                    });
+                  }
+                }
+              });
+            } catch (error) {
+              console.log('lakshay', error);
+            }
+            return;
           }
-          return;
-        }
-      }, 1000)
-    );
-  }, [token , session,  Type,type]);
+        }, 1000)
+      );
+    }
+
+  }, [token, session, Type, type]);
+  const [expandUrl, setExpandUrl] = useState("");
+  const [expandImage, setExpandImage] = useState(false);
+
+  const handleExpandImage = (url) => {
+    setExpandUrl(url);
+    setExpandImage(true);
+  };
+  const handleCloseExpandImage = () => {
+    setExpandUrl("");
+    setExpandImage(false);
+  };
   return (
     <section className="profile-section container my-3">
       <div className="container">
@@ -812,9 +1114,8 @@ const navigate=useNavigate()
               {CollectionDetails?.Nftname || ""}
               <span>
                 Editions:{" "}
-                <b>{`${CollectionDetails?.available_copies || 0}/${
-                  CollectionDetails?.no_of_copies || 1
-                }`}</b>
+                <b>{`${CollectionDetails?.available_copies || 0}/${CollectionDetails?.no_of_copies || 1
+                  }`}</b>
               </span>
               {/* {NetworkName[0] ==
               "XUMM" ? null : CollectionDetails.collection_type ? null : (
@@ -870,7 +1171,7 @@ const navigate=useNavigate()
               </Dropdown>
               {console.log(
                 parseInt(CollectionDetails?.no_of_copies) ==
-                  parseInt(CollectionDetails?.available_copies),
+                parseInt(CollectionDetails?.available_copies),
                 parseInt(CollectionDetails?.available_copies),
                 parseInt(CollectionDetails?.no_of_copies)
               )}
@@ -893,7 +1194,7 @@ const navigate=useNavigate()
 
                     <Dropdown.Menu className="activeNone">
                       {parseInt(CollectionDetails?.no_of_copies) ==
-                      parseInt(CollectionDetails?.available_copies) ? null : (
+                        parseInt(CollectionDetails?.available_copies) ? null : (
                         <li>
                           <Dropdown.Item href="#" onClick={putOnSale}>
                             {"Put On Sale"}
@@ -932,7 +1233,7 @@ const navigate=useNavigate()
       <div className="container">
         <div className="row">
           <div className="col-md-6">
-            <div className="profile-box">
+            <div className="profile-box h-100">
               {CollectionDetails.mediaType == "video" ? (
                 <video
                   width="100%"
@@ -965,12 +1266,25 @@ const navigate=useNavigate()
                   ></audio>
                 </div>
               ) : (
-                <img
-                  src={`${process.env.REACT_APP_BACKENDURL}/${
-                    CollectionDetails.coverImage || CollectionDetails.image
-                  }`}
-                  alt="crosstower"
-                />
+                <>
+                  <img
+                    src={`${process.env.REACT_APP_BACKENDURL}/${CollectionDetails.coverImage || CollectionDetails.image
+                      }`}
+                    alt="crosstower"
+                  />
+                  <div
+                    class="expand-btn"
+                    onClick={() =>
+                      handleExpandImage(
+                        `${process.env.REACT_APP_BACKENDURL}/${CollectionDetails.coverImage ||
+                        CollectionDetails.image
+                        }`
+                      )
+                    }
+                  >
+                    <img src="/images/maximize.svg" alt="" />
+                  </div>
+                </>
               )}
             </div>
           </div>
@@ -1059,10 +1373,16 @@ const navigate=useNavigate()
                         <span>Highest Bid</span>
                       </p>
                       <p>
-                        {Highest_Bid === 0 ? "No Bid" : Highest_Bid?.toFixed(4)}{" "}
-                        {NetworkName && NetworkName[0] == "XUMM"
-                          ? "XRP"
-                          : "ETH"}
+                        {
+                          parseFloat(CollectionDetails.Highest_bid || 0.0) < 0.00001 ?
+                            "No Bid" :
+                            parseFloat(CollectionDetails.Highest_bid || 0.0)?.toFixed(5) +
+                            (
+                              NetworkName && NetworkName[0] == "XUMM"
+                                ? " XRP"
+                                : " ETH"
+                            )
+                        }
                       </p>
                       {CollectionDetails?.Owner_id?._id == User_id ? null : (
                         <div className="spce-div">
@@ -1092,7 +1412,7 @@ const navigate=useNavigate()
                         </>
                       )}
                       {CollectionDetails?.Owner_id?._id == User_id ||
-                      !(endIn > 0) ? null : (
+                        !(endIn > 0) ? null : (
                         <div className="spce-div">
                           {CollectionDetails.put_on_sale &&
                             CollectionDetails?.nft_type !== "OPENBID" && (
@@ -1183,10 +1503,9 @@ const navigate=useNavigate()
                 </Tab>
                 <Tab
                   eventKey="bids"
-                  title={`Bids (${
-                    CollectionDetails?.Bids?.filter((item) => item.Is_active)
-                      .length || 0
-                  })`}
+                  title={`Bids (${CollectionDetails?.Bids?.filter((item) => item.Is_active)
+                    .length || 0
+                    })`}
                   className=""
                 >
                   <Bids
@@ -1205,7 +1524,11 @@ const navigate=useNavigate()
                 </Tab>
                 {/* )} */}
                 <Tab eventKey="details" title="Details">
-                  <Details {...CollectionDetails} NetworkName={NetworkName} />
+                  <Details
+                    {...CollectionDetails}
+                    NetworkName={NetworkName}
+                    setShowOwner={setShowOwner}
+                  />
                 </Tab>
               </Tabs>
             </div>
@@ -1262,10 +1585,10 @@ const navigate=useNavigate()
                                 (e.target.value === "" ||
                                   re.test(e.target.value)) &&
                                 parseInt(e.target.value || 0) <=
-                                  parseInt(CollectionDetails.no_of_copies) -
-                                    parseInt(
-                                      CollectionDetails.available_copies || 0
-                                    )
+                                parseInt(CollectionDetails.own_copies) -
+                                parseInt(
+                                  CollectionDetails.available_copies || 0
+                                )
                               ) {
                                 setSelectCopies(
                                   e.target.value == ""
@@ -1327,10 +1650,10 @@ const navigate=useNavigate()
                     <b>
                       {CollectionDetails?.cretor_wallet_address
                         ? CollectionDetails?.cretor_wallet_address.slice(0, 4) +
-                          "...." +
-                          CollectionDetails?.cretor_wallet_address.slice(
-                            CollectionDetails?.cretor_wallet_address.length - 4
-                          )
+                        "...." +
+                        CollectionDetails?.cretor_wallet_address.slice(
+                          CollectionDetails?.cretor_wallet_address.length - 4
+                        )
                         : CollectionDetails?.cretor_wallet_address || ""}
                     </b>
                   </p>
@@ -1378,7 +1701,7 @@ const navigate=useNavigate()
                                 (e.target.value === "" ||
                                   re.test(e.target.value)) &&
                                 parseInt(e.target.value || 0) <=
-                                  parseInt(CollectionDetails.no_of_copies)
+                                parseInt(CollectionDetails.no_of_copies)
                               ) {
                                 setOfferQtyValue(e.target.value);
                               }
@@ -1575,7 +1898,19 @@ const navigate=useNavigate()
       </Modal>
       <XummBuy />
       <Follow />
-      <Checkout showCheckout={showCheckout} setShowCheckout={setShowCheckout} qty={qty} setqty={setqty} />
+      <Checkout
+        showCheckout={showCheckout}
+        setShowCheckout={setShowCheckout}
+        qty={qty}
+        setqty={setqty}
+      />
+      {showOwner && (
+        <OwnerList showOwner={showOwner} setShowOwner={setShowOwner} />
+      )}
+      {expandImage && (
+        <ImageZoom url={expandUrl} handleClose={handleCloseExpandImage} />
+      )}
+      <BurnTokenPopup />
     </section>
   );
 }

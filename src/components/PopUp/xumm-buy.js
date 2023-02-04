@@ -2,7 +2,7 @@ import { useWeb3 } from "@3rdweb/hooks";
 import React, { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { API } from "../../apiwrapper";
 import { apiURl } from "../../store/actions";
@@ -37,6 +37,8 @@ const XummBuy = (props) => {
 
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const [show, setShow] = useState(false);
 
   const [Balance, setBalance] = useState("0");
@@ -50,8 +52,8 @@ const XummBuy = (props) => {
   const [NetworkName, setNetworkName] = useState(false);
 
   const handleCloseFollow = () => {
-    setPayStripe(false);
     dispatch(SetBuyData({ modal: false, checkout: false, buyModal: false }));
+    setPayStripe(false);
   };
 
   useEffect(() => {
@@ -113,7 +115,7 @@ const XummBuy = (props) => {
   };
 
   const EthMetaBuy = async (qty) => {
-    dispatch(SetBuyData({ modal: false, checkout: false, buyModal: false }));
+    dispatch(SetBuyData({ modal: false, checkout: false, buyModal: false, stripe: false }));
 
     dispatch(
       SetFollowrData({
@@ -162,7 +164,7 @@ const XummBuy = (props) => {
     if (!balance) {
       return;
     }
- 
+
     const curErc20Balance = await Erc20Balance(
       process.env.REACT_APP_WETHADDRESS,
       18,
@@ -208,27 +210,6 @@ const XummBuy = (props) => {
         // );
         // Data.collection_type ? `0x3B5034A11716acd1b2119F9B626CF0B80d3b769E` :
       } else {
-        // console.log(Data);
-        // console.log({
-        //     cretor_wallet_address: Data.cretor_wallet_address,
-        //     Data.collection_type,
-        //     Data.collection_type ? process.env.REACT_APP_CONTRACT_ADDRESS_ERC721 : process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155,
-        //     Data.token,
-        //     Data.sign_instant_sale_price,
-        //     Data.no_of_copies,
-        //     total,
-        //     process.env.REACT_APP_WETHADDRESS,
-        //     18,
-        //     Data._id,
-        //     address,
-        //     Data.Royality,
-        //     provider,
-        //     signer,
-        //     'abcde',
-        //     Data.is_eth_payment
-        // });
-        // return;
-
         dispatch(
           buyAsset(
             Data.cretor_wallet_address,
@@ -250,7 +231,8 @@ const XummBuy = (props) => {
             "abcde",
             _id,
             Data.is_eth_payment,
-            Data
+            Data,
+            navigate
           )
         );
       }
@@ -260,7 +242,7 @@ const XummBuy = (props) => {
   };
 
   const XummBuyXrp = async () => {
-    dispatch(SetBuyData({ modal: false, checkout: false, buyModal: false }));
+    dispatch(SetBuyData({ modal: false, checkout: false, buyModal: false, stripe: false }));
 
     dispatch(
       SetFollowrData({
@@ -443,14 +425,14 @@ const XummBuy = (props) => {
   };
 
   const BuyModalFun = () => {
-    dispatch(SetBuyData({ modal: true, checkout: false, buyModal: true }));
+    dispatch(SetBuyData({ modal: true, checkout: false, buyModal: true, stripe: false }));
   };
 
   const buyPurchase = (e) => {
     e.preventDefault();
-    dispatch(SetBuyData({ modal: false, checkout: true, buyModal: false }));
-    return;
-    setPayStripe(true);
+    dispatch(SetBuyData({ modal: false, checkout: true, buyModal: false, stripe: true }));
+    // return;
+    // setPayStripe(true);
   };
 
   return (
@@ -465,7 +447,7 @@ const XummBuy = (props) => {
         <form>
           <div className="pop_content">
             <div className="close-button" onClick={handleCloseFollow}>
-              <a onClick={buyPurchase} href="!#">
+              <a onClick={(e) => e.preventDefault()} href="!#">
                 <img alt="" src="/images/cross-button.svg" />
               </a>
             </div>
