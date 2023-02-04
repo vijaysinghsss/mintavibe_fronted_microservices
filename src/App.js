@@ -33,7 +33,6 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import SubscriptionPopup from "./components/PopUp/SubscriptionPopup";
 import "./App.css";
 import "./darkTheme.css"
-import Celebrity from "./pages/Celebrity";
 import BlogPage from "./pages/BlogPage";
 import BlogDetails from "./pages/BlogDetails";
 import Celebrity from "./components/Celebrity/Celebrity";
