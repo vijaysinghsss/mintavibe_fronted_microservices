@@ -251,7 +251,7 @@ function ProfileSetting() {
                         walletAddress.slice(address?.length - 4)}
                   </p>
                   <span>
-                    <img alt="" src="/images/wallet-icon.svg" />{" "}
+                    <img alt="" src="/images/wallet-icon.png" />{" "}
                     {address
                       ? address?.slice(0, 4) +
                         "...." +

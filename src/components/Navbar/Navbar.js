@@ -269,7 +269,7 @@ function Navbar() {
                                     <div className="user-icon-box">
                                       <img
                                         alt=""
-                                        src="/images/profile-iocn.svg"
+                                        src="/images/profile-iocn.png"
                                       />
                                     </div>
                                     <p>Profile</p>
@@ -283,7 +283,7 @@ function Navbar() {
                                     <div className="user-icon-box">
                                       <img
                                         alt=""
-                                        src="/images/settings-icon.svg"
+                                        src="/images/settings-icon.png"
                                       />
                                     </div>
                                     <p>LogOut</p>
@@ -293,7 +293,7 @@ function Navbar() {
                             }
                             <li>
                               <Link onClick={handleShow}>
-                                <img src="/images/nav-wallet.svg" alt="" />
+                                <img src="/images/nav-wallet.png" alt="" />
                               </Link>
                               <Offcanvas
                                 show={show}
@@ -311,7 +311,7 @@ function Navbar() {
                               </Offcanvas>
                             </li>
                             <li>
-                              <img src="/images/notice-icon.svg" alt="" />
+                              <img src="/images/notice-icon.png" alt="" />
                             </li>
                           </>
                         )}
