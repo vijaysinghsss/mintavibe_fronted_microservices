@@ -63,17 +63,16 @@ const Home = () => {
     }
     setShowCreatePopup(true);
   };
-
+console.log(CreatorCategory,"CreatorCategory");
   return (
     <>
       {showPopup && <OpenModal />}
 
       <section className="videoBox">
-
-<video autoPlay controls loop controlsList="nodownload">
-  <source src="../images/Mintavibe-Landing-Page.mp4" type="video/mp4" />
-  <source src="../images/Mintavibe-Landing-Page.ogg" type="video/ogg" />
-</video> 
+        <video autoPlay controls loop controlsList="nodownload">
+          <source src="../images/Mintavibe-Landing-Page.mp4" type="video/mp4" />
+          <source src="../images/Mintavibe-Landing-Page.ogg" type="video/ogg" />
+        </video>
 
         {/* <img className="img-fluid" src="../images/video-23.jpg" /> */}
       </section>
@@ -146,46 +145,55 @@ const Home = () => {
             <div className="col-md-10">
               <div className="celebrityDtl">
                 <div className="row align-items-center justify-content-around">
-                    <div className="col-md-5">
-                      <div className="countDown">
-                        <CountdownTimerHome targetDate={new Date("04/03/2023")}  />                       
-                      </div>
-                      <figure>
-                        <Link to={"/celebrity/Anupam_Kher"}>
-                          <img src="../images/anupam-kher-nft.png" className="img-fluid" />
-                        </Link>
-                      </figure>
-                      <div className="figCaption">
-                        <h3>Mr. Kher in his</h3>
-                        <h3>Be Brave like Bittu Collection</h3>
-                        <p>
-                          Insight into his world, his projects, side initiatives.
-                          Chance to intract directly and be truely a part of his
-                          world.
-                        </p>
-                        {/* <div className="knowMore">
+                  <div className="col-md-5">
+                    <div className="countDown">
+                      <CountdownTimerHome targetDate={new Date("04/03/2023")} />
+                    </div>
+                    <figure>
+                      <Link to={"/celebrity/Anupam_Kher"}>
+                        <img
+                          src="../images/anupam-kher-nft.png"
+                          className="img-fluid"
+                        />
+                      </Link>
+                    </figure>
+                    <div className="figCaption">
+                      <h3>Mr. Kher in his</h3>
+                      <h3>Be Brave like Bittu Collection</h3>
+                      <p>
+                        Insight into his world, his projects, side initiatives.
+                        Chance to intract directly and be truely a part of his
+                        world.
+                      </p>
+                      {/* <div className="knowMore">
                           <a href="#">Know More</a>
                           <img src="../images/sigNature.png" />
                         </div> */}
-                      </div>
                     </div>
+                  </div>
 
-                    <div className="col-md-5">
-                      <div className="countDown">
-                      <CountdownTimerHome targetDate={new Date("04/04/2023")}  />
-                      </div>
-                      <figure>
-                        <Link to={"/celebrity/Arjun_Rampal"}>
-                          <img src="../images/arjun-ram-pal-nft.png" className="img-fluid" />
-                        </Link>
-                      </figure>
-                      <div className="figCaption">
-                        <h3>Mr. Rampal</h3>
-                        <h3>Stay Fit with Arjun Rampal</h3>
-                        <p>Insight into his world, his projects, side initiatives. Chance to interact directly and be truly a part of his world.</p>
-                      </div>
+                  <div className="col-md-5">
+                    <div className="countDown">
+                      <CountdownTimerHome targetDate={new Date("04/04/2023")} />
                     </div>
-                  
+                    <figure>
+                      <Link to={"/celebrity/Arjun_Rampal"}>
+                        <img
+                          src="../images/arjun-ram-pal-nft.png"
+                          className="img-fluid"
+                        />
+                      </Link>
+                    </figure>
+                    <div className="figCaption">
+                      <h3>Mr. Rampal</h3>
+                      <h3>Stay Fit with Arjun Rampal</h3>
+                      <p>
+                        Insight into his world, his projects, side initiatives.
+                        Chance to interact directly and be truly a part of his
+                        world.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -389,9 +397,14 @@ const Home = () => {
             <div className="col-md-12">
               <div className="text-center">
                 <h3>How to create your wallet</h3>
-                <p>A crypto wallet is a device designed to store and transfer your cryptocurrency through what's called self-custody.
-                  That means instead of going through a third party, like a bank or financial institution,
-                  you're able to store your crypto on the blockchain and access it using a private key (more on that later).</p>
+                <p>
+                  A crypto wallet is a device designed to store and transfer
+                  your cryptocurrency through what's called self-custody. That
+                  means instead of going through a third party, like a bank or
+                  financial institution, you're able to store your crypto on the
+                  blockchain and access it using a private key (more on that
+                  later).
+                </p>
               </div>
             </div>
           </div>

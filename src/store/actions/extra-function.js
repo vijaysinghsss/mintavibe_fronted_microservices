@@ -623,6 +623,8 @@ export const buyAsset =
 
 
 
+
+
         let { Contract_sign_nonce, Contract_sign_address } = await getContractSignNonce(collectionId);
 
         let supply = 1;
@@ -727,12 +729,20 @@ export const buyAsset =
               i++;
             }
           }
-
+          let contract1155 = {};
+          if (!Contrat_type) {
+            contract1155 = await fetchContract(
+              process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155,
+              "nft1155",
+              provider,
+              signer
+            );
+          }
           await API({
             url: `${apiURl.NftMulti}`,
             method: "POST",
             body: {
-              no_of_copies: parseInt(await contract.balanceOf(account, tokenId)),
+              no_of_copies: parseInt(no_of_copies),
               owner_id: UserID,
               owner_address: account,
               transaction_hash: receipt?.transactionHash || "",
@@ -766,13 +776,13 @@ export const buyAsset =
               Status: false,
             }));
             nftObject["available_copies"] = 0;
-            nftObject["own_copies"] = parseInt(await contract.balanceOf(Owner_address, tokenId));
+            nftObject["own_copies"] = no_of_copies;
           } else {
             await API({
               url: `${apiURl.newCollwction}/${collectionId}`,
               method: "POST",
               body: {
-                no_of_copies: parseInt(await contract.balanceOf(account, tokenId)),
+                no_of_copies: parseInt(await contract1155.balanceOf(account, tokenId)),
                 owner_id: UserID,
                 owner_address: account,
                 transaction_hash: receipt?.transactionHash || "",
