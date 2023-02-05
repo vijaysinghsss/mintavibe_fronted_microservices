@@ -32,13 +32,12 @@ import ContactUs from "./components/ContactUs/ContactUs";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import SubscriptionPopup from "./components/PopUp/SubscriptionPopup";
 import "./App.css";
-import "./darkTheme.css"
+import "./darkTheme.css";
 import BlogPage from "./pages/BlogPage";
 import BlogDetails from "./pages/BlogDetails";
 import Celebrity from "./components/Celebrity/Celebrity";
 
 const socket = io.connect(process.env.REACT_APP_BACKENDURL);
-
 
 function App() {
   const { address, provider, activeProvider } = useWeb3();
@@ -91,13 +90,18 @@ function App() {
     Promise.all([
       API({ method: "GET", url: apiURl.CuratedNft }),
       API({ method: "GET", url: apiURl.TrendingNft }),
-      API({ method: "GET", url: apiURl.GetCategory }),
+      loginUserData?.id &&
+        API({
+          method: "GET",
+          url: `${apiURl.GetCategory}/${loginUserData?.id}`,
+        }),
       API({ method: "GET", url: apiURl.CreatorList + "?sex=F" }),
       API({ method: "GET", url: apiURl.CreatorList + "?sex=other" }),
       API({ method: "GET", url: apiURl.GetCreatorCategory }),
       API({ method: "GET", url: apiURl.CreatorList + "?sex=other" }),
     ])
       .then((values) => {
+        console.log(values, "vl");
         try {
           const [
             CuratedNft,
@@ -150,7 +154,7 @@ function App() {
       setIsMounted(false);
     };
   }, []);
- 
+
   return (
     <BrowserRouter>
       {/* {isMounted &&
@@ -166,7 +170,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/celebrity/:celeName"  element={<Celebrity />} />
+          <Route path="/celebrity/:celeName" element={<Celebrity />} />
           <Route path="/about" element={<AboutUs />} />
           {/* <Route path="/blogs" element={<Blogs />} /> */}
           <Route path="/blogs" element={<BlogPage />} />
@@ -181,11 +185,14 @@ function App() {
           <Route path="/collections/:id" element={<NftDetails />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/create/:title" element={<FormPage />} />
-          
+
           {loginUserData?.id ? (
             <>
               <Route path="/profile" element={<EditProfile />} />
-              <Route path="/profile/edit/:userId" element={<ProfileSetting />} />
+              <Route
+                path="/profile/edit/:userId"
+                element={<ProfileSetting />}
+              />
             </>
           ) : null}
 
