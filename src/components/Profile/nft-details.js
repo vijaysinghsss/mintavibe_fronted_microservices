@@ -1312,19 +1312,23 @@ function NftDetails() {
                     <span>Creator</span>
                   </div>
                   <div className="pro-div">
-                    <img src="/images/prfile-pic.jpg" alt="crosstower" />
+                    <img src={CollectionDetails?.creator_id?.image ? CollectionDetails?.creator_id?.image : "/images/prfile-pic.jpg"} alt="crosstower" />
                   </div>
 
                   <div className="user-detail">
-                    <p>
-                      {(CollectionDetails?.cretor_wallet_address || "")?.slice(
-                        0,
-                        4
-                      ) +
-                        "..." +
-                        (CollectionDetails?.cretor_wallet_address || "")?.slice(
-                          (CollectionDetails?.cretor_wallet_address || "")
-                            .length - 4
+                    <p title={(CollectionDetails?.cretor_wallet_address || "")}>
+
+                      {CollectionDetails?.creator_id?.Name ?
+                        CollectionDetails?.creator_id?.Name
+                        : (
+                          (CollectionDetails?.cretor_wallet_address || "")?.slice(
+                            0,
+                            4
+                          ) +
+                          "..." +
+                          (
+                            CollectionDetails?.cretor_wallet_address || ""
+                          ).slice(-4)
                         )}
                     </p>
                   </div>
