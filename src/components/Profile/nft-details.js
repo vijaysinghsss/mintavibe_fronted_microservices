@@ -1312,7 +1312,8 @@ function NftDetails() {
                     <span>Creator</span>
                   </div>
                   <div className="pro-div">
-                    <img src={CollectionDetails?.creator_id?.image ? CollectionDetails?.creator_id?.image : "/images/prfile-pic.jpg"} alt="crosstower" />
+                    <img src={CollectionDetails?.creator_id?.image ? process.env.REACT_APP_BACKENDURL +
+                      "/" + CollectionDetails?.creator_id?.image : "/images/prfile-pic.jpg"} alt="crosstower" />
                   </div>
 
                   <div className="user-detail">

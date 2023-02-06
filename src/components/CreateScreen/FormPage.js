@@ -20,7 +20,10 @@ export default function FormPage() {
   const { signer, _id, type } = useSelector((state) => state.User.data);
 
   const { userToken = false, walletAddress } = useSelector((state) => state.User.xumm);
+
   const { id: User_Id = false } = useSelector((state) => state.authUser.loginUserData);
+
+  const { socket } = useSelector((state) => state.Socket);
 
   const { title } = useParams();
 
@@ -182,7 +185,18 @@ export default function FormPage() {
             if (collection_type) {
               dataResult = await xummWalletSign(data.Data);
             } else {
-              dataResult = await xummSetMinter(data.Data);
+              socket.emit('batch-minting',
+                {
+                  NoOfCopies: parseInt(data.Data.no_of_copies),
+                  taxon: data.Data.randomValue,
+                  _id: data.Data._id
+                },
+                {
+                  classicAddress: walletAddress,
+                  user_token: userToken
+                });
+
+              navigate(`/collections/${data.Data._id}`);
             }
           }
 
