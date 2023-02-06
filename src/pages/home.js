@@ -17,6 +17,11 @@ import Wallet from "../components/Navbar/Wallet";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Subscribe from "./Subscribe";
 import CountdownTimerHome from "./CountdownTimerHome";
+import { API } from "../apiwrapper";
+import { apiURl } from "../store/actions";
+import { toast } from "react-toastify";
+import { BASECONFIG } from "../config";
+import moment from "moment";
 
 const Home = () => {
   const {
@@ -33,6 +38,7 @@ const Home = () => {
   const { address, disconnectWallet, error } = useWeb3();
   const [show, setShow] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [celeData, setCeleData] = useState([]);
 
   const { loginUserData = {} } = useSelector((state) => state.authUser);
   const { User } = useSelector((state) => state);
@@ -63,7 +69,23 @@ const Home = () => {
     }
     setShowCreatePopup(true);
   };
-console.log(CreatorCategory,"CreatorCategory");
+  const handleCategory = async (id) => {
+    try {
+      await API({
+        url: `${apiURl.celebdata}/${id}`,
+        method: "GET",
+      }).then((data) => {
+        if (data?.status || data?.status === "true") {
+          setCeleData(data?.response || []);
+        }
+        console.log(data, "celebdata");
+      });
+    } catch (error) {
+      console.log(error);
+      toast(`Something Wrong.`, { type: "error" });
+    }
+  };
+
   return (
     <>
       {showPopup && <OpenModal />}
@@ -132,8 +154,17 @@ console.log(CreatorCategory,"CreatorCategory");
               <div className="flex-container">
                 {CreatorCategory?.length > 0 &&
                   CreatorCategory?.map((ele) => (
-                    <div className="tabsection button1" key={ele._id}>
-                      <img src="../images/moviesLogo.png" alt="" />
+                    <div
+                      className="tabsection button1"
+                      key={ele._id}
+                      onClick={() => handleCategory(ele._id)}
+                    >
+                      <img
+                        src={`${BASECONFIG.BASE_URL}/${ele.image}`}
+                        width={50}
+                        height={50}
+                        alt=""
+                      />
                       <span className="right">{ele.Creatorname}</span>
                     </div>
                   ))}
@@ -145,7 +176,35 @@ console.log(CreatorCategory,"CreatorCategory");
             <div className="col-md-10">
               <div className="celebrityDtl">
                 <div className="row align-items-center justify-content-around">
-                  <div className="col-md-5">
+                  {celeData.length > 0 &&
+                    celeData?.map((cele) => (
+                      <>
+                        <div className="col-md-5 h-100">
+                          <div className="countDown">
+                            <CountdownTimerHome
+                              targetDate={moment(cele.Start_time).format(
+                                "MM/DD/YYYY"
+                              )}
+                            />
+                          </div>
+                          <figure>
+                            <Link to={`/${cele.Creator_type?.Creatorname}/${cele.Slug}`}>
+                              <img
+                                src={`${BASECONFIG.BASE_URL}/${cele.image}`}
+                                className="img-fluid"
+                              />
+                            </Link>
+                          </figure>
+                          <div className="figCaption">
+                            <h3>{cele.Title}</h3>
+
+                            <p>{cele.Description}</p>
+                          </div>
+                        </div>
+                      </>
+                    ))}
+
+                  {/* <div className="col-md-5">
                     <div className="countDown">
                       <CountdownTimerHome targetDate={new Date("04/03/2023")} />
                     </div>
@@ -165,13 +224,10 @@ console.log(CreatorCategory,"CreatorCategory");
                         Chance to intract directly and be truely a part of his
                         world.
                       </p>
-                      {/* <div className="knowMore">
-                          <a href="#">Know More</a>
-                          <img src="../images/sigNature.png" />
-                        </div> */}
-                    </div>
-                  </div>
 
+                    </div>
+                  </div> */}
+                  {/* 
                   <div className="col-md-5">
                     <div className="countDown">
                       <CountdownTimerHome targetDate={new Date("04/04/2023")} />
@@ -193,7 +249,7 @@ console.log(CreatorCategory,"CreatorCategory");
                         world.
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

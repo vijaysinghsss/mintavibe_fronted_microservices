@@ -4,11 +4,11 @@ import AnupamKher from "./AnupamKher";
 import ArjunRampal from "./ArjunRampal";
 
 function Celebrity() {
-  const { celeName } = useParams();
+  const { Creatorname,Slug } = useParams();
   return (
     <>
-      {celeName === "Anupam_Kher" && <AnupamKher />}
-      {celeName === "Arjun_Rampal" && <ArjunRampal />}
+      {Slug === "Anupam-Kher" && <AnupamKher />}
+      {Slug === "Arjun-Rampal" && <ArjunRampal />}
     </>
   );
 }
