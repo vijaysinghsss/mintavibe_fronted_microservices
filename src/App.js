@@ -170,7 +170,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/celebrity/:celeName" element={<Celebrity />} />
+          <Route path="/:Creatorname/:Slug" element={<Celebrity />} />
           <Route path="/about" element={<AboutUs />} />
           {/* <Route path="/blogs" element={<Blogs />} /> */}
           <Route path="/blogs" element={<BlogPage />} />

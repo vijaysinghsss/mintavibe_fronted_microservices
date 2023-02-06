@@ -50,8 +50,8 @@ const apiURl = {
   blogs:"/blog",
   allowners: "/allowners",
   ErrorData: "/errordata",
-  helpmail: '/helpmail'
-
+  helpmail: '/helpmail',
+  celebdata:"/celebdata"
 };
 
 export const NotificationMsg = {
