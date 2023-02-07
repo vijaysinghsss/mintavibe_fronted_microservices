@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { API } from "../apiwrapper";
+import Thanks from "../components/PopUp/Thanks";
 import { apiURl } from "../store/actions";
 import { isValid, validateEmail } from "../Validation/InputValidation";
 
@@ -11,6 +12,7 @@ function Subscribe() {
   const [errors, setErrors] = useState({});
   const [apiErrors, setApiErrors] = useState({ message: "", response: "" });
   const { subscriber } = inpData;
+  const [showPopup, setshowPopup] = useState(false);
 
   const handleChange = (e) => {
     setInpData({ ...inpData, [e.target.name]: e.target.value });
@@ -45,10 +47,8 @@ function Subscribe() {
           formData: false,
         }).then((data) => {
           if (data?.status || data?.status === "true") {
-            toast(`${data?.message}`, { type: "success" });
+            setshowPopup(true);
             setInpData({ subscriber: "" });
-          } else {
-            setApiErrors({ message: data?.message });
           }
         });
       } else {
@@ -58,8 +58,12 @@ function Subscribe() {
       setApiErrors({ message: error });
     }
   };
+  const handleClosePopup = () => {
+    setshowPopup(false);
+  };
   return (
     <>
+      {showPopup && <Thanks show={showPopup} close={handleClosePopup} />}
       <section className="subsScribe">
         <div className="container">
           <div className="row">

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { API } from "../apiwrapper";
+import Thanks from "../components/PopUp/Thanks";
 import { apiURl } from "../store/actions";
 import { isValid, validateEmail } from "../Validation/InputValidation";
 
@@ -11,6 +12,7 @@ function SubscribeBox() {
   const [errors, setErrors] = useState({});
   const [apiErrors, setApiErrors] = useState({ message: "", response: "" });
   const { subscriber } = inpData;
+  const [showPopup, setshowPopup] = useState(false);
 
   const handleChange = (e) => {
     setInpData({ ...inpData, [e.target.name]: e.target.value });
@@ -45,11 +47,9 @@ function SubscribeBox() {
           formData: false,
         }).then((data) => {
           if (data?.status || data?.status === "true") {
-            toast(`${data?.message}`, { type: "success" });
+            setshowPopup(true);
             setInpData({ subscriber: "" });
-          } else {
-            setApiErrors({ message: data?.message });
-          }
+          } 
         });
       } else {
         setErrors(err);
@@ -58,7 +58,13 @@ function SubscribeBox() {
       setApiErrors({ message: error });
     }
   };
+  const handleClosePopup = () => {
+    setshowPopup(false);
+  };
   return (
+    <>
+    {showPopup && <Thanks show={showPopup} close={handleClosePopup} />}
+
     <div className="newsletter-box">
       <h4>Be Informed On Our Next NFTs</h4>
       <p style={{ maxWidth: "320px", margin: "0 auto" }}>
@@ -99,6 +105,7 @@ function SubscribeBox() {
         ""
       )}
     </div>
+    </>
   );
 }
 
