@@ -353,7 +353,7 @@ body {
 }
 
 .flex-container>.tabsection span.right {
-  padding-left: 21px;
+  padding-left: 11px;
   opacity: .5;
 }
 
@@ -396,6 +396,8 @@ body {
   margin: 0;
   padding: 0 25px;
 }
+
+.celebrityDtl figure a img{width:100%; height:400px; object-fit: cover;}
 
 .celebrityDtl .knowMore {
   display: flex;

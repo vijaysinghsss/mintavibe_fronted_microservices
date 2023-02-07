@@ -158,7 +158,8 @@ const Home = () => {
 
           <div className="row mt-4">
             <div className="col-md-12">
-              <div className="flex-container">
+            <div className="crtNftScroll">
+              <div className="flex-container flex-wrap">
                 {CreatorCategory?.length > 0 &&
                   CreatorCategory?.map((ele) => (
                     <div
@@ -176,6 +177,7 @@ const Home = () => {
                     </div>
                   ))}
               </div>
+              </div>
             </div>
           </div>
 
@@ -189,16 +191,13 @@ const Home = () => {
                         <div className="col-md-5 h-100">
                           <div className="countDown">
                             <CountdownTimerHome
-                              targetDate={moment(cele.Start_time).format(
-                                "MM/DD/YYYY"
-                              )}
+                              targetDate={cele.Start_time}
                             />
                           </div>
                           <figure>
                             <Link to={`/${CreatorCategory.find((value) => value._id === cele.Creator_type)?.Creatorname || 'Unknown'}/${cele.Slug}`}>
                               <img
                                 src={`${BASECONFIG.BASE_URL}/${cele.image}`}
-                                className="img-fluid"
                                 alt="Crosstower"
                               />
                             </Link>
