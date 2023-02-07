@@ -50,6 +50,12 @@ const Home = () => {
     dispatch(SetpopupReducerData({ modalType: "LOGIN", showModal: true }));
     setShowPopup(true);
   };
+
+  useEffect(() => {
+    handleCategory(`63de9ea797b00d09dd0e2ac7`);
+  }, [])
+
+
   const handleShowCreatePopup = (e) => {
     console.log(e);
     e.preventDefault();
@@ -75,6 +81,7 @@ const Home = () => {
         url: `${apiURl.celebdata}/${id}`,
         method: "GET",
       }).then((data) => {
+        console.log('data', data);
         if (data?.status || data?.status === "true") {
           setCeleData(data?.response || []);
         }
@@ -155,7 +162,7 @@ const Home = () => {
                 {CreatorCategory?.length > 0 &&
                   CreatorCategory?.map((ele) => (
                     <div
-                      className="tabsection button1"
+                      className={`tabsection ${(ele.comming_soon ? 'tabsection1' : '')} button1`}
                       key={ele._id}
                       onClick={() => handleCategory(ele._id)}
                     >
@@ -188,10 +195,11 @@ const Home = () => {
                             />
                           </div>
                           <figure>
-                            <Link to={`/${cele.Creator_type?.Creatorname}/${cele.Slug}`}>
+                            <Link to={`/${CreatorCategory.find((value) => value._id === cele.Creator_type)?.Creatorname || 'Unknown'}/${cele.Slug}`}>
                               <img
                                 src={`${BASECONFIG.BASE_URL}/${cele.image}`}
                                 className="img-fluid"
+                                alt="Crosstower"
                               />
                             </Link>
                           </figure>

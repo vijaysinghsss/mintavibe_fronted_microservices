@@ -45,7 +45,9 @@ function App() {
   const { SubscriptionUser } = useSelector((state) => state);
 
   const { Theme } = useSelector((state) => state);
+
   const [isMounted, setIsMounted] = useState(false);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -91,10 +93,10 @@ function App() {
       API({ method: "GET", url: apiURl.CuratedNft }),
       API({ method: "GET", url: apiURl.TrendingNft }),
       loginUserData?.id &&
-        API({
-          method: "GET",
-          url: `${apiURl.GetCategory}/${loginUserData?.id}`,
-        }),
+      API({
+        method: "GET",
+        url: `${apiURl.GetCategory}/${loginUserData?.id}`,
+      }),
       API({ method: "GET", url: apiURl.CreatorList + "?sex=F" }),
       API({ method: "GET", url: apiURl.CreatorList + "?sex=other" }),
       API({ method: "GET", url: apiURl.GetCreatorCategory }),

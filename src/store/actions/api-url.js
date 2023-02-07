@@ -40,18 +40,19 @@ const apiURl = {
   profileFollowing: "/totalfollowing",
   Bid: "/bid",
   customerdata: "/customerdata",
+  categorydata: '/categorydata',
   // TrendingNft: '/trendingnft',
   // TrendingNft: '/trendingnft',
   filterData: "/allNftList",
   artist: "/artist",
   userprofilefilter: "/userprofilefilter",
   activity: "/activity",
-  subscribe:"/subscribe",
-  blogs:"/blog",
+  subscribe: "/subscribe",
+  blogs: "/blog",
   allowners: "/allowners",
   ErrorData: "/errordata",
   helpmail: '/helpmail',
-  celebdata:"/celebdata"
+  celebdata: "/celebdata"
 };
 
 export const NotificationMsg = {
