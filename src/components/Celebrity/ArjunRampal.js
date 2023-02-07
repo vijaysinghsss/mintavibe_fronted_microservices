@@ -19,12 +19,11 @@ import Subscribe from "../../pages/Subscribe";
 import { apiURl } from "../../store/actions";
 import { API } from "../../apiwrapper";
 
-
 function ArjunRampal() {
   const { CuratedNft, TrendingNft, bipoc, femalecreator, lgbtq } = useSelector(
     (state) => state.Slider
   );
-  const { Creatorname, Slug } = useParams()
+  const { Creatorname, Slug } = useParams();
   const [text, setText] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,7 +36,9 @@ function ArjunRampal() {
   const { image = null, _id = false, type = false } = User?.data;
   const [showCreatePopup, setShowCreatePopup] = useState(false);
   const [categoryList, setcategoryList] = useState([]);
-  const [NftListAccording, setNftListAccording] = useState([])
+  const [NftListAccording, setNftListAccording] = useState([]);
+  const [banerList, setBanerList] = useState([]);
+
   const handleCloseCreatePopup = () => setShowCreatePopup(false);
 
   const handleShow = () => setShow(!show);
@@ -66,35 +67,50 @@ function ArjunRampal() {
   };
 
   useEffect(() => {
-    API({ url: `${apiURl.categorydata}/${Slug}`, method: 'GET' }).then((data) => data).then((data) => {
-      if (data.status) {
-        setcategoryList(data.data?.allCategory || [])
-      }
-    })
+    API({ url: `${apiURl.categorydata}/${Slug}`, method: "GET" })
+      .then((data) => data)
+      .then((data) => {
+        if (data.status) {
+          setcategoryList(data.data?.allCategory || []);
+        }
+      });
   }, [Slug]);
 
   useEffect(() => {
     if (categoryList.length) {
       Promise.all(
-        categoryList.map((value) => API({ url: `${apiURl.GetCollections}/${Slug}/${value._id}`, method: 'GET' }).then((data) => data))
+        categoryList.map((value) =>
+          API({
+            url: `${apiURl.GetCollections}/${Slug}/${value._id}`,
+            method: "GET",
+          }).then((data) => data)
+        )
       ).then((values) => {
         let dataArray = [];
         values.map((data) => {
-          dataArray[data.collection_id] = Array.isArray(data.response) ? data.response : []
+          dataArray[data.collection_id] = Array.isArray(data.response)
+            ? data.response
+            : [];
         });
-
         setNftListAccording(dataArray);
-
-      })
+      });
     }
-  }, [Slug, categoryList])
+  }, [Slug, categoryList]);
+  useEffect(() => {
+    let arr = categoryList?.map((item) => {
+      return (
+        Array.isArray(NftListAccording[item?._id]) &&
+        NftListAccording[item?._id]?.[0]
+      );
+    });
+    setBanerList(arr);
+  }, [NftListAccording]);
 
   return (
     <div>
       <section className="clbrtBanner">
         <Container>
           <Row className="align-items-center justify-content-center">
-
             <Col md={5}>
               <SliderParent
                 className={`bnrSlider`}
@@ -117,12 +133,27 @@ function ArjunRampal() {
                 heartClass="fa, .fas"
                 searchClass="search-section.input-group"
               >
-                {HomeSlider.map(({ image, text, id }, index) => (
-                  <div key={index} onClick={() => setText(id)}>
+                {banerList.map(({ image, text, id, Nftname }, index) => (
+                  <div
+                    key={index}
+                    onClick={() => setText(id)}
+                    className="nft-box-img-box"
+                  >
                     <a href={`#${id}`}>
-                      <img src="../images/banner-arjun-rampal.png" />
-                      {/* <img src={image?image:"/images/Art1.jpg"} alt="crosstower" /> */}
-                      {/* <h2>{text}</h2> */}
+                      <img
+                        src={
+                          `${process.env.REACT_APP_BACKENDURL}/${image}` ||
+                          "../images/banner-arjun-rampal.png"
+                        }
+                        alt="arjun_img"
+                        
+                      />
+
+                      <h2>
+                        {Nftname.length < 20
+                          ? Nftname
+                          : Nftname.substr(0, 14) + "...."}
+                      </h2>
                     </a>
                   </div>
                 ))}
@@ -131,10 +162,12 @@ function ArjunRampal() {
 
             <Col md={6}>
               <h1>NFT'S Of Your Favourite Celebrities</h1>
-              <p>MintAVibe has an exclusive collection of digital collectibles of your favourite celebrities in one place.</p>
+              <p>
+                MintAVibe has an exclusive collection of digital collectibles of
+                your favourite celebrities in one place.
+              </p>
               <button>Chance to Meet</button>
             </Col>
-
           </Row>
         </Container>
       </section>
@@ -149,11 +182,17 @@ function ArjunRampal() {
               <div className="abtCelebt">
                 <h3>Drop 1: Three Editions</h3>
                 <h4>About Collection</h4>
-
-                This is a chance to engage with Mr. Rampal in his “Be Brave like RockOn” collection.<br /><br />
-                With the purchase of this NFT the holders will collect his RockOn mascot NFTs which will have different traits unlocking benefits to fans.<br /><br />
-                Insight into his world, his projects, side initiatives. Chance to interact directly and be truly a part of his world.
-
+                This is a chance to engage with Mr. Rampal in his “Be Brave like
+                RockOn” collection.
+                <br />
+                <br />
+                With the purchase of this NFT the holders will collect his
+                RockOn mascot NFTs which will have different traits unlocking
+                benefits to fans.
+                <br />
+                <br />
+                Insight into his world, his projects, side initiatives. Chance
+                to interact directly and be truly a part of his world.
                 <div className="editionSection mt-5">
                   <div>
                     <p>Edition</p>
@@ -167,98 +206,96 @@ function ArjunRampal() {
       </section>
 
       {categoryList.map((item) => {
+        return (
+          <section className="comanNftSec coffeeLigh">
+            <div className="container">
+              <div className="row">
+                <div className="col-xl-12">
+                  <h2>{item?.Categoryname}</h2>
 
-
-
-
-        return (<section className="comanNftSec coffeeLigh">
-          <div className="container">
-            <div className="row">
-              <div className="col-xl-12">
-                <h2>{item?.Categoryname}</h2>
-
-                <SliderParent
-                  className={`top`}
-                  autoplay={true}
-                  draggable={true}
-                  arrows={true}
-                  dots={false}
-                  infinite={false}
-                  speed={300}
-                  swipeToSlide={true}
-                  slidesToShow={4}
-                  slidesToScroll={4}
-                  responsive={[
-                    {
-                      breakpoint: 1113,
-                      settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,
-                        infinite: true,
-                        dots: true,
+                  <SliderParent
+                    className={`top`}
+                    autoplay={true}
+                    draggable={true}
+                    arrows={true}
+                    dots={false}
+                    infinite={false}
+                    speed={300}
+                    swipeToSlide={true}
+                    slidesToShow={4}
+                    slidesToScroll={4}
+                    responsive={[
+                      {
+                        breakpoint: 1113,
+                        settings: {
+                          slidesToShow: 3,
+                          slidesToScroll: 3,
+                          infinite: true,
+                          dots: true,
+                        },
                       },
-                    },
-                    {
-                      breakpoint: 1113,
-                      settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,
-                        infinite: true,
-                        dots: true,
+                      {
+                        breakpoint: 1113,
+                        settings: {
+                          slidesToShow: 3,
+                          slidesToScroll: 3,
+                          infinite: true,
+                          dots: true,
+                        },
                       },
-                    },
-                    {
-                      breakpoint: 1024,
-                      settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                        infinite: true,
-                        dots: true,
+                      {
+                        breakpoint: 1024,
+                        settings: {
+                          slidesToShow: 2,
+                          slidesToScroll: 2,
+                          infinite: true,
+                          dots: true,
+                        },
                       },
-                    },
-                    {
-                      breakpoint: 600,
-                      settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
+                      {
+                        breakpoint: 600,
+                        settings: {
+                          slidesToShow: 1,
+                          slidesToScroll: 1,
+                        },
                       },
-                    },
-                    {
-                      breakpoint: 480,
-                      settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
+                      {
+                        breakpoint: 480,
+                        settings: {
+                          slidesToShow: 1,
+                          slidesToScroll: 1,
+                        },
                       },
-                    },
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
-                  ]}
-                >
-                  {Array.isArray(NftListAccording[item?._id]) && NftListAccording[item?._id].length ? (
-                    NftListAccording[item?._id].map((value, index) => (
-                      <Card key={index} {...value} />
-                    ))
-                  ) : (
-                    <div className="no-details">
-                      <img
-                        src="https://nft.crosstower.com/assets/no_data.png"
-                        className="img-responsive"
-                        alt=""
-                        width={`100%`}
-                      />
-                    </div>
-                  )}
-                </SliderParent>
+                      // You can unslick at a given breakpoint now by adding:
+                      // settings: "unslick"
+                      // instead of a settings object
+                    ]}
+                  >
+                    {Array.isArray(NftListAccording[item?._id]) &&
+                    NftListAccording[item?._id].length ? (
+                      NftListAccording[item?._id].map((value, index) => (
+                        <Card key={index} {...value} />
+                      ))
+                    ) : (
+                      <div className="no-details">
+                        <img
+                          src="https://nft.crosstower.com/assets/no_data.png"
+                          className="img-responsive"
+                          alt=""
+                          width={`100%`}
+                        />
+                      </div>
+                    )}
+                  </SliderParent>
 
-                <div className="text-center mt-4">
-                  <a className="viewMore">View More</a>
+                  <div className="text-center mt-4">
+                    <a className="viewMore">View More</a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-        )
+          </section>
+        );
       })}
 
       {/* <section className="comanNftSec coffeeLigh">

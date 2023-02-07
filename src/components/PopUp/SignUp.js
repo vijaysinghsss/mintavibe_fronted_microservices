@@ -375,7 +375,7 @@ function SignUp() {
                   />
                   <span style={{ fontSize: "12px" }}>
                     {" "}
-                    I agree to the CrossTower
+                    I agree to the mintavibe
                     <Link to={"/terms-service"} target={"_blank"}>
                       {" "}
                       Terms of Service

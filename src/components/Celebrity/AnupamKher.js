@@ -32,6 +32,7 @@ function AnupamKher() {
   const [showPopup, setShowPopup] = useState(false);
   const [categoryList, setcategoryList] = useState([]);
   const [NftListAccording, setNftListAccording] = useState([])
+  const [banerList, setBanerList] = useState([]);
 
   const { loginUserData = {} } = useSelector((state) => state.authUser);
   const { User } = useSelector((state) => state);
@@ -68,28 +69,15 @@ function AnupamKher() {
       })
     }
   }, [Slug, categoryList])
-
-
-
-  const handleShowCreatePopup = (e) => {
-    console.log(e);
-    e.preventDefault();
-    if (!loginUserData?.token) {
-      handleShowLogin();
-      return;
-    }
-    console.log(type, address, e);
-    if (type === "XUMM") {
-      navigate(`/create/One`);
-      return;
-    }
-    if (!address) {
-      handleShow();
-      // toast(NotificationMsg.NotConnect, { type: "info" });
-      return;
-    }
-    setShowCreatePopup(true);
-  };
+  useEffect(() => {
+    let arr = categoryList?.map((item) => {
+      return (
+        Array.isArray(NftListAccording[item?._id]) &&
+        NftListAccording[item?._id]?.[0]
+      );
+    });
+    setBanerList(arr);
+  }, [NftListAccording]);
 
   return (
     <div>
@@ -126,12 +114,18 @@ function AnupamKher() {
                 heartClass="fa, .fas"
                 searchClass="search-section.input-group"
               >
-                {HomeSlider.map(({ image, text, id }, index) => (
+                {banerList.map(({ image, text, id,Nftname }, index) => (
                   <div key={index} onClick={() => setText(id)}>
                     <a href={`#${id}`}>
-                      {/* <img src={image?image:"/images/Art1.jpg"} alt="crosstower" /> */}
-                      <img src="../images/anupamKhair1.png" />
-                      <h2>{text}</h2>
+                    <img
+                        src={
+                          `${process.env.REACT_APP_BACKENDURL}/${image}` ||
+                          "../images/anupamKhair1.png"
+                        }
+                        alt="anupam_img"
+                      />
+                      {/* <img src="../images/anupamKhair1.png" /> */}
+                      <h2>{Nftname.length < 20 ? Nftname : Nftname.substr(0, 14) + "...."}</h2>
                     </a>
                   </div>
                 ))}
