@@ -16,7 +16,6 @@ import { toast } from "react-toastify";
 import { NotificationMsg } from "../../store/actions/api-url";
 import { SetUserData, SetXummData } from "../../store/reducer/user";
 
-
 import SliderParent from "../Slider/index";
 
 // import SliderSection from "../SectionCard/slider-section";
@@ -113,6 +112,10 @@ function Navbar() {
     let val = themeVal === "darkTheme" ? "lightTheme" : "darkTheme";
     localStorage.setItem("Theme", val);
   };
+  const handleShowSell=()=>{
+    dispatch(SetpopupReducerData({ modalType: "SELL", showModal: true }));
+    setShowPopup(true);
+  }
   useEffect(() => {
     dispatch(SetthemeData(theme));
     document.body.className = themeVal;
@@ -126,7 +129,7 @@ function Navbar() {
           <div className="row align-items-center">
             <div className="col-lg-3">
               <NavLink index to="/" className="topLogo">
-              <img className="img-fluid" src="../images/logo.png" alt="" />
+                <img className="img-fluid" src="../images/logo.png" alt="" />
               </NavLink>
             </div>
             <div className="col-lg-9">
@@ -138,6 +141,12 @@ function Navbar() {
                         Create
                       </a>
                     </li> */}
+                    {loginUserData?.token && (
+                      <li   onClick={handleShowSell}>
+                        <NavLink to="!#">Sell</NavLink>
+                      </li>
+                    )}
+
                     <li>
                       <NavLink to="/nftlist">Collect</NavLink>
                     </li>
@@ -158,9 +167,11 @@ function Navbar() {
                         >
                           Blog
                         </NavDropdown.Item>
-                        
+
                         <NavDropdown.Item href="#">Discord</NavDropdown.Item>
-                        <NavDropdown.Item href={"/contactus"}>Contact Us</NavDropdown.Item>
+                        <NavDropdown.Item href={"/contactus"}>
+                          Contact Us
+                        </NavDropdown.Item>
 
                         {/* <NavDropdown.Item
                           onClick={(e) => {
@@ -324,25 +335,33 @@ function Navbar() {
           </div>
         </div>
 
-
         <div className="topScroll">
           <div className="container">
-              <div className="position-relative">
-                <marquee direction="left" onmouseover="this.stop();" onmouseout="this.start();">
-                  <ul>
-                    <li><i class="far fa-hand-point-right"></i> Plaksha University made its first move in Metaverse</li>
-                    <li><i class="far fa-hand-point-right"></i> ITSBLOC raised funds worth $7.5 million to build their new web 3.0 gaming platform</li>
-                  </ul>
-                </marquee>
-                <div className="rightArrow"><i class="fas fa-arrow-circle-right"></i></div>
+            <div className="position-relative">
+              <marquee
+                direction="left"
+                onmouseover="this.stop();"
+                onmouseout="this.start();"
+              >
+                <ul>
+                  <li>
+                    <i class="far fa-hand-point-right"></i> Plaksha University
+                    made its first move in Metaverse
+                  </li>
+                  <li>
+                    <i class="far fa-hand-point-right"></i> ITSBLOC raised funds
+                    worth $7.5 million to build their new web 3.0 gaming
+                    platform
+                  </li>
+                </ul>
+              </marquee>
+              <div className="rightArrow">
+                <i class="fas fa-arrow-circle-right"></i>
               </div>
+            </div>
           </div>
         </div>
       </div>
-
-
-
-
 
       <Modal
         size="lg offerPoup"
