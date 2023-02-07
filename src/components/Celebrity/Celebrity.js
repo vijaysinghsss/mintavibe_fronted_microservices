@@ -7,7 +7,7 @@ function Celebrity() {
   const { Creatorname,Slug } = useParams();
   return (
     <>
-      {Slug === "Anupam-Kher" && <AnupamKher />}
+      {Slug === "Anupam-kher" && <AnupamKher />}
       {Slug === "Arjun-Rampal" && <ArjunRampal />}
     </>
   );
