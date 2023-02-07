@@ -1,20 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Trirong:wght@400;500;600;700&display=swap");
 
-ul li{list-style:none;}
+ul li {
+  list-style: none;
+}
 
 body {
-  font-family:"Poppins", sans-serif !important;
-  font-size:18px;
-  background-color:#f4f5f9;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 18px;
+  background-color: #f4f5f9;
 }
 
-.topPading {padding-top:110px;}
+.topPading {
+  padding-top: 110px;
+}
 
 @media (min-width: 1200px) {
-  .topPading{min-height: calc(100vh - 274px);}
+  .topPading {
+    min-height: calc(100vh - 274px);
+  }
 }
 
-.nft_home{scroll-behavior:smooth;}
+.nft_home {
+  scroll-behavior: smooth;
+}
 
 .nft_landing_body {
   background: #fbfbfb 0% 0% no-repeat padding-box;
@@ -53,13 +61,23 @@ body {
 }
 
 @-webkit-keyframes gradient {
-  0% {background-position: 0%;}
-  100% {background-position: 100%;}
+  0% {
+    background-position: 0%;
+  }
+
+  100% {
+    background-position: 100%;
+  }
 }
 
 @keyframes gradient {
-  0% {background-position: 0%;}
-  100% {background-position: 100%;}
+  0% {
+    background-position: 0%;
+  }
+
+  100% {
+    background-position: 100%;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -72,140 +90,571 @@ body {
 
 /* ======================== AK PAGE ======================== */
 
-.clbrtBanner{padding:100px 0; color:#FFF; background: url(../public/images/rows-red-seats-theater.png) no-repeat center center #000; background-size: cover;}
-.clbrtBanner h1{color:#fff; font-size:38px; font-weight:bold;}
-.clbrtBanner button{color:#FFF; border:0px; border-radius:5px; padding:10px 35px; background: transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;}
+.clbrtBanner {
+  padding: 100px 0;
+  color: #FFF;
+  background: url(../public/images/rows-red-seats-theater.png) no-repeat center center #000;
+  background-size: cover;
+}
 
-.clbrtBanner .slick-dots li button:before{content:""; height:15px; width:15px; background:#000; opacity:0.8;  border:1px solid #FFF; border-radius:100%;}
-.clbrtBanner .slick-dots li.slick-active button:before{background:#FFF;}
+.clbrtBanner h1 {
+  color: #fff;
+  font-size: 38px;
+  font-weight: bold;
+}
 
-.bnrSlider{background:#ffffff 0% 0% no-repeat padding-box; box-shadow:0px 10px 20px #00000010; border-radius:12px; padding:0px; opacity:1;}
-.bnrSlider img{width:100%; border-top-left-radius:10px; border-top-right-radius:10px;}
-.bnrSlider a{text-decoration:none; text-align:center; font-size:20px; color:#000;}
-.bnrSlider h2{padding:15px 0px; margin:0px; font-weight:bold;}
+.clbrtBanner button {
+  color: #FFF;
+  border: 0px;
+  border-radius: 5px;
+  padding: 10px 35px;
+  background: transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;
+}
+
+.clbrtBanner .slick-dots li button:before {
+  content: "";
+  height: 15px;
+  width: 15px;
+  background: #000;
+  opacity: 0.8;
+  border: 1px solid #FFF;
+  border-radius: 100%;
+}
+
+.clbrtBanner .slick-dots li.slick-active button:before {
+  background: #FFF;
+}
+
+.bnrSlider {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 10px 20px #00000010;
+  border-radius: 12px;
+  padding: 0px;
+  opacity: 1;
+}
+
+.bnrSlider img {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.bnrSlider a {
+  text-decoration: none;
+  text-align: center;
+  font-size: 20px;
+  color: #000;
+}
+
+.bnrSlider h2 {
+  padding: 15px 0px;
+  margin: 0px;
+  font-weight: bold;
+}
 
 
 
-.abtEdition{padding:50px; background: transparent linear-gradient(63deg, #D3D3D3 0%, #FFFFFF 100%) 0% 0% no-repeat padding-box;}
-.abtEdition .abtCelebt h3{color:#5A2AE0;}
-.abtEdition .abtCelebt h4{font-weight:600;}
-.abtEdition .abtCelebt p{font-weight:400; color:#000; opacity:1;}
+.abtEdition {
+  padding: 50px;
+  background: transparent linear-gradient(63deg, #D3D3D3 0%, #FFFFFF 100%) 0% 0% no-repeat padding-box;
+}
+
+.abtEdition .abtCelebt h3 {
+  color: #5A2AE0;
+}
+
+.abtEdition .abtCelebt h4 {
+  font-weight: 600;
+}
+
+.abtEdition .abtCelebt p {
+  font-weight: 400;
+  color: #000;
+  opacity: 1;
+}
 
 
 /* ======================== HOME PAGE ======================== */
 
-.topLogo{display:inline-block; padding:10px 0;}
+.topLogo {
+  display: inline-block;
+  padding: 10px 0;
+}
 
-.topSearch{position: relative;}
-.topSearch input{background:transparent; border:2px solid #FFF; color: #FFF; height:38px; padding-left:35px;}
-.topSearch input:focus{color:#FFF; background-color:#7d34e6;}
-.topSearch .searchBtn{position: absolute; top: 0px; left: 0px; height:38px; width:30px; padding:0px; background:none; border:0px; text-align:right; color:#FFF;}
+.topSearch {
+  position: relative;
+}
+
+.topSearch input {
+  background: transparent;
+  border: 2px solid #FFF;
+  color: #FFF;
+  height: 38px;
+  padding-left: 35px;
+}
+
+.topSearch input:focus {
+  color: #FFF;
+  background-color: #7d34e6;
+}
+
+.topSearch .searchBtn {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 38px;
+  width: 30px;
+  padding: 0px;
+  background: none;
+  border: 0px;
+  text-align: right;
+  color: #FFF;
+}
 
 
-.topScroll{background:#FFF; width:100%; padding:5px 0; position:relative;}
-.topScroll ul{display:flex; align-items:center; margin:0px; padding:0px;}
-.topScroll li{font-size:15px; color:#5A2AE0; margin:0 15px; font-weight:500;}
-.topScroll .rightArrow{position:absolute; top:0; right:0; background:#FFF; padding:0 2px; color:#5A2AE0; font-size:20px;}
+.topScroll {
+  background: #FFF;
+  width: 100%;
+  padding: 5px 0;
+  position: relative;
+}
+
+.topScroll ul {
+  display: flex;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+.topScroll li {
+  font-size: 15px;
+  color: #5A2AE0;
+  margin: 0 15px;
+  font-weight: 500;
+}
+
+.topScroll .rightArrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #FFF;
+  padding: 0 2px;
+  color: #5A2AE0;
+  font-size: 20px;
+}
 
 
 /* .videoBox img{width:100%; height:700px; object-fit:cover;} */
 
-.videoBox{background:#02031b;}
-.videoBox video{width:100%; height:700px;}
+.videoBox {
+  background: #02031b;
+}
+
+.videoBox video {
+  width: 100%;
+  height: 700px;
+}
 
 
-.nftSection{color:#FFF; padding:20px 0; background:url(../public/images/videoBottom.png) no-repeat center 100%; background-size: cover;}
-.nftSection h3{font-size:22px; font-weight:600; margin-bottom:10px; line-height: 32px;}
-.nftSection p{font-size:16px;}
+.nftSection {
+  color: #FFF;
+  padding: 20px 0;
+  background: url(../public/images/videoBottom.png) no-repeat center 100%;
+  background-size: cover;
+}
+
+.nftSection h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 32px;
+}
+
+.nftSection p {
+  font-size: 16px;
+}
 
 
-.celebrityNFT{padding:80px 0;
+.celebrityNFT {
+  padding: 80px 0;
   background: url(../public/images/nftBackground.png) no-repeat #5A2AE0;
   /* background:transparent linear-gradient(180deg, #4D361A 0%, #0F0B05 100%) 0% 0% no-repeat padding-box; */
 }
 
-.exclCelebrity{text-align:center; color:#FFF;}
-.exclCelebrity h2{font-size:30px; position: relative; margin-bottom:15px; font-weight:400;}
-.exclCelebrity h2:after{content: ""; position:absolute; top:20px; right:0px; height:3px; width:300px; background: linear-gradient(90deg, rgba(67,67,67,1) 0%, rgba(255,255,255,1) 40%, rgba(75,75,75,0.4) 100%);}
-.exclCelebrity h2:before{content: ""; position:absolute; top:20px; left:0px; height:3px; width:300px; background: linear-gradient(90deg, rgba(67,67,67,1) 0%, rgba(255,255,255,1) 40%, rgba(75,75,75,0.4) 100%);}
-.exclCelebrity h3{color:#FFF; font-size:46px; font-weight:600;}
+.exclCelebrity {
+  text-align: center;
+  color: #FFF;
+}
 
-.flex-container{display: flex; flex-direction: row; justify-content: center;}
-.flex-container > .tabsection{background:rgba(255,255,2550,0.1); margin:5px; text-align:center; padding:18px 20px 12px; border-radius:10px; color:#fff; width:100%; max-width:200px; display:flex; align-items:center; font-size:22px; position:relative; font-weight:600;}
+.exclCelebrity h2 {
+  font-size: 30px;
+  position: relative;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
+.exclCelebrity h2:after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  height: 3px;
+  width: 300px;
+  background: linear-gradient(90deg, rgba(67, 67, 67, 1) 0%, rgba(255, 255, 255, 1) 40%, rgba(75, 75, 75, 0.4) 100%);
+}
+
+.exclCelebrity h2:before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  height: 3px;
+  width: 300px;
+  background: linear-gradient(90deg, rgba(67, 67, 67, 1) 0%, rgba(255, 255, 255, 1) 40%, rgba(75, 75, 75, 0.4) 100%);
+}
+
+.exclCelebrity h3 {
+  color: #FFF;
+  font-size: 46px;
+  font-weight: 600;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.flex-container>.tabsection {
+  background: rgba(255, 255, 2550, 0.1);
+  margin: 5px;
+  text-align: center;
+  padding: 18px 20px 12px;
+  border-radius: 10px;
+  color: #fff;
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  position: relative;
+  font-weight: 600;
+}
+
 /* .flex-container > .tabsection:first-child{color:#5A2AE0; background:#FFF;} */
-.flex-container > .tabsection:first-child span.right{opacity:1;}
-.flex-container > .tabsection.active{background: transparent linear-gradient(68deg, #81613A 0%, #F2B600 100%) 0% 0% no-repeat padding-box; box-shadow: 0px 3px 6px #00000029; opacity: 1;}
-.flex-container > .tabsection span.right{padding-left: 21px; opacity: .5;}
-.flex-container > .tabsection:before{content:"COMING SOON"; background:#FFF 0% 0% no-repeat padding-box; color:#000; top:0px; position:absolute; padding:3px 5px; border-radius:0px 0px 4px 4px; line-height:9px; font-size:10px; margin-left:38px; font-weight: 600;}
+.flex-container>.tabsection:first-child span.right {
+  opacity: 1;
+}
 
-.flex-container > .tabsection:nth-child(1):before{display:none;}
+.flex-container>.tabsection.active {
+  background: transparent linear-gradient(68deg, #81613A 0%, #F2B600 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 1;
+}
 
-.celebrityDtl{color:#FFF;}
-.celebrityDtl .figCaption{text-align:center; margin-top:30px;}
-.celebrityDtl h3{font-size:20px; font-weight:500;}
-.celebrityDtl p{font-size:16px; margin:0px;}
-.celebrityDtl figure{margin:0; padding:0 25px;}
-.celebrityDtl .knowMore{display:flex; justify-content:space-between; align-items:center; margin-top:50px;}
-.celebrityDtl .knowMore a{text-decoration:underline; font-size:20px; font-weight:500;}
+.flex-container>.tabsection span.right {
+  padding-left: 21px;
+  opacity: .5;
+}
+
+.flex-container>.tabsection1:before {
+  content: "COMING SOON";
+  background: #FFF 0% 0% no-repeat padding-box;
+  color: #000;
+  top: 0px;
+  position: absolute;
+  padding: 3px 5px;
+  border-radius: 0px 0px 4px 4px;
+  line-height: 9px;
+  font-size: 10px;
+  margin-left: 38px;
+  font-weight: 600;
+}
 
 
-.celebrityPost{background:#FFF; padding:50px 0 30px;}
-.celebrityPost h3{color:#5A2AE0; text-align: center; font-size:45px; margin-bottom:20px;}
+
+.celebrityDtl {
+  color: #FFF;
+}
+
+.celebrityDtl .figCaption {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.celebrityDtl h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.celebrityDtl p {
+  font-size: 16px;
+  margin: 0px;
+}
+
+.celebrityDtl figure {
+  margin: 0;
+  padding: 0 25px;
+}
+
+.celebrityDtl .knowMore {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.celebrityDtl .knowMore a {
+  text-decoration: underline;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+
+.celebrityPost {
+  background: #FFF;
+  padding: 50px 0 30px;
+}
+
+.celebrityPost h3 {
+  color: #5A2AE0;
+  text-align: center;
+  font-size: 45px;
+  margin-bottom: 20px;
+}
 
 
 
-.upcomingCelebrity{background:url(../public/images/bgTexture.png) repeat center center #020c24; color:#FFF; padding:50px 0;}
-.upcomingCelebrity h2{font-size:40px; color:#FFF; font-weight:500; text-align:center;}
-.countDown ul{display:flex; justify-content:center; padding:0;}
-.countDown li{margin:0 15px; font-size:36px; text-align:center; line-height:25px; font-weight:300;}
-.countDown p{margin:0px; font-size:16px; text-transform:uppercase; font-weight:300;}
+.upcomingCelebrity {
+  background: url(../public/images/bgTexture.png) repeat center center #020c24;
+  color: #FFF;
+  padding: 50px 0;
+}
 
-.abtCelebt h3{font-size:30px; color:#F2B600; font-weight:500; margin:10px 0 15px;}
-.abtCelebt h4{font-size:24px;}
-.abtCelebt p{font-size:16px; font-weight:300; line-height:28px; margin:0px; opacity:.9;}
+.upcomingCelebrity h2 {
+  font-size: 40px;
+  color: #FFF;
+  font-weight: 500;
+  text-align: center;
+}
 
-.editionSection{display:flex; align-items:center;}
-.editionSection p{font-size:20px; font-weight:500;}
-.editionSection .amount{font-size:35px; font-weight:300; margin-top:10px;}
+.countDown ul {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
 
-.editionSection .moreBtn{color:#FFF; font-size:20px; padding:12px 25px; border-radius:10px; display:inline-block; background:transparent linear-gradient(105deg, #F2B600 0%, #81613A 100%) 0% 0% no-repeat padding-box;}
+.countDown li {
+  margin: 0 15px;
+  font-size: 36px;
+  text-align: center;
+  line-height: 25px;
+  font-weight: 300;
+}
 
-.createYourWalet{padding:50px 0; padding-bottom:30px; background-color:#F7F7F7;}
-.createYourWalet h3{font-size:40px; color:#5A2AE0;}
-.createYourWalet h4{font-size:30px; color:#000;}
-.createYourWalet p{font-size:18px; list-style:18px;}
+.countDown p {
+  margin: 0px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
 
-.walletSteps{font-size:18px; margin-top:5px; padding:0px;}
-.walletSteps li{margin:15px 0; font-size:18px; color:#000; font-weight:600; opacity:0.9; position:relative;}
-.walletSteps li:after{content:""; position:absolute; height:18px; width:2px; background:#d9d9d9; left:12px; top:29px;}
-.walletSteps li:last-child:after{display:none;}
-.walletSteps li span{border-radius:50%; width:27px; height:27px; padding:5px; color:#fff; text-align:center; font-size:12px; display:inline-block; margin-right:10px; vertical-align:middle;
-  box-shadow:0px 2px 4px #0000001F;
+.abtCelebt h3 {
+  font-size: 30px;
+  color: #F2B600;
+  font-weight: 500;
+  margin: 10px 0 15px;
+}
+
+.abtCelebt h4 {
+  font-size: 24px;
+}
+
+.abtCelebt p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+  margin: 0px;
+  opacity: .9;
+}
+
+.editionSection {
+  display: flex;
+  align-items: center;
+}
+
+.editionSection p {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.editionSection .amount {
+  font-size: 35px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+.editionSection .moreBtn {
+  color: #FFF;
+  font-size: 20px;
+  padding: 12px 25px;
+  border-radius: 10px;
+  display: inline-block;
+  background: transparent linear-gradient(105deg, #F2B600 0%, #81613A 100%) 0% 0% no-repeat padding-box;
+}
+
+.createYourWalet {
+  padding: 50px 0;
+  padding-bottom: 30px;
+  background-color: #F7F7F7;
+}
+
+.createYourWalet h3 {
+  font-size: 40px;
+  color: #5A2AE0;
+}
+
+.createYourWalet h4 {
+  font-size: 30px;
+  color: #000;
+}
+
+.createYourWalet p {
+  font-size: 18px;
+  list-style: 18px;
+}
+
+.walletSteps {
+  font-size: 18px;
+  margin-top: 5px;
+  padding: 0px;
+}
+
+.walletSteps li {
+  margin: 15px 0;
+  font-size: 18px;
+  color: #000;
+  font-weight: 600;
+  opacity: 0.9;
+  position: relative;
+}
+
+.walletSteps li:after {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 2px;
+  background: #d9d9d9;
+  left: 12px;
+  top: 29px;
+}
+
+.walletSteps li:last-child:after {
+  display: none;
+}
+
+.walletSteps li span {
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  padding: 5px;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+  box-shadow: 0px 2px 4px #0000001F;
   /* background:transparent linear-gradient(129deg, #F2B600 0%, #81613A 100%) 0% 0% no-repeat padding-box; */
   background: transparent linear-gradient(129deg, #5A2AE0 0%, #7F35E6 100%) 0% 0% no-repeat padding-box;
 }
 
 
-.subsScribe{padding:50px 0; text-align: center; background: transparent linear-gradient(90deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box; color:#FFF;}
-.subsScribe h3{font-size:28px; font-weight:600;}
-.subsScribe p{font-size:20px;}
-.subsScribe .subScribeBox{display:inline-flex; justify-content:center; width:700px;}
-.subsScribe .subScribeBox input{border:1px solid #E0E0E0; border-right:0; background:#FFF; height:55px; border-radius:5px 0 0 5px; margin:0px;}
-.subsScribe .subScribeBox .subBtn{white-space:nowrap; color:#FFF; border-radius:0 5px 5px 0; padding:0 20px; margin:0px; border:1px solid #FFF; background: transparent linear-gradient(90deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;}
+.subsScribe {
+  padding: 50px 0;
+  text-align: center;
+  background: transparent linear-gradient(90deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;
+  color: #FFF;
+}
+
+.subsScribe h3 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.subsScribe p {
+  font-size: 20px;
+}
+
+.subsScribe .subScribeBox {
+  display: inline-flex;
+  justify-content: center;
+  width: 700px;
+}
+
+.subsScribe .subScribeBox input {
+  border: 1px solid #E0E0E0;
+  border-right: 0;
+  background: #FFF;
+  height: 55px;
+  border-radius: 5px 0 0 5px;
+  margin: 0px;
+}
+
+.subsScribe .subScribeBox .subBtn {
+  white-space: nowrap;
+  color: #FFF;
+  border-radius: 0 5px 5px 0;
+  padding: 0 20px;
+  margin: 0px;
+  border: 1px solid #FFF;
+  background: transparent linear-gradient(90deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;
+}
 
 
 
-.comanNftSec{padding:80px 0; background:#FFF;}
-.comanNftSec h2{font-size:24px; font-weight:700; text-align:center; margin-bottom:25px; color:#5A2AE0;}
-.comanNftSec .viewMore{font-size:20px; padding:10px 30px; color:#FFF; display:inline-block; border-radius:8px; box-shadow:0px 2px 4px #0000001F; background: transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;}
+.comanNftSec {
+  padding: 80px 0;
+  background: #FFF;
+}
 
-.comanNftSec.coffeeLigh{background: url(http://localhost:3000/static/media/nftBackground.f55ad425947134f202ed.png) no-repeat #5A2AE0;}
-.comanNftSec.coffeeLigh h2{color:#FFF;}
+.comanNftSec h2 {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #5A2AE0;
+}
 
-.comanNftSec.lightGry{background:#F4F5F9;}
+.comanNftSec .viewMore {
+  font-size: 20px;
+  padding: 10px 30px;
+  color: #FFF;
+  display: inline-block;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px #0000001F;
+  background: transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;
+}
 
-.comanNftSec.darkesBlue{background:#020C24;}
-.comanNftSec.darkesBlue h2{color:#FFF;}
+.comanNftSec.coffeeLigh {
+  background: url(http://localhost:3000/static/media/nftBackground.f55ad425947134f202ed.png) no-repeat #5A2AE0;
+}
+
+.comanNftSec.coffeeLigh h2 {
+  color: #FFF;
+}
+
+.comanNftSec.lightGry {
+  background: #F4F5F9;
+}
+
+.comanNftSec.darkesBlue {
+  background: #020C24;
+}
+
+.comanNftSec.darkesBlue h2 {
+  color: #FFF;
+}
 
 
 
@@ -621,7 +1070,7 @@ a .nft-title-box {
 .price-sub a {
   float: right;
   /* background: #000000 0% 0% no-repeat padding-box; */
-  background:transparent linear-gradient(105deg, #F2B600 0%, #81613A 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(105deg, #F2B600 0%, #81613A 100%) 0% 0% no-repeat padding-box;
   border-radius: 30px;
   opacity: 1;
   padding: 5px 25px;
@@ -1920,7 +2369,7 @@ input:checked+.slider-check:before {
   text-align: center;
   font-weight: 600;
   margin: 0px 0px 33px;
-  color:#5A2AE0;
+  color: #5A2AE0;
 }
 
 .pop_content p {
@@ -2051,7 +2500,7 @@ a .tab-button {
 a {
   text-decoration: none;
   color: inherit;
-  outline:none;
+  outline: none;
 }
 
 .grey-bg ul {
@@ -2085,12 +2534,15 @@ a {
 
 /*** Pagination ****/
 
-.pagination .page-link{color:#565656;}
+.pagination .page-link {
+  color: #565656;
+}
+
 .pagination .active>.page-link,
 .pagination .page-link.active {
   background: #000;
   border-color: #000;
-  color:#FFF;
+  color: #FFF;
 }
 
 
@@ -2100,18 +2552,18 @@ a {
 /***profile-setting****/
 
 .profile-header {
-  background:#fff 0% 0% no-repeat padding-box;
-  border-radius:5px;
-  height:220px;
-  overflow:hidden;
-  position:relative;
+  background: #fff 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
 }
 
 .profile-header>img {
   width: 100%;
   border-radius: 5px;
   height: 220px;
-  object-fit:cover;
+  object-fit: cover;
 }
 
 .media-icon {
@@ -2139,9 +2591,9 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height:100px;
-  width:100px;
-  line-height:100px;
+  height: 100px;
+  width: 100px;
+  line-height: 100px;
 }
 
 .profile-header:hover .edit-icon {
@@ -2231,7 +2683,7 @@ a {
   margin: 15px 20px;
   opacity: 1;
   color: #5a2ae0;
-  font-weight:500;
+  font-weight: 500;
   text-align: center;
   font-size: 14px;
   max-width: 150px;
@@ -2243,7 +2695,7 @@ a {
   background: #5a2ae0 0% 0% no-repeat padding-box;
   border: 1px solid #5a2ae0;
   float: right;
-  font-weight:500;
+  font-weight: 500;
   border-radius: 10px;
   margin: 15px 0px;
   opacity: 1;
@@ -5288,7 +5740,7 @@ input[type="number"]::-webkit-outer-spin-button {
   /* background: #000; */
   /* background: transparent linear-gradient(72deg, #81613A 0%, #F2B600 100%) 0% 0% no-repeat padding-box; */
   background: transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;
-  color:#FFF;
+  color: #FFF;
   border-color: #7F35E6;
 }
 
@@ -5309,16 +5761,24 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
-.fllowPoup{max-width:350px;}
-.fllowPoup .pop_content{padding:20px;}
+.fllowPoup {
+  max-width: 350px;
+}
+
+.fllowPoup .pop_content {
+  padding: 20px;
+}
+
 .fllowPoup .followTab {
   border-bottom: 1px solid #e2e2e2;
   display: flex;
   justify-content: space-between;
-  margin-top:40px;
+  margin-top: 40px;
 }
 
-.fllowPoup .followTab li{width:50%;}
+.fllowPoup .followTab li {
+  width: 50%;
+}
 
 .fllowPoup .followTab li button {
   border: 0;
@@ -5327,7 +5787,7 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #b1abab;
   font-size: 14px;
   font-weight: 500;
-  width:100%;
+  width: 100%;
 }
 
 
