@@ -96,7 +96,6 @@ function SignUp() {
       setTermsService(e.target.checked);
       const res = await axios.get("https://geolocation-db.com/json/");
       setLocation(res?.data);
-      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -106,13 +105,16 @@ function SignUp() {
     try {
       let err = validateAll();
       if (isValid(err)) {
+        let formData = new FormData();
+        Object.keys(inpData).map((key) => formData.append(key, inpData[key]));
+        formData.append("location", JSON.stringify(location));
+        formData.append("termsService", termsService);
         await API({
           url: apiURl.singup,
           method: "POST",
-          body: { ...inpData, termsService, location },
-          formData: false,
+          body: formData,
+          formData: true,
         }).then((data) => {
-          console.log(data, "signUpdata");
           if (data?.status || data?.status === "true") {
             dispatch(
               SetpopupReducerData({ modalType: "OTP", showModal: true })
@@ -129,7 +131,7 @@ function SignUp() {
         setErrors(err);
       }
     } catch (error) {
-      setApiErrors({ message: error });
+      setApiErrors({ message: error?.message });
     }
   };
   return (
@@ -397,7 +399,9 @@ function SignUp() {
               <div className="form-div">
                 <p>
                   Are you already a member?
-                  <Link style={{ paddingLeft: "22px" }} onClick={handleLogin}>Log in</Link>
+                  <Link style={{ paddingLeft: "22px" }} onClick={handleLogin}>
+                    Log in
+                  </Link>
                 </p>
               </div>
             </form>

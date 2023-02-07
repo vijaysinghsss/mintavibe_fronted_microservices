@@ -53,8 +53,7 @@ const Home = () => {
 
   useEffect(() => {
     handleCategory(`63de9ea797b00d09dd0e2ac7`);
-  }, [])
-
+  }, []);
 
   const handleShowCreatePopup = (e) => {
     console.log(e);
@@ -81,7 +80,7 @@ const Home = () => {
         url: `${apiURl.celebdata}/${id}`,
         method: "GET",
       }).then((data) => {
-        console.log('data', data);
+        console.log("data", data);
         if (data?.status || data?.status === "true") {
           setCeleData(data?.response || []);
         }
@@ -158,25 +157,27 @@ const Home = () => {
 
           <div className="row mt-4">
             <div className="col-md-12">
-            <div className="crtNftScroll">
-              <div className="flex-container flex-wrap">
-                {CreatorCategory?.length > 0 &&
-                  CreatorCategory?.map((ele) => (
-                    <div
-                      className={`tabsection ${(ele.comming_soon ? 'tabsection1' : '')} button1`}
-                      key={ele._id}
-                      onClick={() => handleCategory(ele._id)}
-                    >
-                      <img
-                        src={`${BASECONFIG.BASE_URL}/${ele.image}`}
-                        width={50}
-                        height={50}
-                        alt=""
-                      />
-                      <span className="right">{ele.Creatorname}</span>
-                    </div>
-                  ))}
-              </div>
+              <div className="crtNftScroll">
+                <div className="flex-container flex-wrap">
+                  {CreatorCategory?.length > 0 &&
+                    CreatorCategory?.map((ele) => (
+                      <div
+                        className={`tabsection ${
+                          ele.comming_soon ? "tabsection1" : ""
+                        } button1`}
+                        key={ele._id}
+                        onClick={() => handleCategory(ele._id)}
+                      >
+                        <img
+                          src={`${BASECONFIG.BASE_URL}/${ele.image}`}
+                          width={50}
+                          height={50}
+                          alt=""
+                        />
+                        <span className="right">{ele.Creatorname}</span>
+                      </div>
+                    ))}
+                </div>
               </div>
             </div>
           </div>
@@ -190,12 +191,12 @@ const Home = () => {
                       <>
                         <div className="col-md-5 h-100">
                           <div className="countDown">
-                            <CountdownTimerHome
-                              targetDate={cele.Start_time}
-                            />
+                            <CountdownTimerHome targetDate={cele.Start_time} />
                           </div>
                           <figure>
-                            <Link to={`/${CreatorCategory.find((value) => value._id === cele.Creator_type)?.Creatorname || 'Unknown'}/${cele.Slug}`}>
+                            <Link
+                              to={`/${cele.Creator_type?.Creatorname ||'Unknown'}/${cele.Slug}`}
+                            >
                               <img
                                 src={`${BASECONFIG.BASE_URL}/${cele.image}`}
                                 alt="Crosstower"
