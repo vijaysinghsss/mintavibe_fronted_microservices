@@ -51,10 +51,7 @@ const Home = () => {
     setShowPopup(true);
   };
 
-  useEffect(() => {
-    handleCategory(`63de9ea797b00d09dd0e2ac7`);
-  }, []);
-
+ 
   const handleShowCreatePopup = (e) => {
     console.log(e);
     e.preventDefault();
@@ -74,7 +71,7 @@ const Home = () => {
     }
     setShowCreatePopup(true);
   };
-  const handleCategory = async (id) => {
+  const fetchCategory=async (id)=>{
     try {
       await API({
         url: `${apiURl.celebdata}/${id}`,
@@ -90,7 +87,15 @@ const Home = () => {
       console.log(error);
       toast(`Something Wrong.`, { type: "error" });
     }
+  }
+  const handleCategory = async (id) => {
+    fetchCategory(id)
   };
+  
+  useEffect(() => {
+    let id=CreatorCategory?.find(elt=>elt.Creatorname==="Movies")?._id
+    fetchCategory(id);
+  }, [CreatorCategory]);
 
   return (
     <>
