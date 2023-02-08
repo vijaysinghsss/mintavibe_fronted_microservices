@@ -124,7 +124,7 @@ body {
   line-height: 55px;
 }
 
-.clbrtBanner p{line-height:30px;}
+.clbrtBanner p{line-height:30px; padding-right:40px;}
 
 .clbrtBanner button {
   color: #FFF;
@@ -161,7 +161,7 @@ body {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   max-height:400px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .bnrSlider a {
@@ -217,6 +217,10 @@ body {
   height: 38px;
   padding-left: 35px;
 }
+
+.topSearch input::placeholder{color:#FFF; opacity:0.6;}
+.topSearch input:-ms-input-placeholder{color:#FFF;}
+.topSearch input::-ms-input-placeholder{color:#FFF;}
 
 .topSearch input:focus {
   color: #FFF;
@@ -352,13 +356,13 @@ body {
 
 .flex-container .tabsection {
   background: rgba(255, 255, 2550, 0.1);
-  margin: 5px;
+  margin: 8px;
   text-align: center;
-  padding: 18px 20px 12px;
+  padding: 22px 20px 15px;
   border-radius: 10px;
   color: #fff;
   width: 100%;
-  max-width: 200px;
+  max-width: 210px;
   display: flex;
   align-items: center;
   font-size: 22px;
@@ -366,10 +370,14 @@ body {
   font-weight: 600;
 }
 
+.flex-container .tabsection > img {
+	width: 25px;
+	height: auto;
+}
+
 .flex-container .tabsection:first-child span.right {
   opacity: 1;
 }
-
 
 .flex-container .tabsection.active {
   background: #FFF;
@@ -484,11 +492,17 @@ body {
 
 .celebrityPost img {
 	height: 400px;
-	object-fit: cover;
+	object-fit: contain;
 	padding: 8px;
   border-radius:10px;
 }
 
+.celebrityPost .slick-slide > div {
+	box-shadow: 0 0 5px #ACACAC63;
+	background: #7c34e612;
+	margin: 10px;
+	border-radius: 15px;
+}
 
 .upcomingCelebrity {
   background: url(../public/images/bgTexture.png) repeat center center #020c24;
@@ -681,19 +695,8 @@ body {
 
 
 
-.comanNftSec {
-  padding: 80px 0;
-  background: #FFF;
-}
-
-.comanNftSec h2 {
-  font-size: 24px;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 25px;
-  color: #5A2AE0;
-}
-
+.comanNftSec{padding:80px 0; background:#FFF;}
+.comanNftSec h2{font-size:24px; font-weight:700; text-align:center; margin-bottom:25px; color:#5A2AE0;}
 .comanNftSec .viewMore {
   font-size: 20px;
   padding: 10px 30px;
@@ -708,21 +711,14 @@ body {
   background: url(http://localhost:3000/static/media/nftBackground.f55ad425947134f202ed.png) no-repeat #5A2AE0;
 }
 
-.comanNftSec.coffeeLigh h2 {
-  color: #FFF;
-}
+.comanNftSec.coffeeLigh h2{color:#FFF;}
+.comanNftSec.lightGry{background:#F4F5F9;}
+.comanNftSec.darkesBlue{background:#020C24;}
 
-.comanNftSec.lightGry {
-  background: #F4F5F9;
-}
+.darkesBlue .slick-prev::before,
+.darkesBlue .slick-next::before{color:#FFF;}
 
-.comanNftSec.darkesBlue {
-  background: #020C24;
-}
-
-.comanNftSec.darkesBlue h2 {
-  color: #FFF;
-}
+.comanNftSec.darkesBlue h2{color:#FFF;}
 
 
 
@@ -880,7 +876,7 @@ body {
 .slick-next:before {
   font-size: 35px;
   opacity: 1;
-  color: #333;
+  color: #7c34e6;
 }
 
 .slick-prev {
@@ -926,7 +922,7 @@ body {
   width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .nft-box-img-box .cover_pic {
@@ -964,7 +960,7 @@ body {
 .nft-box-div span {
   font-size: 12px;
   padding: 0px;
-  color: #3c97f2;
+  color: #7a34e5;
   line-height: 26px;
   font-weight: 500;
 }
@@ -1138,7 +1134,8 @@ a .nft-title-box {
 .price-sub a {
   float: right;
   /* background: #000000 0% 0% no-repeat padding-box; */
-  background: transparent linear-gradient(105deg, #F2B600 0%, #81613A 100%) 0% 0% no-repeat padding-box;
+  /* background: transparent linear-gradient(105deg, #F2B600 0%, #81613A 100%) 0% 0% no-repeat padding-box; */
+  background: transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;
   border-radius: 30px;
   opacity: 1;
   padding: 5px 25px;
