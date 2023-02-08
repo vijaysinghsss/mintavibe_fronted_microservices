@@ -78,15 +78,13 @@ function AnupamKher() {
     }
   }, [Slug, categoryList]);
   useEffect(() => {
-    if (NftListAccording.length) {
-      let arr = categoryList?.map((item) => {
-        return (
-          Array.isArray(NftListAccording[item?._id]) &&
-          NftListAccording[item?._id]?.[0]
-        );
-      });
-      setBanerList(arr);
-    }
+    let arr = categoryList?.map((item) => {
+      return (
+        Array.isArray(NftListAccording[item?._id]) &&
+        NftListAccording[item?._id]?.[0]
+      );
+    });
+    setBanerList(arr);
   }, [NftListAccording]);
 
   return (
@@ -130,8 +128,9 @@ function AnupamKher() {
                       <a href={`#${ele?.id}`}>
                         <img
                           src={
-                            `${process.env.REACT_APP_BACKENDURL}/${ele.image}` ||
-                            "../images/anupamKhair1.png"
+                            ele?.image
+                              ? `${process.env.REACT_APP_BACKENDURL}/${ele.image}`
+                              : "../images/anupamKhair1.png"
                           }
                           alt="anupam_img"
                         />
