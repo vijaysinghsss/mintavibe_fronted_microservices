@@ -78,10 +78,8 @@ const Card = ({
       <div className="price-div">
         <div className="price-sub">
           <div className="eth-icon-div">
-            <img
-              src={`images/${
-                NNetwokType[0] == "XUMM" ? "xrp" : "cart-eth"
-              }-icon.svg`}
+            <img 
+              src={`../images/${NNetwokType[0] == "XUMM" ? "xrp" : "cart-eth"}-icon.svg`}
               alt=""
             />
           </div>
