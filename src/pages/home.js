@@ -193,7 +193,7 @@ const Home = () => {
                         onClick={() => handleCategory(ele._id)}
                       >
                         <img
-                          src={`${BASECONFIG.BASE_URL}/${ele.image}`}
+                          src={`${process.env.REACT_APP_BACKENDURL}/${ele.image}`}
                           width={50}
                           height={50}
                           alt=""
@@ -225,7 +225,7 @@ const Home = () => {
                               }/${cele.Slug}`}
                             >
                               <img
-                                src={`${BASECONFIG.BASE_URL}/${cele.image}`}
+                                src={`${process.env.REACT_APP_BACKENDURL}/${cele.image}`}
                                 alt="Crosstower"
                               />
                             </Link>
