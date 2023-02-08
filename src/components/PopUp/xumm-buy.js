@@ -106,7 +106,7 @@ const XummBuy = (props) => {
     // is_fiat
 
     if (NetworkName && NetworkName[0] == "XUMM") {
-      if (qty > 1) {
+      if (!Data.collection_type) {
         const forLoop = async () => {
           for (let index = 1; index <= qty; index++) {
             try {

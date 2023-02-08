@@ -56,7 +56,7 @@ function Follow() {
         return (
           <>
             <div className="col-md-12">
-              <h1 className="text-center">{`${MulBuyXRP?.remainig} of ${MulBuyXRP?.qty}`}</h1>
+            {MulBuyXRP?.qty > 1 &&<h1 className="text-center">{`${MulBuyXRP?.remainig} of ${MulBuyXRP?.qty}`}</h1>}
               <ul>
                 <li>
                   {upload ? (
