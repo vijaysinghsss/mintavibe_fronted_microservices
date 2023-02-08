@@ -177,7 +177,7 @@ function AnupamKher() {
                 <div className="editionSection mt-5">
                   <div>
                     <p>Edition</p>
-                    <p className="amount">14,400.00</p>
+                    <p className="amount">14,400</p>
                   </div>
                 </div>
               </div>

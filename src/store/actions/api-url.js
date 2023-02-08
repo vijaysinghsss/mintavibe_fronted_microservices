@@ -54,6 +54,9 @@ const apiURl = {
   helpmail: '/helpmail',
   celebdata: "/celebdata",
   celebritylist:"/celebritylist"
+  ,testxummbuy:"/testxummbuy"
+  ,xummTransfer:"/xummTransfer"
+
 };
 
 export const NotificationMsg = {
