@@ -368,15 +368,17 @@ body {
   font-size: 22px;
   position: relative;
   font-weight: 600;
+  cursor: pointer;
 }
+
+.flex-container .tabsection .actBtn{display:none;}
+.flex-container .tabsection.active .actBtn{display:block;}
+.flex-container .tabsection.active .norBtn{display:none;}
+
 
 .flex-container .tabsection > img {
 	width: 25px;
 	height: auto;
-}
-
-.flex-container .tabsection:first-child span.right {
-  opacity: 1;
 }
 
 .flex-container .tabsection.active {
