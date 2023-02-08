@@ -99,15 +99,13 @@ function ArjunRampal() {
   }, [Slug, categoryList]);
 
   useEffect(() => {
-    if (NftListAccording.length) {
-      let arr = categoryList?.map((item) => {
-        return (
-          Array.isArray(NftListAccording[item?._id]) &&
-          NftListAccording[item?._id]?.[0]
-        );
-      });
-      setBanerList(arr);
-    }
+    let arr = categoryList?.map((item) => {
+      return (
+        Array.isArray(NftListAccording[item?._id]) &&
+        NftListAccording[item?._id]?.[0]
+      );
+    });
+    setBanerList(arr);
   }, [NftListAccording]);
 
   return (
@@ -145,8 +143,9 @@ function ArjunRampal() {
                       <a href={`#${ele?.id}`}>
                         <img
                           src={
-                            `${process.env.REACT_APP_BACKENDURL}/${ele.image}` ||
-                            "../images/banner-arjun-rampal.png"
+                            ele?.image
+                              ? `${process.env.REACT_APP_BACKENDURL}/${ele.image}`
+                              : "../images/banner-arjun-rampal.png"
                           }
                           alt="anupam_img"
                         />
