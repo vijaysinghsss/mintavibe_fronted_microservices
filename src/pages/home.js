@@ -198,7 +198,7 @@ const Home = () => {
                           height={50}
                           alt=""
                         />
-                        {ele.coming_soon && <small>COMMING SOON</small>}
+                        {ele.coming_soon && <small className="comSoon">COMMING SOON</small>}
                         <span className="right">{ele.Creatorname}</span>
                       </div>
                     ))}
@@ -218,18 +218,21 @@ const Home = () => {
                           <div className="countDown">
                             <CountdownTimerHome targetDate={cele.Start_time} />
                           </div>
-                          <figure>
-                            <Link
+                            <Link className="celebFrame"
                               to={`/${
                                 cele.Creator_type?.Creatorname || "Unknown"
                               }/${cele.Slug}`}
                             >
-                              <img
-                                src={`${BASECONFIG.BASE_URL}/${cele.image}`}
-                                alt="Crosstower"
-                              />
+                            <figure>
+                                <img
+                                  src={`${BASECONFIG.BASE_URL}/${cele.image}`}
+                                  alt="Crosstower"
+                                />
+                                {/* <span className="nameTitle">{cele?.celebrityCategory}</span> */}
+
+                                <span className="nameTitle">{cele?.celebrityname}</span>
+                            </figure>
                             </Link>
-                          </figure>
                           <div className="figCaption">
                             <h3>{cele.Title}</h3>
 
