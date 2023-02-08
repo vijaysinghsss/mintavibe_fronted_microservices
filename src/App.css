@@ -719,6 +719,9 @@ body {
 
 .darkesBlue .slick-prev::before,
 .darkesBlue .slick-next::before{color:#FFF;}
+.coffeeLigh .slick-prev::before,
+.coffeeLigh .slick-next::before{color:#FFF;}
+
 
 .comanNftSec.darkesBlue h2{color:#FFF;}
 
