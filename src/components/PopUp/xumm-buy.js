@@ -211,7 +211,8 @@ const XummBuy = (props) => {
                     method: "POST",
                     body: {
                       id,
-                      walletAddress,
+                      wallet_id: walletAddress,
+                      Price: Data.sign_instant_sale_price,
                       UserId: _id,
                       active_trade_id: brokerRes?.active_trade_id,
                     },
@@ -715,7 +716,7 @@ const XummBuy = (props) => {
         body: value,
       });
 
-      await buyMultiXRP(id, resp, qty, i);
+      await buyMultiXRP(id,value, resp, qty, i);
     } catch (error) {
       dispatch(
         SetFollowrData({
@@ -734,7 +735,7 @@ const XummBuy = (props) => {
       return false;
     }
   };
-  const buyMultiXRP = async (id, resp, qty, i) => {
+  const buyMultiXRP = async (id,value, resp, qty, i) => {
     dispatch(
       SetFollowrData({
         upload: 1,
@@ -753,7 +754,8 @@ const XummBuy = (props) => {
         method: "POST",
         body: {
           id,
-          walletAddress,
+          wallet_id: value.walletAddress,
+          Price: value.sign_instant_sale_price,
           UserId: _id,
           active_trade_id: resp?.active_trade_id,
         },
