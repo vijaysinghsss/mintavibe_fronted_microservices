@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Trirong:wght@400;500;600;700&display=swap");
 
+
+@font-face {
+  font-family: 'Furore';
+  src: url('../public/fonts/Furore.eot');
+  src: url('../public/fonts/Furore.eot?#iefix') format('embedded-opentype'),
+      url('../public/fonts/Furore.woff2') format('woff2'),
+      url('../public/fonts/Furore.woff') format('woff'),
+      url('../public/fonts/Furore.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 ul li {
   list-style: none;
 }
@@ -90,18 +103,28 @@ body {
 
 /* ======================== AK PAGE ======================== */
 
+
+.clbrtBanner.specalArjun{padding:60px 0 0;}
+.clbrtBanner.specalArjun aside{position:absolute; width:100%; top:25%; left:0px;}
+
+
+
 .clbrtBanner {
   padding: 100px 0;
   color: #FFF;
   background: url(../public/images/rows-red-seats-theater.png) no-repeat center center #000;
   background-size: cover;
+  position: relative;
 }
 
 .clbrtBanner h1 {
   color: #fff;
   font-size: 38px;
   font-weight: bold;
+  line-height: 55px;
 }
+
+.clbrtBanner p{line-height:30px;}
 
 .clbrtBanner button {
   color: #FFF;
@@ -137,6 +160,8 @@ body {
   width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  max-height:400px;
+  object-fit: cover;
 }
 
 .bnrSlider a {
@@ -325,7 +350,7 @@ body {
   justify-content: center;
 }
 
-.flex-container>.tabsection {
+.flex-container .tabsection {
   background: rgba(255, 255, 2550, 0.1);
   margin: 5px;
   text-align: center;
@@ -341,24 +366,27 @@ body {
   font-weight: 600;
 }
 
-/* .flex-container > .tabsection:first-child{color:#5A2AE0; background:#FFF;} */
-.flex-container>.tabsection:first-child span.right {
+.flex-container .tabsection:first-child span.right {
   opacity: 1;
 }
 
-.flex-container>.tabsection.active {
-  background: transparent linear-gradient(68deg, #81613A 0%, #F2B600 100%) 0% 0% no-repeat padding-box;
+
+.flex-container .tabsection.active {
+  background: #FFF;
+  color:#5A2AE0;
   box-shadow: 0px 3px 6px #00000029;
   opacity: 1;
 }
 
-.flex-container>.tabsection span.right {
+.flex-container .tabsection.active .comSoon{display:none;}
+
+.flex-container .tabsection span.right {
   padding-left: 11px;
   opacity: .5;
 }
 
-.flex-container>.tabsection1:before {
-  content: "COMING SOON";
+
+.flex-container .tabsection .comSoon{
   background: #FFF 0% 0% no-repeat padding-box;
   color: #000;
   top: 0px;
@@ -392,12 +420,41 @@ body {
   margin: 0px;
 }
 
-.celebrityDtl figure {
-  margin: 0;
-  padding: 0 25px;
+.celebrityDtl .celebFrame {
+	display: block;
+	text-align: center;
 }
 
-.celebrityDtl figure a img{width:100%; height:400px; object-fit: cover;}
+.celebrityDtl figure {
+	margin: 0;
+	padding: 30px 25px 60px;
+	position: relative;
+	height: 425px;
+	width: 340px;
+  display:inline-block;
+}
+
+.celebrityDtl figure .nameTitle {
+  font-family: 'Furore';
+  font-size:16px;
+	text-align: center;
+  color:#FFF;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 32px;
+  }
+
+.celebrityDtl figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.celebrityDtl figure::before{content:""; position:absolute; top:0px; left:0px; height:425px; width:340px;
+  background:url(../public/images/celebritys-nfts-frame.png) no-repeat center center;
+}
+
 
 .celebrityDtl .knowMore {
   display: flex;
@@ -425,6 +482,12 @@ body {
   margin-bottom: 20px;
 }
 
+.celebrityPost img {
+	height: 400px;
+	object-fit: cover;
+	padding: 8px;
+  border-radius:10px;
+}
 
 
 .upcomingCelebrity {
@@ -440,17 +503,20 @@ body {
   text-align: center;
 }
 
+.countDown{height:90px;}
+
 .countDown ul {
   display: flex;
   justify-content: center;
   padding: 0;
+  margin: 0;
 }
 
 .countDown li {
   margin: 0 15px;
   font-size: 36px;
   text-align: center;
-  line-height: 25px;
+  line-height: 34px;
   font-weight: 300;
 }
 

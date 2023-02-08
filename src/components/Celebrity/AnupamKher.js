@@ -100,7 +100,7 @@ function AnupamKher() {
               </p>
             </Col>
 
-            <Col md={5}>
+            <Col md={6}>
               <SliderParent
                 className={`bnrSlider`}
                 dots={true}

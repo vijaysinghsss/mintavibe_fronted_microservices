@@ -110,12 +110,14 @@ function ArjunRampal() {
 
   return (
     <div>
-      <section className="clbrtBanner">
+      <section className="clbrtBanner specalArjun">
+        <img src="../images/banner-arjun-rampal.png" />
+        <aside>
         <Container>
           <Row className="align-items-center justify-content-center">
             <Col md={5}>
               <SliderParent
-                className={`bnrSlider`}
+                className={`bnrSlider d-none`}
                 dots={true}
                 infinite={true}
                 speed={100}
@@ -147,7 +149,6 @@ function ArjunRampal() {
                           }
                           alt="anupam_img"
                         />
-                        {/* <img src="../images/anupamKhair1.png" /> */}
                         <h2>
                           {ele?.Nftname.length < 20
                             ? ele?.Nftname
@@ -169,6 +170,7 @@ function ArjunRampal() {
             </Col>
           </Row>
         </Container>
+        </aside>
       </section>
 
       <section className="abtEdition">
