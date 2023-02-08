@@ -186,9 +186,7 @@ const Home = () => {
                   {CreatorCategory?.length > 0 &&
                     CreatorCategory?.map((ele) => (
                       <div
-                        className={`tabsection ${
-                          ele.comming_soon ? "tabsection1" : ""
-                        } button1`}
+                        className={`tabsection ${!ele.coming_soon ? "active" : "" }`}
                         key={ele._id}
                         onClick={() => handleCategory(ele._id)}
                       >
@@ -196,12 +194,14 @@ const Home = () => {
                           src={`${process.env.REACT_APP_BACKENDURL}/${ele.image}`}
                           width={50}
                           height={50}
+                          className="actBtn"
                           alt=""
                         />
                          <img
                           src={`${process.env.REACT_APP_BACKENDURL}/${ele.active_image}`}//white 
                           width={50}
                           height={50}
+                          className="norBtn"
                           alt=""
                         />
                         {ele.coming_soon && <small className="comSoon">COMMING SOON</small>}
