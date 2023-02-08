@@ -13,8 +13,9 @@ function Follow() {
     approve,
     modal,
     ModalType = "Create",
-    func = () => { },
-    help = false
+    func = () => {},
+    help = false,
+    MulBuyXRP = { qty: 0, remainig: 0 },
   } = useSelector((state) => state.Follow.data);
 
   const [showFollow, setShowFollow] = useState(true);
@@ -33,7 +34,7 @@ function Follow() {
         ModalType,
         func,
         help,
-        modal: false
+        modal: false,
       })
     );
   };
@@ -45,12 +46,112 @@ function Follow() {
   const helpRunMail = (e) => {
     e.preventDefault();
     if (help) {
-      API({ url: apiURl.helpmail, method: 'POST', body: { body: help } });
+      API({ url: apiURl.helpmail, method: "POST", body: { body: help } });
     }
-  }
+  };
 
   const modalBodyType = (type, wallet) => {
     switch (type) {
+      case "MulBuy":
+        return (
+          <>
+            <div className="col-md-12">
+              <h1 className="text-center">{`${MulBuyXRP?.remainig} of ${MulBuyXRP?.qty}`}</h1>
+              <ul>
+                <li>
+                  {upload ? (
+                    upload == 5 ? (
+                      <i
+                        className="chec-iocn"
+                        onClick={() => func()}
+                        style={{ cursor: "pointer" }}
+                      >
+                        <img alt="" src={`/images/${"reload-button.svg"}`} />
+                      </i>
+                    ) : (
+                      <i className="chec-iocn">
+                        <img
+                          alt=""
+                          style={{
+                            visibility: upload == 1 ? "visible" : "hidden",
+                          }}
+                          src={`/images/${"check-active.svg"}`}
+                        />
+                      </i>
+                    )
+                  ) : (
+                    <span className="m-2 me-3">
+                      <Spinner animation="border" size="sm" />
+                    </span>
+                  )}
+                  <b>Check</b>
+                  <br />
+                  <span>Checking balance</span>
+                </li>
+                <li>
+                  {mint ? (
+                    mint == 5 ? (
+                      <i
+                        className="chec-iocn"
+                        onClick={() => func()}
+                        style={{ cursor: "pointer" }}
+                      >
+                        <img alt="" src={`/images/${"reload-button.svg"}`} />
+                      </i>
+                    ) : (
+                      <i className="chec-iocn">
+                        <img
+                          alt=""
+                          style={{
+                            visibility: mint == 1 ? "visible" : "hidden",
+                          }}
+                          src={`/images/${"check-active.svg"}`}
+                        />
+                      </i>
+                    )
+                  ) : (
+                    <span className="m-2 me-3">
+                      <Spinner animation="border" size="sm" />
+                    </span>
+                  )}
+                  <b>Buy</b>
+                  <br />
+                  <span>Please Accept the transaction.</span>
+                </li>
+                <li>
+                  {fixed ? (
+                    fixed == 5 ? (
+                      <i
+                        className="chec-iocn"
+                        onClick={() => func()}
+                        style={{ cursor: "pointer" }}
+                      >
+                        <img alt="" src={`/images/${"reload-button.svg"}`} />
+                      </i>
+                    ) : (
+                      <i className="chec-iocn">
+                        <img
+                          alt=""
+                          style={{
+                            visibility: fixed == 1 ? "visible" : "hidden",
+                          }}
+                          src={`/images/${"check-active.svg"}`}
+                        />
+                      </i>
+                    )
+                  ) : (
+                    <span className="m-2 me-3">
+                      <Spinner animation="border" size="sm" />
+                    </span>
+                  )}
+                  <b>Transfer</b>
+                  <br />
+                  <span>Please wait NFT is being transferred</span>
+                </li>
+              </ul>
+            </div>
+          </>
+        );
       case "BURN":
         return (
           <div className="col-md-12">
@@ -355,6 +456,7 @@ function Follow() {
               </div>
             );
         }
+
       default:
         switch (type) {
           case "stripe":
@@ -457,7 +559,10 @@ function Follow() {
                   </li>
                   {(mint == 5 || fixed == 5 || mint == 5) && (
                     <li className="text-center ">
-                      <button className="btn btn-sm btn-success ms-4" onClick={helpRunMail}>
+                      <button
+                        className="btn btn-sm btn-success ms-4"
+                        onClick={helpRunMail}
+                      >
                         {" "}
                         Help
                       </button>

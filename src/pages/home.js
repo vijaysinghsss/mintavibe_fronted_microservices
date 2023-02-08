@@ -187,7 +187,7 @@ const Home = () => {
                     CreatorCategory?.map((ele) => (
                       <div
                         className={`tabsection ${
-                          ele.comming_soon ? "tabsection1" : ""
+                          ele.coming_soon ? "tabsection1" : ""
                         } button1`}
                         key={ele._id}
                         onClick={() => handleCategory(ele._id)}
@@ -199,7 +199,7 @@ const Home = () => {
                           alt=""
                         />
                          <img
-                          src={`${process.env.REACT_APP_BACKENDURL}/${ele.active_image}`}//white 
+                          src={`${process.env.REACT_APP_BACKENDURL}/${ele.active_image}`}//white
                           width={50}
                           height={50}
                           alt=""
@@ -354,41 +354,17 @@ const Home = () => {
               >
                 {celebritylistData?.length >0 ? (
                   celebritylistData?.map((ele) => (
+                    <Link to={`/collections/${ele?._id}`} >
                     <img
                       className="img-fluid"
                       src={`${process.env.REACT_APP_BACKENDURL}/${ele?.image}`}
                       alt=""
                     />
+                    </Link>
                   ))
                 ) : (
                   ""
-                  // <>
-                  //   <img
-                  //     src="../images/ak01.png"
-                  //     className="img-fluid"
-                  //     alt=""
-                  //   />
-                  //   <img
-                  //     src="../images/ak02.png"
-                  //     className="img-fluid"
-                  //     alt=""
-                  //   />
-                  //   <img
-                  //     src="../images/ak06.png"
-                  //     className="img-fluid"
-                  //     alt=""
-                  //   />
-                  //   <img
-                  //     src="../images/ak04.png"
-                  //     className="img-fluid"
-                  //     alt=""
-                  //   />
-                  //   <img
-                  //     src="../images/ak05.png"
-                  //     className="img-fluid"
-                  //     alt=""
-                  //   />
-                  // </>
+                  
                 )}
               </SliderParent>
             </div>
