@@ -107,11 +107,211 @@ const XummBuy = (props) => {
 
     if (NetworkName && NetworkName[0] == "XUMM") {
       if (qty > 1) {
-        for (let i = 1; i <= qty; ) {
-          let fn = async () => await XummMulBuyXrp(qty, i);
-          fn();
-          i++;
-        }
+        const forLoop = async () => {
+          for (let index = 1; index <= qty; index++) {
+            try {
+              dispatch(
+                SetBuyData({
+                  modal: false,
+                  checkout: false,
+                  buyModal: false,
+                  stripe: false,
+                })
+              );
+              dispatch(
+                SetFollowrData({
+                  upload: 0,
+                  mint: 2,
+                  fixed: 2,
+                  approve: 2,
+                  ModalType: "MulBuy",
+                  modal: true,
+                  MulBuyXRP: { qty: qty, remainig: index },
+                })
+              );
+              const balanceCheck = await new Promise((resolve, reject) => {
+                try {
+                  setTimeout(() => {
+                    if (
+                      parseFloat(Balance) >
+                      parseFloat(parseFloat(Data.sign_instant_sale_price) + 1)
+                    ) {
+                      resolve(true);
+                    } else {
+                      reject(false);
+                    }
+                  }, 1500);
+                } catch (error) {
+                  reject(false);
+                }
+              })
+                .then((data) => {
+                  return data;
+                })
+                .catch((err) => {
+                  dispatch(
+                    SetFollowrData({
+                      upload: 5,
+                      mint: 2,
+                      fixed: 2,
+                      approve: 2,
+                      ModalType: "MulBuy",
+                      func: async () => {
+                        await XummMulBuyXrp(qty, index);
+                      },
+                      modal: true,
+                      MulBuyXRP: { qty: qty, remainig: index },
+                    })
+                  );
+                  return err;
+                });
+
+              if (!balanceCheck) {
+                break;
+              }
+              const data = {
+                wallet_id: walletAddress,
+                Price: Data.sign_instant_sale_price,
+                UserId: _id,
+                id,
+                xumm_user_token: userToken,
+              };
+              dispatch(
+                SetFollowrData({
+                  upload: 1,
+                  mint: 0,
+                  fixed: 2,
+                  approve: 2,
+                  ModalType: "MulBuy",
+                  modal: true,
+                  MulBuyXRP: { qty: qty, remainig: index },
+                })
+              );
+              try {
+                const brokerRes = await API({
+                  url: apiURl.testxummbuy,
+                  method: "POST",
+                  body: data,
+                });
+                dispatch(
+                  SetFollowrData({
+                    upload: 1,
+                    mint: 1,
+                    fixed: 0,
+                    approve: 2,
+                    ModalType: "MulBuy",
+                    modal: true,
+                    MulBuyXRP: { qty: qty, remainig: index },
+                  })
+                );
+
+                try {
+                  const res = await API({
+                    url: apiURl.xummTransfer,
+                    method: "POST",
+                    body: {
+                      id,
+                      walletAddress,
+                      UserId: _id,
+                      active_trade_id: brokerRes?.active_trade_id,
+                    },
+                  });
+
+                  dispatch(
+                    SetFollowrData({
+                      upload: 1,
+                      mint: 1,
+                      fixed: 1,
+                      approve: 2,
+                      ModalType: "MulBuy",
+                      modal: true,
+                      MulBuyXRP: { qty: qty, remainig: index },
+                    })
+                  );
+
+                  await new Promise((resolve, reject) => {
+                    try {
+                      setTimeout(() => {
+                        resolve(true);
+                      }, 1000);
+                    } catch (error) {
+                      reject(false);
+                    }
+                  })
+                    .then((data) => {
+                      dispatch(
+                        SetFollowrData({
+                          upload: 1,
+                          mint: 1,
+                          fixed: 1,
+                          approve: 2,
+                          ModalType: null,
+                          modal: false,
+                          MulBuyXRP: { qty: qty, remainig: index },
+                        })
+                      );
+
+                      if (index === qty) {
+                        setTimeout(() => {
+                          window.location.reload();
+                        }, 1000);
+                      }
+                      return data;
+                    })
+                    .catch((err) => {
+                      dispatch(
+                        SetFollowrData({
+                          upload: 2,
+                          mint: 2,
+                          fixed: 2,
+                          approve: 2,
+                          ModalType: null,
+                          modal: false,
+                          MulBuyXRP: {},
+                        })
+                      );
+                    });
+                } catch (error) {
+                  dispatch(
+                    SetFollowrData({
+                      upload: 1,
+                      mint: 1,
+                      fixed: 5,
+                      approve: 2,
+                      ModalType: "MulBuy",
+                      func: async () => {
+                        await buyMultiXRP(id);
+                      },
+                      modal: true,
+                      MulBuyXRP: { qty: qty, remainig: index },
+                    })
+                  );
+                  break;
+                }
+              } catch (error) {
+                dispatch(
+                  SetFollowrData({
+                    upload: 1,
+                    mint: 5,
+                    fixed: 2,
+                    approve: 2,
+                    ModalType: "MulBuy",
+                    func: async () => {
+                      await BuyMulXrp(data, qty, index);
+                    },
+                    modal: true,
+                    MulBuyXRP: { qty: qty, remainig: index },
+                  })
+                );
+                break;
+              }
+            } catch (error) {
+              break;
+            }
+          }
+        };
+
+        forLoop();
       } else {
         await XummBuyXrp(qty);
       }
@@ -359,205 +559,6 @@ const XummBuy = (props) => {
       );
     }
   };
-  
-  const XummMulBuyXrp = async (qty, i) => {
-    dispatch(
-      SetBuyData({
-        modal: false,
-        checkout: false,
-        buyModal: false,
-        stripe: false,
-      })
-    );
-
-    dispatch(
-      SetFollowrData({
-        upload: 0,
-        mint: 2,
-        fixed: 2,
-        approve: 2,
-        ModalType: "MulBuy",
-        modal: true,
-        MulBuyXRP: { qty: qty, remainig: i },
-      })
-    );
-
-    const balanceCheck = await new Promise((resolve, reject) => {
-      try {
-        setTimeout(() => {
-          if (
-            parseFloat(Balance) >
-            parseFloat(parseFloat(Data.sign_instant_sale_price) + 1)
-          ) {
-            resolve(true);
-          } else {
-            reject(false);
-          }
-        }, 1500);
-      } catch (error) {
-        reject(false);
-      }
-    })
-      .then((data) => {
-        return data;
-      })
-      .catch((err) => {
-        dispatch(
-          SetFollowrData({
-            upload: 5,
-            mint: 2,
-            fixed: 2,
-            approve: 2,
-            ModalType: "MulBuy",
-            func: () => {
-              XummMulBuyXrp(qty, i);
-            },
-            modal: true,
-            MulBuyXRP: { qty: qty, remainig: i },
-          })
-        );
-        return err;
-      });
-
-    if (!balanceCheck) {
-      return;
-    }
-
-    const data = {
-      wallet_id: walletAddress,
-      Price: Data.sign_instant_sale_price,
-      UserId: _id,
-      id,
-      xumm_user_token: userToken,
-    };
-
-    BuyMulXrp(data, qty, i);
-  };
-
-  const BuyMulXrp = async (value, qty, i) => {
-    dispatch(
-      SetFollowrData({
-        upload: 1,
-        mint: 0,
-        fixed: 2,
-        approve: 2,
-        ModalType: "MulBuy",
-        modal: true,
-        MulBuyXRP: { qty: qty, remainig: i },
-      })
-    );
-    try {
-      await API({ url: apiURl.BuyBroker, method: "POST", body: value });
-
-      buyMultiXRP(id, qty, i);
-    } catch (error) {
-      dispatch(
-        SetFollowrData({
-          upload: 1,
-          mint: 5,
-          fixed: 2,
-          approve: 2,
-          ModalType: "MulBuy",
-          func: () => {
-            BuyMulXrp(value, qty, i);
-          },
-          modal: true,
-          MulBuyXRP: { qty: qty, remainig: i },
-        })
-      );
-    }
-  };
-  const buyMultiXRP = async (id, qty, i) => {
-    dispatch(
-      SetFollowrData({
-        upload: 1,
-        mint: 1,
-        fixed: 0,
-        approve: 2,
-        ModalType: "MulBuy",
-        modal: true,
-        MulBuyXRP: { qty: qty, remainig: i },
-      })
-    );
-
-    try {
-      await API({
-        url: apiURl.Buy,
-        method: "POST",
-        body: { id, walletAddress, UserId: _id },
-      });
-
-      dispatch(
-        SetFollowrData({
-          upload: 1,
-          mint: 1,
-          fixed: 1,
-          approve: 2,
-          ModalType: "MulBuy",
-          modal: true,
-          MulBuyXRP: { qty: qty, remainig: i },
-        })
-      );
-
-      await new Promise((resolve, reject) => {
-        try {
-          setTimeout(() => {
-            resolve(true);
-          }, 1000);
-        } catch (error) {
-          reject(false);
-        }
-      })
-        .then((data) => {
-          dispatch(
-            SetFollowrData({
-              upload: 1,
-              mint: 1,
-              fixed: 1,
-              approve: 2,
-              ModalType: null,
-              modal: false,
-              MulBuyXRP: { qty: qty, remainig: i },
-            })
-          );
-
-          setTimeout(() => {
-            window.location.reload();
-          }, 1000);
-
-          return data;
-        })
-        .catch((err) => {
-          dispatch(
-            SetFollowrData({
-              upload: 2,
-              mint: 2,
-              fixed: 2,
-              approve: 2,
-              ModalType: null,
-              modal: false,
-              MulBuyXRP: {},
-            })
-          );
-        });
-    } catch (error) {
-      dispatch(
-        SetFollowrData({
-          upload: 1,
-          mint: 1,
-          fixed: 5,
-          approve: 2,
-          ModalType: "MulBuy",
-          func: () => {
-            buyMultiXRP(id);
-          },
-          modal: true,
-          MulBuyXRP: { qty: qty, remainig: i },
-        })
-      );
-    }
-  };
-
   const buy = async (id) => {
     dispatch(
       SetFollowrData({
@@ -641,6 +642,192 @@ const XummBuy = (props) => {
           modal: true,
         })
       );
+    }
+  };
+
+  const XummMulBuyXrp = async (qty, i) => {
+    const balanceCheck = await new Promise((resolve, reject) => {
+      try {
+        setTimeout(() => {
+          if (
+            parseFloat(Balance) >
+            parseFloat(parseFloat(Data.sign_instant_sale_price) + 1)
+          ) {
+            resolve(true);
+          } else {
+            reject(false);
+          }
+        }, 1500);
+      } catch (error) {
+        reject(false);
+      }
+    })
+      .then((data) => {
+        return data;
+      })
+      .catch((err) => {
+        dispatch(
+          SetFollowrData({
+            upload: 5,
+            mint: 2,
+            fixed: 2,
+            approve: 2,
+            ModalType: "MulBuy",
+            func: async () => {
+              await XummMulBuyXrp(qty, i);
+            },
+            modal: true,
+            MulBuyXRP: { qty: qty, remainig: i },
+          })
+        );
+        return err;
+      });
+
+    if (!balanceCheck) {
+      return;
+    }
+    const data = {
+      wallet_id: walletAddress,
+      Price: Data.sign_instant_sale_price,
+      UserId: _id,
+      id,
+      xumm_user_token: userToken,
+    };
+    await BuyMulXrp(data, qty, i);
+  };
+
+  const BuyMulXrp = async (value, qty, i) => {
+    dispatch(
+      SetFollowrData({
+        upload: 1,
+        mint: 0,
+        fixed: 2,
+        approve: 2,
+        ModalType: "MulBuy",
+        modal: true,
+        MulBuyXRP: { qty: qty, remainig: i },
+      })
+    );
+    try {
+      const resp = await API({
+        url: apiURl.testxummbuy,
+        method: "POST",
+        body: value,
+      });
+
+      await buyMultiXRP(id, resp, qty, i);
+    } catch (error) {
+      dispatch(
+        SetFollowrData({
+          upload: 1,
+          mint: 5,
+          fixed: 2,
+          approve: 2,
+          ModalType: "MulBuy",
+          func: async () => {
+            await BuyMulXrp(value, qty, i);
+          },
+          modal: true,
+          MulBuyXRP: { qty: qty, remainig: i },
+        })
+      );
+      return false;
+    }
+  };
+  const buyMultiXRP = async (id, resp, qty, i) => {
+    dispatch(
+      SetFollowrData({
+        upload: 1,
+        mint: 1,
+        fixed: 0,
+        approve: 2,
+        ModalType: "MulBuy",
+        modal: true,
+        MulBuyXRP: { qty: qty, remainig: i },
+      })
+    );
+
+    try {
+      await API({
+        url: apiURl.xummTransfer,
+        method: "POST",
+        body: {
+          id,
+          walletAddress,
+          UserId: _id,
+          active_trade_id: resp?.active_trade_id,
+        },
+      });
+
+      dispatch(
+        SetFollowrData({
+          upload: 1,
+          mint: 1,
+          fixed: 1,
+          approve: 2,
+          ModalType: "MulBuy",
+          modal: true,
+          MulBuyXRP: { qty: qty, remainig: i },
+        })
+      );
+
+      await new Promise((resolve, reject) => {
+        try {
+          setTimeout(() => {
+            resolve(true);
+          }, 1000);
+        } catch (error) {
+          reject(false);
+        }
+      })
+        .then((data) => {
+          dispatch(
+            SetFollowrData({
+              upload: 1,
+              mint: 1,
+              fixed: 1,
+              approve: 2,
+              ModalType: null,
+              modal: false,
+              MulBuyXRP: { qty: qty, remainig: i },
+            })
+          );
+
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+
+          return data;
+        })
+        .catch((err) => {
+          dispatch(
+            SetFollowrData({
+              upload: 2,
+              mint: 2,
+              fixed: 2,
+              approve: 2,
+              ModalType: null,
+              modal: false,
+              MulBuyXRP: {},
+            })
+          );
+        });
+    } catch (error) {
+      dispatch(
+        SetFollowrData({
+          upload: 1,
+          mint: 1,
+          fixed: 5,
+          approve: 2,
+          ModalType: "MulBuy",
+          func: async () => {
+            await buyMultiXRP(id);
+          },
+          modal: true,
+          MulBuyXRP: { qty: qty, remainig: i },
+        })
+      );
+      return false;
     }
   };
 

@@ -98,7 +98,7 @@ const Card = ({
             </>
           )}
         </div>
-        <div className="price-sub price-sub-space">
+        <div className="price-sub  price-sub-space">
           <Link to={`/collections/${_id}`}>
             {Owner_id && Owner_id?._id == User_Id
               ? "View"
