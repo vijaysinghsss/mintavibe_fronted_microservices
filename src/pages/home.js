@@ -39,6 +39,7 @@ const Home = () => {
   const [show, setShow] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [celeData, setCeleData] = useState([]);
+  const [celebritylistData, setCelebritylistData] = useState([]);
 
   const { loginUserData = {} } = useSelector((state) => state.authUser);
   const { User } = useSelector((state) => state);
@@ -51,7 +52,6 @@ const Home = () => {
     setShowPopup(true);
   };
 
- 
   const handleShowCreatePopup = (e) => {
     console.log(e);
     e.preventDefault();
@@ -71,7 +71,8 @@ const Home = () => {
     }
     setShowCreatePopup(true);
   };
-  const fetchCategory=async (id)=>{
+
+  const fetchCategory = async (id) => {
     try {
       await API({
         url: `${apiURl.celebdata}/${id}`,
@@ -87,14 +88,32 @@ const Home = () => {
       console.log(error);
       toast(`Something Wrong.`, { type: "error" });
     }
-  }
-  const handleCategory = async (id) => {
-    fetchCategory(id)
   };
-  
-  useEffect(() => {
-    let id=CreatorCategory?.find(elt=>elt.Creatorname==="Movies")?._id
+  const fetchCelebritylist = async () => {
+    try {
+      await API({
+        url: `${apiURl.celebritylist}`,
+        method: "GET",
+      }).then((data) => {
+        console.log("celebritylist", data);
+        if (data?.status || data?.status === "true") {
+          setCelebritylistData(data?.response || []);
+        }
+        console.log(data, "celebdata");
+      });
+    } catch (error) {
+      console.log(error);
+      toast(`Something Wrong.`, { type: "error" });
+    }
+  };
+  const handleCategory = async (id) => {
     fetchCategory(id);
+  };
+
+  useEffect(() => {
+    let id = CreatorCategory?.find((elt) => elt.Creatorname === "Movies")?._id;
+    fetchCategory(id);
+    fetchCelebritylist();
   }, [CreatorCategory]);
 
   return (
@@ -179,6 +198,7 @@ const Home = () => {
                           height={50}
                           alt=""
                         />
+                        {ele.coming_soon && <small>COMMING SOON</small>}
                         <span className="right">{ele.Creatorname}</span>
                       </div>
                     ))}
@@ -200,7 +220,9 @@ const Home = () => {
                           </div>
                           <figure>
                             <Link
-                              to={`/${cele.Creator_type?.Creatorname ||'Unknown'}/${cele.Slug}`}
+                              to={`/${
+                                cele.Creator_type?.Creatorname || "Unknown"
+                              }/${cele.Slug}`}
                             >
                               <img
                                 src={`${BASECONFIG.BASE_URL}/${cele.image}`}
@@ -321,11 +343,43 @@ const Home = () => {
                   },
                 ]}
               >
-                <img src="../images/ak01.png" className="img-fluid" alt="" />
-                <img src="../images/ak02.png" className="img-fluid" alt="" />
-                <img src="../images/ak06.png" className="img-fluid" alt="" />
-                <img src="../images/ak04.png" className="img-fluid" alt="" />
-                <img src="../images/ak05.png" className="img-fluid" alt="" />
+                {celebritylistData?.length >0 ? (
+                  celebritylistData?.map((ele) => (
+                    <img
+                      className="img-fluid"
+                      src={`${process.env.REACT_APP_BACKENDURL}/${ele?.image}`}
+                      alt=""
+                    />
+                  ))
+                ) : (
+                  <>
+                    <img
+                      src="../images/ak01.png"
+                      className="img-fluid"
+                      alt=""
+                    />
+                    <img
+                      src="../images/ak02.png"
+                      className="img-fluid"
+                      alt=""
+                    />
+                    <img
+                      src="../images/ak06.png"
+                      className="img-fluid"
+                      alt=""
+                    />
+                    <img
+                      src="../images/ak04.png"
+                      className="img-fluid"
+                      alt=""
+                    />
+                    <img
+                      src="../images/ak05.png"
+                      className="img-fluid"
+                      alt=""
+                    />
+                  </>
+                )}
               </SliderParent>
             </div>
           </div>
