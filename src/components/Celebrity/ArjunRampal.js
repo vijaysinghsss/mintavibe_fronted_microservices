@@ -38,6 +38,7 @@ function ArjunRampal() {
   const [categoryList, setcategoryList] = useState([]);
   const [NftListAccording, setNftListAccording] = useState([]);
   const [banerList, setBanerList] = useState([]);
+  const classColor = ["coffeeLigh", "lightGry", "darkesBlue"];
 
   const handleCloseCreatePopup = () => setShowCreatePopup(false);
 
@@ -133,30 +134,30 @@ function ArjunRampal() {
                 heartClass="fa, .fas"
                 searchClass="search-section.input-group"
               >
-                {banerList.map(({ image, text, id, Nftname }, index) => (
-                  <div
-                    key={index}
-                    onClick={() => setText(id)}
-                    className="nft-box-img-box"
-                  >
-                    <a href={`#${id}`}>
-                      <img
-                        src={
-                          `${process.env.REACT_APP_BACKENDURL}/${image}` ||
-                          "../images/banner-arjun-rampal.png"
-                        }
-                        alt="arjun_img"
-                        
-                      />
+                {banerList.length > 0 &&
+                  banerList.map(({ image, text, id, Nftname }, index) => (
+                    <div
+                      key={index}
+                      onClick={() => setText(id)}
+                      className="nft-box-img-box"
+                    >
+                      <a href={`#${id}`}>
+                        <img
+                          src={
+                            `${process.env.REACT_APP_BACKENDURL}/${image}` ||
+                            "../images/banner-arjun-rampal.png"
+                          }
+                          alt="arjun_img"
+                        />
 
-                      <h2>
-                        {Nftname.length < 20
-                          ? Nftname
-                          : Nftname.substr(0, 14) + "...."}
-                      </h2>
-                    </a>
-                  </div>
-                ))}
+                        <h2>
+                          {Nftname.length < 20
+                            ? Nftname
+                            : Nftname.substr(0, 14) + "...."}
+                        </h2>
+                      </a>
+                    </div>
+                  ))}
               </SliderParent>
             </Col>
 
@@ -205,9 +206,13 @@ function ArjunRampal() {
         </div>
       </section>
 
-      {categoryList.map((item) => {
+      {categoryList.map((item, index) => {
         return (
-          <section className="comanNftSec coffeeLigh">
+          <section
+            className={`comanNftSec ${
+              classColor[index] ? classColor[index] : ""
+            }`}
+          >
             <div className="container">
               <div className="row">
                 <div className="col-xl-12">
@@ -288,9 +293,9 @@ function ArjunRampal() {
                     )}
                   </SliderParent>
 
-                  <div className="text-center mt-4">
+                  {/* <div className="text-center mt-4">
                     <a className="viewMore">View More</a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

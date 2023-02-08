@@ -52,7 +52,8 @@ const apiURl = {
   allowners: "/allowners",
   ErrorData: "/errordata",
   helpmail: '/helpmail',
-  celebdata: "/celebdata"
+  celebdata: "/celebdata",
+  celebritylist:"/celebritylist"
 };
 
 export const NotificationMsg = {
