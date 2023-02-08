@@ -193,7 +193,13 @@ const Home = () => {
                         onClick={() => handleCategory(ele._id)}
                       >
                         <img
-                          src={`${BASECONFIG.BASE_URL}/${ele.image}`}
+                          src={`${process.env.REACT_APP_BACKENDURL}/${ele.image}`}
+                          width={50}
+                          height={50}
+                          alt=""
+                        />
+                         <img
+                          src={`${process.env.REACT_APP_BACKENDURL}/${ele.active_image}`}//white 
                           width={50}
                           height={50}
                           alt=""
@@ -355,33 +361,34 @@ const Home = () => {
                     />
                   ))
                 ) : (
-                  <>
-                    <img
-                      src="../images/ak01.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                    <img
-                      src="../images/ak02.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                    <img
-                      src="../images/ak06.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                    <img
-                      src="../images/ak04.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                    <img
-                      src="../images/ak05.png"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </>
+                  ""
+                  // <>
+                  //   <img
+                  //     src="../images/ak01.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak02.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak06.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak04.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak05.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  // </>
                 )}
               </SliderParent>
             </div>
