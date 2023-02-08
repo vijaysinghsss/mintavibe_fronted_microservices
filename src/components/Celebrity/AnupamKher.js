@@ -78,13 +78,15 @@ function AnupamKher() {
     }
   }, [Slug, categoryList]);
   useEffect(() => {
-    let arr = categoryList?.map((item) => {
-      return (
-        Array.isArray(NftListAccording[item?._id]) &&
-        NftListAccording[item?._id]?.[0]
-      );
-    });
-    setBanerList(arr);
+    if (NftListAccording.length) {
+      let arr = categoryList?.map((item) => {
+        return (
+          Array.isArray(NftListAccording[item?._id]) &&
+          NftListAccording[item?._id]?.[0]
+        );
+      });
+      setBanerList(arr);
+    }
   }, [NftListAccording]);
 
   return (
@@ -123,21 +125,21 @@ function AnupamKher() {
                 searchClass="search-section.input-group"
               >
                 {banerList?.length > 0 &&
-                  banerList?.map(({ image, text, id, Nftname }, index) => (
-                    <div key={index} onClick={() => setText(id)}>
-                      <a href={`#${id}`}>
+                  banerList?.map((ele, index) => (
+                    <div key={index} onClick={() => setText(ele?.id)}>
+                      <a href={`#${ele?.id}`}>
                         <img
                           src={
-                            `${process.env.REACT_APP_BACKENDURL}/${image}` ||
+                            `${process.env.REACT_APP_BACKENDURL}/${ele.image}` ||
                             "../images/anupamKhair1.png"
                           }
                           alt="anupam_img"
                         />
                         {/* <img src="../images/anupamKhair1.png" /> */}
                         <h2>
-                          {Nftname.length < 20
-                            ? Nftname
-                            : Nftname.substr(0, 14) + "...."}
+                          {ele?.Nftname.length < 20
+                            ? ele?.Nftname
+                            : ele?.Nftname.substr(0, 14) + "...."}
                         </h2>
                       </a>
                     </div>
