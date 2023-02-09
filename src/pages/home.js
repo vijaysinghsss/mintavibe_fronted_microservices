@@ -132,29 +132,26 @@ const Home = () => {
       <section className="nftSection">
         <div className="container">
           <div className="row justify-content-between">
-            <div className="col-lg-3 col-md-4">
-              <h3>
-                Exclusive Celebrity's <br className="d-none d-lg-block" />
-                NFTs
-              </h3>
+            <div className="col-lg col-md-4">
+              <h3>Exclusive Celebrity's <br className="d-none d-lg-block" /> NFTs</h3>
               <p>
                 Be a part of your favourite Bollywood celebrity's world by
-                getting insights to his world in the form of NFTs
+                getting insights to his world in the <br className="d-none d-lg-block" />form of NFTs
               </p>
             </div>
 
-            <div className="col-lg-3 col-md-4">
+            <div className="col-lg col-md-4 mx-lg-5">
               <h3>
                 Own a moment in your <br className="d-none d-lg-block" />
                 favourite celebrities
               </h3>
               <p>
                 Own a moment of your favourite character of your favourite movie
-                or celebrity's life in the form of NFTs
+                or celebrity's life in the form of <br className="d-none d-lg-block" />NFTs
               </p>
             </div>
 
-            <div className="col-lg-3 col-md-4">
+            <div className="col-lg col-md-4">
               <h3>
                 Chance to <br className="d-none d-lg-block" />
                 meet
@@ -234,8 +231,7 @@ const Home = () => {
                                   src={`${BASECONFIG.BASE_URL}/${cele.image}`}
                                   alt="Crosstower"
                                 />
-                                {/* <span className="nameTitle">{cele?.celebrityCategory}</span> */}
-
+                                {/* <span className="typeCelebrity">{cele?.celebrityCategory}</span> */}
                                 <span className="nameTitle">{cele?.celebrityname}</span>
                             </figure>
                             </Link>

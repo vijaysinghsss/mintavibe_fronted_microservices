@@ -194,7 +194,7 @@ function ArjunRampal() {
                 <br />
                 Insight into his world, his projects, side initiatives. Chance
                 to interact directly and be truly a part of his world.
-                <div className="editionSection mt-5">
+                <div className="editionSection mt-4">
                   <div>
                     <p>Edition</p>
                     <p className="amount">11,350.00</p>

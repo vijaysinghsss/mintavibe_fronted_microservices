@@ -124,7 +124,7 @@ body {
   line-height: 55px;
 }
 
-.clbrtBanner p{line-height:30px; padding-right:40px;}
+.clbrtBanner p{line-height:30px; padding-right:40px; font-size:24px;}
 
 .clbrtBanner button {
   color: #FFF;
@@ -256,7 +256,7 @@ body {
 }
 
 .topScroll li {
-  font-size: 15px;
+  font-size: 14px;
   color: #5A2AE0;
   margin: 0 15px;
   font-weight: 500;
@@ -293,14 +293,14 @@ body {
 }
 
 .nftSection h3 {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   line-height: 32px;
 }
 
 .nftSection p {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 
@@ -390,6 +390,8 @@ body {
 
 .flex-container .tabsection.active .comSoon{display:none;}
 
+
+.flex-container .tabsection.active span.right{opacity:1;}
 .flex-container .tabsection span.right {
   padding-left: 11px;
   opacity: .5;
@@ -444,6 +446,19 @@ body {
   display:inline-block;
 }
 
+.celebrityDtl figure .typeCelebrity {
+	font-family: 'Furore';
+	font-size: 40px;
+	text-align: center;
+	color: #FFF;
+	position: absolute;
+	width: 100%;
+	left: -116px;
+	bottom: 0;
+	transform: rotate(-90deg);
+	margin-bottom: 50%;
+	background: #000;
+}
 .celebrityDtl figure .nameTitle {
   font-family: 'Furore';
   font-size:16px;
@@ -488,7 +503,7 @@ body {
 .celebrityPost h3 {
   color: #5A2AE0;
   text-align: center;
-  font-size: 45px;
+  font-size: 40px;
   margin-bottom: 20px;
 }
 
@@ -529,36 +544,38 @@ body {
 }
 
 .countDown li {
-  margin: 0 15px;
+  margin: 0 8px;
   font-size: 36px;
   text-align: center;
   line-height: 34px;
   font-weight: 300;
+  width:50px;
 }
 
 .countDown p {
   margin: 0px;
-  font-size: 16px;
+  font-size: 14px;
   text-transform: uppercase;
   font-weight: 300;
 }
 
 .abtCelebt h3 {
-  font-size: 30px;
+  font-size: 36px;
   color: #F2B600;
   font-weight: 500;
-  margin: 10px 0 15px;
+  margin: 0 0 15px;
 }
 
 .abtCelebt h4 {
-  font-size: 24px;
+  font-size: 28px;
+  margin:15px 0 10px;
 }
 
 .abtCelebt p {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 300;
-  line-height: 28px;
-  margin: 0px;
+  line-height: 30px;
+  margin: 0 0 15px;
   opacity: .9;
 }
 
@@ -655,7 +672,7 @@ body {
 
 
 .subsScribe {
-  padding: 50px 0;
+  padding: 100px 0 80px;
   text-align: center;
   background: transparent linear-gradient(90deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;
   color: #FFF;

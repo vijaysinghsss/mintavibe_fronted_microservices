@@ -174,7 +174,7 @@ function AnupamKher() {
                   Insight into his world, his projects, side initiatives. Chance
                   to interact directly and be truly a part of his world.
                 </p>
-                <div className="editionSection mt-5">
+                <div className="editionSection mt-4">
                   <div>
                     <p>Edition</p>
                     <p className="amount">14,400.00</p>
