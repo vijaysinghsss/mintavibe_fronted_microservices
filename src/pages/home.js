@@ -132,29 +132,26 @@ const Home = () => {
       <section className="nftSection">
         <div className="container">
           <div className="row justify-content-between">
-            <div className="col-lg-3 col-md-4">
-              <h3>
-                Exclusive Celebrity's <br className="d-none d-lg-block" />
-                NFTs
-              </h3>
+            <div className="col-lg col-md-4">
+              <h3>Exclusive Celebrity's <br className="d-none d-lg-block" /> NFTs</h3>
               <p>
                 Be a part of your favourite Bollywood celebrity's world by
-                getting insights to his world in the form of NFTs
+                getting insights to his world in the <br className="d-none d-lg-block" />form of NFTs
               </p>
             </div>
 
-            <div className="col-lg-3 col-md-4">
+            <div className="col-lg col-md-4 mx-lg-5">
               <h3>
                 Own a moment in your <br className="d-none d-lg-block" />
                 favourite celebrities
               </h3>
               <p>
                 Own a moment of your favourite character of your favourite movie
-                or celebrity's life in the form of NFTs
+                or celebrity's life in the form of <br className="d-none d-lg-block" />NFTs
               </p>
             </div>
 
-            <div className="col-lg-3 col-md-4">
+            <div className="col-lg col-md-4">
               <h3>
                 Chance to <br className="d-none d-lg-block" />
                 meet
@@ -186,13 +183,9 @@ const Home = () => {
                   {CreatorCategory?.length > 0 &&
                     CreatorCategory?.map((ele) => (
                       <div
-                        className={`tabsection ${
-                          !ele.coming_soon ? "active" : ""
-                        }`}
+                        className={`tabsection ${!ele.coming_soon ? "active" : "" }`}
                         key={ele._id}
-                        onClick={() =>
-                          !ele.coming_soon && handleCategory(ele._id)
-                        }
+                        onClick={() => handleCategory(ele._id)}
                       >
                         <img
                           src={`${process.env.REACT_APP_BACKENDURL}/${ele.image}`}
@@ -201,16 +194,14 @@ const Home = () => {
                           className="actBtn"
                           alt=""
                         />
-                        <img
-                          src={`${process.env.REACT_APP_BACKENDURL}/${ele.active_image}`} //white
+                         <img
+                          src={`${process.env.REACT_APP_BACKENDURL}/${ele.active_image}`}//white 
                           width={50}
                           height={50}
                           className="norBtn"
                           alt=""
                         />
-                        {ele.coming_soon && (
-                          <small className="comSoon">COMMING SOON</small>
-                        )}
+                        {ele.coming_soon && <small className="comSoon">COMMING SOON</small>}
                         <span className="right">{ele.Creatorname}</span>
                       </div>
                     ))}
@@ -230,24 +221,20 @@ const Home = () => {
                           <div className="countDown">
                             <CountdownTimerHome targetDate={cele.Start_time} />
                           </div>
-                          <Link
-                            className="celebFrame"
-                            to={`/${
-                              cele.Creator_type?.Creatorname || "Unknown"
-                            }/${cele.Slug}`}
-                          >
+                            <Link className="celebFrame"
+                              to={`/${
+                                cele.Creator_type?.Creatorname || "Unknown"
+                              }/${cele.Slug}`}
+                            >
                             <figure>
-                              <img
-                                src={`${BASECONFIG.BASE_URL}/${cele.image}`}
-                                alt="Crosstower"
-                              />
-                              {/* <span className="nameTitle">{cele?.celebrityCategory}</span> */}
-
-                              <span className="nameTitle">
-                                {cele?.celebrityname}
-                              </span>
+                                <img
+                                  src={`${BASECONFIG.BASE_URL}/${cele.image}`}
+                                  alt="Crosstower"
+                                />
+                                <span className="typeCelebrity">{cele?.celebrityCategory}</span>
+                                <span className="nameTitle">{cele?.celebrityname}</span>
                             </figure>
-                          </Link>
+                            </Link>
                           <div className="figCaption">
                             <h3>{cele.Title}</h3>
 
@@ -361,17 +348,44 @@ const Home = () => {
                   },
                 ]}
               >
-                {celebritylistData?.length > 0
-                  ? celebritylistData?.map((ele) => (
-                      <Link to={`/collections/${ele?._id}`}>
-                        <img
-                          className="img-fluid"
-                          src={`${process.env.REACT_APP_BACKENDURL}/${ele?.image}`}
-                          alt=""
-                        />
-                      </Link>
-                    ))
-                  : ""}
+                {celebritylistData?.length >0 ? (
+                  celebritylistData?.map((ele) => (
+                    <img
+                      className="img-fluid"
+                      src={`${process.env.REACT_APP_BACKENDURL}/${ele?.image}`}
+                      alt=""
+                    />
+                  ))
+                ) : (
+                  ""
+                  // <>
+                  //   <img
+                  //     src="../images/ak01.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak02.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak06.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak04.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak05.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  // </>
+                )}
               </SliderParent>
             </div>
           </div>
