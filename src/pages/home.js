@@ -182,10 +182,14 @@ const Home = () => {
                 <div className="flex-container flex-wrap">
                   {CreatorCategory?.length > 0 &&
                     CreatorCategory?.map((ele) => (
-                      <div
-                        className={`tabsection ${!ele.coming_soon ? "active" : "" }`}
+                      <button
+                        className={`tabsection ${
+                          !ele.coming_soon ? "active" : ""
+                        }`}
                         key={ele._id}
+                        disabled={ele.coming_soon}
                         onClick={() => handleCategory(ele._id)}
+                        style={{ cursor: ele.coming_soon ? "" : "pointer" }}
                       >
                         <img
                           src={`${process.env.REACT_APP_BACKENDURL}/${ele.image}`}
@@ -203,7 +207,7 @@ const Home = () => {
                         />
                         {ele.coming_soon && <small className="comSoon">COMMING SOON</small>}
                         <span className="right">{ele.Creatorname}</span>
-                      </div>
+                      </button>
                     ))}
                 </div>
               </div>
