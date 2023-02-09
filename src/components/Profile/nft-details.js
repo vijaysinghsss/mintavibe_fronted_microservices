@@ -1,5 +1,5 @@
 import { useWeb3 } from "@3rdweb/hooks";
-import React, { useEffect, useState } from "react";
+import React, { useDebugValue, useEffect, useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { useDispatch, useSelector } from "react-redux";
@@ -62,6 +62,8 @@ function NftDetails() {
   const { address, activeProvider, chainId, balance, provider } = useWeb3();
   const { stripe } = useSelector((state) => state.Buy.data);
 
+  const[HistoryData, setHistoryData]= useState([]);
+
   const { _id = "", type, signer } = useSelector((state) => state?.User?.data);
 
   const { loginUserData = {} } = useSelector((state) => state.authUser);
@@ -108,6 +110,13 @@ function NftDetails() {
   const handleShow = () => {
     setShow(true);
   };
+  
+  // const FetchHistoryData = async () => {
+  //   await API({ url: `${apiURl.History}/${id}`, method: "GET" }).then((data) => {
+  //     console.log("ankit",data);
+  //     setHistoryData(data.data);
+  //   });
+  // };
 
   const FetchData = async () => {
     await API({ url: `${apiURl.Nft}/${id}`, method: "GET" }).then((data) => {
@@ -117,7 +126,7 @@ function NftDetails() {
 
   useEffect(() => {
     FetchData();
-  }, [id, type]);
+  }, [id, type, ]);
 
   useEffect(() => {
     const NetworkName = Object.entries(allChainsIDS).find(
@@ -140,7 +149,6 @@ function NftDetails() {
   const buyHnadleChange = (e) => {
     e.preventDefault();
 
-
     if (!User_id) {
       toast(NotificationMsg.NotConnect, { type: "error", toastId: "--85214" });
       return;
@@ -150,6 +158,7 @@ function NftDetails() {
       toast(NotificationMsg.NotConnect, { type: "error" });
       return;
     }
+    console.log(NetworkName,"ee")
 
     if (Array.isArray(NetworkName)) {
       if (NetworkName[0] == "XUMM") {

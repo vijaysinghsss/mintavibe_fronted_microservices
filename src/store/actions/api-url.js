@@ -5,7 +5,7 @@ const apiURl = {
   CreatorList: "/femalecreator",
   GetCollections: "/collections",
   UserDetails: "/users",
-  userData: '/userData',
+  userData: "/userData",
   EditUser: "/users",
   GetUsers: "/users",
   ProfileListing: "/listing",
@@ -25,7 +25,7 @@ const apiURl = {
   SellBroker: `/sell-broker`,
   BuyBroker: `/buy-broker`,
   Buy: `/buy`,
-  acceptBid: '/accept-bid',
+  acceptBid: "/accept-bid",
   paymentGate: "/payment-price",
   createPayment: "/create-payment",
   verifyPayment: "/verify-payment",
@@ -40,7 +40,7 @@ const apiURl = {
   profileFollowing: "/totalfollowing",
   Bid: "/bid",
   customerdata: "/customerdata",
-  categorydata: '/categorydata',
+  categorydata: "/categorydata",
   // TrendingNft: '/trendingnft',
   // TrendingNft: '/trendingnft',
   filterData: "/allNftList",
@@ -51,12 +51,12 @@ const apiURl = {
   blogs: "/blog",
   allowners: "/allowners",
   ErrorData: "/errordata",
-  helpmail: '/helpmail',
+  helpmail: "/helpmail",
   celebdata: "/celebdata",
-  celebritylist:"/celebritylist"
-  ,testxummbuy:"/testxummbuy"
-  ,xummTransfer:"/xummTransfer"
-
+  celebritylist: "/celebritylist",
+  testxummbuy: "/testxummbuy",
+  xummTransfer: "/xummTransfer",
+  History: "/history",
 };
 
 export const NotificationMsg = {
@@ -87,7 +87,6 @@ export const NotificationMsg = {
   offerCreate: `Offer created successfully`,
   offerCancel: `Offer canceled successfully`,
   Qty: `Please Enter The Qty`,
-
 };
 
 export const validationMessages = {
