@@ -736,6 +736,9 @@ body {
 
 .darkesBlue .slick-prev::before,
 .darkesBlue .slick-next::before{color:#FFF;}
+.coffeeLigh .slick-prev::before,
+.coffeeLigh .slick-next::before{color:#FFF;}
+
 
 .comanNftSec.darkesBlue h2{color:#FFF;}
 
@@ -5144,7 +5147,7 @@ footer {
 
 .bolck-div-button-2 {
   /* background-color: #000; */
-  background: transparent linear-gradient(76deg, #81613A 0%, #F2B600 100%) 0% 0% no-repeat padding-box;
+  background:  transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;
   border-radius: 10px;
   text-align: center;
   color: #fff;

@@ -231,7 +231,7 @@ const Home = () => {
                                   src={`${BASECONFIG.BASE_URL}/${cele.image}`}
                                   alt="Crosstower"
                                 />
-                                {/* <span className="typeCelebrity">{cele?.celebrityCategory}</span> */}
+                                <span className="typeCelebrity">{cele?.celebrityCategory}</span>
                                 <span className="nameTitle">{cele?.celebrityname}</span>
                             </figure>
                             </Link>

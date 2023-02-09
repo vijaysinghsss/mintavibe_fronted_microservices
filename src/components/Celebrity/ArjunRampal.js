@@ -197,7 +197,7 @@ function ArjunRampal() {
                 <div className="editionSection mt-4">
                   <div>
                     <p>Edition</p>
-                    <p className="amount">11,350.00</p>
+                    <p className="amount">11,350</p>
                   </div>
                 </div>
               </div>
