@@ -369,6 +369,7 @@ body {
   position: relative;
   font-weight: 600;
   cursor: pointer;
+  justify-content: center;
 }
 
 .flex-container .tabsection .actBtn{display:none;}
@@ -407,7 +408,7 @@ body {
   border-radius: 0px 0px 4px 4px;
   line-height: 9px;
   font-size: 10px;
-  margin-left: 38px;
+  /* margin-left: 38px; */
   font-weight: 600;
 }
 

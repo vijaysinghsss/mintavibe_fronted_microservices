@@ -16,7 +16,7 @@ const ExpiredNotice = ({ date }) => {
 
 const DayDateTimeDisplay = ({ value, type, isDanger }) => {
   return (
-    <li className={isDanger ? "text-danger" : ""}>
+    <li className={isDanger ? " " : ""}>
       {value}
       <p>{type} </p>
     </li>
