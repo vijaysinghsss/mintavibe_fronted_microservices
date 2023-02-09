@@ -314,7 +314,7 @@ const Checkout = ({ showCheckout, setShowCheckout, qty, setqty }) => {
                       Price
                       <br />
                       <span style={{ fontSize: "14px" }}>
-                        <b>This cost include gas &amp; conversion fees</b>
+                        <b>This cost include network &amp; transaction fees</b>
                       </span>
                     </td>
 
