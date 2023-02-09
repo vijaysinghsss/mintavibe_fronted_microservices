@@ -368,8 +368,15 @@ body {
   font-size: 22px;
   position: relative;
   font-weight: 600;
-  cursor: pointer;
   justify-content: center;
+}
+
+.flex-container .tabsection.active {
+  background: #FFF;
+  color:#5A2AE0;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 1;
+  cursor: pointer;
 }
 
 .flex-container .tabsection .actBtn{display:none;}
@@ -380,13 +387,6 @@ body {
 .flex-container .tabsection > img {
 	width: 25px;
 	height: auto;
-}
-
-.flex-container .tabsection.active {
-  background: #FFF;
-  color:#5A2AE0;
-  box-shadow: 0px 3px 6px #00000029;
-  opacity: 1;
 }
 
 .flex-container .tabsection.active .comSoon{display:none;}
