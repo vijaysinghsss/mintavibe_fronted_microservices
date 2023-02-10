@@ -424,12 +424,12 @@ body {
 }
 
 .celebrityDtl h3 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
 }
 
 .celebrityDtl p {
-  font-size: 16px;
+  font-size: 20px;
   margin: 0px;
 }
 
@@ -458,17 +458,17 @@ body {
 	bottom: 0;
 	transform: rotate(-90deg);
 	margin-bottom: 50%;
-	background: #000;
+	/* background: #000; */
 }
 .celebrityDtl figure .nameTitle {
   font-family: 'Furore';
-  font-size:16px;
+  font-size:20px;
 	text-align: center;
   color:#FFF;
 	position: absolute;
 	width: 100%;
 	left: 0;
-	bottom: 32px;
+	bottom: 26px;
   }
 
 .celebrityDtl figure img {
@@ -1962,8 +1962,8 @@ input:checked+.slider-check:before {
 .profile-section p {
   font-size: 24px;
   color: #000;
-  font-size: 45;
-  margin: 10px 0px 20px;
+  font-size: 24px;
+  margin: 0px;
   padding: 0px;
 }
 
@@ -1975,7 +1975,7 @@ input:checked+.slider-check:before {
 
 .profile-box {
   position: relative;
-  padding: 0px 10px;
+  padding: 0px;
 }
 
 .profile-box img {
@@ -2070,7 +2070,7 @@ input:checked+.slider-check:before {
   background-color: #fff;
   position: absolute;
   right: 7px;
-  bottom: -13px;
+  bottom: 0;
   border: 1px solid;
   color: #000;
   border-radius: 5px;
@@ -4961,20 +4961,21 @@ footer {
 }
 
 .modal-more-options {
-  padding: 0px 20px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: flex;
-  align-items: center;
-  background: #fafafab5;
-  box-shadow: 0px 0px 10px #00000029;
-  border-radius: 35px;
-  backdrop-filter: blur(30px);
-  width: 110px;
-  justify-content: space-between;
-  height: 40px;
-  z-index: 2;
+  padding: 8px 20px;
+	display: flex;
+	align-items: center;
+	background: #FFF;
+	border-radius: 10px;
+	width: 120px;
+	justify-content: space-between;
+	/* z-index: 2; */
+	/* position: absolute; */
+	/* right: 0; */
+	/* top: 0; */
+	/* box-shadow: 0px 0px 10px #00000029; */
+	/* backdrop-filter: blur(30px); */
+	/* -webkit-backdrop-filter: blur(30px); */
+	/* height: 40px; */
 }
 
 .modal-more-options button#dropdown-basic {
@@ -5045,7 +5046,7 @@ footer {
 .des-box-2 p {
   font-size: 16px;
   line-height: 32px;
-  font-weight: bold;
+  font-weight: 600;
   margin: 0px 0px 10px;
   color: #000;
 }
@@ -5094,19 +5095,6 @@ footer {
   white-space: nowrap;
   overflow: visible;
   text-overflow: clip;
-}
-
-.roy-box {
-  background-color: #fff;
-  position: absolute;
-  right: 0px;
-  bottom: -13px;
-  border: 1px solid;
-  color: #000;
-  border-radius: 5px;
-  font-size: 12px;
-  color: #000;
-  padding: 5px 15px;
 }
 
 .bolck-div {

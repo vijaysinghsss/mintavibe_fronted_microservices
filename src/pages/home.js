@@ -310,9 +310,9 @@ const Home = () => {
                 className={`top`}
                 autoplay={true}
                 draggable={true}
-                arrows={true}
+                arrows={false}
                 dots={false}
-                infinite={false}
+                infinite={true}
                 speed={300}
                 swipeToSlide={true}
                 slidesToShow={3}
