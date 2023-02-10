@@ -191,6 +191,9 @@ function App() {
           {loginUserData?.id ? (
             <>
               <Route path="/profile" element={<EditProfile />} />
+              <Route path="/profile/:collected" element={<EditProfile />} />
+
+              
               <Route
                 path="/profile/edit/:userId"
                 element={<ProfileSetting />}

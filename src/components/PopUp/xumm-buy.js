@@ -311,8 +311,8 @@ const XummBuy = (props) => {
             }
           }
         };
-
         forLoop();
+
       } else {
         await XummBuyXrp(qty);
       }

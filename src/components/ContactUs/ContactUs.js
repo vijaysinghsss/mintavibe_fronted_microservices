@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { API } from "../../apiwrapper";
+import DragDrop from "../../pages/DragDrop";
 import { apiURl } from "../../store/actions";
 import {
   isValid,
@@ -20,6 +21,7 @@ function ContactUs() {
     contact: "",
     enquirytype: "",
     querymessage: "",
+    image: "",
   });
   const {
     firstname = "",
@@ -28,6 +30,7 @@ function ContactUs() {
     contact = "",
     enquirytype = "",
     querymessage = "",
+    image = "",
   } = inpData;
   const [errors, setErrors] = useState({});
 
@@ -71,18 +74,22 @@ function ContactUs() {
     err1.querymessage = validateQueryMessage(querymessage);
     return err1;
   };
-
+  const handleFileChange = (file) => {
+    console.log(file," multiple={true}")
+    setInpData({ ...inpData, image: file });
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       let err = validateAll();
       if (isValid(err)) {
-        console.log(inpData);
+        let fd = new FormData();
+        Object.keys(inpData).map((elt) => fd.append(elt, inpData.elt));
         await API({
           url: apiURl.contactus,
           method: "POST",
-          body: { ...inpData },
-          formData: false,
+          body: fd,
+          formData: true,
         }).then((data) => {
           if (data?.status || data?.status === "true") {
             // toast(`${data?.message}`, { type: "success" });
@@ -105,7 +112,7 @@ function ContactUs() {
       toast(error, { type: "error" });
     }
   };
-
+  console.log(inpData);
   return (
     <>
       <section className="innre-bannre">
@@ -260,6 +267,23 @@ function ContactUs() {
                           ""
                         )}
                       </div>
+                      <DragDrop
+                        handleFileChange={handleFileChange}
+                        accept={[]}
+                      />
+                      {/* <div className="form-group col-6 col-md-6">
+                        <label htmlFor="file">File</label>
+                        <input
+                          type="file"
+                          className="form-control mb-0"
+                          id="file"
+                          name="image"
+                          onChange={(e) => {
+                            setInpData({ ...inpData, image: e.target.files });
+                          }}
+                        />
+                      </div> */}
+
                       <div className="form-group col-md-12">
                         <label for="Message">
                           Message<span className="text-danger"> *</span>
