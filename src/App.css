@@ -2628,8 +2628,8 @@ a {
 
 .pagination .active>.page-link,
 .pagination .page-link.active {
-  background: #000;
-  border-color: #000;
+  background: #7f35e6;
+  border-color: #7f35e6;
   color: #FFF;
 }
 
@@ -5188,7 +5188,7 @@ footer {
 .cstTab ul.nav-tabs li button {
   border: transparent;
   padding: 10px 0;
-  font-size: 14px;
+  font-size: 16px;
   color: #98999d;
 }
 
