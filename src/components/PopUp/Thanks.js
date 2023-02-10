@@ -16,11 +16,11 @@ function Thanks({show, close}) {
                 <img src="/images/cross-button.svg" />
               </a>
             </div>
-            <h2>Thanks</h2>
+            <h2>Thanks You</h2>
 
             <div className="login-section">
               <div className="text-center my-5">
-                <h5>For Subscribe</h5>
+                <h5>For Subscribing</h5>
               </div>
 
               <button

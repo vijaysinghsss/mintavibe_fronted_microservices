@@ -118,10 +118,11 @@ function NftDetails() {
   };
 
   const FetchHistoryData = async () => {
-    await API({ url: `${apiURl.History}/${id}`, method: "GET" }).then((data) => {
-      console.log("ankit",data);
-      setHistoryData(data.data);
-    });
+    await API({ url: `${apiURl.History}/${id}`, method: "GET" }).then(
+      (data) => {
+        setHistoryData(data.data);
+      }
+    );
   };
   const token = gup("token");
   const session = gup("session");
@@ -130,13 +131,14 @@ function NftDetails() {
   const FetchData = async () => {
     await API({ url: `${apiURl.Nft}/${id}`, method: "GET" }).then((data) => {
       setCollectionDetails(data.data);
+      return data.data;
     });
   };
 
   useEffect(() => {
     FetchData();
-    FetchHistoryData()
-  }, [id, type,]);
+    FetchHistoryData();
+  }, [id, type]);
 
   useEffect(() => {
     const NetworkName = Object.entries(allChainsIDS).find(
@@ -168,7 +170,6 @@ function NftDetails() {
       toast(NotificationMsg.NotConnect, { type: "error" });
       return;
     }
-    console.log(NetworkName, "ee");
 
     if (Array.isArray(NetworkName)) {
       if (NetworkName[0] == "XUMM") {
@@ -949,8 +950,6 @@ function NftDetails() {
 
   const [apiCall, setapiCall] = useState(null);
 
- 
-
   useEffect(() => {
     dispatch(
       SetBuyData({
@@ -960,17 +959,17 @@ function NftDetails() {
         stripe: false,
       })
     );
-    dispatch(
-      SetFollowrData({
-        upload: false,
-        mint: false,
-        fixed: false,
-        approve: false,
-        ModalType: "stripe",
-        modal: false,
-        func: () => {},
-      })
-    );
+    // dispatch(
+    //   SetFollowrData({
+    //     upload: false,
+    //     mint: false,
+    //     fixed: false,
+    //     approve: false,
+    //     ModalType: "stripe",
+    //     modal: false,
+    //     func: () => {},
+    //   })
+    // );
 
     if (token && session && Type && atob(Type) !== "error") {
       dispatch(
@@ -1028,334 +1027,364 @@ function NftDetails() {
                       },
                     })
                   );
-                }
-
-                dispatch(
-                  SetFollowrData({
-                    upload: false,
-                    mint: 1,
-                    fixed: 0,
-                    approve: false,
-                    ModalType: "stripe",
-                    modal: true,
-                    func: () => {},
-                  })
-                );
-
-                // return;
-                const totalAmt = multipliedBy(
-                  CollectionDetails?.sign_instant_sale_price,
-                  data?.result?.Quantity || 1
-                );
-                const serviceFee = percentageOf(2.5, totalAmt);
-                const total = plusNum(totalAmt, serviceFee);
-                console.log(CollectionDetails?.collection_type,"CollectionDetails?.collection_type",type,id)
-
-                if (type == "METAMASK") {
-                  dispatch(
-                    FiatbuyAsset(
-                      CollectionDetails?.cretor_wallet_address,
-                      CollectionDetails?.collection_type ? 1 : 0,
-                      CollectionDetails?.collection_type
-                        ? process.env.REACT_APP_CONTRACT_ADDRESS_ERC721
-                        : process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155,
-                      CollectionDetails?.token,
-                      CollectionDetails?.sign_instant_sale_price,
-                      data?.result?.Quantity || 1,
-                      parseFloat(parseFloat(total)),
-                      process.env.REACT_APP_WETHADDRESS,
-                      18,
-                      CollectionDetails?._id,
-                      address,
-                      CollectionDetails?.Royality,
-                      provider,
-                      signer,
-                      "abcde",
-                      _id,
-                      CollectionDetails?.is_eth_payment,
-                      CollectionDetails,
-                      navigate
-                    )
-                  );
                 } else {
-                  if (CollectionDetails?.collection_type) {
-                    try {
-                      API({
-                        url: apiURl.BuyBroker,
-                        method: "POST",
-                        body: { id, xumm_user_token: userToken,wallet_id: walletAddress },
-                      }).then((data) => {
-                        API({
-                          url: apiURl.Buy,
-                          method: "POST",
-                          body: {
-                            wallet_id: walletAddress,
-                            price: 1,
-                            UserId: _id,
-                            id,
-                            xumm_user_token: userToken,
-                          },
-                        }).then((data) => {
-                          if (data.is_offer_accepted) {
-                            dispatch(
-                              SetFollowrData({
-                                upload: false,
-                                mint: 1,
-                                fixed: 2,
-                                approve: false,
-                                ModalType: "stripe",
-                                modal: false,
-                                func: () => {},
-                              })
-                            );
-                            setTimeout(() => {
-                              navigate(
-                                `/collections/${CollectionDetails?._id}`
-                              );
-                            }, 200);
-                            dispatch(
-                              SetFollowrData({
-                                upload: false,
-                                mint: false,
-                                fixed: false,
-                                approve: false,
-                                ModalType: "stripe",
-                                modal: false,
-                                func: () => {},
-                              })
-                            );
+                  API({ url: `${apiURl.Nft}/${id}`, method: "GET" }).then(
+                    (nftdata) => {                      
+                      let nftData = nftdata?.data;                
+                      const totalAmt = multipliedBy(
+                        nftData?.sign_instant_sale_price,
+                        data?.result?.Quantity || 1
+                      );
+                      const serviceFee = percentageOf(2.5, totalAmt);
+                      const total = plusNum(totalAmt, serviceFee);
+                     
 
-                            navigate(`/`);
+                      if (type == "METAMASK") {
+                        dispatch(
+                          SetFollowrData({
+                            upload: false,
+                            mint: 1,
+                            fixed: 0,
+                            approve: false,
+                            ModalType: "stripe",
+                            modal: true,
+                            func: () => {},
+                          })
+                        );
+
+                        dispatch(
+                          FiatbuyAsset(
+                            nftData?.cretor_wallet_address,
+                            nftData?.collection_type ? 1 : 0,
+                            nftData?.collection_type
+                              ? process.env.REACT_APP_CONTRACT_ADDRESS_ERC721
+                              : process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155,
+                            nftData?.token,
+                            nftData?.sign_instant_sale_price,
+                            data?.result?.Quantity || 1,
+                            parseFloat(parseFloat(total)),
+                            process.env.REACT_APP_WETHADDRESS,
+                            18,
+                            nftData?._id,
+                            address,
+                            nftData?.Royality,
+                            provider,
+                            signer,
+                            "abcde",
+                            _id,
+                            nftData?.is_eth_payment,
+                            nftData,
+                            navigate
+                          )
+                        );
+                      } else {
+                        if (nftData?.collection_type) {
+                          dispatch(
+                            SetFollowrData({
+                              upload: false,
+                              mint: 1,
+                              fixed: 0,
+                              approve: false,
+                              ModalType: "stripe",
+                              modal: true,
+                              func: () => {},
+                            })
+                          );
+
+                          try {
+                            API({
+                              url: apiURl.BuyBroker,
+                              method: "POST",
+                              body: {
+                                id,
+                                xumm_user_token: userToken,
+                                wallet_id: walletAddress,
+                              },
+                            }).then((BuyBroData) => {
+                              API({
+                                url: apiURl.Buy,
+                                method: "POST",
+                                body: {
+                                  wallet_id: walletAddress,
+                                  price: 1,
+                                  UserId: _id,
+                                  id,
+                                  xumm_user_token: userToken,
+                                },
+                              }).then((Buydata) => {
+                                if (Buydata?.is_offer_accepted) {
+                                  dispatch(
+                                    SetFollowrData({
+                                      upload: false,
+                                      mint: 1,
+                                      fixed: 2,
+                                      approve: false,
+                                      ModalType: "stripe",
+                                      modal: false,
+                                      func: () => {},
+                                    })
+                                  );
+                                  setTimeout(() => {
+                                    navigate(`/collections/${nftData?._id}`);
+                                  }, 200);
+                                  dispatch(
+                                    SetFollowrData({
+                                      upload: false,
+                                      mint: false,
+                                      fixed: false,
+                                      approve: false,
+                                      ModalType: "stripe",
+                                      modal: false,
+                                      func: () => {},
+                                    })
+                                  );
+
+                                  navigate(`/`);
+                                }
+                              });
+                            });
+                          } catch (error) {
+                            let errorObject = {
+                              message: error.message,
+                              stack: error.stack,
+                              type: "XUMM",
+                              typeFunc: "Buy-Function",
+                              params: {
+                                id,
+                                xumm_user_token: userToken,
+                              },
+                            };
+                            API({
+                              url: apiURl.ErrorData,
+                              method: "POST",
+                              body: { errordata: JSON.stringify(errorObject) },
+                            });
                           }
-                        });
-                      });
-                    } catch (error) {
-                      let errorObject = {
-                        message: error.message,
-                        stack: error.stack,
-                        type: "XUMM",
-                        typeFunc: "Buy-Function",
-                        params: {
-                          id,
-                          xumm_user_token: userToken,
-                        },
-                      };
-                      API({
-                        url: apiURl.ErrorData,
-                        method: "POST",
-                        body: { errordata: JSON.stringify(errorObject) },
-                      });
+                        } else {
+                          let qty = data?.result?.Quantity;
+                         
+                          const forLoop = async () => {
+                            for (let index = 1; index <= qty; index++) {
+                              try {
+                                dispatch(
+                                  SetBuyData({
+                                    modal: false,
+                                    checkout: false,
+                                    buyModal: false,
+                                    stripe: false,
+                                  })
+                                );
+                                dispatch(
+                                  SetFollowrData({
+                                    upload: 0,
+                                    mint: 2,
+                                    fixed: 2,
+                                    approve: 2,
+                                    ModalType: "MulBuy",
+                                    modal: true,
+                                    MulBuyXRP: { qty: qty, remainig: index },
+                                  })
+                                );
+                               
+
+                                // const balanceCheck = await new Promise((resolve, reject) => {
+                                //   try {
+                                //     setTimeout(() => {
+                                //       if (
+                                //         parseFloat(Balance) >
+                                //         parseFloat(parseFloat(CollectionDetails.sign_instant_sale_price) + 1)
+                                //       ) {
+                                //         resolve(true);
+                                //       } else {
+                                //         reject(false);
+                                //       }
+                                //     }, 1500);
+                                //   } catch (error) {
+                                //     reject(false);
+                                //   }
+                                // })
+                                //   .then((data) => {
+                                //     return data;
+                                //   })
+                                //   .catch((err) => {
+                                //     dispatch(
+                                //       SetFollowrData({
+                                //         upload: 5,
+                                //         mint: 2,
+                                //         fixed: 2,
+                                //         approve: 2,
+                                //         ModalType: "MulBuy",
+                                //         func: async () => {
+                                //           await XummMulBuyXrp(qty, index);
+                                //         },
+                                //         modal: true,
+                                //         MulBuyXRP: { qty: qty, remainig: index },
+                                //       })
+                                //     );
+                                //     return err;
+                                //   });
+
+                                // if (!balanceCheck) {
+                                //   break;
+                                // }
+                                const data = {
+                                  wallet_id: walletAddress,
+                                  // Price: CollectionDetails.sign_instant_sale_price,
+                                  UserId: _id,
+                                  id,
+                                  xumm_user_token: userToken,
+                                };
+                                dispatch(
+                                  SetFollowrData({
+                                    upload: 1,
+                                    mint: 0,
+                                    fixed: 2,
+                                    approve: 2,
+                                    ModalType: "MulBuy",
+                                    modal: true,
+                                    MulBuyXRP: { qty: qty, remainig: index },
+                                  })
+                                );
+
+                                try {
+                                  const brokerRes = await API({
+                                    url: apiURl.testxummbuy,
+                                    method: "POST",
+                                    body: data,
+                                  });
+                                  dispatch(
+                                    SetFollowrData({
+                                      upload: 1,
+                                      mint: 1,
+                                      fixed: 0,
+                                      approve: 2,
+                                      ModalType: "MulBuy",
+                                      modal: true,
+                                      MulBuyXRP: { qty: qty, remainig: index },
+                                    })
+                                  );
+
+                                  try {
+                                    const res = await API({
+                                      url: apiURl.xummTransfer,
+                                      method: "POST",
+                                      body: {
+                                        id,
+                                        wallet_id: walletAddress,
+                                        Price: nftData.sign_instant_sale_price,
+                                        UserId: _id,
+                                        active_trade_id:
+                                          brokerRes?.active_trade_id,
+                                      },
+                                    });
+
+                                    dispatch(
+                                      SetFollowrData({
+                                        upload: 1,
+                                        mint: 1,
+                                        fixed: 1,
+                                        approve: 2,
+                                        ModalType: "MulBuy",
+                                        modal: true,
+                                        MulBuyXRP: {
+                                          qty: qty,
+                                          remainig: index,
+                                        },
+                                      })
+                                    );
+
+                                    await new Promise((resolve, reject) => {
+                                      try {
+                                        setTimeout(() => {
+                                          resolve(true);
+                                        }, 1000);
+                                      } catch (error) {
+                                        reject(false);
+                                      }
+                                    })
+                                      .then((data) => {
+                                        dispatch(
+                                          SetFollowrData({
+                                            upload: 1,
+                                            mint: 1,
+                                            fixed: 1,
+                                            approve: 2,
+                                            ModalType: null,
+                                            modal: false,
+                                            MulBuyXRP: {
+                                              qty: qty,
+                                              remainig: index,
+                                            },
+                                          })
+                                        );
+                                        if (index === +qty) {
+                                          setTimeout(() => {
+                                            navigate(`/collections/${nftData?._id}`);
+                                          }, 200);
+                                          navigate("/");
+                                        }
+                                        return data;
+                                      })
+                                      .catch((err) => {
+                                        dispatch(
+                                          SetFollowrData({
+                                            upload: 2,
+                                            mint: 2,
+                                            fixed: 2,
+                                            approve: 2,
+                                            ModalType: null,
+                                            modal: false,
+                                            MulBuyXRP: {},
+                                          })
+                                        );
+                                      });
+                                  } catch (error) {
+                                    dispatch(
+                                      SetFollowrData({
+                                        upload: 1,
+                                        mint: 1,
+                                        fixed: 5,
+                                        approve: 2,
+                                        ModalType: "MulBuy",
+                                        func: async () => {
+                                          await buyMultiXRP(id);
+                                        },
+                                        modal: true,
+                                        MulBuyXRP: {
+                                          qty: qty,
+                                          remainig: index,
+                                        },
+                                      })
+                                    );
+                                    break;
+                                  }
+                                } catch (error) {
+                                  dispatch(
+                                    SetFollowrData({
+                                      upload: 1,
+                                      mint: 5,
+                                      fixed: 2,
+                                      approve: 2,
+                                      ModalType: "MulBuy",
+                                      func: async () => {
+                                        await BuyMulXrp(data, qty, index);
+                                      },
+                                      modal: true,
+                                      MulBuyXRP: { qty: qty, remainig: index },
+                                    })
+                                  );
+                                  break;
+                                }
+                              } catch (error) {
+                                break;
+                              }
+                            }
+                          };
+                          forLoop();
+                        }
+                      }
                     }
-                  } else {
-               
-                    // const forLoop = async () => {
-                    //   for (let index = 1; index <= qty; index++) {
-                    //     try {
-                    //       dispatch(
-                    //         SetBuyData({
-                    //           modal: false,
-                    //           checkout: false,
-                    //           buyModal: false,
-                    //           stripe: false,
-                    //         })
-                    //       );
-                    //       dispatch(
-                    //         SetFollowrData({
-                    //           upload: 0,
-                    //           mint: 2,
-                    //           fixed: 2,
-                    //           approve: 2,
-                    //           ModalType: "MulBuy",
-                    //           modal: true,
-                    //           MulBuyXRP: { qty: qty, remainig: index },
-                    //         })
-                    //       );
-                    //       console.log(qty,CollectionDetails?.collection_type,"CollectionDetails?.collection_type")
-                    //       return
-                    //       // const balanceCheck = await new Promise((resolve, reject) => {
-                    //       //   try {
-                    //       //     setTimeout(() => {
-                    //       //       if (
-                    //       //         parseFloat(Balance) >
-                    //       //         parseFloat(parseFloat(CollectionDetails.sign_instant_sale_price) + 1)
-                    //       //       ) {
-                    //       //         resolve(true);
-                    //       //       } else {
-                    //       //         reject(false);
-                    //       //       }
-                    //       //     }, 1500);
-                    //       //   } catch (error) {
-                    //       //     reject(false);
-                    //       //   }
-                    //       // })
-                    //       //   .then((data) => {
-                    //       //     return data;
-                    //       //   })
-                    //       //   .catch((err) => {
-                    //       //     dispatch(
-                    //       //       SetFollowrData({
-                    //       //         upload: 5,
-                    //       //         mint: 2,
-                    //       //         fixed: 2,
-                    //       //         approve: 2,
-                    //       //         ModalType: "MulBuy",
-                    //       //         func: async () => {
-                    //       //           await XummMulBuyXrp(qty, index);
-                    //       //         },
-                    //       //         modal: true,
-                    //       //         MulBuyXRP: { qty: qty, remainig: index },
-                    //       //       })
-                    //       //     );
-                    //       //     return err;
-                    //       //   });
-            
-                    //       // if (!balanceCheck) {
-                    //       //   break;
-                    //       // }
-                    //       const data = {
-                    //         wallet_id: walletAddress,
-                    //         // Price: CollectionDetails.sign_instant_sale_price,
-                    //         UserId: _id,
-                    //         id,
-                    //         xumm_user_token: userToken,
-                    //       };
-                    //       dispatch(
-                    //         SetFollowrData({
-                    //           upload: 1,
-                    //           mint: 0,
-                    //           fixed: 2,
-                    //           approve: 2,
-                    //           ModalType: "MulBuy",
-                    //           modal: true,
-                    //           MulBuyXRP: { qty: qty, remainig: index },
-                    //         })
-                    //       );
-                    //       try {
-                    //         const brokerRes = await API({
-                    //           url: apiURl.testxummbuy,
-                    //           method: "POST",
-                    //           body: data,
-                    //         });
-                    //         dispatch(
-                    //           SetFollowrData({
-                    //             upload: 1,
-                    //             mint: 1,
-                    //             fixed: 0,
-                    //             approve: 2,
-                    //             ModalType: "MulBuy",
-                    //             modal: true,
-                    //             MulBuyXRP: { qty: qty, remainig: index },
-                    //           })
-                    //         );
-            
-                    //         try {
-                    //           const res = await API({
-                    //             url: apiURl.xummTransfer,
-                    //             method: "POST",
-                    //             body: {
-                    //               id,
-                    //               wallet_id: walletAddress,
-                    //               Price: CollectionDetails.sign_instant_sale_price,
-                    //               UserId: _id,
-                    //               active_trade_id: brokerRes?.active_trade_id,
-                    //             },
-                    //           });
-            
-                    //           dispatch(
-                    //             SetFollowrData({
-                    //               upload: 1,
-                    //               mint: 1,
-                    //               fixed: 1,
-                    //               approve: 2,
-                    //               ModalType: "MulBuy",
-                    //               modal: true,
-                    //               MulBuyXRP: { qty: qty, remainig: index },
-                    //             })
-                    //           );
-            
-                    //           await new Promise((resolve, reject) => {
-                    //             try {
-                    //               setTimeout(() => {
-                    //                 resolve(true);
-                    //               }, 1000);
-                    //             } catch (error) {
-                    //               reject(false);
-                    //             }
-                    //           })
-                    //             .then((data) => {
-                    //               dispatch(
-                    //                 SetFollowrData({
-                    //                   upload: 1,
-                    //                   mint: 1,
-                    //                   fixed: 1,
-                    //                   approve: 2,
-                    //                   ModalType: null,
-                    //                   modal: false,
-                    //                   MulBuyXRP: { qty: qty, remainig: index },
-                    //                 })
-                    //               );
-            
-                    //               if (index === qty) {
-                    //                 setTimeout(() => {
-                    //                   window.location.reload();
-                    //                 }, 1000);
-                    //               }
-                    //               return data;
-                    //             })
-                    //             .catch((err) => {
-                    //               dispatch(
-                    //                 SetFollowrData({
-                    //                   upload: 2,
-                    //                   mint: 2,
-                    //                   fixed: 2,
-                    //                   approve: 2,
-                    //                   ModalType: null,
-                    //                   modal: false,
-                    //                   MulBuyXRP: {},
-                    //                 })
-                    //               );
-                    //             });
-                    //         } catch (error) {
-                    //           dispatch(
-                    //             SetFollowrData({
-                    //               upload: 1,
-                    //               mint: 1,
-                    //               fixed: 5,
-                    //               approve: 2,
-                    //               ModalType: "MulBuy",
-                    //               func: async () => {
-                    //                 await buyMultiXRP(id);
-                    //               },
-                    //               modal: true,
-                    //               MulBuyXRP: { qty: qty, remainig: index },
-                    //             })
-                    //           );
-                    //           break;
-                    //         }
-                    //       } catch (error) {
-                    //         dispatch(
-                    //           SetFollowrData({
-                    //             upload: 1,
-                    //             mint: 5,
-                    //             fixed: 2,
-                    //             approve: 2,
-                    //             ModalType: "MulBuy",
-                    //             func: async () => {
-                    //               await BuyMulXrp(data, qty, index);
-                    //             },
-                    //             modal: true,
-                    //             MulBuyXRP: { qty: qty, remainig: index },
-                    //           })
-                    //         );
-                    //         break;
-                    //       }
-                    //     } catch (error) {
-                    //       break;
-                    //     }
-                    //   }
-                    // };
-                    // forLoop();
-                  }
+                  );
                 }
               });
             } catch (error) {
@@ -1367,7 +1396,6 @@ function NftDetails() {
       );
     }
   }, [token, session, Type, type]);
-
 
   const [expandUrl, setExpandUrl] = useState("");
   const [expandImage, setExpandImage] = useState(false);
@@ -1442,7 +1470,7 @@ function NftDetails() {
         body: value,
       });
 
-      await buyMultiXRP(id,value, resp, qty, i);
+      await buyMultiXRP(id, value, resp, qty, i);
     } catch (error) {
       dispatch(
         SetFollowrData({
@@ -1461,7 +1489,7 @@ function NftDetails() {
       return false;
     }
   };
-  const buyMultiXRP = async (id,value, resp, qty, i) => {
+  const buyMultiXRP = async (id, value, resp, qty, i) => {
     dispatch(
       SetFollowrData({
         upload: 1,
@@ -1991,7 +2019,7 @@ function NftDetails() {
                   />
                 </Tab>
                 <Tab eventKey="history" title="History">
-                  <History HistoryData={HistoryData}/>
+                  <History HistoryData={HistoryData} />
                 </Tab>
                 {/* {NetworkName && NetworkName[0] == "XUMM" ? null : ( */}
                 <Tab eventKey="properties" title="Properties">
