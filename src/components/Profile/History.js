@@ -1,6 +1,7 @@
 import React from 'react'
 
-function History() {
+function History({HistoryData}) {
+  console.log(HistoryData,"HistoryData")
   return (
     <div className="top-profile">
       <table>

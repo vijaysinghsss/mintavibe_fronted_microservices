@@ -354,11 +354,13 @@ const Home = () => {
               >
                 {celebritylistData?.length >0 ? (
                   celebritylistData?.map((ele) => (
+                    <Link to={`/collections/${ele?._id}`}>
                     <img
                       className="img-fluid"
                       src={`${process.env.REACT_APP_BACKENDURL}/${ele?.image}`}
                       alt=""
                     />
+                     </Link>
                   ))
                 ) : (
                   ""

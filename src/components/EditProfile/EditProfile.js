@@ -4,7 +4,7 @@ import { Container, Modal, Tabs } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { apiURl } from "../../store/actions";
 import Tab from "react-bootstrap/Tab";
 import Follower from "../Followers/Follower";
@@ -25,9 +25,9 @@ function EditProfile() {
   const { address } = useWeb3();
   const { Bio = "" } = useSelector((state) => state.User?.data);
   const { User, authUser } = useSelector((state) => state);
-  
+  const {collected}=useParams()
   const initialState = {
-    profile: "listing",
+    profile: collected?"collected":"listing",
     status: "",
     sortBy: "",
     quantity: "",
@@ -370,7 +370,7 @@ function EditProfile() {
                 checked={filter?.profile === "collected"}
               />
               <label htmlFor="Collected">Collected</label>
-              <input
+              {/* <input
                 type="radio"
                 name="profile"
                 id="Collections"
@@ -380,7 +380,7 @@ function EditProfile() {
                   setFilter({ ...filter, profile: e.target.value })
                 }
               />
-              <label htmlFor="Collections">Collections</label>
+              <label htmlFor="Collections">Collections</label> */}
               <input
                 type="radio"
                 name="profile"
