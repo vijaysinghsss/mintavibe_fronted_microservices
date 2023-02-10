@@ -55,7 +55,7 @@ const handleContinue=()=>{
               </div>
             
                 <button className="login-screen-button" type="submit" onClick={handleContinue}>
-                  Continue
+                  Close
                 </button>
              
             </div>
