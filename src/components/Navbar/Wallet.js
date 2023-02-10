@@ -120,7 +120,7 @@ function Wallet() {
           </a>
         ) : null}
 
-        <a
+        {/* <a
           href="!#"
           onClick={(e) => {
             e.preventDefault();
@@ -139,7 +139,7 @@ function Wallet() {
           />
           <p>Wallet Connect</p>
           <span>ETH</span>
-        </a>
+        </a> */}
       </div>
       <p>
         We do not own your private keys and cannot access your funds without
