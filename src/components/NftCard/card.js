@@ -64,13 +64,13 @@ const Card = ({
             />
           </div>
           <p>
-            {Nftname.length < 20 ? Nftname : Nftname.substr(0, 14) + "...."}
+            {Nftname?.length < 20 ? Nftname : Nftname?.substr(0, 14) + "...."}
           </p>
           <span>
             {cretor_wallet_address &&
-              cretor_wallet_address.substr(0, 4) +
+              cretor_wallet_address?.substr(0, 4) +
                 "...." +
-                cretor_wallet_address.substr(-4)}
+                cretor_wallet_address?.substr(-4)}
           </span>
           <div className="boder-bottom"></div>
         </div>
