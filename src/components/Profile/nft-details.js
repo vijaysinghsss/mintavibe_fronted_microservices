@@ -1029,15 +1029,14 @@ function NftDetails() {
                   );
                 } else {
                   API({ url: `${apiURl.Nft}/${id}`, method: "GET" }).then(
-                    (nftdata) => {                      
-                      let nftData = nftdata?.data;                
+                    (nftdata) => {
+                      let nftData = nftdata?.data;
                       const totalAmt = multipliedBy(
                         nftData?.sign_instant_sale_price,
                         data?.result?.Quantity || 1
                       );
                       const serviceFee = percentageOf(2.5, totalAmt);
                       const total = plusNum(totalAmt, serviceFee);
-                     
 
                       if (type == "METAMASK") {
                         dispatch(
@@ -1162,7 +1161,7 @@ function NftDetails() {
                           }
                         } else {
                           let qty = data?.result?.Quantity;
-                         
+
                           const forLoop = async () => {
                             for (let index = 1; index <= qty; index++) {
                               try {
@@ -1185,7 +1184,6 @@ function NftDetails() {
                                     MulBuyXRP: { qty: qty, remainig: index },
                                   })
                                 );
-                               
 
                                 // const balanceCheck = await new Promise((resolve, reject) => {
                                 //   try {
@@ -1271,7 +1269,7 @@ function NftDetails() {
                                       body: {
                                         id,
                                         wallet_id: walletAddress,
-                                        Price: nftData.sign_instant_sale_price,
+                                        price: nftData.sign_instant_sale_price,
                                         UserId: _id,
                                         active_trade_id:
                                           brokerRes?.active_trade_id,
@@ -1319,7 +1317,9 @@ function NftDetails() {
                                         );
                                         if (index === +qty) {
                                           setTimeout(() => {
-                                            navigate(`/collections/${nftData?._id}`);
+                                            navigate(
+                                              `/collections/${nftData?._id}`
+                                            );
                                           }, 200);
                                           navigate("/");
                                         }
