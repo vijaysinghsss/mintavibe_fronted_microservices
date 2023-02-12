@@ -1,49 +1,62 @@
-import React from 'react'
+import React from "react";
+import moment from "moment";
 
-function History({HistoryData}) {
-  console.log(HistoryData,"HistoryData")
+function History({ HistoryData }) {
+  console.log(HistoryData, "HistoryData");
   return (
     <div className="top-profile">
       <table>
         <tbody>
-          {/* <tr>
-            <td>
-              <div className="tab-img-box">
-                <img src="/images/nft-dummy.jpg" />
-              </div>
-            </td>
-            <td>
-              <p>1.986 ETH by Mike 002938</p>
-              <span>1 hours ago</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div className="tab-img-box">
-                <img src="/images/nft-dummy.jpg" />
-              </div>
-            </td>
-            <td>
-              <p>1.986 ETH by Mike 002938</p>
-              <span>1 hours ago</span>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <div className="tab-img-box">
-                <img src="/images/nft-dummy.jpg" />
-              </div>
-            </td>
-            <td>
-              <p>1.986 ETH by Mike 002938</p>
-              <span>1 hours ago</span>
-            </td>
-          </tr> */}
+          {HistoryData.map((item) => (
+            <tr>
+              <td>
+                <div className="tab-img-box">
+                  <img
+                    src={
+                      item?.Userid?.image
+                        ? process.env.REACT_APP_BACKENDURL +
+                          "/" +
+                          item?.Userid?.image
+                        : "/images/user-icon.png"
+                    }
+                    alt=""
+                    width={40}
+                    height={40}
+                  />
+                </div>
+              </td>
+              <td>
+                <div className="add-div">
+                <p >
+                  {`${item?.Message} ${
+                    item?.Userid?.Firstname && item?.Userid?.Lastname
+                      ? `${item?.Userid?.Firstname} ${item?.Userid?.Lastname}`
+                      : item?.Userid?.Name
+                      ? item?.Userid?.Name
+                      : (item?.Userid?.cretor_wallet_address || "")?.slice(
+                          0,
+                          4
+                        ) +
+                        "..." +
+                        (item?.Userid?.cretor_wallet_address || "").slice(-4)
+                  
+                      
+                      
+                  } `}
+                </p>
+                <span>
+                  {item.CreatedAt
+                    ? moment(item.CreatedAt).startOf("hour").fromNow()
+                    : null}
+                </span>
+                </div>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
 }
 
-export default History
+export default History;

@@ -24,24 +24,29 @@ function Details({
         <div className="details-box">
           <span>Owner</span>
           <p title={owner_wallet_address || ""}>
-            {" "}
-            {(owner_wallet_address || "").slice(0, 4) +
-              "..." +
-              (owner_wallet_address || "").slice(-4)}
+            {Owner_id?.Name
+              ? Owner_id?.Name
+              : (owner_wallet_address || "").slice(0, 4) +
+                "..." +
+                (owner_wallet_address || "").slice(-4)}
           </p>
         </div>
       ) : (
-        <div className="details-box" >
+        <div className="details-box">
           <span>Owner</span>
           {collection_type ? (
-            <p title={owner_wallet_address} >
-              {" "}
-              {owner_wallet_address.slice(0, 4) +
-                "..." +
-                owner_wallet_address.slice(-4)}
+            <p title={owner_wallet_address || ""}>
+              {Owner_id?.Name
+                ? Owner_id?.Name
+                : (owner_wallet_address || "").slice(0, 4) +
+                  "..." +
+                  (owner_wallet_address || "").slice(-4)}
             </p>
           ) : (
-            <p onClick={() => setShowOwner(true)}> {(totalOwner ?`${totalOwner} Owners`:`${(totalOwner||1)} Owner`)}</p>
+            <p onClick={() => setShowOwner(true)}>
+              {" "}
+              {totalOwner ? `${totalOwner} Owners` : `${totalOwner || 1} Owner`}
+            </p>
           )}
         </div>
       )}
@@ -65,9 +70,9 @@ function Details({
         <div className="add-div">
           <p>Token ID</p>
           <span>{token} </span>
-          <span>
+          {/* <span>
             <button className="btn btn-success btn-sm">copy</button>
-          </span>
+          </span> */}
           <img
             src="/images/copy.png"
             className="copy_address"
