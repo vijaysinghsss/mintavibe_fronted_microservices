@@ -22,7 +22,7 @@ import { SetBuyData, SetFollowrData } from "../../store/reducer";
 import BuyNft from "./Buy-nft";
 import CheckoutPayment from "./checkout-payment";
 
-const XummBuy = (props) => {
+const XummBuy = ({ nftData }) => {
   const { modal, buyModal = false } = useSelector((state) => state.Buy.data);
 
   const { userToken, walletAddress } = useSelector((state) => state.User.xumm);
@@ -312,7 +312,6 @@ const XummBuy = (props) => {
           }
         };
         forLoop();
-
       } else {
         await XummBuyXrp(qty);
       }
@@ -716,7 +715,7 @@ const XummBuy = (props) => {
         body: value,
       });
 
-      await buyMultiXRP(id,value, resp, qty, i);
+      await buyMultiXRP(id, value, resp, qty, i);
     } catch (error) {
       dispatch(
         SetFollowrData({
@@ -735,7 +734,7 @@ const XummBuy = (props) => {
       return false;
     }
   };
-  const buyMultiXRP = async (id,value, resp, qty, i) => {
+  const buyMultiXRP = async (id, value, resp, qty, i) => {
     dispatch(
       SetFollowrData({
         upload: 1,
@@ -857,7 +856,7 @@ const XummBuy = (props) => {
     // return;
     // setPayStripe(true);
   };
-
+  console.log(nftData, "nftData");
   return (
     <>
       <Modal
@@ -889,25 +888,29 @@ const XummBuy = (props) => {
               ) : (
                 <>
                   <h2 className="text-center">Mode of Payment</h2>
-                  <div className="button-div img calculate_price text-center">
-                    <a href="!#" onClick={buyPurchase}>
-                      <img
-                        alt=""
-                        width={`100%`}
-                        src="/images/pay-usd-button.png"
-                      />
-                    </a>
-                  </div>
-                  <div className="line"></div>
-                  <p
-                    style={{
-                      textAlign: "center",
-                      fontSize: "16px",
-                      marginBottom: "20px",
-                    }}
-                  >
-                    OR
-                  </p>
+                  {nftData?.is_fiat && (
+                    <>
+                      <div className="button-div img calculate_price text-center">
+                        <a href="!#" onClick={buyPurchase}>
+                          <img
+                            alt=""
+                            width={`100%`}
+                            src="/images/pay-usd-button.png"
+                          />
+                        </a>
+                      </div>
+                      <div className="line"></div>
+                      <p
+                        style={{
+                          textAlign: "center",
+                          fontSize: "16px",
+                          marginBottom: "20px",
+                        }}
+                      >
+                        OR
+                      </p>
+                    </>
+                  )}
                   <div className="w_btn" onClick={BuyModalFun}>
                     <a href="!#" onClick={(e) => e.preventDefault()}>
                       <span className="me-2">

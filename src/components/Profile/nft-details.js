@@ -120,7 +120,7 @@ function NftDetails() {
   const FetchHistoryData = async () => {
     await API({ url: `${apiURl.History}/${id}`, method: "GET" }).then(
       (data) => {
-        setHistoryData(data.data);
+        setHistoryData(data.response);
       }
     );
   };
@@ -722,8 +722,6 @@ function NftDetails() {
           method: "POST",
           body: data,
         });
-
-        console.log("result", result);
         await dispatch(
           submitTranscation(Collection_Id, {
             transaction_hash: result.transaction_id,
@@ -2399,7 +2397,7 @@ function NftDetails() {
           </form>
         </div>
       </Modal>
-      <XummBuy />
+      <XummBuy nftData={CollectionDetails} />
       <Follow />
       <Checkout
         showCheckout={showCheckout}
