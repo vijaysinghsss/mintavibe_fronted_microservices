@@ -80,6 +80,9 @@ function NftDetails() {
     (state) => state.User.xumm
   );
 
+  const [expandUrl, setExpandUrl] = useState("");
+  const [expandImage, setExpandImage] = useState(false);
+
   const [NetworkName, setNetworkName] = useState(false);
 
   const [showOwner, setShowOwner] = useState(false);
@@ -331,14 +334,14 @@ function NftDetails() {
               dispatch(
                 submitTranscation(id, {
                   Status:
-                    parseInt(CollectionDetails.no_of_copies) -
+                    (parseInt(CollectionDetails.no_of_copies) -
                       parseInt(BurnValue) <
                       1
                       ? false
-                      : CollectionDetails.Status,
+                      : CollectionDetails.Status),
                   no_of_copies:
-                    parseInt(CollectionDetails.no_of_copies) -
-                    parseInt(BurnValue),
+                    (parseInt(CollectionDetails.no_of_copies) -
+                      parseInt(BurnValue)),
                 })
               );
               dispatch(
@@ -1408,8 +1411,7 @@ function NftDetails() {
     }
   }, [token, session, Type, type]);
 
-  const [expandUrl, setExpandUrl] = useState("");
-  const [expandImage, setExpandImage] = useState(false);
+
 
   const XummMulBuyXrp = async (qty, i) => {
     // const balanceCheck = await new Promise((resolve, reject) => {
@@ -1606,6 +1608,7 @@ function NftDetails() {
     setExpandUrl("");
     setExpandImage(false);
   };
+
   return (
     <section className="profile-section container mt-4">
       <div className="container">
@@ -2013,9 +2016,8 @@ function NftDetails() {
                 </Tab>
                 <Tab
                   eventKey="bids"
-                  title={`Bids (${CollectionDetails?.Bids?.filter((item) => item.Is_active)
-                    .length || 0
-                    })`}
+                  title={
+                    `Bids ${CollectionDetails?.Bids?.filter((item) => item.Is_active).length ? '' : '(' + CollectionDetails?.Bids?.filter((item) => item.Is_active).length + ')'}`}
                   className=""
                 >
                   <Bids
