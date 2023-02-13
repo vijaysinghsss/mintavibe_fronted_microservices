@@ -27,28 +27,23 @@ function History({ HistoryData }) {
               </td>
               <td>
                 <div className="add-div">
-                <p >
-                  {`${item?.Message} ${
-                    item?.Userid?.Firstname && item?.Userid?.Lastname
-                      ? `${item?.Userid?.Firstname} ${item?.Userid?.Lastname}`
-                      : item?.Userid?.Name
-                      ? item?.Userid?.Name
-                      : (item?.Userid?.cretor_wallet_address || "")?.slice(
-                          0,
-                          4
-                        ) +
-                        "..." +
-                        (item?.Userid?.cretor_wallet_address || "").slice(-4)
-                  
-                      
-                      
-                  } `}
-                </p>
-                <span>
-                  {item.CreatedAt
-                    ? moment(item.CreatedAt).fromNow()
-                    : null}
-                </span>
+                  <p>
+                    {`${item?.Collectionid?.Nftname} ${item?.Message} ${
+                      item?.Userid?.Firstname && item?.Userid?.Lastname
+                        ? `${item?.Userid?.Firstname} ${item?.Userid?.Lastname}`
+                        : item?.Userid?.Name
+                        ? item?.Userid?.Name
+                        : (item?.Userid?.cretor_wallet_address || "")?.slice(
+                            0,
+                            4
+                          ) +
+                          "..." +
+                          (item?.Userid?.cretor_wallet_address || "").slice(-4)
+                    } `}
+                  </p>
+                  <span>
+                    {item.CreatedAt ? moment(item.CreatedAt).fromNow() : null}
+                  </span>
                 </div>
               </td>
             </tr>
