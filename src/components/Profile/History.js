@@ -46,7 +46,7 @@ function History({ HistoryData }) {
                 </p>
                 <span>
                   {item.CreatedAt
-                    ? moment(item.CreatedAt).startOf("hour").fromNow()
+                    ? moment(item.CreatedAt).fromNow()
                     : null}
                 </span>
                 </div>

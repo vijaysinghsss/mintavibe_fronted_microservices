@@ -28,6 +28,7 @@ import Checkout from "../PopUp/checkout";
 import {
   allChainsIDS,
   converToWeth,
+  CopyText,
   fetchContract,
   FiatbuyAsset,
   gasPrice,
@@ -1828,6 +1829,7 @@ function NftDetails() {
                             CollectionDetails?.cretor_wallet_address || ""
                           ).slice(-4)}
                     </p>
+                    
                   </div>
                 </div>
                 {NetworkName[0] == "XUMM" ? null : (
@@ -2003,10 +2005,11 @@ function NftDetails() {
                 </Tab>
                 <Tab
                   eventKey="bids"
-                  title={`Bids (${
-                    CollectionDetails?.Bids?.filter((item) => item.Is_active)
-                      .length || 0
-                  })`}
+                  title={"Bids"}
+                  // title={`Bids (${
+                  //   CollectionDetails?.Bids?.filter((item) => item.Is_active)
+                  //     .length || 0
+                  // })`}
                   className=""
                 >
                   <Bids
