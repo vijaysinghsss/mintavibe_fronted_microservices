@@ -28,7 +28,7 @@ function Thanks({show, close}) {
                 type="submit"
                   onClick={close}
               >
-                Continue
+                Close 
               </button>
             </div>
           </div>
