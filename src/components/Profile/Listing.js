@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { submitTranscation } from "../../store/actions/extra-function";
+import { HistoryApi, submitTranscation } from "../../store/actions/extra-function";
 
 const Listing = ({ data = [], owner, FetchData }) => {
   const { id } = useParams();
@@ -20,7 +20,11 @@ const Listing = ({ data = [], owner, FetchData }) => {
     const count = Listing.reduce((value, item) => {
       return value + (item.Status ? parseInt(item.AvailableQuantity) : 0);
     }, 0);
-
+    HistoryApi({
+      userid: owner._id,
+      collectionid: id,
+      Message: `Reject listing By`
+    });
     await dispatch(
       submitTranscation(id, {
         Listing,
@@ -64,8 +68,8 @@ const Listing = ({ data = [], owner, FetchData }) => {
                           {owner?._id === item?.From_owner_id
                             ? owner?.Name
                             : (item.From_owner_id || "").slice(0, 4) +
-                                "..." +
-                                (item.From_owner_id || "").slice(-4) || ""}
+                            "..." +
+                            (item.From_owner_id || "").slice(-4) || ""}
                         </td>
                         <td>
                           {owner._id == _id ? (

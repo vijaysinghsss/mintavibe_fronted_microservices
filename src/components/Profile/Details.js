@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { CopyText } from "../../store/actions/extra-function";
+import { Link } from "react-router-dom";
 function Details({
   setShowOwner,
   Owner_id,
@@ -69,29 +70,59 @@ function Details({
       {NetworkName[0] == "XUMM" ? (
         <div className="add-div">
           <p>Token ID</p>
-          <span>{token} </span>
+          <span>
+            {(token || "").slice(0, 5) + "..." + (token || "").slice(-6)}{" "}
+          </span>
           {/* <span>
             <button className="btn btn-success btn-sm">copy</button>
           </span> */}
           <img
-            src="/images/copy.png"
-            className="copy_address"
+            src="/images/copy-svgrepo-com.svg"
+            className="copy_address text-success"
             alt=""
             onClick={(e) => {
               e.preventDefault();
               CopyText(token);
+              e.target.title="successfully copied to clipboard"
             }}
+            title="copy"
             style={{ width: "20px", cursor: "pointer" }}
           />
         </div>
       ) : (
         <div className="add-div">
           <p>Contract Address</p>
-          <span>
-            {collection_type
-              ? process.env.REACT_APP_CONTRACT_ADDRESS_ERC721
-              : process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155}
-              <button className="btn btn-outline-dark ms-2 px-2 py-1"><i class="fas fa-copy"></i></button></span>
+          {collection_type ? (
+            <a
+            href={`https://goerli.etherscan.io/address/${process.env.REACT_APP_CONTRACT_ADDRESS_ERC721}`}
+              target={'_blank'}
+            >
+              <span>{process.env.REACT_APP_CONTRACT_ADDRESS_ERC721}</span>
+            </a>
+          ) : (
+            <a
+              href={`https://goerli.etherscan.io/address/${process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155}`}
+              target={'_blank'}
+            >
+              <span>{process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155}</span>
+            </a>
+          )}
+          <img
+            src="/images/copy-svgrepo-com.svg"
+            className="copy_address text-success"
+            alt=""
+            onClick={(e) => {
+              e.preventDefault();
+              CopyText(
+                collection_type
+                  ? process.env.REACT_APP_CONTRACT_ADDRESS_ERC721
+                  : process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155
+              );
+              e.target.title = "successfully copied to clipboard";
+            }}
+            title="copy"
+            style={{ width: "20px", cursor: "pointer" }}
+          />
         </div>
       )}
 
