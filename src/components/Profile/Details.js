@@ -91,7 +91,7 @@ function Details({
             {collection_type
               ? process.env.REACT_APP_CONTRACT_ADDRESS_ERC721
               : process.env.REACT_APP_CONTRACT_ADDRESS_ERC1155}
-          </span>
+              <button className="btn btn-outline-dark ms-2 px-2 py-1"><i class="fas fa-copy"></i></button></span>
         </div>
       )}
 
