@@ -276,12 +276,15 @@ body {
 /* .videoBox img{width:100%; height:700px; object-fit:cover;} */
 
 .videoBox {
-  background: #02031b;
+	background: #02031b;
+	margin:0 0 -5px;
+	padding:0px;
 }
 
 .videoBox video {
   width: 100%;
   height: 700px;
+  object-fit:cover;
 }
 
 
@@ -305,7 +308,7 @@ body {
 
 
 .celebrityNFT {
-  padding: 80px 0;
+  padding: 80px 0 40px;
   background: url(../public/images/nftBackground.png) no-repeat #5A2AE0;
   /* background:transparent linear-gradient(180deg, #4D361A 0%, #0F0B05 100%) 0% 0% no-repeat padding-box; */
 }
@@ -355,7 +358,6 @@ body {
 }
 
 .flex-container .tabsection {
-  background: rgba(255, 255, 2550, 0.1);
   margin: 8px;
   text-align: center;
   padding: 22px 20px 15px;
@@ -365,10 +367,12 @@ body {
   max-width: 210px;
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 22px;
   position: relative;
   font-weight: 600;
-  justify-content: center;
+  border:0px;
+  background: rgba(255, 255, 2550, 0.1);
 }
 
 .flex-container .tabsection.active {
@@ -419,8 +423,8 @@ body {
 }
 
 .celebrityDtl .figCaption {
-  text-align: center;
-  margin-top: 30px;
+  text-align:center;
+  margin:30px 0 50px;
 }
 
 .celebrityDtl h3 {
@@ -448,18 +452,19 @@ body {
 }
 
 .celebrityDtl figure .typeCelebrity {
-	font-family: 'Furore';
-	font-size: 40px;
-	text-align: center;
-	color: #FFF;
-	position: absolute;
-	width: 100%;
-	left: -116px;
-	bottom: 0;
-	transform: rotate(-90deg);
-	margin-bottom: 50%;
-	/* background: #000; */
+  font-family: 'Furore';
+  font-size: 40px;
+  text-align: left;
+  color: #FFF;
+  position: absolute;
+  left: -80px;
+  bottom: 180px;
+  transform: rotate(-90deg);
+  line-height: 35px;
+  width: 300px;
+  height: 80px;
 }
+
 .celebrityDtl figure .nameTitle {
   font-family: 'Furore';
   font-size:20px;
@@ -535,7 +540,7 @@ body {
   text-align: center;
 }
 
-.countDown{height:90px;}
+.countDown{height:80px;}
 
 .countDown ul {
   display: flex;
@@ -2632,9 +2637,6 @@ a {
   border-color: #7f35e6;
   color: #FFF;
 }
-
-
-
 
 
 /***profile-setting****/

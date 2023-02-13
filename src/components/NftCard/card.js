@@ -23,8 +23,8 @@ const Card = ({
   Bids,
 }) => {
   const [NNetwokType, setNNetwokType] = useState(false);
-  const { loginUserData = null } = useSelector((state) => state.authUser);
-  const { id: User_Id = false } = loginUserData
+  const { loginUserData = {} } = useSelector((state) => state.authUser);
+  // const { id: User_Id = false } = loginUserData
   useEffect(() => {
     const NetworkName = Object.entries(allChainsIDS).find(
       (item) => wallet_type == item[1]
@@ -100,7 +100,7 @@ const Card = ({
         </div>
         <div className="price-sub  price-sub-space">
           <Link to={`/collections/${_id}`}>
-            {Owner_id && Owner_id?._id == User_Id
+            {Owner_id && Owner_id?._id == loginUserData?.id
               ? "View"
               : nft_type === "OPENBID"
               ? "Bid"
