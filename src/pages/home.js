@@ -121,7 +121,7 @@ const Home = () => {
       {showPopup && <OpenModal />}
 
       <section className="videoBox">
-        <video autoPlay controls loop controlsList="nodownload">
+        <video src="../images/Mintavibe-Landing-Page.mp4" autoPlay loop controlsList="nodownload">
           <source src="../images/Mintavibe-Landing-Page.mp4" type="video/mp4" />
           <source src="../images/Mintavibe-Landing-Page.ogg" type="video/ogg" />
         </video>
