@@ -358,7 +358,6 @@ body {
 }
 
 .flex-container .tabsection {
-  background: rgba(255, 255, 2550, 0.1);
   margin: 8px;
   text-align: center;
   padding: 22px 20px 15px;
@@ -368,11 +367,12 @@ body {
   max-width: 210px;
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 22px;
   position: relative;
   font-weight: 600;
-  justify-content: center;
   border:0px;
+  background: rgba(255, 255, 2550, 0.1);
 }
 
 .flex-container .tabsection.active {
