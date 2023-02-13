@@ -49,7 +49,7 @@ function Follow() {
       API({ url: apiURl.helpmail, method: "POST", body: { body: help } });
     }
   };
-
+console.log(ModalType,MulBuyXRP,"MulBuyXRP")
   const modalBodyType = (type, wallet) => {
     switch (type) {
       case "MulBuy":

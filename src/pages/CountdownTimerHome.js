@@ -27,7 +27,7 @@ const DayDateTimeDisplay = ({ value, type, isDanger }) => {
 const ShowTimer = ({ days, hours, minutes, seconds }) => {
   return (
     <ul>
-      <DayDateTimeDisplay value={days} type={"Days"} isDanger={days <= 3} /> 
+      <DayDateTimeDisplay value={days} type={"Days"} isDanger={days <= 0} /> 
       <DayDateTimeDisplay value={hours} type={"HRS"} isDanger={false} /> 
       <DayDateTimeDisplay value={minutes} type={"Min"} isDanger={false} /> 
       <DayDateTimeDisplay value={seconds} type={"Sec"} isDanger={false} />

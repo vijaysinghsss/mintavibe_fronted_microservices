@@ -31,7 +31,7 @@ const Listing = ({ data = [], owner, FetchData }) => {
 
     await FetchData();
   };
-
+  console.log(owner, "owner");
   return (
     <div>
       <div className="container-fluid">
@@ -60,10 +60,12 @@ const Listing = ({ data = [], owner, FetchData }) => {
                         <td>{item.Quantity}</td>
                         <td>{item.AvailableQuantity || 0}</td>
                         {/* <td>{item.Expire_time}</td> */}
-                        <td className="small" title={item.createrAccount || ""}>
-                          {(item.createrAccount || "").slice(0, 4) +
-                            "..." +
-                            (item.createrAccount || "").slice(-4) || ""}
+                        <td className="small" title={item.From_owner_id || ""}>
+                          {owner?._id === item?.From_owner_id
+                            ? owner?.Name
+                            : (item.From_owner_id || "").slice(0, 4) +
+                                "..." +
+                                (item.From_owner_id || "").slice(-4) || ""}
                         </td>
                         <td>
                           {owner._id == _id ? (

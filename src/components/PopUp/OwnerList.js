@@ -38,9 +38,7 @@ function OwnerList({ showOwner, setShowOwner }) {
             style={{ cursor: "pointer" }}
             onClick={handleCloseN}
           >
-            <a href="!#">
-              <img src="/images/cross-button.svg" alt="" />
-            </a>
+            <img src="/images/cross-button.svg" alt="" />
           </div>
           <div className="">
             <h4 className="text-center">Owner`s List</h4>
@@ -61,8 +59,8 @@ function OwnerList({ showOwner, setShowOwner }) {
                         src={
                           item?.Owner_id?.image
                             ? process.env.REACT_APP_BACKENDURL +
-                            "/" +
-                            item?.Owner_id?.image
+                              "/" +
+                              item?.Owner_id?.image
                             : "/images/profile-iocn.svg"
                         }
                         alt=""
@@ -88,7 +86,7 @@ function OwnerList({ showOwner, setShowOwner }) {
                     id="togglePassword"
                   ></i> */}
                   </Link>
-                )
+                );
               })
             ) : (
               <p>No Data Found</p>
