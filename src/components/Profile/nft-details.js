@@ -33,6 +33,7 @@ import {
   gasPrice,
   getContractSignNonce,
   gup,
+  HistoryApi,
   MultiBuyXRP,
   offerSign,
   placeBid,
@@ -224,24 +225,21 @@ function NftDetails() {
     switch (type) {
       case "FB":
         window.open(
-          `https://www.facebook.com/sharer/sharer.php?u=${
-            window.location.href
+          `https://www.facebook.com/sharer/sharer.php?u=${window.location.href
           }&caption=${CollectionDetails?.Nftname || ""}`,
           "_blank"
         );
         return;
       case "TW":
         window.open(
-          `https://twitter.com/share?url=${window.location.href}&text=${
-            CollectionDetails?.Nftname || ""
+          `https://twitter.com/share?url=${window.location.href}&text=${CollectionDetails?.Nftname || ""
           }`,
           "_blank"
         );
         return;
       case "TEL":
         window.open(
-          `https://telegram.me/share/url?url=${window.location.href}&text=${
-            CollectionDetails?.Nftname || ""
+          `https://telegram.me/share/url?url=${window.location.href}&text=${CollectionDetails?.Nftname || ""
           }`,
           "_blank"
         );
@@ -300,7 +298,7 @@ function NftDetails() {
           dispatch(
             SetBurnData({
               modal: false,
-              Burnfunc: () => {},
+              Burnfunc: () => { },
             })
           );
           dispatch(
@@ -335,7 +333,7 @@ function NftDetails() {
                   Status:
                     parseInt(CollectionDetails.no_of_copies) -
                       parseInt(BurnValue) <
-                    1
+                      1
                       ? false
                       : CollectionDetails.Status,
                   no_of_copies:
@@ -498,6 +496,11 @@ function NftDetails() {
         available_copies: available,
       })
     );
+    HistoryApi({
+      userid: User_id,
+      collectionid: id,
+      Message: `Listed By`
+    });
     await FetchData();
     // }
     // toast(NotificationMsg.putOnSaleMsg, { type: "success" });
@@ -917,15 +920,25 @@ function NftDetails() {
 
         nftObject["Listing"] = recentListing;
         await dispatch(submitTranscation(Collection_Id, nftObject));
+
         await API({
           url: `${apiURl.Bid}/${data._id}`,
           method: "PUT",
           body: { Is_active: false },
         });
+
+        HistoryApi({
+          userid: User_id,
+          collectionid: Collection_Id,
+          Message: `Accepted Offer By`
+        });
+
         setTimeout(() => {
           navigate(`/collections/${Collection_Id}`);
         }, 200);
+
         navigate("/");
+
       }
     } catch (err) {
       console.log(err);
@@ -978,7 +991,7 @@ function NftDetails() {
           approve: false,
           ModalType: "stripe",
           modal: true,
-          func: () => {},
+          func: () => { },
         })
       );
       clearInterval(apiCall);
@@ -1010,7 +1023,7 @@ function NftDetails() {
                             approve: false,
                             ModalType: "stripe",
                             modal: false,
-                            func: () => {},
+                            func: () => { },
                           })
                         );
 
@@ -1045,7 +1058,7 @@ function NftDetails() {
                             approve: false,
                             ModalType: "stripe",
                             modal: true,
-                            func: () => {},
+                            func: () => { },
                           })
                         );
 
@@ -1084,7 +1097,7 @@ function NftDetails() {
                               approve: false,
                               ModalType: "stripe",
                               modal: true,
-                              func: () => {},
+                              func: () => { },
                             })
                           );
 
@@ -1118,7 +1131,7 @@ function NftDetails() {
                                       approve: false,
                                       ModalType: "stripe",
                                       modal: false,
-                                      func: () => {},
+                                      func: () => { },
                                     })
                                   );
                                   setTimeout(() => {
@@ -1132,7 +1145,7 @@ function NftDetails() {
                                       approve: false,
                                       ModalType: "stripe",
                                       modal: false,
-                                      func: () => {},
+                                      func: () => { },
                                     })
                                   );
 
@@ -1602,9 +1615,8 @@ function NftDetails() {
               {CollectionDetails?.Nftname || ""}
               <span>
                 Editions:{" "}
-                <b>{`${CollectionDetails?.available_copies || 0}/${
-                  CollectionDetails?.no_of_copies || 1
-                }`}</b>
+                <b>{`${CollectionDetails?.available_copies || 0}/${CollectionDetails?.no_of_copies || 1
+                  }`}</b>
               </span>
               {/* {NetworkName[0] ==
               "XUMM" ? null : CollectionDetails.collection_type ? null : (
@@ -1661,7 +1673,7 @@ function NftDetails() {
               </Dropdown>
               {console.log(
                 parseInt(CollectionDetails?.no_of_copies) ==
-                  parseInt(CollectionDetails?.available_copies),
+                parseInt(CollectionDetails?.available_copies),
                 parseInt(CollectionDetails?.available_copies),
                 parseInt(CollectionDetails?.no_of_copies)
               )}
@@ -1684,7 +1696,7 @@ function NftDetails() {
 
                     <Dropdown.Menu className="activeNone">
                       {parseInt(CollectionDetails?.no_of_copies) ==
-                      parseInt(CollectionDetails?.available_copies) ? null : (
+                        parseInt(CollectionDetails?.available_copies) ? null : (
                         <li>
                           <Dropdown.Item href="#" onClick={putOnSale}>
                             {"Put On Sale"}
@@ -1758,18 +1770,16 @@ function NftDetails() {
               ) : (
                 <>
                   <img
-                    src={`${process.env.REACT_APP_BACKENDURL}/${
-                      CollectionDetails.coverImage || CollectionDetails.image
-                    }`}
+                    src={`${process.env.REACT_APP_BACKENDURL}/${CollectionDetails.coverImage || CollectionDetails.image
+                      }`}
                     alt="crosstower"
                   />
                   <div
                     class="expand-btn"
                     onClick={() =>
                       handleExpandImage(
-                        `${process.env.REACT_APP_BACKENDURL}/${
-                          CollectionDetails.coverImage ||
-                          CollectionDetails.image
+                        `${process.env.REACT_APP_BACKENDURL}/${CollectionDetails.coverImage ||
+                        CollectionDetails.image
                         }`
                       )
                     }
@@ -1808,8 +1818,8 @@ function NftDetails() {
                       src={
                         CollectionDetails?.creator_id?.image
                           ? process.env.REACT_APP_BACKENDURL +
-                            "/" +
-                            CollectionDetails?.creator_id?.image
+                          "/" +
+                          CollectionDetails?.creator_id?.image
                           : "/images/prfile-pic.jpg"
                       }
                       alt="crosstower"
@@ -1821,12 +1831,12 @@ function NftDetails() {
                       {CollectionDetails?.creator_id?.Name
                         ? CollectionDetails?.creator_id?.Name
                         : (
-                            CollectionDetails?.cretor_wallet_address || ""
-                          )?.slice(0, 4) +
-                          "..." +
-                          (
-                            CollectionDetails?.cretor_wallet_address || ""
-                          ).slice(-4)}
+                          CollectionDetails?.cretor_wallet_address || ""
+                        )?.slice(0, 4) +
+                        "..." +
+                        (
+                          CollectionDetails?.cretor_wallet_address || ""
+                        ).slice(-4)}
                     </p>
                   </div>
                 </div>
@@ -1875,14 +1885,14 @@ function NftDetails() {
                       </p>
                       <p>
                         {parseFloat(CollectionDetails.Highest_bid || 0.0) <
-                        0.00001
+                          0.00001
                           ? "No Bid"
                           : parseFloat(
-                              CollectionDetails.Highest_bid || 0.0
-                            )?.toFixed(5) +
-                            (NetworkName && NetworkName[0] == "XUMM"
-                              ? " XRP"
-                              : " ETH")}
+                            CollectionDetails.Highest_bid || 0.0
+                          )?.toFixed(5) +
+                          (NetworkName && NetworkName[0] == "XUMM"
+                            ? " XRP"
+                            : " ETH")}
                       </p>
                       {CollectionDetails?.Owner_id?._id == User_id ? null : (
                         <div className="spce-div">
@@ -1912,7 +1922,7 @@ function NftDetails() {
                         </>
                       )}
                       {CollectionDetails?.Owner_id?._id == User_id ||
-                      !(endIn > 0) ? null : (
+                        !(endIn > 0) ? null : (
                         <div className="spce-div">
                           {CollectionDetails.put_on_sale &&
                             CollectionDetails?.nft_type !== "OPENBID" && (
@@ -2003,10 +2013,9 @@ function NftDetails() {
                 </Tab>
                 <Tab
                   eventKey="bids"
-                  title={`Bids (${
-                    CollectionDetails?.Bids?.filter((item) => item.Is_active)
-                      .length || 0
-                  })`}
+                  title={`Bids (${CollectionDetails?.Bids?.filter((item) => item.Is_active)
+                    .length || 0
+                    })`}
                   className=""
                 >
                   <Bids
@@ -2086,10 +2095,10 @@ function NftDetails() {
                                 (e.target.value === "" ||
                                   re.test(e.target.value)) &&
                                 parseInt(e.target.value || 0) <=
-                                  parseInt(CollectionDetails.own_copies) -
-                                    parseInt(
-                                      CollectionDetails.available_copies || 0
-                                    )
+                                parseInt(CollectionDetails.own_copies) -
+                                parseInt(
+                                  CollectionDetails.available_copies || 0
+                                )
                               ) {
                                 setSelectCopies(
                                   e.target.value == ""
@@ -2151,10 +2160,10 @@ function NftDetails() {
                     <b>
                       {CollectionDetails?.cretor_wallet_address
                         ? CollectionDetails?.cretor_wallet_address.slice(0, 4) +
-                          "...." +
-                          CollectionDetails?.cretor_wallet_address.slice(
-                            CollectionDetails?.cretor_wallet_address.length - 4
-                          )
+                        "...." +
+                        CollectionDetails?.cretor_wallet_address.slice(
+                          CollectionDetails?.cretor_wallet_address.length - 4
+                        )
                         : CollectionDetails?.cretor_wallet_address || ""}
                     </b>
                   </p>
@@ -2202,7 +2211,7 @@ function NftDetails() {
                                 (e.target.value === "" ||
                                   re.test(e.target.value)) &&
                                 parseInt(e.target.value || 0) <=
-                                  parseInt(CollectionDetails.no_of_copies)
+                                parseInt(CollectionDetails.no_of_copies)
                               ) {
                                 setOfferQtyValue(e.target.value);
                               }
