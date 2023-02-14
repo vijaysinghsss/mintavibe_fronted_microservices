@@ -82,11 +82,11 @@ const Home = () => {
         if (data?.status || data?.status === "true") {
           setCeleData(data?.response || []);
         }
-        console.log(data, "celebdata");
+       
       });
     } catch (error) {
       console.log(error);
-      toast(`Something Wrong.`, { type: "error" });
+      // toast(`Something Wrong.`, { type: "error" });
     }
   };
   const fetchCelebritylist = async () => {
@@ -95,15 +95,13 @@ const Home = () => {
         url: `${apiURl.celebritylist}`,
         method: "GET",
       }).then((data) => {
-        console.log("celebritylist", data);
         if (data?.status || data?.status === "true") {
           setCelebritylistData(data?.response || []);
         }
-        console.log(data, "celebdata");
       });
     } catch (error) {
       console.log(error);
-      toast(`Something Wrong.`, { type: "error" });
+      // toast(`Something Wrong.`, { type: "error" });
     }
   };
   const handleCategory = async (id) => {
@@ -111,7 +109,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (CreatorCategory?.length) {
+    if (CreatorCategory?.length>0) {
       let id = CreatorCategory?.find(
         (elt) => elt.Creatorname === "Movies"
       )?._id;
