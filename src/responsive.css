@@ -7,6 +7,8 @@
 .exclCelebrity h2::before,
 .exclCelebrity h2::after{display:none;}
 
+
+
 .walletSteps li {
 	margin: 10px 0;
 	font-size: 15px;
@@ -30,6 +32,13 @@
 	height: 60px;
 }
 
+
+.celebrityDtl h3 {font-size: 20px;}
+
+.celebrityDtl p{font-size: 17px; text-align: center;}
+
+.createYourWalet p{font-size: 16px; text-align: left;}
+
 .celebrityPost img{height:280px;}
 
 .footer-text{text-align:center;}
@@ -43,6 +52,9 @@
 
 @media all and (max-width:991px){
 
+
+.nftSection h3{font-size:22px; margin:15px 0 5px;}
+.nftSection p{font-size:16px;}
 
 .exclCelebrity h3{font-size:35px;}
 .celebrityNFT{padding:40px 0;}
@@ -62,13 +74,13 @@
 	background-size: 100% 100%;
 }
 
+.celebrityPost img {
+	height: 220px;
+}
 
 }
 
 @media all and (max-width:767px){
-
-	.nftSection h3{font-size:22px; margin:15px 0 5px;}
-	.nftSection p{font-size:16px;}
 
 	.exclCelebrity h2{font-size:25px;}
 	.exclCelebrity h3{font-size:30px;}
@@ -77,5 +89,81 @@
 
 	.celebrityDtl h3{font-size: 20px;}
 	.celebrityDtl p{font-size: 16px;}
+
+}
+
+
+@media all and (max-width:575px){
+
+	.videoBox video{height:200px;}
+
+	.exclCelebrity h3 {
+		font-size: 25px;
+	}
+
+	.celebrityDtl figure {
+		height: 200px;
+		width: 160px;
+		padding: 15px 15px 30px;
+	}
+
+	.celebrityDtl figure::before {
+		height: 200px;
+		width: 160px;
+	}
+
+	.celebrityDtl figure .nameTitle {
+		font-size: 12px;
+		bottom: 10px;
+	}
+
+	.celebrityDtl figure .typeCelebrity {
+		font-size: 20px;
+		left: -40px;
+		bottom: 80px;
+		width: 143px;
+		height: 50px;
+	}
+
+	.celebrityDtl h3 {
+		font-size: 16px;
+	}
+
+	.celebrityDtl p {
+		font-size: 14px;
+	}
+
+	.subsScribe .subScribeBox {
+		width: 100%;
+		display: block;
+	}
+
+	.subsScribe .subScribeBox input{border-radius:5px; margin-bottom:10px;}
+	.subsScribe .subScribeBox .subBtn{height:55px; border-radius:5px;}
+	.social-media {flex-wrap:wrap;}
+	.social-media li{padding:0px;}
+	.social-media li + li{margin-left:5px;}
+
+	.celebrityPost h3{font-size:26px;}
+
+	.createYourWalet h3{font-size: 26px;}
+	.createYourWalet p{text-align: center; font-size:15px;}
+
+	.createYourWalet h4{font-size: 25px;}
+	.walletSteps li span{width:20px; height:20px; padding:3px; font-size:10px; margin-right:5px;}
+	.walletSteps li {font-size: 13px; font-weight: 500;}
+	.walletSteps li::after {display:none;}
+
+	.footer-link {
+		flex-wrap: wrap;
+	}
+	.footer-link li + li {
+		margin-left: 0;
+	}
+
+	.footer-link li {
+		padding: 0 10px 10px;
+		width: auto;
+	}
 
 }
