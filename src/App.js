@@ -36,6 +36,7 @@ import "./darkTheme.css";
 import BlogPage from "./pages/BlogPage";
 import BlogDetails from "./pages/BlogDetails";
 import Celebrity from "./components/Celebrity/Celebrity";
+import UserProfile from "./components/UserProfile";
 
 const socket = io.connect(process.env.REACT_APP_BACKENDURL);
 
@@ -191,9 +192,10 @@ function App() {
           {loginUserData?.id ? (
             <>
               <Route path="/profile" element={<EditProfile />} />
+
               <Route path="/profile/:collected" element={<EditProfile />} />
 
-              
+
               <Route
                 path="/profile/edit/:userId"
                 element={<ProfileSetting />}
@@ -201,6 +203,7 @@ function App() {
             </>
           ) : null}
 
+          <Route path="/Users/:id" element={<UserProfile />} />
           <Route path="*" element={<Navigate to={`/`} replace={true} />} />
         </Route>
       </Routes>

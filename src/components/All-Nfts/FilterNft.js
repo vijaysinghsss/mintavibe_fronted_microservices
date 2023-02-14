@@ -18,11 +18,11 @@ function FilterNft({ filter, setFilter, ClearAll }) {
       arr.push(name);
     }
     setSelectedCategory(arr);
-    let str=arr.join(",")
+    let str = arr.join(",")
     setFilter({ ...filter, category: str, page: 1 });
 
   };
-console.log(selectedCategory,"selectedCateg")
+  console.log(selectedCategory, "selectedCateg")
   const handleSetFilter = (myParam, value) => {
     setFilter({ ...filter, [myParam]: value, page: 1 });
   };
@@ -50,17 +50,15 @@ console.log(selectedCategory,"selectedCateg")
             </h4>
             <ul style={{ display: index === 0 ? "block" : "" }}>
               <li
-                className={`${
-                  !filter?.status && "appy-filter"
-                } status-lable current_page_item`}
+                className={`${!filter?.status && "appy-filter"
+                  } status-lable current_page_item`}
                 onClick={() => handleSetFilter("status", null)}
               >
                 All NFTs
               </li>
               <li
-                className={`${
-                  filter?.status === "instant_sale_enabled" && "appy-filter"
-                } status-lable `}
+                className={`${filter?.status === "instant_sale_enabled" && "appy-filter"
+                  } status-lable `}
                 onClick={() =>
                   handleSetFilter("status", "instant_sale_enabled")
                 }
@@ -68,9 +66,8 @@ console.log(selectedCategory,"selectedCateg")
                 Instant Buy
               </li>
               <li
-                className={`${
-                  filter?.status === "open_for_bid" && "appy-filter"
-                } status-lable `}
+                className={`${filter?.status === "open_for_bid" && "appy-filter"
+                  } status-lable `}
                 onClick={() => handleSetFilter("status", "open_for_bid")}
               >
                 Open for Bid
@@ -159,42 +156,37 @@ console.log(selectedCategory,"selectedCateg")
               </i>
             </h4>
             <ul style={{ display: index === 2 ? "block" : "" }}>
-            <li
-                className={`${
-                  !filter?.sortBy && "appy-filter"
-                } status-lable current_page_item`}
+              <li
+                className={`${!filter?.sortBy && "appy-filter"
+                  } status-lable current_page_item`}
                 onClick={() => handleSetFilter("sortBy", null)}
               >
                 All
               </li>
               <li
-                className={`${
-                  filter?.sortBy === "trending" && "appy-filter"
-                } status-lable `}
+                className={`${filter?.sortBy === "trending" && "appy-filter"
+                  } status-lable `}
                 onClick={() => handleSetFilter("sortBy", "trending")}
               >
                 Trending
               </li>
               <li
-                className={`${
-                  filter?.sortBy === "recentlisted" && "appy-filter"
-                } status-lable `}
+                className={`${filter?.sortBy === "recentlisted" && "appy-filter"
+                  } status-lable `}
                 onClick={() => handleSetFilter("sortBy", "recentlisted")}
               >
                 Recently Listed
               </li>
               <li
-                className={`${
-                  filter?.sortBy === "priceup" && "appy-filter"
-                } status-lable `}
+                className={`${filter?.sortBy === "priceup" && "appy-filter"
+                  } status-lable `}
                 onClick={() => handleSetFilter("sortBy", "priceup")}
               >
                 Price - High to Low
               </li>
               <li
-                className={`${
-                  filter?.sortBy === "pricedown" && "appy-filter"
-                } status-lable `}
+                className={`${filter?.sortBy === "pricedown" && "appy-filter"
+                  } status-lable `}
                 onClick={() => handleSetFilter("sortBy", "pricedown")}
               >
                 Price - Low to High
@@ -219,25 +211,22 @@ console.log(selectedCategory,"selectedCateg")
             </h4>
             <ul style={{ display: index === 3 ? "block" : "" }}>
               <li
-                className={`${
-                  !filter?.quantity && "appy-filter"
-                } status-lable `}
+                className={`${!filter?.quantity && "appy-filter"
+                  } status-lable `}
                 onClick={() => handleSetFilter("quantity", null)}
               >
                 All
               </li>
               <li
-                className={`${
-                  filter?.quantity === "single" && "appy-filter"
-                } status-lable `}
+                className={`${filter?.quantity === "single" && "appy-filter"
+                  } status-lable `}
                 onClick={() => handleSetFilter("quantity", "single")}
               >
                 Single Item
               </li>
               <li
-                className={`${
-                  filter?.quantity === "multiple" && "appy-filter"
-                } status-lable `}
+                className={`${filter?.quantity === "multiple" && "appy-filter"
+                  } status-lable `}
                 onClick={() => handleSetFilter("quantity", "multiple")}
               >
                 Multiple Item
@@ -283,9 +272,8 @@ console.log(selectedCategory,"selectedCateg")
             </h4>
             <ul style={{ display: index === 5 ? "block" : "" }}>
               <li
-                className={`${
-                  !filter?.chains && "appy-filter"
-                } status-lable status-lable-2 `}
+                className={`${!filter?.chains && "appy-filter"
+                  } status-lable status-lable-2 `}
                 onClick={() => handleSetFilter("chains", null)}
               >
                 <div className="icon-bg">
@@ -294,9 +282,8 @@ console.log(selectedCategory,"selectedCateg")
                 <span>Select All</span>
               </li>
               <li
-                className={`${
-                  filter?.chains === "Eth" && "appy-filter"
-                } status-lable status-lable-2 `}
+                className={`${filter?.chains === "Eth" && "appy-filter"
+                  } status-lable status-lable-2 `}
                 onClick={() => handleSetFilter("chains", "Eth")}
               >
                 <div className="icon-bg">
@@ -305,9 +292,8 @@ console.log(selectedCategory,"selectedCateg")
                 <span>ETH</span>
               </li>
               <li
-                className={`${
-                  filter?.chains === "xrp" && "appy-filter"
-                } status-lable status-lable-2 `}
+                className={`${filter?.chains === "xrp" && "appy-filter"
+                  } status-lable status-lable-2 `}
                 onClick={() => handleSetFilter("chains", "xrp")}
               >
                 <div className="icon-bg">
@@ -334,16 +320,15 @@ console.log(selectedCategory,"selectedCateg")
             <ul style={{ display: index === 6 ? "block" : "" }}>
               {Category?.length > 0
                 ? Category?.map((ele) => (
-                    <li
-                    className={`${
-                      selectedCategory.includes(ele.Categoryname)  && "active-item"
-                    } status-lable status-lable-2 page_item`}
-                     
-                      onClick={() => handleSelectCategory(ele.Categoryname)}
-                    >
-                      <span >{ele.Categoryname}</span>
-                    </li>
-                  ))
+                  <li
+                    className={`${selectedCategory.includes(ele.Categoryname) && "active-item"
+                      } status-lable status-lable-2 page_item`}
+
+                    onClick={() => handleSelectCategory(ele.Categoryname)}
+                  >
+                    <span >{ele.Categoryname}</span>
+                  </li>
+                ))
                 : ""}
               {/* <li className="page_item active-item">
                 <a href="javascript:;">Music</a>
@@ -416,9 +401,8 @@ console.log(selectedCategory,"selectedCateg")
 
             <ul style={{ display: index === 8 ? "block" : "" }}>
               <li
-                className={`${
-                  !filter?.wallet_type && "appy-filter"
-                } status-lable status-lable-2 `}
+                className={`${!filter?.wallet_type && "appy-filter"
+                  } status-lable status-lable-2 `}
                 onClick={() => handleSetFilter("wallet_type", null)}
               >
                 <div className="icon-bg">
@@ -427,9 +411,8 @@ console.log(selectedCategory,"selectedCateg")
                 <span>All</span>
               </li>
               <li
-                className={`${
-                  filter?.wallet_type === "fiatEth" && "appy-filter"
-                } status-lable status-lable-2 `}
+                className={`${filter?.wallet_type === "fiatEth" && "appy-filter"
+                  } status-lable status-lable-2 `}
                 onClick={() => handleSetFilter("wallet_type", "fiatEth")}
               >
                 <div className="icon-bg">
@@ -438,9 +421,8 @@ console.log(selectedCategory,"selectedCateg")
                 <span>ETH</span>
               </li>
               <li
-                className={`${
-                  filter?.wallet_type === "fiatXrp" && "appy-filter"
-                } status-lable status-lable-2 `}
+                className={`${filter?.wallet_type === "fiatXrp" && "appy-filter"
+                  } status-lable status-lable-2 `}
                 onClick={() => handleSetFilter("wallet_type", "fiatXrp")}
               >
                 <div className="icon-bg">
@@ -452,7 +434,7 @@ console.log(selectedCategory,"selectedCateg")
           </li>
         </ul>
         <ul>
-          <li className={`${index === 9 ? "open" : ""} pagenav`}>
+          {/* <li className={`${index === 9 ? "open" : ""} pagenav`}>
             <h4 onClick={() => setIndex(index !== 9 ? 9 : -1)}>
              
               <a href="#">Creator Type</a>
@@ -498,7 +480,7 @@ console.log(selectedCategory,"selectedCateg")
                 <span>By LGBTQIA+ creators</span>
               </li>
             </ul>
-          </li>
+          </li> */}
         </ul>
       </div>
     </>

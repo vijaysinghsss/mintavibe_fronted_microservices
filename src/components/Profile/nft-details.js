@@ -3,7 +3,7 @@ import React, { useDebugValue, useEffect, useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { API } from "../../apiwrapper";
 import { apiURl } from "../../store/actions";
@@ -1818,31 +1818,34 @@ function NftDetails() {
                     <span>Creator</span>
                   </div>
                   <div className="pro-div">
-                    <img
-                      src={
-                        CollectionDetails?.creator_id?.image
-                          ? process.env.REACT_APP_BACKENDURL +
-                          "/" +
+                    <Link to={`/Users/${CollectionDetails?.creator_id?._id || CollectionDetails?.creator_id}`}>
+                      <img
+                        src={
                           CollectionDetails?.creator_id?.image
-                          : "/images/prfile-pic.jpg"
-                      }
-                      alt="crosstower"
-                    />
+                            ? process.env.REACT_APP_BACKENDURL +
+                            "/" +
+                            CollectionDetails?.creator_id?.image
+                            : "/images/prfile-pic.jpg"
+                        }
+                        alt="crosstower"
+                      />
+                    </Link>
                   </div>
 
                   <div className="user-detail">
-                    <p title={CollectionDetails?.cretor_wallet_address || ""}>
-                      {CollectionDetails?.creator_id?.Name
-                        ? CollectionDetails?.creator_id?.Name
-                        : (
-                          CollectionDetails?.cretor_wallet_address || ""
-                        )?.slice(0, 4) +
-                        "..." +
-                        (
-                          CollectionDetails?.cretor_wallet_address || ""
-                        ).slice(-4)}
-                    </p>
-                    
+                    <Link to={`/Users/${CollectionDetails?.creator_id?._id || CollectionDetails?.creator_id}`}>
+                      <p title={CollectionDetails?.cretor_wallet_address || ""}>
+                        {CollectionDetails?.creator_id?.Name
+                          ? CollectionDetails?.creator_id?.Name
+                          : (
+                            CollectionDetails?.cretor_wallet_address || ""
+                          )?.slice(0, 4) +
+                          "..." +
+                          (
+                            CollectionDetails?.cretor_wallet_address || ""
+                          ).slice(-4)}
+                      </p>
+                    </Link>
                   </div>
                 </div>
                 {NetworkName[0] == "XUMM" ? null : (

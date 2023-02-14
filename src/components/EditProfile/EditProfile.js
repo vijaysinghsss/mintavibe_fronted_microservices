@@ -25,9 +25,9 @@ function EditProfile() {
   const { address } = useWeb3();
   const { Bio = "" } = useSelector((state) => state.User?.data);
   const { User, authUser } = useSelector((state) => state);
-  const {collected}=useParams()
+  const { collected } = useParams()
   const initialState = {
-    profile: collected?"collected":"listing",
+    profile: collected ? "collected" : "listing",
     status: "",
     sortBy: "",
     quantity: "",
@@ -269,7 +269,7 @@ function EditProfile() {
                 </span>
                 <span
                   style={{ cursor: "pointer" }}
-                  onClick={() =>  handleShow("following")}
+                  onClick={() => handleShow("following")}
                 >
                   Following ({Totalfollowing})
                 </span>
@@ -299,7 +299,7 @@ function EditProfile() {
           <div className="row follow-div-mob">
             <div className="col-sm-6 col-md-6">
               <p className="follow-text">
-                
+
                 <Modal show={show} onHide={handleClose} className="notice">
                   <Modal.Header closeButton className="close-button"></Modal.Header>
                   <Modal.Body>
@@ -445,13 +445,13 @@ function EditProfile() {
         </Container>
 
         <Modal show={show} onHide={handleClose} size="sm fllowPoup">
-        <div className="pop_content">
-          <div className="close-button">
-            <a href="#" onClick={handleClose}>
-              <img className="filterNone" src="/images/cross-button.svg" />
-            </a>
-          </div>
-          {/* <Modal.Header closeButton></Modal.Header> */}
+          <div className="pop_content">
+            <div className="close-button">
+              <a href="#" onClick={handleClose}>
+                <img className="filterNone" src="/images/cross-button.svg" />
+              </a>
+            </div>
+            {/* <Modal.Header closeButton></Modal.Header> */}
 
             <Tabs
               id="controlled-tab-example"
@@ -466,7 +466,7 @@ function EditProfile() {
                 <Following />
               </Tab>
             </Tabs>
-        </div>
+          </div>
         </Modal>
 
       </section>
