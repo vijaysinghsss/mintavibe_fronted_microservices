@@ -131,14 +131,14 @@ const Home = () => {
       <section className="nftSection">
         <div className="container">
           <div className="row justify-content-between">
-            <div className="col-lg col-md-4">
+            <div className="col-xl col-lg-4">
               <h3>
                 Exclusive Celebrity's <br className="d-none d-lg-block" /> NFTs
               </h3>
               <p>Join the exclusive club of fans of your favorite celebrities and get a rare glimpse into their world through unique NFTs.</p>
             </div>
 
-            <div className="col-lg col-md-4 mx-lg-5">
+            <div className="col-xl col-lg-4 mx-xl-5">
               <h3>
                 Own a moment in your <br className="d-none d-lg-block" />
                 favourite celebrities
@@ -146,7 +146,7 @@ const Home = () => {
               <p>Take possession of a special moment from the life of your favorite celebrity and treasure it forever through the ownership of an NFT.</p>
             </div>
 
-            <div className="col-lg col-md-4">
+            <div className="col-xl col-lg-4">
               <h3>
                 Chance to meet
               </h3>
@@ -213,7 +213,7 @@ const Home = () => {
                   {celeData.length > 0 &&
                     celeData?.map((cele) => (
                       <>
-                        <div className="col-sm-6 col-xl-5 h-100">
+                        <div className="col-6 col-xl-5 h-100">
                           <div className="countDown">
                             <CountdownTimerHome targetDate={cele.Start_time} />
                           </div>
@@ -298,7 +298,7 @@ const Home = () => {
       </section>
 
       <section className="celebrityPost">
-        <div className="container">
+        <div className="container-md">
           <div className="row">
             <div className="col-xl-12">
               <h3>Celebrities NFTs</h3>
