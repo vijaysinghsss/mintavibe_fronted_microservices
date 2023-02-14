@@ -123,12 +123,9 @@ const Home = () => {
       {showPopup && <OpenModal />}
 
       <section className="videoBox">
-        <video src="../images/Mintavibe-Landing-Page.mp4" autoPlay loop controlsList="nodownload">
-          <source src="../images/Mintavibe-Landing-Page.mp4" type="video/mp4" />
-          <source src="../images/Mintavibe-Landing-Page.ogg" type="video/ogg" />
+        <video controls={false} controlsList={'nodownload'} width="100%" autoPlay={true} muted={true}>
+          <source src={'https://mintavibe-landing-video.s3.ap-south-1.amazonaws.com/Mintavibe-Landing-Page.mp4'} type="video/mp4" />
         </video>
-
-        {/* <img className="img-fluid" src="../images/video-23.jpg" /> */}
       </section>
 
       <section className="nftSection">
@@ -146,7 +143,7 @@ const Home = () => {
                 Own a moment in your <br className="d-none d-lg-block" />
                 favourite celebrities
               </h3>
-              <p>Take possession of a special moment from the life of your <br className="d-none d-lg-block" /> favorite celebrity and treasure <br className="d-none d-lg-block" />it forever through the ownership <br className="d-none d-lg-block" />of an NFT.</p>
+              <p>Take possession of a special moment from the life of your favorite celebrity and treasure it forever through the ownership of an NFT.</p>
             </div>
 
             <div className="col-lg col-md-4">
@@ -160,7 +157,7 @@ const Home = () => {
       </section>
 
       <section className="celebrityNFT">
-        <div className="container">
+        <div className="container-md">
           <div className="row justify-content-center">
             <div className="col-md-11">
               <div className="exclCelebrity">
@@ -173,13 +170,12 @@ const Home = () => {
           <div className="row mt-4">
             <div className="col-md-12">
               <div className="crtNftScroll">
-                <div className="flex-container flex-wrap">
+                <div className="flex-container">
                   {CreatorCategory?.length > 0 &&
                     CreatorCategory?.map((ele) => (
                       <button
-                        className={`tabsection ${
-                          !ele.coming_soon ? "active" : ""
-                        }`}
+                        className={`tabsection ${!ele.coming_soon ? "active" : ""
+                          }`}
                         key={ele._id}
                         disabled={ele.coming_soon}
                         onClick={() => handleCategory(ele._id)}
@@ -210,22 +206,21 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="row justify-content-center mt-5">
-            <div className="col-md-10">
+          <div className="row justify-content-center mt-4 mt-xl-5">
+            <div className="col-lg-10">
               <div className="celebrityDtl">
                 <div className="row align-items-center justify-content-around">
                   {celeData.length > 0 &&
                     celeData?.map((cele) => (
                       <>
-                        <div className="col-md-5 h-100">
+                        <div className="col-sm-6 col-xl-5 h-100">
                           <div className="countDown">
                             <CountdownTimerHome targetDate={cele.Start_time} />
                           </div>
                           <Link
                             className="celebFrame"
-                            to={`/${
-                              cele.Creator_type?.Creatorname || "Unknown"
-                            }/${cele.Slug}`}
+                            to={`/${cele.Creator_type?.Creatorname || "Unknown"
+                              }/${cele.Slug}`}
                           >
                             <figure>
                               <img
@@ -320,77 +315,68 @@ const Home = () => {
                 slidesToScroll={3}
                 responsive={[
                   {
-                    breakpoint: 1113,
+                    breakpoint: 1199,
                     settings: {
                       slidesToShow: 3,
                       slidesToScroll: 3,
                       infinite: true,
-                      dots: true,
                     },
                   },
-                  {
-                    breakpoint: 1024,
-                    settings: {
-                      slidesToShow: 2,
-                      slidesToScroll: 2,
-                      infinite: true,
-                      dots: true,
-                    },
-                  },
+
                   {
                     breakpoint: 600,
                     settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
+                      slidesToShow: 2,
+                      slidesToScroll: 2,
                     },
                   },
                   {
                     breakpoint: 480,
                     settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
+                      slidesToShow: 2,
+                      slidesToScroll: 2,
                     },
                   },
                 ]}
               >
                 {celebritylistData?.length > 0
                   ? celebritylistData?.map((ele) => (
-                      <Link to={`/collections/${ele?._id}`}>
-                        <img
-                          className="img-fluid"
-                          src={`${process.env.REACT_APP_BACKENDURL}/${ele?.image}`}
-                          alt=""
-                        />
-                      </Link>
-                    ))
+                    <Link to={`/collections/${ele?._id}`}>
+                      <img
+                        className="img-fluid"
+                        src={`${process.env.REACT_APP_BACKENDURL}/${ele?.image}`}
+                        alt=""
+                      />
+                    </Link>
+                  ))
                   : ""
-                    // <>
-                    //   <img
-                    //     src="../images/ak01.png"
-                    //     className="img-fluid"
-                    //     alt=""
-                    //   />
-                    //   <img
-                    //     src="../images/ak02.png"
-                    //     className="img-fluid"
-                    //     alt=""
-                    //   />
-                    //   <img
-                    //     src="../images/ak06.png"
-                    //     className="img-fluid"
-                    //     alt=""
-                    //   />
-                    //   <img
-                    //     src="../images/ak04.png"
-                    //     className="img-fluid"
-                    //     alt=""
-                    //   />
-                    //   <img
-                    //     src="../images/ak05.png"
-                    //     className="img-fluid"
-                    //     alt=""
-                    //   />
-                    // </>
+                  // <>
+                  //   <img
+                  //     src="../images/ak01.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak02.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak06.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak04.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak05.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  // </>
                 }
               </SliderParent>
             </div>
@@ -537,7 +523,7 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-6 mt-5">
+            <div className="col-lg-6 mt-xl-5">
               <h4>Steps of how to create a wallet</h4>
               <ul className="walletSteps">
                 <li>
@@ -555,7 +541,7 @@ const Home = () => {
                 </li>
               </ul>
             </div>
-            <div className="col-md-6">
+            <div className="col-lg-6 mt-4 mt-xl-0">
               <div className="imageSection">
                 <img src="../images/mintaVideo.png" className="img-fluid" />
               </div>

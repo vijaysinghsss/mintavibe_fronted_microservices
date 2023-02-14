@@ -28,8 +28,8 @@ function Details({
             {Owner_id?.Name
               ? Owner_id?.Name
               : (owner_wallet_address || "").slice(0, 4) +
-                "..." +
-                (owner_wallet_address || "").slice(-4)}
+              "..." +
+              (owner_wallet_address || "").slice(-4)}
           </p>
         </div>
       ) : (
@@ -40,8 +40,8 @@ function Details({
               {Owner_id?.Name
                 ? Owner_id?.Name
                 : (owner_wallet_address || "").slice(0, 4) +
-                  "..." +
-                  (owner_wallet_address || "").slice(-4)}
+                "..." +
+                (owner_wallet_address || "").slice(-4)}
             </p>
           ) : (
             <p onClick={() => setShowOwner(true)}>
@@ -59,10 +59,10 @@ function Details({
 
       {NetworkName[0] == "XUMM" ? null : (
         <div className="details-box">
-          <span>Available Editions</span>
+          {/* <span>Available Editions</span>
           <p>
             {available_copies || 0} / {no_of_copies || 1}
-          </p>
+          </p> */}
         </div>
       )}
 
@@ -83,7 +83,7 @@ function Details({
             onClick={(e) => {
               e.preventDefault();
               CopyText(token);
-              e.target.title="successfully copied to clipboard"
+              e.target.title = "successfully copied to clipboard"
             }}
             title="copy"
             style={{ width: "20px", cursor: "pointer" }}
@@ -94,7 +94,7 @@ function Details({
           <p>Contract Address</p>
           {collection_type ? (
             <a
-            href={`https://goerli.etherscan.io/address/${process.env.REACT_APP_CONTRACT_ADDRESS_ERC721}`}
+              href={`https://goerli.etherscan.io/address/${process.env.REACT_APP_CONTRACT_ADDRESS_ERC721}`}
               target={'_blank'}
             >
               <span>{process.env.REACT_APP_CONTRACT_ADDRESS_ERC721}</span>

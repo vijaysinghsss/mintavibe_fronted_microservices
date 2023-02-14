@@ -3,7 +3,7 @@ import React, { useDebugValue, useEffect, useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { API } from "../../apiwrapper";
 import { apiURl } from "../../store/actions";
@@ -1618,9 +1618,24 @@ function NftDetails() {
             <p title={`Available For sale/No of Copies`}>
               {CollectionDetails?.Nftname || ""}
               <span>
-                Editions:{" "}
-                <b>{`${CollectionDetails?.available_copies || 0}/${CollectionDetails?.no_of_copies || 1
-                  }`}</b>
+                Total Qty:{" "}
+                <b>{`${CollectionDetails?.no_of_copies || 1}`}</b>
+                {" "}
+                Listed Qty:{" "}
+                <b>{`${(CollectionDetails?.Listing || []).reduce((value, ele) => {
+                  return value + (ele.Status ? value + ele.Quantity : 0)
+                }, 0) || 0}`}</b>
+                {" "}
+
+                Sold Qty:{" "}
+                <b>{`${(CollectionDetails?.no_of_copies || 0) - (CollectionDetails?.available_copies || 0)}`}</b>
+
+                {" "}
+                Available Qty:{" "}
+                <b>
+                  {`${CollectionDetails?.available_copies || 0}`}
+                </b>
+
               </span>
               {/* {NetworkName[0] ==
               "XUMM" ? null : CollectionDetails.collection_type ? null : (
@@ -1818,36 +1833,55 @@ function NftDetails() {
                     <span>Creator</span>
                   </div>
                   <div className="pro-div">
-                    <img
-                      src={
-                        CollectionDetails?.creator_id?.image
-                          ? process.env.REACT_APP_BACKENDURL +
-                          "/" +
+                    <Link to={`/Users/${CollectionDetails?.creator_id?._id || CollectionDetails?.creator_id}`}>
+                      <img
+                        src={
                           CollectionDetails?.creator_id?.image
-                          : "/images/prfile-pic.jpg"
-                      }
-                      alt="crosstower"
-                    />
+                            ? process.env.REACT_APP_BACKENDURL +
+                            "/" +
+                            CollectionDetails?.creator_id?.image
+                            : "/images/prfile-pic.jpg"
+                        }
+                        alt="crosstower"
+                      />
+                    </Link>
                   </div>
 
                   <div className="user-detail">
-                    <p title={CollectionDetails?.cretor_wallet_address || ""}>
-                      {CollectionDetails?.creator_id?.Name
-                        ? CollectionDetails?.creator_id?.Name
-                        : (
-                          CollectionDetails?.cretor_wallet_address || ""
-                        )?.slice(0, 4) +
-                        "..." +
-                        (
-                          CollectionDetails?.cretor_wallet_address || ""
-                        ).slice(-4)}
-                    </p>
-                    
+                    <Link to={`/Users/${CollectionDetails?.creator_id?._id || CollectionDetails?.creator_id}`}>
+                      <p title={CollectionDetails?.cretor_wallet_address || ""}>
+                        {CollectionDetails?.creator_id?.Name
+                          ? CollectionDetails?.creator_id?.Name
+                          : ''}
+                      </p>
+                      <p>
+                        {(
+                          (CollectionDetails?.cretor_wallet_address || "")?.slice(
+                            0,
+                            4
+                          ) +
+                          "..." +
+                          (
+                            CollectionDetails?.cretor_wallet_address || ""
+                          ).slice(-4)
+                        )}
+                        <img
+                          src="/images/copy-svgrepo-com.svg"
+                          className="copy_address"
+                          alt=""
+                          onClick={(e) => {
+                            e.preventDefault();
+                            CopyText(CollectionDetails?.cretor_wallet_address || "");
+                          }}
+                          style={{ width: "20px", cursor: "pointer" }}
+                        />
+                      </p>
+                    </Link>
                   </div>
                 </div>
                 {NetworkName[0] == "XUMM" ? null : (
                   <div className="left-div">
-                    <div className="pro-div-2">
+                    {/* <div className="pro-div-2">
                       {" "}
                       <span>Collection</span>
                     </div>
@@ -1860,7 +1894,7 @@ function NftDetails() {
                           ? "NFT721"
                           : "NFT1155"}
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 )}
                 {!CollectionDetails?.Status ? (
@@ -1884,11 +1918,12 @@ function NftDetails() {
               {CollectionDetails?.Status ? (
                 <div className="bolck-div">
                   <div className="row">
-                    <div className="col-sm-4 col-xs-6">
+                    {/* <div className="col-sm-4 col-xs-6">
                       <p>
                         <span>Highest Bid</span>
                       </p>
                       <p>
+
                         {parseFloat(CollectionDetails.Highest_bid || 0.0) <
                           0.00001
                           ? "No Bid"
@@ -1910,7 +1945,7 @@ function NftDetails() {
                           </a>
                         </div>
                       )}
-                    </div>
+                    </div> */}
 
                     <div className="col-sm-4 col-xs-6">
                       {CollectionDetails?.nft_type !== "OPENBID" && (
@@ -2003,7 +2038,7 @@ function NftDetails() {
               }}
             >
               <Tabs
-                defaultActiveKey="bids"
+                defaultActiveKey="history"
                 // transition={false}
                 id="noanim-tab-example"
                 className="mb-3"
@@ -2016,7 +2051,7 @@ function NftDetails() {
                     FetchData={FetchData}
                   />
                 </Tab>
-                <Tab
+                {/* <Tab
                   eventKey="bids"
                   title={"Bids"}
                   // title={`Bids (${
@@ -2031,8 +2066,8 @@ function NftDetails() {
                     Owner={CollectionDetails?.Owner_id}
                     AcceptOffer={AcceptOffer}
                   />
-                </Tab>
-                <Tab eventKey="history" title="History">
+                </Tab> */}
+                <Tab eventKey="history" title="Activity">
                   <History HistoryData={HistoryData} />
                 </Tab>
                 {/* {NetworkName && NetworkName[0] == "XUMM" ? null : ( */}
@@ -2421,14 +2456,18 @@ function NftDetails() {
         qty={qty}
         setqty={setqty}
       />
-      {showOwner && (
-        <OwnerList showOwner={showOwner} setShowOwner={setShowOwner} />
-      )}
-      {expandImage && (
-        <ImageZoom url={expandUrl} handleClose={handleCloseExpandImage} />
-      )}
+      {
+        showOwner && (
+          <OwnerList showOwner={showOwner} setShowOwner={setShowOwner} />
+        )
+      }
+      {
+        expandImage && (
+          <ImageZoom url={expandUrl} handleClose={handleCloseExpandImage} />
+        )
+      }
       <BurnTokenPopup />
-    </section>
+    </section >
   );
 }
 

@@ -305,6 +305,7 @@ body {
 
 .nftSection p {
   font-size: 18px;
+  text-align:justify;
 }
 
 
@@ -313,6 +314,8 @@ body {
   background: url(../public/images/nftBackground.png) no-repeat #5A2AE0;
   /* background:transparent linear-gradient(180deg, #4D361A 0%, #0F0B05 100%) 0% 0% no-repeat padding-box; */
 }
+
+.crtNftScroll .flex-container{overflow:auto;}
 
 .exclCelebrity {
   text-align: center;
@@ -355,7 +358,7 @@ body {
 .flex-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .flex-container .tabsection {
@@ -435,6 +438,7 @@ body {
 
 .celebrityDtl p {
   font-size: 20px;
+  text-align: justify;
   margin: 0px;
 }
 

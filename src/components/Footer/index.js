@@ -7,14 +7,10 @@ const Footer = () => {
     
     <footer>
       <div className="container">
-        <div className="row">
-          <p className="footer-text">
-            <b>Stay in touch</b>
-          </p>
-        </div>
 
         <div className="row align-items-center">
-          <div className="col-sm-6">
+          <div className="col-xl-6">
+            <p className="footer-text"><b>Stay in touch</b></p>
             <ul className="social-media">
               <li>
                 <a
@@ -65,7 +61,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="col-sm-6">
+          <div className="col-xl-6">
             <ul className="footer-link">
               <li>
                 <Link to={`/about`}>About Us</Link>
