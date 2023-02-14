@@ -125,7 +125,7 @@ const Home = () => {
       {showPopup && <OpenModal />}
 
       <section className="videoBox">
-        <video src="../images/Mintavibe-Landing-Page.mp4" autoPlay loop controlsList="nodownload">
+        <video autoPlay loop controlsList="nodownload">
           <source src="../images/Mintavibe-Landing-Page.mp4" type="video/mp4" />
           <source src="../images/Mintavibe-Landing-Page.ogg" type="video/ogg" />
         </video>
@@ -148,7 +148,7 @@ const Home = () => {
                 Own a moment in your <br className="d-none d-lg-block" />
                 favourite celebrities
               </h3>
-              <p>Take possession of a special moment from the life of your <br className="d-none d-lg-block" /> favorite celebrity and treasure <br className="d-none d-lg-block" />it forever through the ownership <br className="d-none d-lg-block" />of an NFT.</p>
+              <p>Take possession of a special moment from the life of your favorite celebrity and treasure it forever through the ownership of an NFT.</p>
             </div>
 
             <div className="col-lg col-md-4">
@@ -175,7 +175,7 @@ const Home = () => {
           <div className="row mt-4">
             <div className="col-md-12">
               <div className="crtNftScroll">
-                <div className="flex-container flex-wrap">
+                <div className="flex-container">
                   {CreatorCategory?.length > 0 &&
                     CreatorCategory?.map((ele) => (
                       <button
@@ -219,7 +219,7 @@ const Home = () => {
                   {celeData.length > 0 &&
                     celeData?.map((cele) => (
                       <>
-                        <div className="col-md-5 h-100">
+                        <div className="col-md-6 col-xl-5 h-100">
                           <div className="countDown">
                             <CountdownTimerHome targetDate={cele.Start_time} />
                           </div>
