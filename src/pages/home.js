@@ -95,7 +95,6 @@ const Home = () => {
         url: `${apiURl.celebritylist}`,
         method: "GET",
       }).then((data) => {
-        console.log("celebritylist", data);
         if (data?.status || data?.status === "true") {
           setCelebritylistData(data?.response || []);
         }
