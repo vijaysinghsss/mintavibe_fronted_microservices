@@ -142,8 +142,8 @@ input.search-input-nav {
   font-size: 16px;
 }
 
-.navbar-nav>li {
-  padding-right: 20px;
+.navbar-nav li + li {
+  padding-left: 20px;
 }
 
 .navbar-nav li a {

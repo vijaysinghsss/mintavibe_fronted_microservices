@@ -5,14 +5,10 @@ function Footer() {
     <div>
       <footer>
         <div className="container">
-          <div className="row">
-            <p>
-              <b>Stay in touch</b>
-            </p>
-          </div>
 
           <div className="row">
             <div className="col-sm-6">
+              <p><b>Stay in touch</b></p>
               <ul className="social-media">
                 <li>
                   <a
