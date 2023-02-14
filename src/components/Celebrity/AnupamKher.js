@@ -94,10 +94,7 @@ function AnupamKher() {
           <Row className="align-items-center justify-content-center">
             <Col md={6}>
               <h1>NFT'S Of Your Favourite Celebrities</h1>
-              <p>
-                MintAVibe has an exclusive collection of digital collectibles of
-                your favourite celebrities in one place.
-              </p>
+              <p>Discover the exclusive collection of digital collectibles featuring your favorite celebrities, only at MintAVibe.</p>
             </Col>
 
             <Col md={6}>
@@ -152,28 +149,15 @@ function AnupamKher() {
       <section className="abtEdition">
         <div className="container">
           <div className="row justify-content-center my-5">
-            <div className="col-md-4 me-4">
+            <div className="col-md-5 pt-5">
               <img src="../images/akLandingImage.png" className="img-fluid" />
             </div>
             <div className="col-md-7">
               <div className="abtCelebt">
                 <h3>Drop 1: Three Editions</h3>
                 <h4>About Collection</h4>
-                <p>
-                  This is a chance to engage with Mr. Rampal in his “Be Brave
-                  like Bittu” collection where he provides coaching via the lens
-                  of his 12-year-old un-inhibited self that made him takes
-                  risks, pursue his dreams and traverse his path to success.
-                </p>
-                <p>
-                  With the purchase of this NFT the holders will collect his
-                  Bittu mascot NFTs which will have different traits unlocking
-                  benefits to fans.
-                </p>
-                <p>
-                  Insight into his world, his projects, side initiatives. Chance
-                  to interact directly and be truly a part of his world.
-                </p>
+                <p>Join Mr. Kher as he takes you on a journey filled with bravery and success through the "Be Brave like Bittu" NFT collection. Immerse yourself in his world as you receive exclusive Bittu mascot NFTs with your purchase, offering a rare glimpse into his life and experiences. These NFTs not only serve as collectibles, but also unlock special perks and benefits for fans, providing an even deeper connection to Mr. Kher and his inspiring journey.</p>
+                <p>By owning a piece of the "Be Brave like Bittu" collection, you will become a part of Mr. Kher's story and have the opportunity to engage directly with him. From exclusive merchandise drops to virtual meet and greets, your NFT will provide you with a unique and personal experience unlike any other. Join the community of fans who support Mr. Kher and be inspired by his bravery, determination, and success. Get ready to embark on a journey of a lifetime and "Be Brave like Bittu" with the exclusive NFT collection.</p>
                 <div className="editionSection mt-4">
                   <div>
                     <p>Edition</p>
