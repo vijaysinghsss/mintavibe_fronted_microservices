@@ -179,7 +179,7 @@ function UserProfile() {
                                     src={
                                         coverimage
                                             ? process.env.REACT_APP_BACKENDURL + "/" + coverimage
-                                            : "images/profile-header-img.png"
+                                            : "/images/profile-header-img.png"
                                     }
                                     alt=""
                                 />

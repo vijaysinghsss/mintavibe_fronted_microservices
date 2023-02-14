@@ -2,7 +2,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, ScrollRestoration } from "react-router-dom";
+
 import Layout from "./pages/layout";
 import io from "socket.io-client";
 import Home from "./pages/home";
@@ -161,6 +162,7 @@ function App() {
   return (
     <BrowserRouter>
       {/* {isMounted &&
+      <ScrollRestoration />
         !Object.values(loginUserData).length &&
         !Object.values(SubscriptionUser?.data).length && (
           <SubscriptionPopup
@@ -168,6 +170,8 @@ function App() {
             setIsMounted={setIsMounted}
           />
         )} */}
+
+
       <LoaderComponent />
       <ToastContainer position="top-right" />
       <Routes>

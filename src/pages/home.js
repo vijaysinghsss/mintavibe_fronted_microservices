@@ -125,13 +125,9 @@ const Home = () => {
       {showPopup && <OpenModal />}
 
       <section className="videoBox">
-        <video autoPlay loop controlsList="nodownload">
-          <source src="../images/Mintavibe-Landing-Page.mp4" type="video/mp4" />
-          <source src="../images/Mintavibe-Landing-Page.webm" type="video/webm" />
-          <source src="../images/Mintavibe-Landing-Page.ogg" type="video/ogg" />
+        <video controls={false} controlsList={'nodownload'} width="100%" autoPlay={true} muted={true}>
+          <source src={'https://mintavibe-landing-video.s3.ap-south-1.amazonaws.com/Mintavibe-Landing-Page.mp4'} type="video/mp4" />
         </video>
-
-        {/* <img className="img-fluid" src="../images/video-23.jpg" /> */}
       </section>
 
       <section className="nftSection">
@@ -180,9 +176,8 @@ const Home = () => {
                   {CreatorCategory?.length > 0 &&
                     CreatorCategory?.map((ele) => (
                       <button
-                        className={`tabsection ${
-                          !ele.coming_soon ? "active" : ""
-                        }`}
+                        className={`tabsection ${!ele.coming_soon ? "active" : ""
+                          }`}
                         key={ele._id}
                         disabled={ele.coming_soon}
                         onClick={() => handleCategory(ele._id)}
@@ -226,9 +221,8 @@ const Home = () => {
                           </div>
                           <Link
                             className="celebFrame"
-                            to={`/${
-                              cele.Creator_type?.Creatorname || "Unknown"
-                            }/${cele.Slug}`}
+                            to={`/${cele.Creator_type?.Creatorname || "Unknown"
+                              }/${cele.Slug}`}
                           >
                             <figure>
                               <img
@@ -330,7 +324,7 @@ const Home = () => {
                       infinite: true,
                     },
                   },
-                  
+
                   {
                     breakpoint: 600,
                     settings: {
@@ -349,42 +343,42 @@ const Home = () => {
               >
                 {celebritylistData?.length > 0
                   ? celebritylistData?.map((ele) => (
-                      <Link to={`/collections/${ele?._id}`}>
-                        <img
-                          className="img-fluid"
-                          src={`${process.env.REACT_APP_BACKENDURL}/${ele?.image}`}
-                          alt=""
-                        />
-                      </Link>
-                    ))
+                    <Link to={`/collections/${ele?._id}`}>
+                      <img
+                        className="img-fluid"
+                        src={`${process.env.REACT_APP_BACKENDURL}/${ele?.image}`}
+                        alt=""
+                      />
+                    </Link>
+                  ))
                   : ""
-                    // <>
-                    //   <img
-                    //     src="../images/ak01.png"
-                    //     className="img-fluid"
-                    //     alt=""
-                    //   />
-                    //   <img
-                    //     src="../images/ak02.png"
-                    //     className="img-fluid"
-                    //     alt=""
-                    //   />
-                    //   <img
-                    //     src="../images/ak06.png"
-                    //     className="img-fluid"
-                    //     alt=""
-                    //   />
-                    //   <img
-                    //     src="../images/ak04.png"
-                    //     className="img-fluid"
-                    //     alt=""
-                    //   />
-                    //   <img
-                    //     src="../images/ak05.png"
-                    //     className="img-fluid"
-                    //     alt=""
-                    //   />
-                    // </>
+                  // <>
+                  //   <img
+                  //     src="../images/ak01.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak02.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak06.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak04.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  //   <img
+                  //     src="../images/ak05.png"
+                  //     className="img-fluid"
+                  //     alt=""
+                  //   />
+                  // </>
                 }
               </SliderParent>
             </div>
