@@ -65,7 +65,7 @@ function Subscribe() {
     <>
       {showPopup && <Thanks show={showPopup} close={handleClosePopup} />}
       <section className="subsScribe">
-        <div className="container">
+        <div className="container-md">
           <div className="row">
             <div className="col-xl-12">
               <h3>Stay Informed</h3>

@@ -2,6 +2,8 @@
 
 @media all and (max-width:1199px){
 
+.videoBox video{height:400px;}
+
 .exclCelebrity h2::before,
 .exclCelebrity h2::after{display:none;}
 
@@ -10,9 +12,9 @@
 	font-size: 15px;
 }
 
-.celebrityDtl .celebFrame{transform: scale(1);}
 
-/* .celebrityDtl figure{height: 350px; width: 300px; padding:30px 25px 50px;}
+
+.celebrityDtl figure{height: 350px; width: 300px; padding:30px 25px 50px;}
 .celebrityDtl figure::before{height:350px; width:300px; background-size:100% 100%;}
 
 .celebrityDtl figure .nameTitle {
@@ -20,13 +22,21 @@
 	bottom: 20px;
 }
 
-.celebrityDtl figure .typeCelebrity{
+.celebrityDtl figure .typeCelebrity {
 	font-size: 30px;
-	left: -95px;
-	bottom: 180px;
-    width: 300px;
+	left: -70px;
+	bottom: 155px;
+	width: 250px;
 	height: 60px;
-} */
+}
+
+.celebrityPost img{height:280px;}
+
+.footer-text{text-align:center;}
+
+.social-media{justify-content:center; margin-bottom:30px;}
+.footer-link{justify-content:center;}
+
 
 }
 
@@ -37,6 +47,35 @@
 .exclCelebrity h3{font-size:35px;}
 .celebrityNFT{padding:40px 0;}
 
-.videoBox video{height:500px;}
+.videoBox video{height:350px;}
+
+
+.celebrityDtl figure {
+	height: 300px;
+	width: 250px;
+	padding: 25px 20px 45px;
+}
+
+.celebrityDtl figure::before {
+	height: 300px;
+	width: 250px;
+	background-size: 100% 100%;
+}
+
+
+}
+
+@media all and (max-width:767px){
+
+	.nftSection h3{font-size:22px; margin:15px 0 5px;}
+	.nftSection p{font-size:16px;}
+
+	.exclCelebrity h2{font-size:25px;}
+	.exclCelebrity h3{font-size:30px;}
+
+	.subsScribe .subScribeBox{width:550px;}
+
+	.celebrityDtl h3{font-size: 20px;}
+	.celebrityDtl p{font-size: 16px;}
 
 }

@@ -127,12 +127,12 @@ function Navbar() {
         {showPopup && <OpenModal />}
         <div className="container relative">
           <div className="row align-items-center">
-            <div className="col-md-3">
+            <div className="col-sm-4 col-md-3">
               <NavLink index to="/" className="topLogo">
                 <img className="img-fluid" src="../images/logo.png" alt="" />
               </NavLink>
             </div>
-            <div className="col-md-9">
+            <div className="col-sm-8 col-md-9">
               <div className="row align-items-center">
                 <div className="col-md-6 col-xl-7">
                   <ul className="nav navbar-nav justify-content-end d-flex flex-row">

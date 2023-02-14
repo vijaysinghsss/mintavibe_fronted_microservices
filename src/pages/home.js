@@ -127,6 +127,7 @@ const Home = () => {
       <section className="videoBox">
         <video autoPlay loop controlsList="nodownload">
           <source src="../images/Mintavibe-Landing-Page.mp4" type="video/mp4" />
+          <source src="../images/Mintavibe-Landing-Page.webm" type="video/webm" />
           <source src="../images/Mintavibe-Landing-Page.ogg" type="video/ogg" />
         </video>
 
@@ -162,7 +163,7 @@ const Home = () => {
       </section>
 
       <section className="celebrityNFT">
-        <div className="container">
+        <div className="container-md">
           <div className="row justify-content-center">
             <div className="col-md-11">
               <div className="exclCelebrity">
@@ -212,14 +213,14 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="row justify-content-center mt-5">
-            <div className="col-md-10">
+          <div className="row justify-content-center mt-4 mt-xl-5">
+            <div className="col-lg-10">
               <div className="celebrityDtl">
                 <div className="row align-items-center justify-content-around">
                   {celeData.length > 0 &&
                     celeData?.map((cele) => (
                       <>
-                        <div className="col-md-6 col-xl-5 h-100">
+                        <div className="col-sm-6 col-xl-5 h-100">
                           <div className="countDown">
                             <CountdownTimerHome targetDate={cele.Start_time} />
                           </div>
@@ -322,35 +323,26 @@ const Home = () => {
                 slidesToScroll={3}
                 responsive={[
                   {
-                    breakpoint: 1113,
+                    breakpoint: 1199,
                     settings: {
                       slidesToShow: 3,
                       slidesToScroll: 3,
                       infinite: true,
-                      dots: true,
                     },
                   },
-                  {
-                    breakpoint: 1024,
-                    settings: {
-                      slidesToShow: 2,
-                      slidesToScroll: 2,
-                      infinite: true,
-                      dots: true,
-                    },
-                  },
+                  
                   {
                     breakpoint: 600,
                     settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
+                      slidesToShow: 2,
+                      slidesToScroll: 2,
                     },
                   },
                   {
                     breakpoint: 480,
                     settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
+                      slidesToShow: 2,
+                      slidesToScroll: 2,
                     },
                   },
                 ]}
@@ -539,7 +531,7 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-6 mt-5">
+            <div className="col-lg-6 mt-xl-5">
               <h4>Steps of how to create a wallet</h4>
               <ul className="walletSteps">
                 <li>
@@ -557,7 +549,7 @@ const Home = () => {
                 </li>
               </ul>
             </div>
-            <div className="col-md-6">
+            <div className="col-lg-6 mt-4 mt-xl-0">
               <div className="imageSection">
                 <img src="../images/mintaVideo.png" className="img-fluid" />
               </div>
