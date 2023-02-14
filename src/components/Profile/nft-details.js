@@ -1852,13 +1852,29 @@ function NftDetails() {
                       <p title={CollectionDetails?.cretor_wallet_address || ""}>
                         {CollectionDetails?.creator_id?.Name
                           ? CollectionDetails?.creator_id?.Name
-                          : (
-                            CollectionDetails?.cretor_wallet_address || ""
-                          )?.slice(0, 4) +
+                          : ''}
+                      </p>
+                      <p>
+                        {(
+                          (CollectionDetails?.cretor_wallet_address || "")?.slice(
+                            0,
+                            4
+                          ) +
                           "..." +
                           (
                             CollectionDetails?.cretor_wallet_address || ""
-                          ).slice(-4)}
+                          ).slice(-4)
+                        )}
+                        <img
+                          src="/images/copy-svgrepo-com.svg"
+                          className="copy_address"
+                          alt=""
+                          onClick={(e) => {
+                            e.preventDefault();
+                            CopyText(CollectionDetails?.cretor_wallet_address || "");
+                          }}
+                          style={{ width: "20px", cursor: "pointer" }}
+                        />
                       </p>
                     </Link>
                   </div>
