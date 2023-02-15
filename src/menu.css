@@ -133,13 +133,12 @@ input.search-input-nav {
 .navbar-nav {
   align-items: center;
   font-family: "Poppins", sans-serif !important;
-
   font-weight: 500;
-  margin: 0 15px;
-
+  margin:0 15px;
   cursor: pointer;
   position: relative;
   font-size: 16px;
+  flex-direction:inherit;
 }
 
 .navbar-nav li + li {

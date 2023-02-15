@@ -52,6 +52,16 @@
 
 @media all and (max-width:991px){
 
+/* ================ MENU SECTION ================ */
+
+.respMenuOnly{display:flex; justify-content:end;}
+
+.respSerch,
+.respMenu{background:none; color:#FFF; border:0px; font-size:20px;}
+
+.topMenu{display:none;}
+
+/* ================ MENU SECTION ================ */
 
 .nftSection h3{font-size:22px; margin:15px 0 5px;}
 .nftSection p{font-size:16px;}
@@ -89,6 +99,8 @@
 
 	.celebrityDtl h3{font-size: 20px;}
 	.celebrityDtl p{font-size: 16px;}
+	
+	.celebrityPost img{height:200px;}
 
 }
 
