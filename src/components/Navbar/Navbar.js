@@ -133,8 +133,7 @@ function Navbar() {
               </NavLink>
             </div>
             <div className="col-8 col-md-9">
-              <div className="respMenuOnly">
-                <button className="respSerch d-lg-none me-3"><i class="fas fa-search"></i></button>
+              <div className="respMenuOnly d-flex justify-content-end">
                 <button className="respMenu d-lg-none"><i class="fas fa-bars"></i></button>
                 <div className="topMenu">
                     <ul className="nav navbar-nav">
@@ -202,125 +201,127 @@ function Navbar() {
                         <NavLink to="/nftforall">#NFTforAll</NavLink>
                       </li> */}
                     </ul>
-                    <div className="d-flex align-items-center">
-                      <form id="form">
-                        <div className="topSearch">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Search"
-                            onChange={(e) =>
-                              setSearchParams({ query: e.target.value })
-                            }
-                          />
-                          <button className="searchBtn" type="button">
-                            <i className="fa fa-search"></i>
-                          </button>
-                        </div>
-                      </form>
-                      <div className="ms-md-3">
-                        <ul className="hedIcons">
-                          {!loginUserData?.token && (
-                            <li>
-                              <button
-                                className="btn btn-light loginBtn"
-                                onClick={handleShowLogin}
-                                style={{ border: "none" }}
-                              >
-                                Login
-                              </button>
-                            </li>
-                          )}
-                          {loginUserData?.token && (
-                            <>
-                              {
-                                <li>
-                                  <NavDropdown
-                                    id="nav-dropdown-dark-example"
-                                    title={
-                                      <img
-                                        onClick={() =>
-                                          setopenProfile(!openProfile)
-                                        }
-                                        className={image ? "filterNone" : ""}
-                                        aria-controls="example-collapse-text"
-                                        aria-expanded={openProfile}
-                                        src={
-                                          image
-                                            ? process.env.REACT_APP_BACKENDURL +
-                                              "/" +
-                                              image
-                                            : "/images/user-icon.png"
-                                        }
-                                        alt=""
-                                        title={address}
-                                        width={40}
-                                        height={40}
-                                      />
-                                    }
-                                    menuVariant="light"
-                                    className="customLink"
-                                  >
-                                    <NavDropdown.Item
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        navigate(`/profile`);
-                                      }}
-                                      href="/profile"
-                                      className="user-notice-box"
-                                    >
-                                      <div className="user-icon-box">
-                                        <img
-                                          alt=""
-                                          src="/images/profile-iocn.png"
-                                        />
-                                      </div>
-                                      <p>Profile</p>
-                                    </NavDropdown.Item>
-
-                                    <NavDropdown.Item
-                                      onClick={Logout}
-                                      href="/edit-profile"
-                                      className="user-notice-box"
-                                    >
-                                      <div className="user-icon-box">
-                                        <img
-                                          alt=""
-                                          src="/images/settings-icon.png"
-                                        />
-                                      </div>
-                                      <p>LogOut</p>
-                                    </NavDropdown.Item>
-                                  </NavDropdown>
-                                </li>
-                              }
-                              <li>
-                                <Link onClick={handleShow}>
-                                  <img src="/images/nav-wallet.png" alt="" />
-                                </Link>
-                                <Offcanvas
-                                  show={show}
-                                  onHide={handleShow}
-                                  placement={"end"}
-                                >
-                                  <Offcanvas.Header closeButton>
-                                    <Offcanvas.Title>
-                                      Connect Your Wallet
-                                    </Offcanvas.Title>
-                                  </Offcanvas.Header>
-                                  <Offcanvas.Body>
-                                    <Wallet />
-                                  </Offcanvas.Body>
-                                </Offcanvas>
-                              </li>
-                              <li>
-                                <img src="/images/notice-icon.png" alt="" />
-                              </li>
-                            </>
-                          )}
-                        </ul>
-                      </div>
+                </div>
+                <div className="loginSerch d-flex justify-content-end align-items-center">
+                  <button className="respSerch d-lg-none mx-3"><i class="fas fa-search"></i></button>
+                  <form id="form">
+                    <div className="topSearch">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Search"
+                        onChange={(e) =>
+                          setSearchParams({ query: e.target.value })
+                        }
+                      />
+                      <button className="searchBtn" type="button">
+                        <i className="fa fa-search"></i>
+                      </button>
+                      <button className="cancelBrn d-lg-none" type="button">Cancel</button>
                     </div>
+                  </form>
+                  <div className="ms-lg-3">
+                    <ul className="hedIcons">
+                      {!loginUserData?.token && (
+                        <li>
+                          <button
+                            className="btn btn-light loginBtn"
+                            onClick={handleShowLogin}
+                            style={{ border: "none" }}
+                          >
+                            Login
+                          </button>
+                        </li>
+                      )}
+                      {loginUserData?.token && (
+                        <>
+                          {
+                            <li>
+                              <NavDropdown
+                                id="nav-dropdown-dark-example"
+                                title={
+                                  <img
+                                    onClick={() =>
+                                      setopenProfile(!openProfile)
+                                    }
+                                    className={image ? "filterNone" : ""}
+                                    aria-controls="example-collapse-text"
+                                    aria-expanded={openProfile}
+                                    src={
+                                      image
+                                        ? process.env.REACT_APP_BACKENDURL +
+                                          "/" +
+                                          image
+                                        : "/images/user-icon.png"
+                                    }
+                                    alt=""
+                                    title={address}
+                                    width={40}
+                                    height={40}
+                                  />
+                                }
+                                menuVariant="light"
+                                className="customLink"
+                              >
+                                <NavDropdown.Item
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    navigate(`/profile`);
+                                  }}
+                                  href="/profile"
+                                  className="user-notice-box"
+                                >
+                                  <div className="user-icon-box">
+                                    <img
+                                      alt=""
+                                      src="/images/profile-iocn.png"
+                                    />
+                                  </div>
+                                  <p>Profile</p>
+                                </NavDropdown.Item>
+
+                                <NavDropdown.Item
+                                  onClick={Logout}
+                                  href="/edit-profile"
+                                  className="user-notice-box"
+                                >
+                                  <div className="user-icon-box">
+                                    <img
+                                      alt=""
+                                      src="/images/settings-icon.png"
+                                    />
+                                  </div>
+                                  <p>LogOut</p>
+                                </NavDropdown.Item>
+                              </NavDropdown>
+                            </li>
+                          }
+                          <li>
+                            <Link onClick={handleShow}>
+                              <img src="/images/nav-wallet.png" alt="" />
+                            </Link>
+                            <Offcanvas
+                              show={show}
+                              onHide={handleShow}
+                              placement={"end"}
+                            >
+                              <Offcanvas.Header closeButton>
+                                <Offcanvas.Title>
+                                  Connect Your Wallet
+                                </Offcanvas.Title>
+                              </Offcanvas.Header>
+                              <Offcanvas.Body>
+                                <Wallet />
+                              </Offcanvas.Body>
+                            </Offcanvas>
+                          </li>
+                          <li>
+                            <img src="/images/notice-icon.png" alt="" />
+                          </li>
+                        </>
+                      )}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
