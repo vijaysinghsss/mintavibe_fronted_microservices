@@ -20,6 +20,7 @@ const Listing = ({ data = [], owner, FetchData }) => {
     const count = Listing.reduce((value, item) => {
       return value + (item.Status ? parseInt(item.AvailableQuantity) : 0);
     }, 0);
+
     HistoryApi({
       userid: owner._id,
       collectionid: id,
@@ -28,7 +29,7 @@ const Listing = ({ data = [], owner, FetchData }) => {
     await dispatch(
       submitTranscation(id, {
         Listing,
-        available_copies: count,
+        // available_copies: count,
         put_on_sale: count < 1 ? false : true,
       })
     );

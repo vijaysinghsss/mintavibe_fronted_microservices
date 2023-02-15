@@ -497,7 +497,7 @@ function NftDetails() {
         put_on_sale: true,
         instant_sale_enabled: true,
         Listing: Data,
-        available_copies: available,
+        // available_copies: available,
       })
     );
     HistoryApi({
@@ -1625,8 +1625,8 @@ function NftDetails() {
                 <b>{`${(CollectionDetails?.Listing || []).reduce((value, ele) => {
                   return value + (ele.Status ? value + ele.Quantity : 0)
                 }, 0) || 0}`}</b>
-                {" "}
 
+                {" "}
                 Sold Qty:{" "}
                 <b>{`${(CollectionDetails?.no_of_copies || 0) - (CollectionDetails?.available_copies || 0)}`}</b>
 

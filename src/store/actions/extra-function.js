@@ -836,12 +836,15 @@ export const buyAsset =
           HistoryApi({
             userid: UserID,
             collectionid: collectionId,
-            Message: `Purchased By`
+            Message: `Bought By`
           });
+
           // toast(NotificationMsg.BuySuccess, { type: "success" });
+
           setTimeout(() => {
             navigate(`/collections/${collectionId}`);
           }, 200);
+
           navigate("/");
         } catch (error) {
           dispatch(
