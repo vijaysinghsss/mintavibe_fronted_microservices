@@ -156,7 +156,8 @@ input.search-input-nav {
 
 .navbar-nav .customLink .dropdown-menu a{color:#000;}
 .navbar-nav .show > .nav-link,
-.customLink .nav-link:hover{color:#FFF;}
+.customLink .nav-link:hover,
+.customLink .nav-link:focus{color:#FFF;}
 
 /* user menu settings */
 #dropdown {

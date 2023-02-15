@@ -204,6 +204,7 @@ body {
 
 .topLogo{display:inline-block; padding:10px 0;}
 .topMenu{display:flex; justify-content: end; align-items: center;}
+
 .topSearch{position:relative; width:250px;}
 
 .topSearch input {
