@@ -98,7 +98,7 @@ export default function Nftlist() {
       <section className="search-section-new">
         <div className="container">
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-lg-3">
               {/* <select id="Categories" name="Categories">
                 <option value="all_nfts">All NFTs</option>
                 <option value="By_BIPOC_Creators">
@@ -118,7 +118,7 @@ export default function Nftlist() {
                 </option>
               </select>*/}
             </div> 
-            <div className="col-md-9">
+            <div className="col-lg-9">
               <div className="input-group mb-3">
                 <input
                   type="text"
@@ -146,9 +146,9 @@ export default function Nftlist() {
           </div>
         </div>
       </section>
-      <div className="container">
+      <div className="container-lg">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-4 col-xl-3">
             <div className="left-side">
               {/* <Nfts /> */}
               <FilterNft

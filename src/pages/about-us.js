@@ -11,7 +11,7 @@ const AboutUs = () => {
             <section className="about-us-section">
                 <div className="container">
                     <div className="row">
-                        <div className="col-sm-6">
+                        <div className="col-md-6">
                             <h4>About Us</h4>
                             <p>
                                 Founded in 2019, CrossTower, ranked fourth in the world by
@@ -30,16 +30,16 @@ const AboutUs = () => {
                                 located in the US, Bermuda, and India.
                             </p>
                         </div>
-                        <div className="col-sm-6 price-sub-space">
+                        <div className="col-md-6 price-sub-space">
                             <img src="/images/about-us-1.png" alt="" />
                         </div>
                     </div>
 
                     <div className="row">
-                        <div className="col-sm-6 price-sub-space about-web-img">
+                        <div className="col-md-6 price-sub-space about-web-img">
                             <img src="/images/abou-img-2.png" alt="" />
                         </div>
-                        <div className="col-sm-6">
+                        <div className="col-md-6">
                             <h4>Why Choose Us</h4>
                             <p>
                                 CrossTower NFT is a dedicated marketplace designed to give
@@ -52,7 +52,7 @@ const AboutUs = () => {
                                 Marketplace with the goal of bringing NFTs to the next level.
                             </p>
                         </div>
-                        <div className="col-sm-6 price-sub-space about-mob-img">
+                        <div className="col-md-6 price-sub-space about-mob-img">
                             <img src="/images/abou-img-2.png" alt="" />
                         </div>
                     </div>
@@ -66,10 +66,10 @@ const AboutUs = () => {
                     </div>
 
                     <div className="row">
-                        <div className="col-sm-6 price-sub-space about-web-img text-center">
+                        <div className="col-md-6 price-sub-space about-web-img text-center">
                             <img src="/images/kapil.png" alt="" />
                         </div>
-                        <div className="col-sm-6">
+                        <div className="col-md-6">
                             <h4>Kapil Rathi</h4>
                             <span>Ceo & Co-Founder</span>
                             <p>
@@ -82,13 +82,13 @@ const AboutUs = () => {
                                 MBA from Fordham University.
                             </p>
                         </div>
-                        <div className="col-sm-6 price-sub-space about-mob-img">
+                        <div className="col-md-6 price-sub-space about-mob-img">
                             <img src="/images/kapil.png" alt="" />
                         </div>
                     </div>
 
                     <div className="row" style={{ padding: "50px 0px " }}>
-                        <div className="col-sm-6">
+                        <div className="col-md-6">
                             <h4>Kristine Boggiano</h4>
                             <span>President & Co-Founder</span>
                             <p>
@@ -104,7 +104,7 @@ const AboutUs = () => {
                                 Northeastern University and a BA from Sarah Lawrence College.
                             </p>
                         </div>
-                        <div className="col-sm-6 price-sub-space text-center">
+                        <div className="col-md-6 price-sub-space text-center">
                             <img src="/images/Kristine.png" alt="" />
                         </div>
                     </div>
