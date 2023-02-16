@@ -48,6 +48,8 @@ function Navbar() {
 
   const [show, setShow] = useState(false);
 
+  const [isActive, setIsActive] = useState(false);
+
   const [theme, setTheme] = useState(false);
 
   const handleShow = () => setShow(!show);
@@ -121,6 +123,10 @@ function Navbar() {
     document.body.className = themeVal;
   }, [theme, themeVal]);
 
+  const handleClick = event => {
+    setIsActive(current => !current);
+  };
+
   return (
     <div>
       <div className="navbar-default w-100">
@@ -134,8 +140,8 @@ function Navbar() {
             </div>
             <div className="col-8 col-md-9">
               <div className="respMenuOnly d-flex justify-content-end">
-                <button className="respMenu d-lg-none"><i class="fas fa-bars"></i></button>
-                <div className="topMenu">
+                <button className="respMenu d-lg-none" onClick={handleClick}><i class="fas fa-bars"></i></button>
+                <div className={`topMenu ${isActive ? 'show' : ''}`}>
                     <ul className="nav navbar-nav">
                       {/* <li>
                         <a href="!#" onClick={handleShowCreatePopup}>
@@ -203,7 +209,7 @@ function Navbar() {
                     </ul>
                 </div>
                 <div className="loginSerch d-flex justify-content-end align-items-center">
-                  <button className="respSerch d-lg-none mx-3"><i class="fas fa-search"></i></button>
+                  <button className="respSerch d-lg-none mx-3" onClick={handleClick}><i class="fas fa-search"></i></button>
                   <form id="form">
                     <div className="topSearch">
                       <input
