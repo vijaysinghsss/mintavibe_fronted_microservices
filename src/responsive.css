@@ -2,12 +2,15 @@
 
 @media all and (max-width:1199px){
 
+.topPading{padding-top:100px;}
 .videoBox video{height:400px;}
 
 .exclCelebrity h2::before,
 .exclCelebrity h2::after{display:none;}
 
 .walletSteps li{margin:10px 0; font-size:15px;}
+
+.celebrityDtl .figCaption{margin:10px 0;}
 
 .celebrityDtl figure{height: 350px; width: 300px; padding:30px 25px 50px;}
 .celebrityDtl figure::before{height:350px; width:300px; background-size:100% 100%;}
@@ -43,8 +46,12 @@
 
 @media all and (max-width:991px){
 
-/* ================ MENU SECTION ================ */
 
+.left-side{height:auto;}
+
+.topPading{padding-top:90px;}
+
+	/* ================ MENU SECTION ================ */
 .respMenuOnly{position:relative;}
 
 .respMenuOnly .topSearch{width:100%; display:flex;}
@@ -129,11 +136,10 @@
 
 @media all and (max-width:575px){
 
-	.videoBox video{height:200px;}
+.topPading{padding-top:80px;}
+.videoBox video{height:200px;}
 
-	.exclCelebrity h3 {
-		font-size: 25px;
-	}
+.exclCelebrity h3{font-size:25px;}
 
 	.celebrityDtl figure {
 		height: 200px;
@@ -164,7 +170,7 @@
 	}
 
 	.celebrityDtl p {
-		font-size: 14px;
+		font-size: 12px;
 	}
 
 	.subsScribe .subScribeBox {
@@ -199,5 +205,41 @@
 		padding: 0 10px 10px;
 		width: auto;
 	}
+
+
+
+.nft-box{margin:0 0 10px;}
+.nft-box-div{padding:5px 10px 0px;}
+.nft-box-img-box > img{height:200px;}
+.like-icon{position:relative; top:auto; right:auto;}
+.like-icon img{margin-left:auto; margin-top:2px;}
+.nft-box-div p{margin:5px 0 0;}
+
+.price-div{padding:0px 10px 10px; display:block;}
+.price-sub{width:100%; float:none;}
+.price-sub-space{text-align:center;}
+.price-sub a{display:inline-block; float:none;}
+
+
+.cstTab ul.nav-tabs li{padding:0 8px;}
+.tab-porp-box{min-height:80px; width:150px; padding:8px 5px; margin:5px 5px 0px 0px;}
+.tab-button{padding:5px 10px; font-size:12px; margin:5px;}
+
+
+.offerPoup,
+.offerPoup.loginWidth{max-width:96%;}
+
+.pop_content{padding:8px;}
+
+.faq-bg{margin:10px 0;}
+
+
+}
+
+
+
+@media all and (max-width:480px){
+
+	
 
 }

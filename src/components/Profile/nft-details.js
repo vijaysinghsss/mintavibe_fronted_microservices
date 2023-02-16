@@ -1611,10 +1611,10 @@ function NftDetails() {
   };
 
   return (
-    <section className="profile-section container mt-4">
-      <div className="container">
-        <div className="row align-items-center justify-content-between py-4">
-          <div className="col-lg-9">
+    <section className="profile-section mt-sm-4">
+      <div className="container-lg">
+        <div className="row align-items-center justify-content-between py-md-4">
+          <div className="col-12 col-sm-9">
             <p title={`Available For sale/No of Copies`}>
               {CollectionDetails?.Nftname || ""}
               <span>
@@ -1648,7 +1648,7 @@ function NftDetails() {
               )} */}
             </p>
           </div>
-          <div className="col-lg-auto">
+          <div className="mx-auto mx-sm-0 col-auto my-3 my-sm-0">
             <div className="modal-more-options">
               <Dropdown>
                 <Dropdown.Toggle id="dropdown-basic">
@@ -1751,7 +1751,7 @@ function NftDetails() {
         </div>
       </div>
 
-      <div className="container">
+      <div className="container-lg">
         <div className="row">
           <div className="col-md-6">
             <div className="profile-box h-100">
@@ -1810,7 +1810,7 @@ function NftDetails() {
             </div>
           </div>
 
-          <div className="col-md-6 ps-5">
+          <div className="col-md-6 ps-lg-5">
             <div className="des-box p-0">
               <div className="des-box-2">
                 <p>Description</p>
