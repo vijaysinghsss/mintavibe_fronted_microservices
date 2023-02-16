@@ -133,202 +133,194 @@ function Navbar() {
               </NavLink>
             </div>
             <div className="col-8 col-md-9">
-              <div className="row align-items-center">
-                <div className="col-md-6 col-xl-7">
-                  <ul className="nav navbar-nav justify-content-end d-flex flex-row">
-                    {/* <li>
-                      <a href="!#" onClick={handleShowCreatePopup}>
-                        Create
-                      </a>
-                    </li> */}
-                    {loginUserData?.token && (
-                      <li   onClick={handleShowSell}>
-                        <NavLink to="!#">Sell</NavLink>
+              <div className="respMenuOnly">
+                <button className="respSerch d-lg-none me-3"><i class="fas fa-search"></i></button>
+                <button className="respMenu d-lg-none"><i class="fas fa-bars"></i></button>
+                <div className="topMenu">
+                    <ul className="nav navbar-nav">
+                      {/* <li>
+                        <a href="!#" onClick={handleShowCreatePopup}>
+                          Create
+                        </a>
+                      </li> */}
+                      {loginUserData?.token && (
+                        <li onClick={handleShowSell}>
+                          <NavLink to="!#">Sell</NavLink>
+                        </li>
+                      )}
+                      <li>
+                        <NavLink to="/nftlist">Collect</NavLink>
                       </li>
-                    )}
-
-                    <li>
-                      <NavLink to="/nftlist">Collect</NavLink>
-                    </li>
-
-                    <li>
-                      <NavDropdown
-                        id="nav-dropdown-dark-example"
-                        title={`Community`}
-                        menuVariant="light"
-                        className="customLink"
-                      >
-                        <NavDropdown.Item
-                          onClick={(e) => {
-                            e.preventDefault();
-                            navigate(`/blogs`);
-                          }}
-                          href="/blogs"
+                      <li>
+                        <NavDropdown
+                          id="nav-dropdown-dark-example"
+                          title={`Community`}
+                          menuVariant="light"
+                          className="customLink"
                         >
-                          Blog
-                        </NavDropdown.Item>
+                          <NavDropdown.Item onClick={(e) => {e.preventDefault(); navigate(`/blogs`); }} href="/blogs">
+                            Blog
+                          </NavDropdown.Item>
 
-                        <NavDropdown.Item href="#">Discord</NavDropdown.Item>
-                        <NavDropdown.Item href={"/contactus"}>
-                          Contact Us
-                        </NavDropdown.Item>
+                          <NavDropdown.Item href="#">Discord</NavDropdown.Item>
+                          <NavDropdown.Item href={"/contactus"}>
+                            Contact Us
+                          </NavDropdown.Item>
 
-                        {/* <NavDropdown.Item
-                          onClick={(e) => {
-                            e.preventDefault();
-                            navigate(`/about`);
-                          }}
-                          href="/about"
-                        >
-                          About Us
-                        </NavDropdown.Item> 
-                        
-                        <NavDropdown.Item
-                          onClick={(e) => {
-                            e.preventDefault();
-                            navigate(`/faq`);
-                          }}
-                          href="/faq"
-                        >
-                          FAQ
-                        </NavDropdown.Item> 
+                          {/* <NavDropdown.Item
+                            onClick={(e) => {
+                              e.preventDefault();
+                              navigate(`/about`);
+                            }}
+                            href="/about"
+                          >
+                            About Us
+                          </NavDropdown.Item> 
+                          
+                          <NavDropdown.Item
+                            onClick={(e) => {
+                              e.preventDefault();
+                              navigate(`/faq`);
+                            }}
+                            href="/faq"
+                          >
+                            FAQ
+                          </NavDropdown.Item> 
 
-                        <NavDropdown.Item
-                          onClick={(e) => {
-                            e.preventDefault();
-                            navigate(`/terms-service`);
-                          }}
-                          href="/terms-service"
-                        >
-                          Terms of Service
-                        </NavDropdown.Item> */}
-                      </NavDropdown>
-                    </li>
-                    {/* <li>
-                      <NavLink to="/nftforall">#NFTforAll</NavLink>
-                    </li> */}
-                  </ul>
-                </div>
-                <div className="col-md-6 col-xl-5">
-                  <div className="d-flex align-items-center">
-                    <form id="form">
-                      <div className="topSearch">
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Search"
-                          onChange={(e) =>
-                            setSearchParams({ query: e.target.value })
-                          }
-                        />
-                        <button className="searchBtn" type="button">
-                          <i className="fa fa-search"></i>
-                        </button>
-                      </div>
-                    </form>
-                    <div className="ms-md-3">
-                      <ul className="hedIcons">
-                        {!loginUserData?.token && (
-                          <li>
-                            <button
-                              className="btn btn-light loginBtn"
-                              onClick={handleShowLogin}
-                              style={{ border: "none" }}
-                            >
-                              Login
-                            </button>
-                          </li>
-                        )}
-                        {loginUserData?.token && (
-                          <>
-                            {
-                              <li>
-                                <NavDropdown
-                                  id="nav-dropdown-dark-example"
-                                  title={
-                                    <img
-                                      onClick={() =>
-                                        setopenProfile(!openProfile)
-                                      }
-                                      className={image ? "filterNone" : ""}
-                                      aria-controls="example-collapse-text"
-                                      aria-expanded={openProfile}
-                                      src={
-                                        image
-                                          ? process.env.REACT_APP_BACKENDURL +
-                                            "/" +
-                                            image
-                                          : "/images/user-icon.png"
-                                      }
-                                      alt=""
-                                      title={address}
-                                      width={40}
-                                      height={40}
-                                    />
-                                  }
-                                  menuVariant="light"
-                                  className="customLink"
-                                >
-                                  <NavDropdown.Item
-                                    onClick={(e) => {
-                                      e.preventDefault();
-                                      navigate(`/profile`);
-                                    }}
-                                    href="/profile"
-                                    className="user-notice-box"
-                                  >
-                                    <div className="user-icon-box">
-                                      <img
-                                        alt=""
-                                        src="/images/profile-iocn.png"
-                                      />
-                                    </div>
-                                    <p>Profile</p>
-                                  </NavDropdown.Item>
-
-                                  <NavDropdown.Item
-                                    onClick={Logout}
-                                    href="/edit-profile"
-                                    className="user-notice-box"
-                                  >
-                                    <div className="user-icon-box">
-                                      <img
-                                        alt=""
-                                        src="/images/settings-icon.png"
-                                      />
-                                    </div>
-                                    <p>LogOut</p>
-                                  </NavDropdown.Item>
-                                </NavDropdown>
-                              </li>
+                          <NavDropdown.Item
+                            onClick={(e) => {
+                              e.preventDefault();
+                              navigate(`/terms-service`);
+                            }}
+                            href="/terms-service"
+                          >
+                            Terms of Service
+                          </NavDropdown.Item> */}
+                        </NavDropdown>
+                      </li>
+                      {/* <li>
+                        <NavLink to="/nftforall">#NFTforAll</NavLink>
+                      </li> */}
+                    </ul>
+                    <div className="d-flex align-items-center">
+                      <form id="form">
+                        <div className="topSearch">
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Search"
+                            onChange={(e) =>
+                              setSearchParams({ query: e.target.value })
                             }
+                          />
+                          <button className="searchBtn" type="button">
+                            <i className="fa fa-search"></i>
+                          </button>
+                        </div>
+                      </form>
+                      <div className="ms-md-3">
+                        <ul className="hedIcons">
+                          {!loginUserData?.token && (
                             <li>
-                              <Link onClick={handleShow}>
-                                <img src="/images/nav-wallet.png" alt="" />
-                              </Link>
-                              <Offcanvas
-                                show={show}
-                                onHide={handleShow}
-                                placement={"end"}
+                              <button
+                                className="btn btn-light loginBtn"
+                                onClick={handleShowLogin}
+                                style={{ border: "none" }}
                               >
-                                <Offcanvas.Header closeButton>
-                                  <Offcanvas.Title>
-                                    Connect Your Wallet
-                                  </Offcanvas.Title>
-                                </Offcanvas.Header>
-                                <Offcanvas.Body>
-                                  <Wallet />
-                                </Offcanvas.Body>
-                              </Offcanvas>
+                                Login
+                              </button>
                             </li>
-                            <li>
-                              <img src="/images/notice-icon.png" alt="" />
-                            </li>
-                          </>
-                        )}
-                      </ul>
+                          )}
+                          {loginUserData?.token && (
+                            <>
+                              {
+                                <li>
+                                  <NavDropdown
+                                    id="nav-dropdown-dark-example"
+                                    title={
+                                      <img
+                                        onClick={() =>
+                                          setopenProfile(!openProfile)
+                                        }
+                                        className={image ? "filterNone" : ""}
+                                        aria-controls="example-collapse-text"
+                                        aria-expanded={openProfile}
+                                        src={
+                                          image
+                                            ? process.env.REACT_APP_BACKENDURL +
+                                              "/" +
+                                              image
+                                            : "/images/user-icon.png"
+                                        }
+                                        alt=""
+                                        title={address}
+                                        width={40}
+                                        height={40}
+                                      />
+                                    }
+                                    menuVariant="light"
+                                    className="customLink"
+                                  >
+                                    <NavDropdown.Item
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        navigate(`/profile`);
+                                      }}
+                                      href="/profile"
+                                      className="user-notice-box"
+                                    >
+                                      <div className="user-icon-box">
+                                        <img
+                                          alt=""
+                                          src="/images/profile-iocn.png"
+                                        />
+                                      </div>
+                                      <p>Profile</p>
+                                    </NavDropdown.Item>
+
+                                    <NavDropdown.Item
+                                      onClick={Logout}
+                                      href="/edit-profile"
+                                      className="user-notice-box"
+                                    >
+                                      <div className="user-icon-box">
+                                        <img
+                                          alt=""
+                                          src="/images/settings-icon.png"
+                                        />
+                                      </div>
+                                      <p>LogOut</p>
+                                    </NavDropdown.Item>
+                                  </NavDropdown>
+                                </li>
+                              }
+                              <li>
+                                <Link onClick={handleShow}>
+                                  <img src="/images/nav-wallet.png" alt="" />
+                                </Link>
+                                <Offcanvas
+                                  show={show}
+                                  onHide={handleShow}
+                                  placement={"end"}
+                                >
+                                  <Offcanvas.Header closeButton>
+                                    <Offcanvas.Title>
+                                      Connect Your Wallet
+                                    </Offcanvas.Title>
+                                  </Offcanvas.Header>
+                                  <Offcanvas.Body>
+                                    <Wallet />
+                                  </Offcanvas.Body>
+                                </Offcanvas>
+                              </li>
+                              <li>
+                                <img src="/images/notice-icon.png" alt="" />
+                              </li>
+                            </>
+                          )}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
                 </div>
               </div>
             </div>

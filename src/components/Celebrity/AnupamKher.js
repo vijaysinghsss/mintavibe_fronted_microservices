@@ -175,9 +175,8 @@ function AnupamKher() {
       {categoryList.map((item, index) => {
         return (
           <section
-            className={`comanNftSec ${
-              classColor[index] ? classColor[index] : ""
-            }`}
+            className={`comanNftSec ${classColor[index] ? classColor[index] : ""
+              }`}
           >
             <div className="container">
               <div className="row">
@@ -243,7 +242,7 @@ function AnupamKher() {
                     ]}
                   >
                     {Array.isArray(NftListAccording[item?._id]) &&
-                    NftListAccording[item?._id].length ? (
+                      NftListAccording[item?._id].length ? (
                       NftListAccording[item?._id].map((value, index) => (
                         <Card key={index} {...value} />
                       ))
@@ -257,6 +256,7 @@ function AnupamKher() {
                         />
                       </div>
                     )}
+
                   </SliderParent>
 
                   {/* <div className="text-center mt-4">
@@ -268,268 +268,6 @@ function AnupamKher() {
           </section>
         );
       })}
-
-      {/* <section className="comanNftSec">
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-12">
-              <h2>Life Events Collections</h2>
-
-              <SliderParent
-                className={`top`}
-                autoplay={true}
-                draggable={true}
-                arrows={true}
-                dots={false}
-                infinite={false}
-                speed={300}
-                swipeToSlide={true}
-                slidesToShow={4}
-                slidesToScroll={4}
-                responsive={[
-                  {
-                    breakpoint: 1113,
-                    settings: {
-                      slidesToShow: 3,
-                      slidesToScroll: 3,
-                      infinite: true,
-                      dots: true,
-                    },
-                  },
-                  {
-                    breakpoint: 1113,
-                    settings: {
-                      slidesToShow: 3,
-                      slidesToScroll: 3,
-                      infinite: true,
-                      dots: true,
-                    },
-                  },
-                  {
-                    breakpoint: 1024,
-                    settings: {
-                      slidesToShow: 2,
-                      slidesToScroll: 2,
-                      infinite: true,
-                      dots: true,
-                    },
-                  },
-                  {
-                    breakpoint: 600,
-                    settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
-                    },
-                  },
-                  {
-                    breakpoint: 480,
-                    settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
-                    },
-                  },
-                  // You can unslick at a given breakpoint now by adding:
-                  // settings: "unslick"
-                  // instead of a settings object
-                ]}
-              >
-                {Array.isArray(TrendingNft) && TrendingNft.length ? (
-                  TrendingNft.map((value, index) => (
-                    <Card key={index} {...value} />
-                  ))
-                ) : (
-                  <div className="no-details">
-                    <img
-                      src="https://nft.crosstower.com/assets/no_data.png"
-                      className="img-responsive"
-                      alt=""
-                      width={`100%`}
-                    />
-                  </div>
-                )}
-              </SliderParent>
-
-              <div className="text-center mt-4">
-                <a className="viewMore">View More</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="comanNftSec lightGry">
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-12">
-              <h2>OG Photograph Collections</h2>
-
-              <SliderParent
-                className={`top`}
-                autoplay={true}
-                draggable={true}
-                arrows={true}
-                dots={false}
-                infinite={false}
-                speed={300}
-                swipeToSlide={true}
-                slidesToShow={4}
-                slidesToScroll={4}
-                responsive={[
-                  {
-                    breakpoint: 1113,
-                    settings: {
-                      slidesToShow: 3,
-                      slidesToScroll: 3,
-                      infinite: true,
-                      dots: true,
-                    },
-                  },
-                  {
-                    breakpoint: 1113,
-                    settings: {
-                      slidesToShow: 3,
-                      slidesToScroll: 3,
-                      infinite: true,
-                      dots: true,
-                    },
-                  },
-                  {
-                    breakpoint: 1024,
-                    settings: {
-                      slidesToShow: 2,
-                      slidesToScroll: 2,
-                      infinite: true,
-                      dots: true,
-                    },
-                  },
-                  {
-                    breakpoint: 600,
-                    settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
-                    },
-                  },
-                  {
-                    breakpoint: 480,
-                    settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
-                    },
-                  },
-                  // You can unslick at a given breakpoint now by adding:
-                  // settings: "unslick"
-                  // instead of a settings object
-                ]}
-              >
-                {Array.isArray(TrendingNft) && TrendingNft.length ? (
-                  TrendingNft.map((value, index) => (
-                    <Card key={index} {...value} />
-                  ))
-                ) : (
-                  <div className="no-details">
-                    <img
-                      src="https://nft.crosstower.com/assets/no_data.png"
-                      className="img-responsive"
-                      alt=""
-                      width={`100%`}
-                    />
-                  </div>
-                )}
-              </SliderParent>
-
-              <div className="text-center mt-4">
-                <a className="viewMore">View More</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="comanNftSec darkesBlue">
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-12">
-              <h2>OG Photograph Collections</h2>
-              <SliderParent
-                className={`top`}
-                autoplay={true}
-                draggable={true}
-                arrows={true}
-                dots={false}
-                infinite={false}
-                speed={300}
-                swipeToSlide={true}
-                slidesToShow={4}
-                slidesToScroll={4}
-                responsive={[
-                  {
-                    breakpoint: 1113,
-                    settings: {
-                      slidesToShow: 3,
-                      slidesToScroll: 3,
-                      infinite: true,
-                      dots: true,
-                    },
-                  },
-                  {
-                    breakpoint: 1113,
-                    settings: {
-                      slidesToShow: 3,
-                      slidesToScroll: 3,
-                      infinite: true,
-                      dots: true,
-                    },
-                  },
-                  {
-                    breakpoint: 1024,
-                    settings: {
-                      slidesToShow: 2,
-                      slidesToScroll: 2,
-                      infinite: true,
-                      dots: true,
-                    },
-                  },
-                  {
-                    breakpoint: 600,
-                    settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
-                    },
-                  },
-                  {
-                    breakpoint: 480,
-                    settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
-                    },
-                  },
-                  // You can unslick at a given breakpoint now by adding:
-                  // settings: "unslick"
-                  // instead of a settings object
-                ]}
-              >
-                {Array.isArray(TrendingNft) && TrendingNft.length ? (
-                  TrendingNft.map((value, index) => (
-                    <Card key={index} {...value} />
-                  ))
-                ) : (
-                  <div className="no-details">
-                    <img
-                      src="https://nft.crosstower.com/assets/no_data.png"
-                      className="img-responsive"
-                      alt=""
-                      width={`100%`}
-                    />
-                  </div>
-                )}
-              </SliderParent>
-              <div className="text-center mt-4">
-                <a className="viewMore">View More</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
       <Subscribe />
     </div>
   );

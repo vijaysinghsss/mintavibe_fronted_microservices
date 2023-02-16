@@ -35,7 +35,7 @@ const Card = ({
   //   (acc, ass) => (+acc?.Amount > +ass?.Amount ? +acc?.Amount : +ass?.Amount),
   //   0
   // );
- 
+
   return (
     <div className="nft-box">
       <div className="nft-box-img-box">
@@ -53,13 +53,12 @@ const Card = ({
           <div className="like-icon">
             {collection_type ? null : <> {no_of_copies}x</>}
             <img
-              src={`images/${
-                mediaType == "video"
-                  ? "video"
-                  : mediaType == "audio"
+              src={`/images/${mediaType == "video"
+                ? "video"
+                : mediaType == "audio"
                   ? "music"
                   : "image"
-              }-icon.svg`}
+                }-icon.svg`}
               alt=""
             />
           </div>
@@ -69,8 +68,8 @@ const Card = ({
           <span>
             {cretor_wallet_address &&
               cretor_wallet_address?.substr(0, 4) +
-                "...." +
-                cretor_wallet_address?.substr(-4)}
+              "...." +
+              cretor_wallet_address?.substr(-4)}
           </span>
           <div className="boder-bottom"></div>
         </div>
@@ -78,8 +77,8 @@ const Card = ({
       <div className="price-div">
         <div className="price-sub">
           <div className="eth-icon-div">
-            <img 
-              src={`../images/${NNetwokType[0] == "XUMM" ? "xrp" : "cart-eth"}-icon.svg`}
+            <img
+              src={`/images/${NNetwokType[0] == "XUMM" ? "xrp" : "cart-eth"}-icon.svg`}
               alt=""
             />
           </div>
@@ -103,8 +102,8 @@ const Card = ({
             {Owner_id && Owner_id?._id == loginUserData?.id
               ? "View"
               : nft_type === "OPENBID"
-              ? "Bid"
-              : "Buy"}
+                ? "Bid"
+                : "Buy"}
           </Link>
         </div>
         <div style={{ clear: "both" }}></div>
