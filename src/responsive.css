@@ -52,6 +52,13 @@
 	background: transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;
 }
 
+.crtNftScroll .flex-container{justify-content:normal;}
+.crtNftScroll .flex-container .tabsection{margin:4px; padding:15px 10px 10px; font-size:16px;}
+.crtNftScroll .flex-container .tabsection > img {width:16px;}
+.crtNftScroll .flex-container .tabsection .comSoon{padding:2px 4px; line-height:7px; font-size:8px; font-weight:500;}
+.crtNftScroll .flex-container .tabsection span.right{padding-left:5px;}
+
+
 .respMenuOnly .loginSerch form.show{display:block;}
 
 .respMenuOnly .loginSerch .cancelBrn{background:none; border:0; color:#FFF; margin-left:10px; font-size:16px;}
