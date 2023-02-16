@@ -209,7 +209,7 @@ const Home = () => {
           <div className="row justify-content-center mt-4 mt-xl-5">
             <div className="col-lg-10">
               <div className="celebrityDtl">
-                <div className="row align-items-center justify-content-around">
+                <div className="row justify-content-around">
                   {celeData.length > 0 &&
                     celeData?.map((cele) => (
                       <>
