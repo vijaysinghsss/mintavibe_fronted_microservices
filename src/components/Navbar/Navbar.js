@@ -50,6 +50,8 @@ function Navbar() {
 
   const [isActive, setIsActive] = useState(false);
 
+  const [serchActive, serchIsActive] = useState(false);
+
   const [theme, setTheme] = useState(false);
 
   const handleShow = () => setShow(!show);
@@ -125,6 +127,10 @@ function Navbar() {
 
   const handleClick = event => {
     setIsActive(current => !current);
+  };
+
+  const searchClick = event => {
+    serchIsActive(current => !current);
   };
 
   return (
@@ -209,8 +215,8 @@ function Navbar() {
                     </ul>
                 </div>
                 <div className="loginSerch d-flex justify-content-end align-items-center">
-                  <button className="respSerch d-lg-none mx-3" onClick={handleClick}><i class="fas fa-search"></i></button>
-                  <form id="form">
+                  <button className="respSerch d-lg-none mx-3" onClick={searchClick}><i class="fas fa-search"></i></button>
+                  <form id="form" className={`${serchActive ? 'show' : ''}`}>
                     <div className="topSearch">
                       <input
                         type="text"
@@ -223,7 +229,7 @@ function Navbar() {
                       <button className="searchBtn" type="button">
                         <i className="fa fa-search"></i>
                       </button>
-                      <button className="cancelBrn d-lg-none" type="button">Cancel</button>
+                      <button className="cancelBrn d-lg-none" type="button" onClick={searchClick}>Cancel</button>
                     </div>
                   </form>
                   <div className="ms-lg-3">
