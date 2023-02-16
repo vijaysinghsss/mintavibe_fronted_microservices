@@ -4,7 +4,8 @@ export const slice = createSlice({
     name: 'Sliders',
     initialState: {
         CuratedNft: [],
-        TrendingNft: []
+        TrendingNft: [],
+        serachNft: ""
     },
     reducers: {
         fetched: (state, { payload }) => {

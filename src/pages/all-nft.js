@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { API } from "../apiwrapper";
 import Nfts from "../components/All-Nfts/all-nfts";
@@ -9,10 +10,11 @@ import { apiURl } from "../store/actions";
 
 export default function Nftlist() {
   const [listing, setlisting] = useState([]);
-
+  const { Slider } = useSelector((state) => state);
+  console.log(Slider, "Sliders");
   const navigate = useNavigate();
   const initialState = {
-    search: "",
+    search: Slider?.serachNft ? Slider?.serachNft : "",
     status: "",
     sortBy: "",
     quantity: "",
@@ -117,7 +119,7 @@ export default function Nftlist() {
                   <a href="/CuratedNft">Curated from All</a>
                 </option>
               </select>*/}
-            </div> 
+            </div>
             <div className="col-md-9">
               <div className="input-group mb-3">
                 <input
@@ -162,13 +164,13 @@ export default function Nftlist() {
           {listing?.length > 0 && (
             <div className="d-flex justify-content-end w-100 my-lg-5">
               <div className="col-12 col-md-9 d-flex justify-content-center">
-              <Pagination
-                totalPages={Math.ceil(data?.totalCount / data?.limit)}
-                setData={(e) => {
-                  setFilter({ ...filter, page: e.selected + 1 });
-                }}
-                pageNo={filter.page}
-              />
+                <Pagination
+                  totalPages={Math.ceil(data?.totalCount / data?.limit)}
+                  setData={(e) => {
+                    setFilter({ ...filter, page: e.selected + 1 });
+                  }}
+                  pageNo={filter.page}
+                />
               </div>
             </div>
           )}
