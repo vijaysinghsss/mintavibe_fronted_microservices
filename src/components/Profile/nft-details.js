@@ -3,7 +3,12 @@ import React, { useDebugValue, useEffect, useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { toast } from "react-toastify";
 import { API } from "../../apiwrapper";
 import { apiURl } from "../../store/actions";
@@ -69,6 +74,7 @@ function NftDetails() {
   const navigate = useNavigate();
   const { address, activeProvider, chainId, balance, provider } = useWeb3();
   const { stripe } = useSelector((state) => state.Buy.data);
+  const [ownerData, setOwnerData] = useState([]);
 
   const [HistoryData, setHistoryData] = useState([]);
 
@@ -129,6 +135,23 @@ function NftDetails() {
       }
     );
   };
+  const fetchOwners = async () => {
+    try {
+      await API({
+        url: `${apiURl.allowners}/${id}`,
+        method: "GET",
+      }).then((data) => {
+        if (data?.status || data?.status === "true") {
+          setOwnerData(data?.response?.data || []);
+        } else {
+          setOwnerData([]);
+        }
+        console.log("fetchOwners data", data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const token = gup("token");
   const session = gup("session");
   const Type = gup("type");
@@ -143,6 +166,7 @@ function NftDetails() {
   useEffect(() => {
     FetchData();
     FetchHistoryData();
+    fetchOwners();
   }, [id, type]);
 
   useEffect(() => {
@@ -229,21 +253,24 @@ function NftDetails() {
     switch (type) {
       case "FB":
         window.open(
-          `https://www.facebook.com/sharer/sharer.php?u=${window.location.href
+          `https://www.facebook.com/sharer/sharer.php?u=${
+            window.location.href
           }&caption=${CollectionDetails?.Nftname || ""}`,
           "_blank"
         );
         return;
       case "TW":
         window.open(
-          `https://twitter.com/share?url=${window.location.href}&text=${CollectionDetails?.Nftname || ""
+          `https://twitter.com/share?url=${window.location.href}&text=${
+            CollectionDetails?.Nftname || ""
           }`,
           "_blank"
         );
         return;
       case "TEL":
         window.open(
-          `https://telegram.me/share/url?url=${window.location.href}&text=${CollectionDetails?.Nftname || ""
+          `https://telegram.me/share/url?url=${window.location.href}&text=${
+            CollectionDetails?.Nftname || ""
           }`,
           "_blank"
         );
@@ -302,7 +329,7 @@ function NftDetails() {
           dispatch(
             SetBurnData({
               modal: false,
-              Burnfunc: () => { },
+              Burnfunc: () => {},
             })
           );
           dispatch(
@@ -335,14 +362,14 @@ function NftDetails() {
               dispatch(
                 submitTranscation(id, {
                   Status:
-                    (parseInt(CollectionDetails.no_of_copies) -
+                    parseInt(CollectionDetails.no_of_copies) -
                       parseInt(BurnValue) <
-                      1
+                    1
                       ? false
-                      : CollectionDetails.Status),
+                      : CollectionDetails.Status,
                   no_of_copies:
-                    (parseInt(CollectionDetails.no_of_copies) -
-                      parseInt(BurnValue)),
+                    parseInt(CollectionDetails.no_of_copies) -
+                    parseInt(BurnValue),
                 })
               );
               dispatch(
@@ -503,7 +530,7 @@ function NftDetails() {
     HistoryApi({
       userid: User_id,
       collectionid: id,
-      Message: `Listed By`
+      Message: `Listed By`,
     });
     await FetchData();
     // }
@@ -934,7 +961,7 @@ function NftDetails() {
         HistoryApi({
           userid: User_id,
           collectionid: Collection_Id,
-          Message: `Accepted Offer By`
+          Message: `Accepted Offer By`,
         });
 
         setTimeout(() => {
@@ -942,7 +969,6 @@ function NftDetails() {
         }, 200);
 
         navigate("/");
-
       }
     } catch (err) {
       console.log(err);
@@ -995,7 +1021,7 @@ function NftDetails() {
           approve: false,
           ModalType: "stripe",
           modal: true,
-          func: () => { },
+          func: () => {},
         })
       );
       clearInterval(apiCall);
@@ -1027,7 +1053,7 @@ function NftDetails() {
                             approve: false,
                             ModalType: "stripe",
                             modal: false,
-                            func: () => { },
+                            func: () => {},
                           })
                         );
 
@@ -1062,7 +1088,7 @@ function NftDetails() {
                             approve: false,
                             ModalType: "stripe",
                             modal: true,
-                            func: () => { },
+                            func: () => {},
                           })
                         );
 
@@ -1101,7 +1127,7 @@ function NftDetails() {
                               approve: false,
                               ModalType: "stripe",
                               modal: true,
-                              func: () => { },
+                              func: () => {},
                             })
                           );
 
@@ -1135,7 +1161,7 @@ function NftDetails() {
                                       approve: false,
                                       ModalType: "stripe",
                                       modal: false,
-                                      func: () => { },
+                                      func: () => {},
                                     })
                                   );
                                   setTimeout(() => {
@@ -1149,7 +1175,7 @@ function NftDetails() {
                                       approve: false,
                                       ModalType: "stripe",
                                       modal: false,
-                                      func: () => { },
+                                      func: () => {},
                                     })
                                   );
 
@@ -1412,8 +1438,6 @@ function NftDetails() {
     }
   }, [token, session, Type, type]);
 
-
-
   const XummMulBuyXrp = async (qty, i) => {
     // const balanceCheck = await new Promise((resolve, reject) => {
     //   try {
@@ -1600,7 +1624,33 @@ function NftDetails() {
       return false;
     }
   };
+  let likeIndex = CollectionDetails?.likes_count?.findIndex(
+    (ele) => ele === User_id
+  );
+  const handleLike = async (nft) => {
+    if (!User_id) {
 
+    } else {
+      let payload = { UserId: User_id, NftId: nft?._id, IsLiked: false };
+      payload.IsLiked = likeIndex >= 0 ? false : true;
+      try {
+        await API({
+          url: `${apiURl.likesdata}`,
+          method: "POST",
+          body: payload,
+          formData: false,
+        }).then((data) => {
+          if (data?.status || data?.status === "true") {
+            FetchData();
+          } else {
+            console.log("like data", data);
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
   const handleExpandImage = (url) => {
     setExpandUrl(url);
     setExpandImage(true);
@@ -1609,7 +1659,7 @@ function NftDetails() {
     setExpandUrl("");
     setExpandImage(false);
   };
-
+ 
   return (
     <section className="profile-section mt-3 mt-sm-4">
       <div className="container-lg">
@@ -1618,24 +1668,20 @@ function NftDetails() {
             <p title={`Available For sale/No of Copies`}>
               {CollectionDetails?.Nftname || ""}
               <span>
-                Total Qty:{" "}
-                <b>{`${CollectionDetails?.no_of_copies || 1}`}</b>
-                {" "}
+                Total Qty: <b>{`${CollectionDetails?.no_of_copies || 1}`}</b>{" "}
                 Listed Qty:{" "}
-                <b>{`${(CollectionDetails?.Listing || []).reduce((value, ele) => {
-                  return value + (ele.Status ? value + ele.Quantity : 0)
-                }, 0) || 0}`}</b>
-
-                {" "}
+                <b>{`${
+                  (CollectionDetails?.Listing || []).reduce((value, ele) => {
+                    return value + (ele.Status ? value + ele.Quantity : 0);
+                  }, 0) || 0
+                }`}</b>{" "}
                 Sold Qty:{" "}
-                <b>{`${(CollectionDetails?.no_of_copies || 0) - (CollectionDetails?.available_copies || 0)}`}</b>
-
-                {" "}
+                <b>{`${
+                  (CollectionDetails?.no_of_copies || 0) -
+                  (CollectionDetails?.available_copies || 0)
+                }`}</b>{" "}
                 Available Qty:{" "}
-                <b>
-                  {`${CollectionDetails?.available_copies || 0}`}
-                </b>
-
+                <b>{`${CollectionDetails?.available_copies || 0}`}</b>
               </span>
               {/* {NetworkName[0] ==
               "XUMM" ? null : CollectionDetails.collection_type ? null : (
@@ -1692,13 +1738,24 @@ function NftDetails() {
               </Dropdown>
               {console.log(
                 parseInt(CollectionDetails?.no_of_copies) ==
-                parseInt(CollectionDetails?.available_copies),
+                  parseInt(CollectionDetails?.available_copies),
                 parseInt(CollectionDetails?.available_copies),
                 parseInt(CollectionDetails?.no_of_copies)
               )}
               <div className="heart">
-                <button className="card__likes heart">
-                  <img src="/images/wishlist.png" alt="crosstower" />
+                <button className={` card__likes heart `}>
+                  <i
+                    className={`${
+                      likeIndex >= 0 ? "text-danger" : ""
+                    } fa fa-light fa-heart `}
+                    onClick={() => handleLike(CollectionDetails)}
+                  ></i>
+                  {/* <img
+                    className={`${likeIndex >= 0 ? "text-danger" : ""}  `}
+                    src="/images/wishlist.png"
+                    alt="crosstower"
+                    onClick={() => handleLike(CollectionDetails)}
+                  /> */}
                 </button>
               </div>
               {/*  */}
@@ -1715,7 +1772,7 @@ function NftDetails() {
 
                     <Dropdown.Menu className="activeNone">
                       {parseInt(CollectionDetails?.no_of_copies) ==
-                        parseInt(CollectionDetails?.available_copies) ? null : (
+                      parseInt(CollectionDetails?.available_copies) ? null : (
                         <li>
                           <Dropdown.Item href="#" onClick={putOnSale}>
                             {"Put On Sale"}
@@ -1789,16 +1846,18 @@ function NftDetails() {
               ) : (
                 <>
                   <img
-                    src={`${process.env.REACT_APP_BACKENDURL}/${CollectionDetails.coverImage || CollectionDetails.image
-                      }`}
+                    src={`${process.env.REACT_APP_BACKENDURL}/${
+                      CollectionDetails.coverImage || CollectionDetails.image
+                    }`}
                     alt="crosstower"
                   />
                   <div
                     class="expand-btn"
                     onClick={() =>
                       handleExpandImage(
-                        `${process.env.REACT_APP_BACKENDURL}/${CollectionDetails.coverImage ||
-                        CollectionDetails.image
+                        `${process.env.REACT_APP_BACKENDURL}/${
+                          CollectionDetails.coverImage ||
+                          CollectionDetails.image
                         }`
                       )
                     }
@@ -1833,13 +1892,18 @@ function NftDetails() {
                     <span>Creator</span>
                   </div>
                   <div className="pro-div">
-                    <Link to={`/Users/${CollectionDetails?.creator_id?._id || CollectionDetails?.creator_id}`}>
+                    <Link
+                      to={`/Users/${
+                        CollectionDetails?.creator_id?._id ||
+                        CollectionDetails?.creator_id
+                      }`}
+                    >
                       <img
                         src={
                           CollectionDetails?.creator_id?.image
                             ? process.env.REACT_APP_BACKENDURL +
-                            "/" +
-                            CollectionDetails?.creator_id?.image
+                              "/" +
+                              CollectionDetails?.creator_id?.image
                             : "/images/prfile-pic.jpg"
                         }
                         alt="crosstower"
@@ -1848,30 +1912,34 @@ function NftDetails() {
                   </div>
 
                   <div className="user-detail">
-                    <Link to={`/Users/${CollectionDetails?.creator_id?._id || CollectionDetails?.creator_id}`}>
+                    <Link
+                      to={`/Users/${
+                        CollectionDetails?.creator_id?._id ||
+                        CollectionDetails?.creator_id
+                      }`}
+                    >
                       <p title={CollectionDetails?.cretor_wallet_address || ""}>
                         {CollectionDetails?.creator_id?.Name
                           ? CollectionDetails?.creator_id?.Name
-                          : ''}
+                          : ""}
                       </p>
                       <p>
                         {(
-                          (CollectionDetails?.cretor_wallet_address || "")?.slice(
-                            0,
-                            4
-                          ) +
+                          CollectionDetails?.cretor_wallet_address || ""
+                        )?.slice(0, 4) +
                           "..." +
                           (
                             CollectionDetails?.cretor_wallet_address || ""
-                          ).slice(-4)
-                        )}
+                          ).slice(-4)}
                         <img
                           src="/images/copy-svgrepo-com.svg"
                           className="copy_address"
                           alt=""
                           onClick={(e) => {
                             e.preventDefault();
-                            CopyText(CollectionDetails?.cretor_wallet_address || "");
+                            CopyText(
+                              CollectionDetails?.cretor_wallet_address || ""
+                            );
                           }}
                           style={{ width: "20px", cursor: "pointer" }}
                         />
@@ -1962,7 +2030,7 @@ function NftDetails() {
                         </>
                       )}
                       {CollectionDetails?.Owner_id?._id == User_id ||
-                        !(endIn > 0) ? null : (
+                      !(endIn > 0) ? null : (
                         <div className="spce-div">
                           {CollectionDetails.put_on_sale &&
                             CollectionDetails?.nft_type !== "OPENBID" && (
@@ -2080,6 +2148,7 @@ function NftDetails() {
                     {...CollectionDetails}
                     NetworkName={NetworkName}
                     setShowOwner={setShowOwner}
+                    ownerData={ownerData}
                   />
                 </Tab>
               </Tabs>
@@ -2137,10 +2206,10 @@ function NftDetails() {
                                 (e.target.value === "" ||
                                   re.test(e.target.value)) &&
                                 parseInt(e.target.value || 0) <=
-                                parseInt(CollectionDetails.own_copies) -
-                                parseInt(
-                                  CollectionDetails.available_copies || 0
-                                )
+                                  parseInt(CollectionDetails.own_copies) -
+                                    parseInt(
+                                      CollectionDetails.available_copies || 0
+                                    )
                               ) {
                                 setSelectCopies(
                                   e.target.value == ""
@@ -2202,10 +2271,10 @@ function NftDetails() {
                     <b>
                       {CollectionDetails?.cretor_wallet_address
                         ? CollectionDetails?.cretor_wallet_address.slice(0, 4) +
-                        "...." +
-                        CollectionDetails?.cretor_wallet_address.slice(
-                          CollectionDetails?.cretor_wallet_address.length - 4
-                        )
+                          "...." +
+                          CollectionDetails?.cretor_wallet_address.slice(
+                            CollectionDetails?.cretor_wallet_address.length - 4
+                          )
                         : CollectionDetails?.cretor_wallet_address || ""}
                     </b>
                   </p>
@@ -2253,7 +2322,7 @@ function NftDetails() {
                                 (e.target.value === "" ||
                                   re.test(e.target.value)) &&
                                 parseInt(e.target.value || 0) <=
-                                parseInt(CollectionDetails.no_of_copies)
+                                  parseInt(CollectionDetails.no_of_copies)
                               ) {
                                 setOfferQtyValue(e.target.value);
                               }
@@ -2456,18 +2525,14 @@ function NftDetails() {
         qty={qty}
         setqty={setqty}
       />
-      {
-        showOwner && (
-          <OwnerList showOwner={showOwner} setShowOwner={setShowOwner} />
-        )
-      }
-      {
-        expandImage && (
-          <ImageZoom url={expandUrl} handleClose={handleCloseExpandImage} />
-        )
-      }
+      {showOwner && (
+        <OwnerList showOwner={showOwner} setShowOwner={setShowOwner} />
+      )}
+      {expandImage && (
+        <ImageZoom url={expandUrl} handleClose={handleCloseExpandImage} />
+      )}
       <BurnTokenPopup />
-    </section >
+    </section>
   );
 }
 

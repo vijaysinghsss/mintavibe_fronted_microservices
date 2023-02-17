@@ -146,7 +146,7 @@ function Navbar() {
             </div>
             <div className="col-8 col-md-9">
               <div className="respMenuOnly d-flex justify-content-end">
-                <button className="respMenu d-lg-none mx-2 order-2" onClick={handleClick}><i class="fas fa-bars"></i></button>
+                <button className="respMenu d-lg-none me-3 ms-2 order-2" onClick={handleClick}><i class="fas fa-bars"></i></button>
                 <div className={`topMenu ${isActive ? 'show' : ''}`}>
                     <ul className="nav navbar-nav">
                       {/* <li>

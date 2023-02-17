@@ -18,6 +18,7 @@ function Details({
   owner_wallet_address = false,
   token,
   totalOwner,
+  ownerData=[]
 }) {
   return (
     <div className="top-profile">
@@ -46,7 +47,7 @@ function Details({
           ) : (
             <p onClick={() => setShowOwner(true)}>
               {" "}
-              {totalOwner ? `${totalOwner} Owners` : `${totalOwner || 1} Owner`}
+              {ownerData.length>1 ? `${ownerData.length} Owners` : `${ownerData.length } Owner`}
             </p>
           )}
         </div>

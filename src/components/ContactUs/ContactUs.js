@@ -23,6 +23,7 @@ function ContactUs() {
     querymessage: "",
     image: "",
   });
+  const [previewUrl, setPreviewUrl] = useState("");
   const {
     firstname = "",
     lastname = "",
@@ -75,9 +76,23 @@ function ContactUs() {
     return err1;
   };
   const handleFileChange = (file) => {
-    console.log(file," multiple={true}")
     setInpData({ ...inpData, image: file });
+    // setPreviewUrl(URL.createObjectURL(file));
   };
+  // const handleDragOver = (event) => {
+  //   event.preventDefault();
+  // };
+  // const handleOnDrop = (event) => {
+  //   //prevent the browser from opening the image
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  //   //let's grab the image file
+  //   let imageFile = event.dataTransfer.files[0];
+  //   console.log(event, imageFile);
+
+  //   setInpData({ ...inpData, image: imageFile });
+  //   // setPreviewUrl(URL.createObjectURL(imageFile));
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -271,20 +286,26 @@ function ContactUs() {
                         handleFileChange={handleFileChange}
                         accept={[]}
                       />
-                      {/* <div className="form-group col-6 col-md-6">
-                        <label htmlFor="file">File</label>
-                        <input
-                          type="file"
-                          className="form-control mb-0"
-                          id="file"
-                          name="image"
-                          onChange={(e) => {
-                            setInpData({ ...inpData, image: e.target.files });
-                          }}
-                        />
+                      {/* <div className="wrapper">
+                        <div
+                          className="form-group col-6 col-md-6 border border-danger"
+                          onDragOver={handleDragOver}
+                          onDrop={handleOnDrop}
+                        >
+                          <label htmlFor="file">File</label>
+                          <input
+                            type="file"
+                            className="form-control mb-0"
+                            id="file"
+                            name="image"
+                            onChange={handleFileChange}
+                            // onChange={(e) => {
+                            //   setInpData({ ...inpData, image: e.target.files });
+                            // }}
+                          />
+                        </div>
                       </div> */}
-
-                      <div className="form-group col-md-12">
+                      <div className="form-group col-md-12 drop_zone">
                         <label for="Message">
                           Message<span className="text-danger"> *</span>
                         </label>
