@@ -42,20 +42,20 @@ function Follower() {
           return (
             <div className="notice-box" key={value._id}>
               <div className="notice-box-img">
-                <img
+              <img
                   src={
                     value.image
-                      ? process.env.REACT_APP_BACKENDURL + "/" + value.image
+                      ? process.env.REACT_APP_BACKENDURL + "/" + value?.image
                       : "/images/profile-header-img.png"
                   }
                   alt=""
                 />
               </div>
               <p>
-                {value.Name
-                  ? value.Name
-                  : value.Firstname && value.Lastname
-                  ? `${value.Firstname} ${value.Lastname}`
+                {value?.Name
+                  ? value?.Name
+                  : value?.Firstname && value?.Lastname
+                  ? `${value?.Firstname} ${value?.Lastname}`
                   : "N/A"}
               </p>
             </div>

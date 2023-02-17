@@ -33,12 +33,22 @@ function Following() {
           return (
             <div className="notice-box" key={value._id}>
               <div className="notice-box-img">
-                <img
-                  src={process.env.REACT_APP_BACKENDURL + "/" + value.image}
+              <img
+                  src={
+                    value.image
+                      ? process.env.REACT_APP_BACKENDURL + "/" + value?.image
+                      : "/images/profile-header-img.png"
+                  }
                   alt=""
                 />
               </div>
-              <p>{value?.Name ? value?.Name : "N/A"}</p>
+              <p>
+                {value?.Name
+                  ? value?.Name
+                  : value?.Firstname && value?.Lastname
+                  ? `${value?.Firstname} ${value?.Lastname}`
+                  : "N/A"}
+              </p>
             </div>
           );
         })
