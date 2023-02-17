@@ -23,7 +23,6 @@ const Listing = React.lazy(() => import("./Listing"));
 
 function EditProfile() {
   const { address } = useWeb3();
-  const { Bio = "" } = useSelector((state) => state.User?.data);
   const { User, authUser } = useSelector((state) => state);
   const { collected } = useParams()
   const initialState = {
@@ -137,6 +136,9 @@ function EditProfile() {
     Youtube_link = false,
     Totalfollower = false,
     Totalfollowing = false,
+    Followers=[],
+    Followings=[],
+    Bio=""
   } = User?.data;
 
   // const { Totalfollower = false, Totalfollowing = false } = useSelector(
@@ -265,13 +267,13 @@ function EditProfile() {
                   style={{ cursor: "pointer" }}
                   onClick={() => handleShow("followers")}
                 >
-                  Followers ({Totalfollower})
+                  Followers ({Followers?.length})
                 </span>
                 <span
                   style={{ cursor: "pointer" }}
                   onClick={() => handleShow("following")}
                 >
-                  Following ({Totalfollowing})
+                  Following ({Followings?.length})
                 </span>
               </p>
               <button className="profile-button" onClick={handleEditProfile}>
@@ -310,7 +312,7 @@ function EditProfile() {
                       className="mb-2 tab-wrap"
                     >
                       <Tab eventKey="followers" className="tab" title="Followers">
-                        <Follower />({Totalfollower})
+                        <Follower />
                       </Tab>
                       <Tab eventKey="following" className="tab" title="Following">
                         <div className="tab__content">
