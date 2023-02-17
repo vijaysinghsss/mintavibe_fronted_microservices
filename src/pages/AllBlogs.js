@@ -27,7 +27,7 @@ function AllBlogs() {
   }, []);
 
   return (
-    <div className="container px-5">
+    <div className="container py-lg-5">
       <div className="row">
         {blogs.map((item) => (
           <Blog {...item} />

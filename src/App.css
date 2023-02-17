@@ -3770,14 +3770,8 @@ a .clear-button {
   margin-bottom: 30px;
 }
 
-.blog-box-img-box {
-  width: 100%;
-}
-
-.blog-box-img-box img {
-  width: 100%;
-  border-radius: 10px 0 0 0px;
-}
+.blog-box-img-box{width:100%;}
+.blog-box-img-box img{width:100%; border-radius:10px 10px 0 0px;}
 
 .blog-box-cont {
   padding: 15px 20px;
@@ -3796,6 +3790,7 @@ a .clear-button {
   font-size: 14px;
   margin: 0px;
   color: #000;
+  word-break: break-all;
 }
 
 .brline {
