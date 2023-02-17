@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { API } from "../apiwrapper";
 import Nfts from "../components/All-Nfts/all-nfts";
@@ -6,13 +7,15 @@ import FilterNft from "../components/All-Nfts/FilterNft";
 import Nftlisting from "../components/All-Nfts/nftlist";
 import { Pagination } from "../components/Pagination/Pagination";
 import { apiURl } from "../store/actions";
+import { SetSliderData } from "../store/reducer";
 
 export default function Nftlist() {
   const [listing, setlisting] = useState([]);
-
+  const { Slider } = useSelector((state) => state);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const initialState = {
-    search: "",
+    search: Slider?.serachNft ? Slider?.serachNft : "",
     status: "",
     sortBy: "",
     quantity: "",
@@ -92,6 +95,10 @@ export default function Nftlist() {
   };
   useEffect(() => {
     fetchNFTList();
+    return () => {
+      dispatch(SetSliderData("", "serachNft"));
+      console.log("", "serachNft");
+    };
   }, [filter]);
   return (
     <>
@@ -117,8 +124,8 @@ export default function Nftlist() {
                   <a href="/CuratedNft">Curated from All</a>
                 </option>
               </select>*/}
-            </div> 
-            <div className="col-lg-9">
+            </div>
+            <div className="col-md-9">
               <div className="input-group mb-3">
                 <input
                   type="text"
@@ -162,13 +169,13 @@ export default function Nftlist() {
           {listing?.length > 0 && (
             <div className="d-flex justify-content-end w-100 my-lg-5">
               <div className="col-12 col-md-9 d-flex justify-content-center">
-              <Pagination
-                totalPages={Math.ceil(data?.totalCount / data?.limit)}
-                setData={(e) => {
-                  setFilter({ ...filter, page: e.selected + 1 });
-                }}
-                pageNo={filter.page}
-              />
+                <Pagination
+                  totalPages={Math.ceil(data?.totalCount / data?.limit)}
+                  setData={(e) => {
+                    setFilter({ ...filter, page: e.selected + 1 });
+                  }}
+                  pageNo={filter.page}
+                />
               </div>
             </div>
           )}
