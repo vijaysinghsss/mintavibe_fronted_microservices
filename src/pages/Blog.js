@@ -5,7 +5,7 @@ import BlogDetails from "./BlogDetails";
 
 function Blog(item) {
   return (
-    <div className="col-sm-6 col-md-4">
+    <div className="col-12 col-sm-10 col-md-6 col-lg-4">
       <div className="blog-box">
         <div className="blog-box-img-box">
           <img
