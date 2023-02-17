@@ -115,7 +115,6 @@ function NftDetails() {
 
   const { socket } = useSelector((state) => state.Socket);
 
-
   const handleClose = () => setShow(false);
 
   const handleOfferClose = () => setOffershow(false);
@@ -1629,23 +1628,27 @@ function NftDetails() {
     (ele) => ele === User_id
   );
   const handleLike = async (nft) => {
-    let payload = { UserId: User_id, NftId: nft?._id, IsLiked: false };
-    payload.IsLiked = likeIndex >= 0 ? false: true ;
-    try {
-      await API({
-        url: `${apiURl.likesdata}`,
-        method: "POST",
-        body: payload,
-        formData: false,
-      }).then((data) => {
-        if (data?.status || data?.status === "true") {
-          FetchData();
-        } else {
-          console.log("like data", data);
-        }
-      });
-    } catch (error) {
-      console.log(error);
+    if (!User_id) {
+
+    } else {
+      let payload = { UserId: User_id, NftId: nft?._id, IsLiked: false };
+      payload.IsLiked = likeIndex >= 0 ? false : true;
+      try {
+        await API({
+          url: `${apiURl.likesdata}`,
+          method: "POST",
+          body: payload,
+          formData: false,
+        }).then((data) => {
+          if (data?.status || data?.status === "true") {
+            FetchData();
+          } else {
+            console.log("like data", data);
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   const handleExpandImage = (url) => {
@@ -1656,12 +1659,12 @@ function NftDetails() {
     setExpandUrl("");
     setExpandImage(false);
   };
-console.log(likeIndex,"likeIndex")
+ 
   return (
-    <section className="profile-section container mt-4">
-      <div className="container">
-        <div className="row align-items-center justify-content-between py-4">
-          <div className="col-lg-9">
+    <section className="profile-section mt-sm-4">
+      <div className="container-lg">
+        <div className="row align-items-center justify-content-between py-md-4">
+          <div className="col-12 col-sm-9">
             <p title={`Available For sale/No of Copies`}>
               {CollectionDetails?.Nftname || ""}
               <span>
@@ -1691,7 +1694,7 @@ console.log(likeIndex,"likeIndex")
               )} */}
             </p>
           </div>
-          <div className="col-lg-auto">
+          <div className="mx-auto mx-sm-0 col-auto my-3 my-sm-0">
             <div className="modal-more-options">
               <Dropdown>
                 <Dropdown.Toggle id="dropdown-basic">
@@ -1740,16 +1743,19 @@ console.log(likeIndex,"likeIndex")
                 parseInt(CollectionDetails?.no_of_copies)
               )}
               <div className="heart">
-                <button
-                  className={`${
-                    likeIndex >= 0 ? "taxt-danger" : ""
-                  } card__likes heart `}
-                >
-                  <img
+                <button className={` card__likes heart `}>
+                  <i
+                    className={`${
+                      likeIndex >= 0 ? "text-danger" : ""
+                    } fa fa-light fa-heart `}
+                    onClick={() => handleLike(CollectionDetails)}
+                  ></i>
+                  {/* <img
+                    className={`${likeIndex >= 0 ? "text-danger" : ""}  `}
                     src="/images/wishlist.png"
                     alt="crosstower"
                     onClick={() => handleLike(CollectionDetails)}
-                  />
+                  /> */}
                 </button>
               </div>
               {/*  */}
@@ -1802,7 +1808,7 @@ console.log(likeIndex,"likeIndex")
         </div>
       </div>
 
-      <div className="container">
+      <div className="container-lg">
         <div className="row">
           <div className="col-md-6">
             <div className="profile-box h-100">
@@ -1863,7 +1869,7 @@ console.log(likeIndex,"likeIndex")
             </div>
           </div>
 
-          <div className="col-md-6 ps-5">
+          <div className="col-md-6 ps-lg-5">
             <div className="des-box p-0">
               <div className="des-box-2">
                 <p>Description</p>

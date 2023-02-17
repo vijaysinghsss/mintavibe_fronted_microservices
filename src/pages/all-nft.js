@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { API } from "../apiwrapper";
 import Nfts from "../components/All-Nfts/all-nfts";
@@ -7,11 +7,12 @@ import FilterNft from "../components/All-Nfts/FilterNft";
 import Nftlisting from "../components/All-Nfts/nftlist";
 import { Pagination } from "../components/Pagination/Pagination";
 import { apiURl } from "../store/actions";
+import { SetSliderData } from "../store/reducer";
 
 export default function Nftlist() {
   const [listing, setlisting] = useState([]);
   const { Slider } = useSelector((state) => state);
-  console.log(Slider, "Sliders");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const initialState = {
     search: Slider?.serachNft ? Slider?.serachNft : "",
@@ -94,13 +95,17 @@ export default function Nftlist() {
   };
   useEffect(() => {
     fetchNFTList();
+    return () => {
+      dispatch(SetSliderData("", "serachNft"));
+      console.log("", "serachNft");
+    };
   }, [filter]);
   return (
     <>
       <section className="search-section-new">
         <div className="container">
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-lg-3">
               {/* <select id="Categories" name="Categories">
                 <option value="all_nfts">All NFTs</option>
                 <option value="By_BIPOC_Creators">
@@ -148,9 +153,9 @@ export default function Nftlist() {
           </div>
         </div>
       </section>
-      <div className="container">
+      <div className="container-lg">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-4 col-xl-3">
             <div className="left-side">
               {/* <Nfts /> */}
               <FilterNft

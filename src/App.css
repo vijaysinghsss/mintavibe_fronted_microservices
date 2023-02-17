@@ -241,9 +241,11 @@ body {
 .topScroll {
   background: #FFF;
   width: 100%;
-  padding: 5px 0;
+  padding: 2px 0 4px;
   position: relative;
 }
+
+.topScroll marquee{vertical-align: middle;}
 
 .topScroll ul {
   display: flex;
@@ -4787,10 +4789,6 @@ footer {
     border-bottom: 1px solid #fff;
   }
 
-  .profile-section p {
-    font-size: 15px;
-    margin-top: 20px;
-  }
 
   .share-div {
     right: 20px;
@@ -5107,7 +5105,7 @@ footer {
 }
 
 .creater-div .user-detail p {
-  padding-top: 0px;
+  padding-top: 5px;
   color: #000;
   font-size: 14px;
   line-height: 10px;
@@ -5585,7 +5583,7 @@ table tr {
 .accordion .accordion-item .accordion-button {
   /* height: 51px; */
   font-size: 16px;
-  padding: 15px;
+  padding: 15px 55px 15px 15px;
 }
 
 .propertyAccod .accordion-header button:not(.collapsed) {

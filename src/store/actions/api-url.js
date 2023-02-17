@@ -57,7 +57,8 @@ const apiURl = {
   testxummbuy: "/testxummbuy",
   xummTransfer: "/xummTransfer",
   History: "/history",
-  likesdata:"/likesdata"
+  likesdata:"/likesdata",
+  followerdata:"/followerdata"
 };
 
 export const NotificationMsg = {

@@ -49,9 +49,14 @@ function Navbar() {
 
   const [show, setShow] = useState(false);
 
+  const [isActive, setIsActive] = useState(false);
+
+  const [serchActive, serchIsActive] = useState(false);
+
   const [theme, setTheme] = useState(false);
 
   const handleShow = () => setShow(!show);
+
   const handleShowLogin = () => {
     dispatch(SetpopupReducerData({ modalType: "LOGIN", showModal: true }));
     setShowPopup(true);
@@ -81,12 +86,12 @@ function Navbar() {
 
     setShowCreatePopup(true);
   };
-
   const [searchParams, setSearchParams] = useState("");
+
   const handleSearch = () => {
     dispatch(SetSliderData(searchParams, "serachNft"));
-    setSearchParams("")
-    navigate("/nftlist")
+    setSearchParams("");
+    navigate("/nftlist");
   };
   useEffect(() => {
     setShow((prev) => prev);
@@ -117,7 +122,7 @@ function Navbar() {
     let val = themeVal === "darkTheme" ? "lightTheme" : "darkTheme";
     localStorage.setItem("Theme", val);
   };
- 
+
   const handleShowSell = () => {
     dispatch(SetpopupReducerData({ modalType: "SELL", showModal: true }));
     setShowPopup(true);
@@ -126,6 +131,14 @@ function Navbar() {
     dispatch(SetthemeData(theme));
     document.body.className = themeVal;
   }, [theme, themeVal]);
+
+  const handleClick = (event) => {
+    setIsActive((current) => !current);
+  };
+
+  const searchClick = (event) => {
+    serchIsActive((current) => !current);
+  };
 
   return (
     <div>
@@ -146,6 +159,10 @@ function Navbar() {
                 <div className="topMenu">
                   <ul className="nav navbar-nav">
                     {/* <li>
+                <button className="respMenu d-lg-none" onClick={handleClick}><i class="fas fa-bars"></i></button>
+                <div className={`topMenu ${isActive ? 'show' : ''}`}>
+                    <ul className="nav navbar-nav">
+                      {/* <li>
                         <a href="!#" onClick={handleShowCreatePopup}>
                           Create
                         </a>
@@ -217,25 +234,30 @@ function Navbar() {
                   </ul>
                 </div>
                 <div className="loginSerch d-flex justify-content-end align-items-center">
-                  <button className="respSerch d-lg-none mx-3">
+                  <button
+                    className="respSerch d-lg-none mx-3"
+                    onClick={searchClick}
+                  >
                     <i class="fas fa-search"></i>
                   </button>
-                  <form id="form">
+                  <form id="form" className={`${serchActive ? "show" : ""}`}>
                     <div className="topSearch">
                       <input
                         type="text"
                         className="form-control"
                         placeholder="Search"
-                       name={"searchParams"}
-                       value={searchParams}
-                        onChange={(e) =>
-                          setSearchParams( e.target.value )
-                        }
+                        name={"searchParams"}
+                        value={searchParams}
+                        onChange={(e) => setSearchParams(e.target.value)}
                       />
                       <button className="searchBtn" type="button">
-                        <i className="fa fa-search"  onClick={handleSearch}></i>
+                        <i className="fa fa-search" onClick={handleSearch}></i>
                       </button>
-                      <button className="cancelBrn d-lg-none" type="button">
+                      <button
+                        className="cancelBrn d-lg-none"
+                        type="button"
+                        onClick={searchClick}
+                      >
                         Cancel
                       </button>
                     </div>

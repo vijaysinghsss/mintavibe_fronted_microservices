@@ -13,13 +13,13 @@ import FilterNft from "../All-Nfts/FilterNft";
 import Nftlisting from "../All-Nfts/nftlist";
 import { API } from "../../apiwrapper";
 import { Pagination } from "../Pagination/Pagination";
-import { SetUserData } from "../../store/reducer";
+import { SetpopupReducerData, SetUserData } from "../../store/reducer";
 import { toast } from "react-toastify";
 import ReactReadMoreReadLess from "react-read-more-read-less";
+import OpenModal from "../Navbar/OpenModal";
 
 function UserProfile() {
   const { address } = useWeb3();
-  const { Bio = "" } = useSelector((state) => state.User?.data);
   const { User, authUser } = useSelector((state) => state);
   const [profiledata, setProfileData] = useState({});
 
@@ -104,6 +104,10 @@ function UserProfile() {
         method: "GET",
       }).then((data) => {
         setProfileData(data?.userData);
+        let followIndx = data?.userData?.Followers?.findIndex(
+          (el) => el === authUser?.loginUserData?.id
+        );
+        followIndx >= 0 ? setIsfollow(true) : setIsfollow(false);
       });
     } catch (error) {
       toast(error.message, { type: "error" });
@@ -135,9 +139,14 @@ function UserProfile() {
     Youtube_link = "",
     Totalfollower = "",
     Totalfollowing = "",
+    Followers=[],
+    Followings=[],
+    Bio=""
   } = profiledata;
 
   const { walletAddress = "" } = useSelector((state) => state.User?.xumm);
+  const [showPopup, setShowPopup] = useState(false);
+  const [isfollow, setIsfollow] = useState(false);
 
   const [showMore, setShowMore] = useState(false);
 
@@ -152,7 +161,35 @@ function UserProfile() {
 
   const dispatch = useDispatch();
 
-  const handleFollowUnFollow = async () => {};
+  const handleShowLogin = () => {
+    dispatch(SetpopupReducerData({ modalType: "LOGIN", showModal: true }));
+    setShowPopup(true);
+  };
+
+  const handleFollowUnFollow = async () => {
+    console.log(authUser?.loginUserData, "fh");
+    if (!Object.keys(authUser?.loginUserData || {}).length) {
+      handleShowLogin();
+    } else {
+      let payload = {
+        followeruserid: id,
+        UserId: authUser?.loginUserData?.id,
+        isfollow: isfollow ? false : true,
+      };
+      try {
+        await API({
+          url: `${apiURl.followerdata}`,
+          method: "POST",
+          body: payload,
+        }).then((data) => {
+          fetchUserData();
+        });
+      } catch (error) {
+        toast(error.message, { type: "error" });
+        console.log(error.message, "errr");
+      }
+    }
+  };
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -161,6 +198,7 @@ function UserProfile() {
   }, [filter]);
   return (
     <div>
+      {showPopup && <OpenModal />}
       <header
         style={{
           margin: "0 auto",
@@ -252,23 +290,21 @@ function UserProfile() {
                   style={{ cursor: "pointer" }}
                   onClick={() => handleShow("followers")}
                 >
-                  Followers ({Totalfollower})
+                  Followers ({Followers?.length})
                 </span>
                 <span
                   style={{ cursor: "pointer" }}
                   onClick={() => handleShow("following")}
                 >
-                  Following ({Totalfollowing})
+                  Following ({Followings?.length})
                 </span>
-               
               </p>
               <button
-                  className="profile-follow-button"
-                  onClick={handleFollowUnFollow}
-                >
-                  {" "}
-                  Follow
-                </button>
+                className="profile-follow-button"
+                onClick={handleFollowUnFollow}
+              >
+                {isfollow?"Unfollow":"Follow"}                
+              </button>
             </div>
             {Bio && (
               <div className="about-user-text">
@@ -305,7 +341,7 @@ function UserProfile() {
                         className="tab"
                         title="Followers"
                       >
-                        <Follower />({Totalfollower})
+                        <Follower />
                       </Tab>
                       <Tab
                         eventKey="following"
@@ -432,13 +468,13 @@ function UserProfile() {
         <Modal show={show} onHide={handleClose} size="sm fllowPoup">
           <div className="pop_content">
             <div className="close-button">
-              <a href="!#" onClick={handleClose}>
+              <button  onClick={handleClose}>
                 <img
                   className="filterNone"
                   alt=""
                   src="/images/cross-button.svg"
                 />
-              </a>
+              </button>
             </div>
             {/* <Modal.Header closeButton></Modal.Header> */}
 
