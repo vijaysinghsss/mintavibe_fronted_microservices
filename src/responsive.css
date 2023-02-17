@@ -133,6 +133,7 @@
 
 .topPading{padding-top:80px;}
 .hedIcons .loginBtn{width:90px; font-weight:600; font-size:16px;}
+.hedIcons li img{width:30px; height:30px;}
 .videoBox video{height:200px;}
 
 .exclCelebrity h2,
@@ -192,6 +193,7 @@
 .cstTab ul.nav-tabs li{padding:0 8px;}
 .tab-porp-box{min-height:80px; width:150px; padding:8px 5px; margin:5px 5px 0px 0px;}
 .tab-button{padding:5px 10px; font-size:12px; margin:5px;}
+.cstTab p{font-size:14px;}
 
 
 .innre-bannre{height:auto;}
@@ -212,6 +214,23 @@
 
 .modal-more-options{position:absolute; top:1px; right:15px; box-shadow:0 0 5px #C1C1C1; width:90px; padding:6px 10px;}
 .modal-more-options img{width:16px;}
+
+.login-screen input[type="text"],
+.login-screen input[type="password"],
+.login-screen input[type="date"],
+.login-screen input[type="datetime"],
+.login-screen input[type="email"],
+.login-screen input[type="number"],
+.login-screen input[type="search"],
+.login-screen input[type="tel"],
+.login-screen input[type="time"],
+.login-screen input[type="url"],
+.login-screen textarea,
+.login-screen select{padding:10px;}
+
+
+
+.eye-icon{margin-left:0; top:47px; right:15px;}
 
 
 }
