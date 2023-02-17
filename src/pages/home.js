@@ -82,7 +82,6 @@ const Home = () => {
         if (data?.status || data?.status === "true") {
           setCeleData(data?.response || []);
         }
-       
       });
     } catch (error) {
       console.log(error);
@@ -109,7 +108,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (CreatorCategory?.length>0) {
+    if (CreatorCategory?.length > 0) {
       let id = CreatorCategory?.find(
         (elt) => elt.Creatorname === "Movies"
       )?._id;
@@ -117,14 +116,25 @@ const Home = () => {
     }
     fetchCelebritylist();
   }, [CreatorCategory]);
-
+  console.log("celebritylistData", celebritylistData);
   return (
     <>
       {showPopup && <OpenModal />}
 
       <section className="videoBox">
-        <video controls={false} controlsList={'nodownload'} width="100%" autoPlay={true} muted={true}>
-          <source src={'https://mintavibe-landing-video.s3.ap-south-1.amazonaws.com/Mintavibe-Landing-Page.mp4'} type="video/mp4" />
+        <video
+          controls={false}
+          controlsList={"nodownload"}
+          width="100%"
+          autoPlay={true}
+          muted={true}
+        >
+          <source
+            src={
+              "https://mintavibe-landing-video.s3.ap-south-1.amazonaws.com/Mintavibe-Landing-Page.mp4"
+            }
+            type="video/mp4"
+          />
         </video>
       </section>
 
@@ -135,7 +145,10 @@ const Home = () => {
               <h3>
                 Exclusive Celebrity's <br className="d-none d-lg-block" /> NFTs
               </h3>
-              <p>Join the exclusive club of fans of your favorite celebrities and get a rare glimpse into their world through unique NFTs.</p>
+              <p>
+                Join the exclusive club of fans of your favorite celebrities and
+                get a rare glimpse into their world through unique NFTs.
+              </p>
             </div>
 
             <div className="col-xl col-lg-4 mx-xl-5">
@@ -143,14 +156,21 @@ const Home = () => {
                 Own a moment in your <br className="d-none d-lg-block" />
                 favourite celebrities
               </h3>
-              <p>Take possession of a special moment from the life of your favorite celebrity and treasure it forever through the ownership of an NFT.</p>
+              <p>
+                Take possession of a special moment from the life of your
+                favorite celebrity and treasure it forever through the ownership
+                of an NFT.
+              </p>
             </div>
 
             <div className="col-xl col-lg-4">
-              <h3>
-                Chance to meet
-              </h3>
-              <p>Experience the thrill of getting up close and personal with your favorite celebrity by gaining access to their world through NFTs that provide exclusive insights and the chance to interact directly.</p>
+              <h3>Chance to meet</h3>
+              <p>
+                Experience the thrill of getting up close and personal with your
+                favorite celebrity by gaining access to their world through NFTs
+                that provide exclusive insights and the chance to interact
+                directly.
+              </p>
             </div>
           </div>
         </div>
@@ -174,8 +194,9 @@ const Home = () => {
                   {CreatorCategory?.length > 0 &&
                     CreatorCategory?.map((ele) => (
                       <button
-                        className={`tabsection ${!ele.coming_soon ? "active" : ""
-                          }`}
+                        className={`tabsection ${
+                          !ele.coming_soon ? "active" : ""
+                        }`}
                         key={ele._id}
                         disabled={ele.coming_soon}
                         onClick={() => handleCategory(ele._id)}
@@ -219,8 +240,9 @@ const Home = () => {
                           </div>
                           <Link
                             className="celebFrame"
-                            to={`/${cele.Creator_type?.Creatorname || "Unknown"
-                              }/${cele.Slug}`}
+                            to={`/${
+                              cele.Creator_type?.Creatorname || "Unknown"
+                            }/${cele.Slug}`}
                           >
                             <figure>
                               <img
@@ -311,7 +333,9 @@ const Home = () => {
                 infinite={true}
                 speed={300}
                 swipeToSlide={true}
-                slidesToShow={3}
+                slidesToShow={
+                  celebritylistData.length > 2 ? 3 : celebritylistData.length
+                }
                 slidesToScroll={3}
                 responsive={[
                   {
@@ -339,17 +363,18 @@ const Home = () => {
                   },
                 ]}
               >
-                {celebritylistData?.length > 0
-                  ? celebritylistData?.map((ele) => (
-                    <Link to={`/collections/${ele?._id}`}>
-                      <img
-                        className="img-fluid"
-                        src={`${process.env.REACT_APP_BACKENDURL}/${ele?.image}`}
-                        alt=""
-                      />
-                    </Link>
-                  ))
-                  : ""
+                {
+                  celebritylistData?.length > 0
+                    ? celebritylistData?.map((ele) => (
+                        <Link to={`/collections/${ele?._id}`}>
+                          <img
+                            className="img-fluid"
+                            src={`${process.env.REACT_APP_BACKENDURL}/${ele?.image}`}
+                            alt=""
+                          />
+                        </Link>
+                      ))
+                    : ""
                   // <>
                   //   <img
                   //     src="../images/ak01.png"
@@ -518,7 +543,15 @@ const Home = () => {
             <div className="col-md-12">
               <div className="text-center">
                 <h3>How to create your wallet</h3>
-                <p>A crypto wallet is a tool that allows you to securely hold and manage your digital assets. It operates on the principle of self-custody, where you have sole control over your crypto as it is stored on the blockchain. Accessing your funds is made possible through the use of a private key, providing a convenient and secure alternative to traditional intermediaries such as banks.</p>
+                <p>
+                  A crypto wallet is a tool that allows you to securely hold and
+                  manage your digital assets. It operates on the principle of
+                  self-custody, where you have sole control over your crypto as
+                  it is stored on the blockchain. Accessing your funds is made
+                  possible through the use of a private key, providing a
+                  convenient and secure alternative to traditional
+                  intermediaries such as banks.
+                </p>
               </div>
             </div>
           </div>
