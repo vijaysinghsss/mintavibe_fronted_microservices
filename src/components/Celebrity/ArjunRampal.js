@@ -183,17 +183,9 @@ function ArjunRampal() {
               <div className="abtCelebt">
                 <h3>Drop 1: Three Editions</h3>
                 <h4>About Collection</h4>
-                This is a chance to engage with Mr. Rampal in his “Be Brave like
-                RockOn” collection.
-                <br />
-                <br />
-                With the purchase of this NFT the holders will collect his
-                RockOn mascot NFTs which will have different traits unlocking
-                benefits to fans.
-                <br />
-                <br />
-                Insight into his world, his projects, side initiatives. Chance
-                to interact directly and be truly a part of his world.
+                <p>This is a chance to engage with Mr. Rampal in his “Be Brave like RockOn” collection.</p>
+                <p>With the purchase of this NFT the holders will collect his RockOn mascot NFTs which will have different traits unlocking benefits to fans.</p>
+                <p>Insight into his world, his projects, side initiatives. Chance to interact directly and be truly a part of his world.</p>
                 <div className="editionSection mt-4">
                   <div>
                     <p>Edition</p>
