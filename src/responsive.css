@@ -167,7 +167,6 @@
 .createYourWalet h3{font-size:22px;}
 .createYourWalet p{text-align:center; font-size:14px;}
 
-
 .createYourWalet h4{font-size:22px;}
 .walletSteps li{font-size:13px; font-weight:500; position:relative; padding-left:28px; margin:5px 0;}
 .walletSteps li span{width:20px; height:20px; padding:3px; font-size:10px; margin-right:5px; position:absolute; left:0;}
@@ -196,8 +195,8 @@
 .tab-button{padding:5px 10px; font-size:12px; margin:5px;}
 .cstTab p{font-size:14px;}
 
-.innre-bannre{height:auto;}
 
+.innre-bannre{height:auto;}
 
 .about-us-section h4{font-size:22px; margin:10px 0;}
 .about-us-section p{font-size:14px; line-height:22px;}
@@ -213,8 +212,8 @@
 
 .faq-bg{margin:10px 0;}
 
-.modal-more-options img{width:16px;}
 .modal-more-options{position:absolute; top:1px; right:15px; box-shadow:0 0 5px #C1C1C1; width:90px; padding:6px 10px;}
+.modal-more-options img{width:16px;}
 
 .login-screen input[type="text"],
 .login-screen input[type="password"],
@@ -231,8 +230,6 @@
 
 
 .eye-icon{margin-left:0; top:47px; right:15px;}
-
-
 
 
 }
