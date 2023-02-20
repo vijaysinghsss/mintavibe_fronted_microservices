@@ -1661,9 +1661,9 @@ function NftDetails() {
   };
  
   return (
-    <section className="profile-section mt-sm-4">
+    <section className="profile-section mt-3 mt-sm-4">
       <div className="container-lg">
-        <div className="row align-items-center justify-content-between py-md-4">
+        <div className="row align-items-center justify-content-between py-3 py-md-4 position-relative">
           <div className="col-12 col-sm-9">
             <p title={`Available For sale/No of Copies`}>
               {CollectionDetails?.Nftname || ""}
@@ -1694,7 +1694,7 @@ function NftDetails() {
               )} */}
             </p>
           </div>
-          <div className="mx-auto mx-sm-0 col-auto my-3 my-sm-0">
+          <div className="col-auto">
             <div className="modal-more-options">
               <Dropdown>
                 <Dropdown.Toggle id="dropdown-basic">

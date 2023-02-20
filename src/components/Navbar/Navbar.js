@@ -23,7 +23,6 @@ import SliderParent from "../Slider/index";
 import OpenModal from "./OpenModal";
 import {
   SetpopupReducerData,
-  SetSliderData,
   SetSubscriptionUserData,
   SetthemeData,
 } from "../../store/reducer";
@@ -56,7 +55,6 @@ function Navbar() {
   const [theme, setTheme] = useState(false);
 
   const handleShow = () => setShow(!show);
-
   const handleShowLogin = () => {
     dispatch(SetpopupReducerData({ modalType: "LOGIN", showModal: true }));
     setShowPopup(true);
@@ -86,13 +84,9 @@ function Navbar() {
 
     setShowCreatePopup(true);
   };
-  const [searchParams, setSearchParams] = useState("");
 
-  const handleSearch = () => {
-    dispatch(SetSliderData(searchParams, "serachNft"));
-    setSearchParams("");
-    navigate("/nftlist");
-  };
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     setShow((prev) => prev);
     if (error) {
@@ -122,22 +116,21 @@ function Navbar() {
     let val = themeVal === "darkTheme" ? "lightTheme" : "darkTheme";
     localStorage.setItem("Theme", val);
   };
-
-  const handleShowSell = () => {
+  const handleShowSell=()=>{
     dispatch(SetpopupReducerData({ modalType: "SELL", showModal: true }));
     setShowPopup(true);
-  };
+  }
   useEffect(() => {
     dispatch(SetthemeData(theme));
     document.body.className = themeVal;
   }, [theme, themeVal]);
 
-  const handleClick = (event) => {
-    setIsActive((current) => !current);
+  const handleClick = event => {
+    setIsActive(current => !current);
   };
 
-  const searchClick = (event) => {
-    serchIsActive((current) => !current);
+  const searchClick = event => {
+    serchIsActive(current => !current);
   };
 
   return (
@@ -153,13 +146,7 @@ function Navbar() {
             </div>
             <div className="col-8 col-md-9">
               <div className="respMenuOnly d-flex justify-content-end">
-                <button className="respMenu d-lg-none">
-                  <i class="fas fa-bars"></i>
-                </button>
-                <div className="topMenu">
-                  <ul className="nav navbar-nav">
-                    {/* <li>
-                <button className="respMenu d-lg-none" onClick={handleClick}><i class="fas fa-bars"></i></button>
+                <button className="respMenu d-lg-none me-3 ms-2 order-2" onClick={handleClick}><i class="fas fa-bars"></i></button>
                 <div className={`topMenu ${isActive ? 'show' : ''}`}>
                     <ul className="nav navbar-nav">
                       {/* <li>
@@ -167,37 +154,31 @@ function Navbar() {
                           Create
                         </a>
                       </li> */}
-                    {loginUserData?.token && (
-                      <li onClick={handleShowSell}>
-                        <NavLink to="!#">Sell</NavLink>
+                      {loginUserData?.token && (
+                        <li onClick={handleShowSell}>
+                          <NavLink to="!#">Sell</NavLink>
+                        </li>
+                      )}
+                      <li>
+                        <NavLink to="/nftlist">Collect</NavLink>
                       </li>
-                    )}
-                    <li>
-                      <NavLink to="/nftlist">Collect</NavLink>
-                    </li>
-                    <li>
-                      <NavDropdown
-                        id="nav-dropdown-dark-example"
-                        title={`Community`}
-                        menuVariant="light"
-                        className="customLink"
-                      >
-                        <NavDropdown.Item
-                          onClick={(e) => {
-                            e.preventDefault();
-                            navigate(`/blogs`);
-                          }}
-                          href="/blogs"
+                      <li>
+                        <NavDropdown
+                          id="nav-dropdown-dark-example"
+                          title={`Community`}
+                          menuVariant="light"
+                          className="customLink"
                         >
-                          Blog
-                        </NavDropdown.Item>
+                          <NavDropdown.Item onClick={(e) => {e.preventDefault(); navigate(`/blogs`); }} href="/blogs">
+                            Blog
+                          </NavDropdown.Item>
 
-                        <NavDropdown.Item href="#">Discord</NavDropdown.Item>
-                        <NavDropdown.Item href={"/contactus"}>
-                          Contact Us
-                        </NavDropdown.Item>
+                          <NavDropdown.Item href="#">Discord</NavDropdown.Item>
+                          <NavDropdown.Item href={"/contactus"}>
+                            Contact Us
+                          </NavDropdown.Item>
 
-                        {/* <NavDropdown.Item
+                          {/* <NavDropdown.Item
                             onClick={(e) => {
                               e.preventDefault();
                               navigate(`/about`);
@@ -226,40 +207,29 @@ function Navbar() {
                           >
                             Terms of Service
                           </NavDropdown.Item> */}
-                      </NavDropdown>
-                    </li>
-                    {/* <li>
+                        </NavDropdown>
+                      </li>
+                      {/* <li>
                         <NavLink to="/nftforall">#NFTforAll</NavLink>
                       </li> */}
-                  </ul>
+                    </ul>
                 </div>
                 <div className="loginSerch d-flex justify-content-end align-items-center">
-                  <button
-                    className="respSerch d-lg-none mx-3"
-                    onClick={searchClick}
-                  >
-                    <i class="fas fa-search"></i>
-                  </button>
-                  <form id="form" className={`${serchActive ? "show" : ""}`}>
+                  <button className="respSerch d-lg-none me-2" onClick={searchClick}><i class="fas fa-search"></i></button>
+                  <form id="form" className={`${serchActive ? 'show' : ''}`}>
                     <div className="topSearch">
                       <input
                         type="text"
                         className="form-control"
                         placeholder="Search"
-                        name={"searchParams"}
-                        value={searchParams}
-                        onChange={(e) => setSearchParams(e.target.value)}
+                        onChange={(e) =>
+                          setSearchParams({ query: e.target.value })
+                        }
                       />
                       <button className="searchBtn" type="button">
-                        <i className="fa fa-search" onClick={handleSearch}></i>
+                        <i className="fa fa-search"></i>
                       </button>
-                      <button
-                        className="cancelBrn d-lg-none"
-                        type="button"
-                        onClick={searchClick}
-                      >
-                        Cancel
-                      </button>
+                      <button className="cancelBrn d-lg-none" type="button" onClick={searchClick}>Cancel</button>
                     </div>
                   </form>
                   <div className="ms-lg-3">
@@ -283,7 +253,9 @@ function Navbar() {
                                 id="nav-dropdown-dark-example"
                                 title={
                                   <img
-                                    onClick={() => setopenProfile(!openProfile)}
+                                    onClick={() =>
+                                      setopenProfile(!openProfile)
+                                    }
                                     className={image ? "filterNone" : ""}
                                     aria-controls="example-collapse-text"
                                     aria-expanded={openProfile}

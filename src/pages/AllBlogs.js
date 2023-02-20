@@ -27,8 +27,8 @@ function AllBlogs() {
   }, []);
 
   return (
-    <div className="container px-5">
-      <div className="row">
+    <div className="container px-3 px-lg-5">
+      <div className="row justify-content-center">
         {blogs.map((item) => (
           <Blog {...item} />
         ))}

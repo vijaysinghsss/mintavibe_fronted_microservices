@@ -40,6 +40,8 @@
 .clbrtBanner p{padding-right:0; font-size:20px;}
 
 
+.blog-box-cont{padding:10px;}
+
 
 }
 
@@ -60,7 +62,7 @@
 }
 
 .crtNftScroll .flex-container{justify-content:normal;}
-.crtNftScroll .flex-container .tabsection{margin:4px; padding:15px 10px 10px; font-size:16px;}
+.crtNftScroll .flex-container .tabsection{margin:4px; padding:13px 10px 10px; font-size:15px;}
 .crtNftScroll .flex-container .tabsection > img {width:16px;}
 .crtNftScroll .flex-container .tabsection .comSoon{padding:2px 4px; line-height:7px; font-size:8px; font-weight:500;}
 .crtNftScroll .flex-container .tabsection span.right{padding-left:5px;}
@@ -92,44 +94,37 @@
 
 /* ================ MENU SECTION ================ */
 
-.nftSection h3{font-size:22px; margin:15px 0 5px;}
-.nftSection p{font-size:16px;}
+.nftSection h3{font-size:20px; margin:5px 0;}
+.nftSection p{font-size:14px;}
 
 .exclCelebrity h3{font-size:35px;}
 .celebrityNFT{padding:40px 0;}
 
 .videoBox video{height:350px;}
 
+.celebrityDtl figure{height:300px; width:250px; padding:25px 20px 45px;}
+.celebrityDtl figure::before{height:300px; width:250px; background-size:100% 100%;}
 
-.celebrityDtl figure {
-	height: 300px;
-	width: 250px;
-	padding: 25px 20px 45px;
-}
+.celebrityPost img{height:220px;}
 
-.celebrityDtl figure::before {
-	height: 300px;
-	width: 250px;
-	background-size: 100% 100%;
-}
-
-.celebrityPost img {
-	height: 220px;
-}
+.footer-link li a{white-space:nowrap;}
 
 }
 
 @media all and (max-width:767px){
 
-	.exclCelebrity h2{font-size:25px;}
-	.exclCelebrity h3{font-size:30px;}
+.exclCelebrity h2{font-size:25px;}
+.exclCelebrity h3{font-size:30px;}
 
-	.subsScribe .subScribeBox{width:550px;}
+.subsScribe .subScribeBox{width:100%;}
 
-	.celebrityDtl h3{font-size: 20px;}
-	.celebrityDtl p{font-size: 16px;}
-	
-	.celebrityPost img{height:200px;}
+.celebrityDtl h3{font-size: 20px;}
+.celebrityDtl p{font-size: 16px;}
+
+.celebrityPost img{height:200px;}
+
+.profile-section p{font-size:22px;}
+.profile-section p span{font-size:14px;}
 
 }
 
@@ -137,76 +132,50 @@
 @media all and (max-width:575px){
 
 .topPading{padding-top:80px;}
+.hedIcons .loginBtn{width:90px; font-weight:600; font-size:16px;}
+.hedIcons li img{width:30px; height:30px;}
 .videoBox video{height:200px;}
 
-.exclCelebrity h3{font-size:25px;}
+.exclCelebrity h2,
+.exclCelebrity h3{font-size:20px; margin-bottom:10px;}
 
-	.celebrityDtl figure {
-		height: 200px;
-		width: 160px;
-		padding: 15px 15px 30px;
-	}
+.nftSection h3{font-size:18px; margin:5px 0; line-height:26px;}
 
-	.celebrityDtl figure::before {
-		height: 200px;
-		width: 160px;
-	}
+.celebrityDtl figure{height: 200px;width: 160px;padding: 15px 15px 30px;}
+.celebrityDtl figure::before{height:200px; width:160px;}
+.celebrityDtl figure .nameTitle{font-size:12px; bottom:10px;}
+.celebrityDtl figure .typeCelebrity{font-size:20px; left:-40px; bottom:80px; width:143px; height:50px;}
+.celebrityDtl h3{font-size:16px;}
+.celebrityDtl p{font-size:12px;}
 
-	.celebrityDtl figure .nameTitle {
-		font-size: 12px;
-		bottom: 10px;
-	}
+.subsScribe{padding:50px 0;}
+.subsScribe h3{font-size:20px;}
+.subsScribe p{font-size:14px; line-height:20px;}
 
-	.celebrityDtl figure .typeCelebrity {
-		font-size: 20px;
-		left: -40px;
-		bottom: 80px;
-		width: 143px;
-		height: 50px;
-	}
+.subsScribe .subScribeBox input{height:45px; font-size:14px;}
+.subsScribe .subScribeBox .subBtn{padding:0 8px; font-size:14px;}
 
-	.celebrityDtl h3 {
-		font-size: 16px;
-	}
+.social-media {flex-wrap:wrap;}
+.social-media li{padding:0px;}
+.social-media li img{width:35px;}
+.social-media li + li{margin-left:8px;}
 
-	.celebrityDtl p {
-		font-size: 12px;
-	}
+.celebrityPost{padding:25px 0;}
+.celebrityPost h3{font-size:22px; margin-bottom:10px;}
 
-	.subsScribe .subScribeBox {
-		width: 100%;
-		display: block;
-	}
+.createYourWalet{padding:25px 0;}
+.createYourWalet h3{font-size:22px;}
+.createYourWalet p{text-align:center; font-size:14px;}
 
-	.subsScribe .subScribeBox input{border-radius:5px; margin-bottom:10px;}
-	.subsScribe .subScribeBox .subBtn{height:55px; border-radius:5px;}
-	.social-media {flex-wrap:wrap;}
-	.social-media li{padding:0px;}
-	.social-media li + li{margin-left:5px;}
+.createYourWalet h4{font-size:22px;}
+.walletSteps li{font-size:13px; font-weight:500; position:relative; padding-left:28px; margin:5px 0;}
+.walletSteps li span{width:20px; height:20px; padding:3px; font-size:10px; margin-right:5px; position:absolute; left:0;}
+.walletSteps li::after{display:none;}
 
-	.celebrityPost h3{font-size:26px;}
+.footer-link{flex-wrap:wrap;}
+.footer-link li + li{margin-left:0;}
 
-	.createYourWalet h3{font-size: 26px;}
-	.createYourWalet p{text-align: center; font-size:15px;}
-
-	.createYourWalet h4{font-size: 25px;}
-	.walletSteps li span{width:20px; height:20px; padding:3px; font-size:10px; margin-right:5px;}
-	.walletSteps li {font-size: 13px; font-weight: 500;}
-	.walletSteps li::after {display:none;}
-
-	.footer-link {
-		flex-wrap: wrap;
-	}
-	.footer-link li + li {
-		margin-left: 0;
-	}
-
-	.footer-link li {
-		padding: 0 10px 10px;
-		width: auto;
-	}
-
-
+.footer-link li{padding:0 10px 10px; width:auto;}
 
 .nft-box{margin:0 0 10px;}
 .nft-box-div{padding:5px 10px 0px;}
@@ -224,7 +193,17 @@
 .cstTab ul.nav-tabs li{padding:0 8px;}
 .tab-porp-box{min-height:80px; width:150px; padding:8px 5px; margin:5px 5px 0px 0px;}
 .tab-button{padding:5px 10px; font-size:12px; margin:5px;}
+.cstTab p{font-size:14px;}
 
+
+.innre-bannre{height:auto;}
+
+.about-us-section h4{font-size:22px; margin:10px 0;}
+.about-us-section p{font-size:14px; line-height:22px;}
+.leader-section h4{font-size:22px;}
+.leader-section span{font-size:16px; font-weight:600;}
+.leader-section h2{font-size:22px; margin:20px 0px;}
+.leader-section p{font-size:14px; margin-top:10px;}
 
 .offerPoup,
 .offerPoup.loginWidth{max-width:96%;}
@@ -232,6 +211,26 @@
 .pop_content{padding:8px;}
 
 .faq-bg{margin:10px 0;}
+
+.modal-more-options{position:absolute; top:1px; right:15px; box-shadow:0 0 5px #C1C1C1; width:90px; padding:6px 10px;}
+.modal-more-options img{width:16px;}
+
+.login-screen input[type="text"],
+.login-screen input[type="password"],
+.login-screen input[type="date"],
+.login-screen input[type="datetime"],
+.login-screen input[type="email"],
+.login-screen input[type="number"],
+.login-screen input[type="search"],
+.login-screen input[type="tel"],
+.login-screen input[type="time"],
+.login-screen input[type="url"],
+.login-screen textarea,
+.login-screen select{padding:10px;}
+
+
+
+.eye-icon{margin-left:0; top:47px; right:15px;}
 
 
 }
