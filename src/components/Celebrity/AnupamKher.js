@@ -147,9 +147,9 @@ function AnupamKher() {
       </section>
 
       <section className="abtEdition">
-        <div className="container">
-          <div className="row justify-content-center my-5">
-            <div className="col-md-5 pt-5">
+        <div className="container-md">
+          <div className="row justify-content-center my-lg-5">
+            <div className="col-auto col-md-5 pt-lg-5">
               <img src="../images/akLandingImage.png" className="img-fluid" />
             </div>
             <div className="col-md-7">

@@ -180,7 +180,7 @@ body {
 
 
 .abtEdition {
-  padding: 50px;
+  padding:50px 0;
   background: transparent linear-gradient(63deg, #D3D3D3 0%, #FFFFFF 100%) 0% 0% no-repeat padding-box;
 }
 
@@ -2699,6 +2699,7 @@ a {
   height: 164px;
   position: relative;
   margin-right: 50px;
+  margin-top: -40px;
 }
 
 .profile-pic>img {
@@ -2708,7 +2709,7 @@ a {
   border: 3px solid #fff;
   background: #DDD;
   margin-left: 30px;
-  margin-top: -40px;
+  /* margin-top: -40px; */
   border-radius: 100px;
   position: relative;
 }
@@ -5792,8 +5793,9 @@ input[type="number"]::-webkit-outer-spin-button {
 .tabs-ver {
   margin-top: 30px;
   display: flex;
-  flex-wrap: wrap;
-  padding: 0px 15px;
+  overflow: auto;
+  /* flex-wrap: wrap; */
+  padding:0px 15px 10px;
 }
 
 .tabs-ver label {
