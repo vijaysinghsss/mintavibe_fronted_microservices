@@ -146,7 +146,7 @@ function Wallet() {
         your confirmation.
       </p>
       {qrCodeXumm && (
-        <Modal
+        <Modal className="walletPoup"
           size="md"
           centered
           show={showCreatePopup}
@@ -170,13 +170,13 @@ function Wallet() {
 
                 <div className="my-2">
                   <h4 className="text-center">Xumm Wallet</h4>
-                  <div className="text-center">
+                  <h5 className="text-center">
                     <span id="xumm-message">
                       {type
                         ? "Nft-Xumm Signed In Successfully"
                         : "Scan QR code with your Xumm Mobile Wallet"}
                     </span>
-                  </div>
+                  </h5>
                   <p className="mb-0"><i>This may take a few seconds once scanned</i></p>
                 </div>
 

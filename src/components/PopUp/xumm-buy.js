@@ -866,7 +866,7 @@ const XummBuy = ({ nftData }) => {
         centered
         contentClassName="modal-custom"
       >
-        <div className="pop-bg">
+        <div className="pop-bg makPayment">
           <form>
             <div className="pop_content">
               <div className="close-button" onClick={handleCloseFollow}>

@@ -263,9 +263,18 @@ text-align: left;
 .login-screen textarea,
 .login-screen select{padding:10px;}
 
-
-
 .eye-icon{margin-left:0; top:47px; right:15px;}
+
+.walletPoup h5{font-weight:400; font-size:16px; margin-top:15px;}
+
+.walletPoup .grey-bg{padding:0; background:none;}
+.walletPoup .grey-bg img{width:260px;}
+.walletPoup .bigtext{font-size:16px;}
+
+
+.pop-bg.makPayment{width:300px;}
+.pop-bg.makPayment h2{margin:30px 0 10px;}
+.pop-bg.makPayment .close-button{top:0px; right:0px;}
 
 
 }
