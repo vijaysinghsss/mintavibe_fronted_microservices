@@ -36,7 +36,7 @@
 
 /* =========== Favourite Celebrities Page =========== */
 
-.clbrtBanner h1{color:#fff; font-size:30px; font-weight:bold; line-height:45px;}
+.clbrtBanner h1{color:#fff; font-size:30px; line-height:45px;}
 .clbrtBanner p{padding-right:0; font-size:20px;}
 
 
@@ -47,6 +47,25 @@
 
 
 @media all and (max-width:991px){
+
+
+
+
+.clbrtBanner.specalArjun {
+padding:30px 0 ;
+text-align: center;
+}
+
+.clbrtBanner.specalArjun img{max-width:100%;}
+
+.clbrtBanner.specalArjun aside {
+position: relative;
+top: auto;
+left: auto;
+text-align: left;
+}
+
+
 
 
 .left-side{height:auto;}
@@ -125,6 +144,22 @@
 
 .profile-section p{font-size:22px;}
 .profile-section p span{font-size:14px;}
+
+.clbrtBanner{padding:25px 0 50px;}
+
+.clbrtBanner h1{font-size:24px; line-height:30px; margin-top:15px;}
+.clbrtBanner p{font-size:16px; line-height:24px;}
+.bnrSlider img{max-height:250px;}
+.bnrSlider h2{padding:10px 0px; font-size:18px;}
+
+.abtEdition .abtCelebt h3{font-size:26px; margin:15px 0;}
+.abtEdition .abtCelebt h4{font-size:24px;}
+.abtCelebt p{font-size:16px; line-height:26px;}
+
+.footer-link li a{font-size:15px;}
+
+
+
 
 }
 
