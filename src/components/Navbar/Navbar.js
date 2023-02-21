@@ -214,6 +214,7 @@ function Navbar() {
                       </li> */}
                     </ul>
                 </div>
+                <div className="menuOuter" onClick={handleClick}></div>
                 <div className="loginSerch d-flex justify-content-end align-items-center">
                   <button className="respSerch d-lg-none me-2" onClick={searchClick}><i class="fas fa-search"></i></button>
                   <form id="form" className={`${serchActive ? 'show' : ''}`}>
