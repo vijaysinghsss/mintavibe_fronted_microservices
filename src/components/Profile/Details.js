@@ -138,11 +138,9 @@ function Details({
           href={`${process.env.REACT_APP_XRPLTRANSACTION}${transaction_hash}`}
           target={`_blank`}
         >
-          <div className="tab-button" style={{ width: "172px" }}>
+          <div className="tab-button" style={{ maxWidth: "170px" }}>
             <img
-              src="/images/xrp.png"
-              className="mx-2 my-1"
-              width={"14%"}
+              src="/images/xrp.png" style={{width:"20px", margin:"2px 5px"}}
               alt=""
             />{" "}
             XRPL Explorer{" "}
