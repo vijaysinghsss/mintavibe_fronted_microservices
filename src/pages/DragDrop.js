@@ -48,7 +48,9 @@ function DragDrop({ handleFileChange, multiple = false }) {
     <div
       id="form-file-upload form-group  col-md-12 p-5 m-3"
       onDragEnter={handleDrag}
-      onSubmit={(e) => e.preventDefault()}
+      onDragLeave={handleDrag}
+      onDragOver={handleDrag}
+      onDrop={handleDrop}
     >
       <input
         ref={inputRef}
@@ -74,7 +76,7 @@ function DragDrop({ handleFileChange, multiple = false }) {
           </div>
         </div>
       </label>
-      {dragActive && (
+      {/* {dragActive && (
         <div
           id="drag-file-element"
           onDragEnter={handleDrag}
@@ -82,7 +84,7 @@ function DragDrop({ handleFileChange, multiple = false }) {
           onDragOver={handleDrag}
           onDrop={handleDrop}
         ></div>
-      )}
+      )} */}
     </div>
   );
 }
