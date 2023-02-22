@@ -282,29 +282,20 @@ function ContactUs() {
                           ""
                         )}
                       </div>
+
                       <DragDrop
                         handleFileChange={handleFileChange}
-                        accept={[]}
+                        multiple={false}
                       />
-                      {/* <div className="wrapper">
-                        <div
-                          className="form-group col-6 col-md-6 border border-danger"
-                          onDragOver={handleDragOver}
-                          onDrop={handleOnDrop}
-                        >
-                          <label htmlFor="file">File</label>
-                          <input
-                            type="file"
-                            className="form-control mb-0"
-                            id="file"
-                            name="image"
-                            onChange={handleFileChange}
-                            // onChange={(e) => {
-                            //   setInpData({ ...inpData, image: e.target.files });
-                            // }}
+                      <div className="form-group  col-6 mt-3">
+                        {inpData.image && (
+                          <img
+                            src={URL.createObjectURL(inpData.image[0])}
+                            width={60}
+                            height={60}
                           />
-                        </div>
-                      </div> */}
+                        )}
+                      </div>
                       <div className="form-group col-md-12 drop_zone">
                         <label for="Message">
                           Message<span className="text-danger"> *</span>

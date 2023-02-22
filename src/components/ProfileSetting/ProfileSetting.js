@@ -405,7 +405,7 @@ function ProfileSetting() {
                 </div>
               </div>
 
-              <div className="col-sm-6 mb-3">
+              <div className="col-md-6 mb-3">
                 <div className="form-div">
                   <label for="name">
                     Your Bio{" "}
@@ -429,24 +429,20 @@ function ProfileSetting() {
                 </div>
               </div>
 
-              <div className="col-sm-6 col-md-6 action-button-mb">
-                <div className="row">
-                  <div className="col-sm-6">
-                    <div className="save-button">
+              <div className="col-12 col-md-6 action-button-mb">
+                <div className="row justify-content-between mb-3">
+                  <div className="col-auto">
+                    <div className="save-button profilBtn">
                       <button type="submit">Save</button>
                     </div>
                   </div>
-                  <div className="col-sm-6">
-                    <div className="cancel-button-2">
-                      <a
-                        href="!#"
+                  <div className="col-auto">
+                    <div className="cancel-button-2 m-0">
+                      <a href="!#"
                         onClick={(e) => {
                           e.preventDefault();
                           navigate("/profile");
-                        }}
-                      >
-                        Cancel
-                      </a>
+                        }} >Cancel</a>
                     </div>
                   </div>
                 </div>

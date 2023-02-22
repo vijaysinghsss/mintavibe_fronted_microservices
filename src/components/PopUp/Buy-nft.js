@@ -18,7 +18,7 @@ const BuyNft = ({
         <p></p>
       </div>
       <div className="row grey-bg">
-        <div className="col-sm-12 m-2">
+        <div className="col-sm-12">
           <input
             type={`text`}
             className="form-control form-control-sm"
@@ -75,7 +75,7 @@ const BuyNft = ({
         </div>
       </div>
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-6">
           <a
             href="!#"
             onClick={(e) => {
@@ -86,7 +86,7 @@ const BuyNft = ({
             <div className="cancel-button">Cancel</div>
           </a>
         </div>
-        <div className="col-md-6">
+        <div className="col-6">
           <a href="!#" onClick={buyHandleChange(qty)}>
             <div className="creat-button">Buy</div>
           </a>

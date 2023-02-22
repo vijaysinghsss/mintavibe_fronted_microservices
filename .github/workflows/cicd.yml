@@ -22,6 +22,7 @@ jobs:
           port:  ${{ secrets.PORT }}
           script: |
                cd /home/ubuntu/Mintavibe-Frontend-build-test
+               git stash
                git pull origin main
                npm install
                npm run build
@@ -39,6 +40,7 @@ jobs:
           port:  ${{ secrets.PORT }}
           script: |
                cd /var/www/html/Mintavibe-Frontend
+               git stash
                git pull origin main
                npm install
                npm run build                         

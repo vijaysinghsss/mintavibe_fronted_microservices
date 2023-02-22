@@ -139,14 +139,14 @@ function Navbar() {
         {showPopup && <OpenModal />}
         <div className="container relative">
           <div className="row align-items-center">
-            <div className="col-4 col-md-3">
+            <div className="col-5 col-sm-4 col-md-3">
               <NavLink index to="/" className="topLogo">
                 <img className="img-fluid" src="../images/logo.png" alt="" />
               </NavLink>
             </div>
-            <div className="col-8 col-md-9">
+            <div className="col-7 col-sm-8 col-md-9">
               <div className="respMenuOnly d-flex justify-content-end">
-                <button className="respMenu d-lg-none me-3 ms-2 order-2" onClick={handleClick}><i class="fas fa-bars"></i></button>
+                <button className="respMenu d-lg-none ms-2 order-2" onClick={handleClick}><i class="fas fa-bars"></i></button>
                 <div className={`topMenu ${isActive ? 'show' : ''}`}>
                     <ul className="nav navbar-nav">
                       {/* <li>
@@ -214,6 +214,7 @@ function Navbar() {
                       </li> */}
                     </ul>
                 </div>
+                <div className="menuOuter" onClick={handleClick}></div>
                 <div className="loginSerch d-flex justify-content-end align-items-center">
                   <button className="respSerch d-lg-none me-2" onClick={searchClick}><i class="fas fa-search"></i></button>
                   <form id="form" className={`${serchActive ? 'show' : ''}`}>

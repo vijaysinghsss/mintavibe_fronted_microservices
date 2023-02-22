@@ -36,7 +36,7 @@
 
 /* =========== Favourite Celebrities Page =========== */
 
-.clbrtBanner h1{color:#fff; font-size:30px; font-weight:bold; line-height:45px;}
+.clbrtBanner h1{color:#fff; font-size:30px; line-height:45px;}
 .clbrtBanner p{padding-right:0; font-size:20px;}
 
 
@@ -47,6 +47,25 @@
 
 
 @media all and (max-width:991px){
+
+
+
+
+.clbrtBanner.specalArjun {
+padding:30px 0 ;
+text-align: center;
+}
+
+.clbrtBanner.specalArjun img{max-width:100%;}
+
+.clbrtBanner.specalArjun aside {
+position: relative;
+top: auto;
+left: auto;
+text-align: left;
+}
+
+
 
 
 .left-side{height:auto;}
@@ -75,18 +94,23 @@
 
 .respSerch,
 .respMenu{background:none; color:#FFF; border:0px; font-size:20px;}
+.respMenu{z-index:9;}
 
 .respMenuOnly .topMenu{display:none; position:absolute; width:200px; top:45px; right:0px; z-index:999; padding:10px 15px; border-radius:10px; box-shadow:0 0 5px #7F35E6;
 		background: transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;}
 
 .respMenuOnly .topMenu.show{display:block;}
+.topMenu.show ~ .menuOuter{display:block; height:100%; width:100%; background:rgba(0,0,0,0.5); position:fixed; top:0; left:0; z-index:2;}
 
 .respMenuOnly .navbar-nav{margin:0px;}
 .respMenuOnly .navbar-nav li + li{padding-left:0px;}
 .respMenuOnly .navbar-nav li{display:block; width:100%;}
 .respMenuOnly .navbar-nav li a{font-size:16px; padding:5px 0;}
-.respMenuOnly .navbar-nav li .dropdown > .dropdown-menu{position:relative !important; transform:none !important; inset:auto !important;}
-.respMenuOnly .navbar-nav li .dropdown > .dropdown-menu a{padding:2px 15px;}
+.respMenuOnly .navbar-nav li .dropdown > .dropdown-menu{padding:0px; position:relative !important; transform:none !important; inset:auto !important; background: transparent linear-gradient(270deg, #7F35E6 0%, #5A2AE0 100%) 0% 0% no-repeat padding-box;}
+.respMenuOnly .navbar-nav li .dropdown > .dropdown-menu a{padding:5px 15px; color:#FFF;}
+
+.respMenuOnly .navbar-nav .dropdown-item:focus,
+.respMenuOnly .navbar-nav .dropdown-item:hover{background:none;}
 
 .topMenu .hedIcons{display:block;}
 .topMenu .hedIcons button{width:100%;}
@@ -125,6 +149,25 @@
 
 .profile-section p{font-size:22px;}
 .profile-section p span{font-size:14px;}
+
+.clbrtBanner{padding:25px 0 50px;}
+
+.clbrtBanner h1{font-size:24px; line-height:30px; margin-top:15px;}
+.clbrtBanner p{font-size:16px; line-height:24px;}
+.bnrSlider img{max-height:250px;}
+.bnrSlider h2{padding:10px 0px; font-size:18px;}
+
+.abtEdition .abtCelebt h3{font-size:26px; margin:15px 0;}
+.abtEdition .abtCelebt h4{font-size:24px;}
+.abtCelebt p{font-size:16px; line-height:26px;}
+
+.footer-link li a{font-size:15px;}
+
+
+.save-button.profilBtn{margin:0;}
+.save-button.profilBtn button{background:none; color:#FFF; border:0;}
+
+
 
 }
 
@@ -228,9 +271,19 @@
 .login-screen textarea,
 .login-screen select{padding:10px;}
 
-
-
 .eye-icon{margin-left:0; top:47px; right:15px;}
+
+.walletPoup h5{font-weight:400; font-size:16px; margin-top:15px;}
+
+.walletPoup .grey-bg{padding:0; background:none;}
+.walletPoup .grey-bg img{width:260px;}
+.walletPoup .bigtext{font-size:16px;}
+
+
+/* .pop-bg.makPayment{width:300px;} */
+
+.pop-bg.makPayment h2{margin:30px 0 10px;}
+.pop-bg.makPayment .close-button{top:0px; right:0px;}
 
 
 }

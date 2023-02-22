@@ -115,7 +115,7 @@ function ArjunRampal() {
         <aside>
         <Container>
           <Row className="align-items-center justify-content-center">
-            <Col md={5}>
+            <Col lg={5}>
               <SliderParent
                 className={`bnrSlider d-none`}
                 dots={true}
@@ -160,7 +160,7 @@ function ArjunRampal() {
               </SliderParent>
             </Col>
 
-            <Col md={6}>
+            <Col lg={6}>
               <h1>NFT'S Of Your Favourite Celebrities</h1>
               <p>
                 MintAVibe has an exclusive collection of digital collectibles of
@@ -176,24 +176,16 @@ function ArjunRampal() {
       <section className="abtEdition">
         <div className="container">
           <div className="row justify-content-center align-items-center my-5">
-            <div className="col-md-4 me-4">
+            <div className="col-lg-4 me-xl-4">
               <img src="../images/arjun-rampal.png" className="img-fluid" />
             </div>
-            <div className="col-md-7">
+            <div className="col-lg-7">
               <div className="abtCelebt">
                 <h3>Drop 1: Three Editions</h3>
                 <h4>About Collection</h4>
-                This is a chance to engage with Mr. Rampal in his “Be Brave like
-                RockOn” collection.
-                <br />
-                <br />
-                With the purchase of this NFT the holders will collect his
-                RockOn mascot NFTs which will have different traits unlocking
-                benefits to fans.
-                <br />
-                <br />
-                Insight into his world, his projects, side initiatives. Chance
-                to interact directly and be truly a part of his world.
+                <p>This is a chance to engage with Mr. Rampal in his “Be Brave like RockOn” collection.</p>
+                <p>With the purchase of this NFT the holders will collect his RockOn mascot NFTs which will have different traits unlocking benefits to fans.</p>
+                <p>Insight into his world, his projects, side initiatives. Chance to interact directly and be truly a part of his world.</p>
                 <div className="editionSection mt-4">
                   <div>
                     <p>Edition</p>
