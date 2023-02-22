@@ -23,7 +23,7 @@ function ContactUs() {
     querymessage: "",
     image: "",
   });
-  const [previewUrl, setPreviewUrl] = useState("");
+  const [previewUrl, setPreviewUrl] = useState([]);
   const {
     firstname = "",
     lastname = "",
@@ -77,7 +77,7 @@ function ContactUs() {
   };
   const handleFileChange = (file) => {
     setInpData({ ...inpData, image: file });
-    // setPreviewUrl(URL.createObjectURL(file));
+    setPreviewUrl([...previewUrl, ...file]);
   };
   // const handleDragOver = (event) => {
   //   event.preventDefault();
@@ -127,7 +127,7 @@ function ContactUs() {
       toast(error, { type: "error" });
     }
   };
-  console.log(inpData);
+  console.log(inpData, previewUrl);
   return (
     <>
       <section className="innre-bannre">
@@ -285,16 +285,19 @@ function ContactUs() {
 
                       <DragDrop
                         handleFileChange={handleFileChange}
-                        multiple={false}
+                        multiple={true}
                       />
-                      <div className="form-group  col-6 mt-3">
-                        {inpData.image && (
-                          <img
-                            src={URL.createObjectURL(inpData.image[0])}
-                            width={60}
-                            height={60}
-                          />
-                        )}
+                      <div className="form-group  col-12 mt-3">
+                        {inpData.image &&
+                          previewUrl?.map((ele,idx) => (
+                            <img
+                            key={idx}
+                            className="mx-1"
+                              src={URL.createObjectURL(ele)}
+                              width={60}
+                              height={60}
+                            />
+                          ))}
                       </div>
                       <div className="form-group col-md-12 drop_zone">
                         <label for="Message">
