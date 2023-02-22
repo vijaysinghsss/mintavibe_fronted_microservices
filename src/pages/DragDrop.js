@@ -21,7 +21,7 @@ function DragDrop({ handleFileChange, multiple = false }) {
   };
 
   // triggers when file is dropped
-  const handleDrop = function (e) {
+  const handleDrop = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
