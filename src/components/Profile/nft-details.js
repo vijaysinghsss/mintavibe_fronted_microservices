@@ -18,6 +18,7 @@ import {
   SetBuyData,
   SetFollowrData,
   SetloaderData,
+  SetpopupReducerData,
 } from "../../store/reducer";
 import XummBuy from "../PopUp/xumm-buy";
 import ReactReadMoreReadLess from "react-read-more-read-less";
@@ -62,6 +63,7 @@ import CountdownTimer from "../../pages/CountdownTimer";
 import OwnerList from "../PopUp/OwnerList";
 import ImageZoom from "../PopUp/ImageZoom";
 import BurnTokenPopup from "../PopUp/BurnTokenPopup";
+import OpenModal from "../Navbar/OpenModal";
 
 function NftDetails() {
   const { id } = useParams();
@@ -75,6 +77,7 @@ function NftDetails() {
   const { address, activeProvider, chainId, balance, provider } = useWeb3();
   const { stripe } = useSelector((state) => state.Buy.data);
   const [ownerData, setOwnerData] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
 
   const [HistoryData, setHistoryData] = useState([]);
 
@@ -191,15 +194,18 @@ function NftDetails() {
     e.preventDefault();
 
     if (!User_id) {
-      toast(NotificationMsg.NotConnect, { type: "error", toastId: "--85214" });
+      // toast(NotificationMsg.NotConnect, { type: "error", toastId: "--85214" });
+      handleShowLogin();
       return;
     }
-
     if (!address && !User_id) {
       toast(NotificationMsg.NotConnect, { type: "error" });
       return;
     }
-
+    if (!address && NetworkName[0] !== "XUMM") {
+      toast(NotificationMsg.NotConnect, { type: "error" });
+      return;
+    }
     if (Array.isArray(NetworkName)) {
       if (NetworkName[0] == "XUMM") {
       } else {
@@ -1627,9 +1633,13 @@ function NftDetails() {
   let likeIndex = CollectionDetails?.likes_count?.findIndex(
     (ele) => ele === User_id
   );
+  const handleShowLogin = () => {
+    dispatch(SetpopupReducerData({ modalType: "LOGIN", showModal: true }));
+    setShowPopup(true);
+  };
   const handleLike = async (nft) => {
     if (!User_id) {
-
+      handleShowLogin();
     } else {
       let payload = { UserId: User_id, NftId: nft?._id, IsLiked: false };
       payload.IsLiked = likeIndex >= 0 ? false : true;
@@ -1659,7 +1669,7 @@ function NftDetails() {
     setExpandUrl("");
     setExpandImage(false);
   };
- 
+
   return (
     <section className="profile-section mt-3 mt-sm-4">
       <div className="container-lg">
@@ -2532,6 +2542,7 @@ function NftDetails() {
         <ImageZoom url={expandUrl} handleClose={handleCloseExpandImage} />
       )}
       <BurnTokenPopup />
+      {showPopup && <OpenModal />}
     </section>
   );
 }
