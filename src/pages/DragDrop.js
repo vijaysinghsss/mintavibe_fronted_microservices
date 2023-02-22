@@ -10,7 +10,7 @@ function DragDrop({ handleFileChange, multiple = false }) {
   const inputRef = React.useRef(null);
 
   // handle drag events
-  const handleDrag = function (e) {
+  const handleDrag =  (e) =>{
     e.preventDefault();
     e.stopPropagation();
     if (e.type === "dragenter" || e.type === "dragover") {
