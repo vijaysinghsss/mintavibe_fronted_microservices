@@ -5660,7 +5660,8 @@ table tr {
 }
 
 .offcanvas.offcanvas-end {
-  height: 450px;
+  /* height: 450px; */
+  bottom:auto;
 }
 
 .modal-content {

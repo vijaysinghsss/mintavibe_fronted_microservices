@@ -364,13 +364,15 @@ input.search-input-nav {
   margin: 0px;
 }
 
+.wallet-connect-inner .termCond{margin-bottom:10px;}
+.wallet-connect-inner .termCond b{font-weight:500;}
+
 .wallet-connect-grey {
   max-width: 280px;
-  margin: 20px auto auto;
+  margin: 20px auto 15px;
   background-color: #f4f5f9;
   border-radius: 10px;
   padding: 20px;
-  margin-bottom: 40px;
 }
 
 .wallet-connect-grey a {
@@ -383,9 +385,11 @@ input.search-input-nav {
   border: 1px solid #f0f0f0;
 }
 
-.wallet-connect-grey a img {
-  padding-right: 10px;
-}
+.wallet-connect-grey .cusWallet a{align-items:center; padding:13px 12px 11px;}
+.wallet-connect-grey .cusWallet p{line-height:20px; text-align:left; color:#162c5b;}
+.wallet-connect-grey .cusWallet p > span{font-size:11px; display:block; line-height:10px;}
+
+.wallet-connect-grey a img {padding-right:10px;}
 
 .wallet-connect-grey a p {
   padding: 0px;

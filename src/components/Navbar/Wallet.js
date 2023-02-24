@@ -7,6 +7,7 @@ import { API } from "../../apiwrapper";
 import apiURl, { NotificationMsg } from "../../store/actions/api-url";
 import { SetUserData, SetXummData } from "../../store/reducer/user";
 
+
 function Wallet() {
   const { connectWallet, address } = useWeb3();
 
@@ -140,11 +141,22 @@ function Wallet() {
           <p>Wallet Connect</p>
           <span>ETH</span>
         </a> */}
+
+        <div className="cusWallet">
+          <p className="text-left">Dummy Text</p>
+          <a href="!#" className="mb-0">
+            <img
+              src="/images/wallet-icon.png"
+              alt=""
+              style={{ width: "32px", marginRight: "10px" }}
+            />
+            <p><span>Custodial Wallet</span>Custodial Wallet</p>
+          </a>
+        </div>
+
       </div>
-      <p>
-        We do not own your private keys and cannot access your funds without
-        your confirmation.
-      </p>
+      <p className="termCond">*If you don't have any existing wallet create your own with clicking on "<b>Custodial Wallet</b>"</p>
+      <p>*We do not own your private keys and cannot access your funds without your confirmation.</p>
       {qrCodeXumm && (
         <Modal className="walletPoup"
           size="md"
