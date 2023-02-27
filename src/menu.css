@@ -385,7 +385,7 @@ input.search-input-nav {
   border: 1px solid #f0f0f0;
 }
 
-.wallet-connect-grey .cusWallet a{align-items:center; padding:13px 12px 11px;}
+.wallet-connect-grey .cusWallet button{padding:10px 10px 7px; display:flex; align-items:center; width:100%; background:#fff; border-radius:5px; border:1px solid #f0f0f0;}
 .wallet-connect-grey .cusWallet p{line-height:20px; text-align:left; color:#162c5b;}
 .wallet-connect-grey .cusWallet p > span{font-size:11px; display:block; line-height:10px;}
 
