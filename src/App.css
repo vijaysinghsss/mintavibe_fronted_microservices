@@ -1393,12 +1393,12 @@ a .nft-title-box {
   max-width: 100px;
 }
 
-.p-2 {
+/* .p-2 {
   border-bottom: 1px solid #c7ccd9;
   margin-top: 20px;
   margin-bottom: 20px;
   line-height: 40px;
-}
+} */
 
 .form-section label {
   font-weight: 400;
@@ -2371,6 +2371,9 @@ input:checked+.slider-check:before {
 }
 
 /***** pop*****/
+
+.poupCrtWallet .copyCode{display:flex; align-items:center; padding:8px 10px; background:#f2f2f2; border-radius:8px;}
+.poupCrtWallet .copyCode span{font-size:14px; margin:0 10px;}
 
 .offerPoup.followSteps {
   width: auto;

@@ -13,6 +13,8 @@ function Wallet() {
 
   const dispatch = useDispatch();
 
+  const [showCrtWalt, setShowCrtWalt] = useState(false);
+
   const [showCreatePopup, setShowCreatePopup] = useState(false);
 
   const { socket, id } = useSelector((state) => state.Socket);
@@ -144,14 +146,14 @@ function Wallet() {
 
         <div className="cusWallet">
           <p className="text-left">Dummy Text</p>
-          <a href="!#" className="mb-0">
+          <button onClick={()=>setShowCrtWalt(true)} className="mb-0">
             <img
               src="/images/wallet-icon.png"
               alt=""
-              style={{ width: "32px", marginRight: "10px" }}
+              style={{ width: "25px", marginRight: "10px" }}
             />
             <p><span>Custodial Wallet</span>Custodial Wallet</p>
-          </a>
+          </button>
         </div>
 
       </div>
@@ -206,6 +208,75 @@ function Wallet() {
           </Modal.Body>
         </Modal>
       )}
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+    {showCrtWalt &&
+
+      <Modal
+          size="md offerPoup loginWidth"
+          centered
+          show={showCrtWalt}
+          onHide={()=>setShowCrtWalt(!showCrtWalt)}
+        >
+          <Modal.Body>
+            <div className="pop-bg">
+              <div className="pop_content p-2 p-md-3">
+                <div className="close-button" onClick={()=>setShowCrtWalt(!showCrtWalt)} style={{ right: "0px", top: "0px" }} >
+                  <a href="#"><img src="/images/cross-button.svg" alt="" /></a>
+                </div>
+                <h2 className="mt-2 mb-3">Create Wallet</h2>
+                
+                <div className="login-screen poupCrtWallet">
+                  <form>
+                    <div className="form-div">
+                      <label for="name">Wallet Name</label>
+                      <input type="text" placeholder="Enter your wallet's name"/>
+                    </div>
+                    <div className="form-div">
+                      <label for="name">ETH Wallet Address</label>
+                      <div className="copyCode">
+                        <img src="/images/cart-eth-icon.svg" alt="" />
+                        <span>746w...hfdyj12...18furj</span>
+                        <a href="#" className="ms-auto"><img src="/images/copy-svgrepo-com.svg" alt="" /></a>
+                      </div>
+                    </div>
+                    <div className="form-div">
+                      <label for="name">XRP Wallet Address</label>
+                      <div className="copyCode">
+                        <img src="/images/xrp-icon.svg" alt="" />
+                        <span>746w...hfdyj12...18furj</span>
+                        <a href="#" className="ms-auto"><img src="/images/copy-svgrepo-com.svg" alt="" /></a>
+                      </div>
+                    </div>
+                    <button className="login-screen-button" type="submit">Save</button>
+                  </form>
+                </div>
+                
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
+
+}
+
+
+
+
+
+
+
+
     </div>
   );
 }
