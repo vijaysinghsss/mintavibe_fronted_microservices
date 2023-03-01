@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import CreateNewPassword from "../PopUp/CreateNewPassword";
 import ForgetPassword from "../PopUp/ForgetPassword";
 import Login from "../PopUp/Login";
+import PlayGame from "../PopUp/PlayGame";
 import Sell from "../PopUp/Sell";
 import SignUp from "../PopUp/SignUp";
 import VerifyOTP from "../PopUp/VerifyOTP";
@@ -18,6 +19,7 @@ function OpenModal() {
       {modalType === "OTP" && <VerifyOTP />}
       {modalType === "CHANGEPASSWORD" && <CreateNewPassword />}
       {modalType==="SELL"&&<Sell/>}
+      {modalType==="PLAY"&&<PlayGame/>}
     </>
   );
 }

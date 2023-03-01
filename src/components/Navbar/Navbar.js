@@ -59,7 +59,10 @@ function Navbar() {
     dispatch(SetpopupReducerData({ modalType: "LOGIN", showModal: true }));
     setShowPopup(true);
   };
-
+ const handleShowPLAY = () => {
+    dispatch(SetpopupReducerData({ modalType: "PLAY", showModal: true }));
+    setShowPopup(true);
+  };
   const [showCreatePopup, setShowCreatePopup] = useState(false);
   const handleCloseCreatePopup = () => setShowCreatePopup(false);
 
@@ -246,6 +249,15 @@ function Navbar() {
                           </button>
                         </li>
                       )}
+                      <li>
+                        <button
+                          className="btn btn-light loginBtn"
+                          onClick={handleShowPLAY}
+                          style={{ border: "none" }}
+                        >
+                        Games
+                        </button>
+                      </li>
                       {loginUserData?.token && (
                         <>
                           {
