@@ -29,7 +29,7 @@ function Login() {
   const [rememberMe, setRememberMe] = useState(false);
   const [notVerify, setNotVerify] = useState(false);
 
-  const url = "http://localhost:3001/" || process.env.REACT_APP_LIVE_URL;
+  const url =  process.env.REACT_APP_LIVE_URL;
   const [showPass, setShowPass] = useState(false);
   let regexNum = /^(?=.*[0-9])/;
   let regexSmlChar = /^(?=.*[a-z])/;

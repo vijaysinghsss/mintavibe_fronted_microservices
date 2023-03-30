@@ -72,7 +72,7 @@ function ForgetPassword() {
         setErrors(err);
       }
     } catch (error) {
-      setApiErrors({ message: error });
+      setApiErrors({ message: error?.message });
     }
   };
   return (

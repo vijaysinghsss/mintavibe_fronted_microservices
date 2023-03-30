@@ -18,8 +18,8 @@ function OpenModal() {
       {modalType === "LOGIN" && <Login />}
       {modalType === "OTP" && <VerifyOTP />}
       {modalType === "CHANGEPASSWORD" && <CreateNewPassword />}
-      {modalType==="SELL"&&<Sell/>}
-      {modalType==="PLAY"&&<PlayGame/>}
+      {modalType === "SELL" && <Sell />}
+      {modalType === "PLAY" && <PlayGame />}
     </>
   );
 }
